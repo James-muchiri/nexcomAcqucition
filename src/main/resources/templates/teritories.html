@@ -1,0 +1,218 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+
+</section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+
+    </div>
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+                            <div class="card">
+                                <div class="card-header">
+
+                                    <h2 class="fs-title">Nexcom Teritories</h2>
+                                    <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
+                                        new Region
+                                    </button>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="table-responsive" >
+                                                <table class="table table-striped mt32 customers-list " id="modal_table">
+                                                    <thead>
+                                                    <tr>
+
+                                                        <td class="t_head">Name</td>
+                                                        <td class="t_head">Description</td>
+
+                                                        <td class="t_head">Action</td>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="myTable">
+
+                                                    <tr id="t_data" th:each="region : ${regionss}">
+
+                                                        <td th:text="${region.getName()}"> </td>
+
+
+
+                                                        <!--                                                        <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>-->
+
+
+                                                    </tr>
+
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="new_shedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">New Region</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="region_form">
+
+                    <div class="form-group" id="region_input">
+                        <label for="exampleInputEmail1">Region name</label>
+                        <input type="text" class="form-control" id="region_name" name="region_name" aria-describedby="emailHelp">
+                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                    </div>
+
+                    <div class="form-group" id="region_input">
+                        <label for="exampleInputEmail1">Region Description</label>
+                        <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
+                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
+
+                <button type="submit" class="btn btn-primary">Create Region</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="update_region" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Region Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div style="padding: 20px;">
+                    <form id="area_form">
+                        <div id="area_input" >
+
+
+                            <div class="form-group" >
+                                <label for="exampleInputEmail1">Area name</label>
+                                <input type="text" class="form-control" id="area_name" name="area_name" aria-describedby="emailHelp">
+                                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                            </div>
+                            <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
+                            <input type="text" name="region_id" id="region_id"  hidden>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Area</button>
+
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive" >
+                            <table class="table table-striped mt32 customers-list " id="modal_table">
+                                <thead>
+                                <tr>
+
+
+                                    <td class="t_head">Areas</td>
+
+                                    <td class="t_head">Action</td>
+
+                                </tr>
+                                </thead>
+                                <tbody id="area_table">
+
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

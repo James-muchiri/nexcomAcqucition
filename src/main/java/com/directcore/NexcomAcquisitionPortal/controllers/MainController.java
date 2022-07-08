@@ -47,12 +47,8 @@ public class MainController {
     }
 
 
-    @GetMapping({"/acqusitions"})
-    public ModelAndView acqusition(HttpSession request, ModelAndView v) {
 
-        return (ModelAndView) adminService.acqusition( request, v);
 
-    }
 
 
 
@@ -72,6 +68,13 @@ public class MainController {
     public ModelAndView myacqusitions(HttpSession request, ModelAndView v) {
 
         return (ModelAndView) adminService.myacqusition( request, v);
+
+    }
+
+    @GetMapping({"/Teritories"})
+    public ModelAndView Teritories(HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.teritories( request, v);
 
     }
 

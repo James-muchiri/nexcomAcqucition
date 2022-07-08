@@ -39,4 +39,6 @@ public interface AdminService {
      Object addbuilding(Building_information request);
 
     Object myacqusition(HttpSession request, ModelAndView v);
+
+    Object teritories(HttpSession request, ModelAndView v);
 }

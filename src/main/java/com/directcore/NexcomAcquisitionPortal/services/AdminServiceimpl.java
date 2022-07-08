@@ -1,12 +1,10 @@
 package com.directcore.NexcomAcquisitionPortal.services;
 
 
-import com.directcore.NexcomAcquisitionPortal.model.Admi;
-import com.directcore.NexcomAcquisitionPortal.model.Building_information;
-import com.directcore.NexcomAcquisitionPortal.model.Error1;
-import com.directcore.NexcomAcquisitionPortal.model.Roles_admin;
+import com.directcore.NexcomAcquisitionPortal.model.*;
 import com.directcore.NexcomAcquisitionPortal.repositories.AdmiRepository;
 import com.directcore.NexcomAcquisitionPortal.repositories.Building_informationRepository;
+import com.directcore.NexcomAcquisitionPortal.repositories.RegionRepository;
 import com.directcore.NexcomAcquisitionPortal.repositories.RolesRepository;
 import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
@@ -34,8 +32,16 @@ private RolesRepository roleRepository;
 
     @Autowired
     private Building_informationRepository building_informationRepository;
+
+
+
     @Autowired
       private UserValidator userValidator;
+
+
+    @Autowired
+    private RegionRepository regionRepository;
+
     private Pattern regexPattern;
     private Matcher regMatcher;
 
@@ -211,6 +217,22 @@ roles.setCreated_by(admin.getName());
         v.setViewName("myacqusitions");
         v.addObject("user", admi);
         v.addObject("buildings", building_information);
+        return v;
+    }
+
+    @Override
+    public Object teritories(HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+        List<Region> regions = (List<Region>) regionRepository.findAll();
+
+
+         v.setViewName("teritories");
+        v.addObject("user", admi);
+        v.addObject("regions", regions);
+
         return v;
     }
 
