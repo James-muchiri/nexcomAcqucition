@@ -1,0 +1,192 @@
+
+<div id="right-panel" class="right-panel" th:fragment="header">
+  <style>
+    #adminp{
+        font-size: 16px;
+    }
+    .alert-message{
+
+        background-color: aquamarine;
+        text-align: center;
+    }
+    #success{
+        display: none;
+        background-color: aquamarine;
+    }
+    #nameError{
+        display: none;
+        background-color: rgb(201, 19, 19);
+    }
+    .display-6{
+        background-color: #aeaeae;
+        color: aliceblue;
+        padding: 20px;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    body{
+    background-color: #dedede;
+}
+    </style>
+  <header id="header" class="header">
+    <div class="top-left">
+      <div class="navbar-header">
+        <a class="navbar-brand"  href="/admin/index" >
+          <img   src="../assets/image/logo.jpg"  alt="nexcom">
+        </a>
+        <a class="navbar-brand hidden" href="./"><img src="../assets/image/logo.jpg" alt="Logo"></a>
+        <a id="menuToggle" class="menutoggle" ><i class="fa fa-bars"></i></a>
+      </div>
+    </div>
+    <div class="top-right">
+
+
+
+      <div class="user-area dropdown float-right">
+        <a href="/admin" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="user-avatar rounded-circle" src="../assets/image/images.png"  alt="User Avatar">
+          &emsp;
+          <span style="display: block;font-weight: 600;" th:text="${user.getName()}" > </span>
+
+        </a>
+
+        <div class="user-menu dropdown-menu">
+          <a class="nav-link" href="" th:text="${user.getName()}" ><i class="fa fa- user"></i> </a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link" href="admin-profile.php" data-toggle="modal" data-target="#profileModal" data-whatever="@getbootstrap"><i class="fa fa- user" ></i>My Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal"><i class="fa fa -cog"></i>Change Password</a>
+          <div class="dropdown-divider"></div>
+          <a class="nav-link" href="/admin_logout"><i class="fa fa-power -off"></i>Logout</a>
+        </div>
+      </div>
+
+
+    </div>
+  </header>
+
+
+  <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Admin profile details</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+
+            <div class="row" id="adminp">
+              <div class="col-sm-6">
+                <p>First Name</p>
+                <a th:text="${user.getName()}" ></a><br>
+
+              </div>
+              <div class="col-sm-6">
+
+                <p>Email</p>
+                <a th:text="${user.getEmail()}" ></a><br>       <br>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="alert alert-message alert-dismissible fade show" id="success"></div>
+          <form id="ajaxform">
+
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Enter old password:</label>
+              <input type="text" class="form-control" id="oldpassword" required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name1" class="col-form-label">Enter New Password:</label>
+              <input type="text" class="form-control" id="newpassword" required>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name2" class="col-form-label">Repeat New Password:</label>
+              <input type="text" class="form-control" id="repeatpassword" required>
+              <div class="alert-message" id="nameError"></div>
+            </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="formSubmit">Save Category</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $(document).ready(function(){
+        $('#formSubmit').click(function(e){
+            e.preventDefault();
+            let _token   = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "{{ url('/admin/change_password') }}",
+                method: 'post',
+                data: {
+                    _token: _token,
+                    oldpassword: $('#oldpassword').val(),
+                    newpassword: $('#newpassword').val(),
+                    newpassword_confirmation: $('#repeatpassword').val(),
+                },
+                success: function(data){
+                    $('#success').show();
+                    $('#success').text(data.success);
+                    $("#ajaxform")[0].reset();
+
+                    setTimeout(function() {
+
+
+                    $('#success').hide();
+
+                    }, 3000);
+                },
+                error: function(response) {
+                    $('#nameError').show();
+  $('#nameError').text(response.responseJSON.errors.newpassword);
+
+}
+            });
+        });
+    });
+
+
+</script>
+
+
+</section>

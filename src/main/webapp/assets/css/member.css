@@ -1,0 +1,165 @@
+/* .navbar{
+	padding:0px!important;
+	max-height: 65px!important;
+} */
+
+a:active, a:hover{
+	text-decoration: none;
+	text-transform: none;
+}
+
+.card{
+	padding: 13px 32px!important;
+	border: 2px solid rgba(0,0,0,.085)!important;
+	border-radius: .25rem!important;
+	margin:10px;
+	background-color: #fff;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+	border: 2px solid #dee2e6!important;
+	background-color: #0C5C99!important;
+	color: #ffffff!important;
+}
+
+.nav-justified .nav-item {
+	border: 1px solid #fefefe!important;
+	background-color: #dee2e6!important;
+}
+
+.success{
+	color: #1aa331!important;
+}
+
+.error{
+	color: maroon!important;
+}
+
+.highlighted{
+	color: #982645!important;
+}
+
+.bg-white{
+	background-color: #ffffff!important;
+}
+
+a{
+	color: #0C5C99!important;
+}
+
+.btn{
+	background-color: #F7941E!important;
+	color: #fff!important;
+	border:none;
+	outline: none;
+}
+
+.table-bordered td, .table-bordered th {
+	border: 2px solid #dee2e6!important;
+}
+
+
+body{
+	background-color: #f8f9fa!important;
+}
+
+.bg-light{
+	background-color: #e9eced!important
+}
+
+.font-9{
+	font-size: 9px!important;
+}
+
+.font-10{
+	font-size: 10px!important;
+}
+
+.font-11{
+	font-size: 11px!important;
+}
+
+.font-12{
+	font-size: 12px!important;
+}
+
+.font-13{
+	font-size: 13px!important;
+}
+
+.font-14{
+	font-size: 14px!important;
+}
+
+.font-15{
+	font-size: 15px!important;
+}
+
+.bold{
+	text-decoration: bold;
+}
+
+.t2{
+
+}
+
+input,select{
+	background-color: #edeeef!important;
+	border: none!important;
+	outline: none!important;
+} 
+
+.form-control:focus {
+	    box-shadow: 0 0 0 0.08rem #cdcecf;
+	    font-weight: 700px;
+	    text-transform: bold;
+	    color: #000;
+	    outline: none;
+	    border: none;
+	}
+
+
+body {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  /* padding: 0.875rem 1.25rem;
+  font-size: 1.2rem; */
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}

@@ -1,0 +1,110 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+
+</section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+
+    </div>
+    <div class="container-fluid" >
+        <div class="row justify-content-center mt-0">
+            <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    {{-- <h2><strong>Sign Up Your User Account</strong></h2>
+                    <p>Fill all form field to go to next step</p> --}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="fs-title">My BAs</h2>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-striped mt32 customers-list " id="modal_table">
+                                                <thead>
+                                                <tr>
+
+                                                    <td class="t_head">Names</td>
+                                                    <td class="t_head">PhoneNumber</td>
+                                                    <td class="t_head">Email Address</td>
+                                                    <td class="t_head">Id Number</td>
+                                                    <td class="t_head">Action</td>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="myTable">
+
+                                                <tr id="t_data" th:each="buildings : ${building}">
+
+                                                    <td th:text="${building.getBuilding_name()}"> </td>
+                                                    <td th:text="${building.getBuilding_name()}"> </td>
+                                                    <td th:text="${building.getBuilding_name()}"> </td>
+                                                    <td th:text="${building.getBuilding_name()}"> </td>
+                                                    <td th:text="${building.getBuilding_name()}"> </td>
+
+
+
+<!--                                                    <td>   <a type="button" href="/recruit/{!! $recruits['id'] !!}" class="btn btn-success">Update</a>-->
+<!--                                                    </td>-->
+                                                </tr>
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

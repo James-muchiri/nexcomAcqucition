@@ -1,0 +1,211 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+        <div class="row">
+
+
+
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-1">
+                                <i class="pe-7s-cash"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">52</span></div>
+                                    <div class="stat-heading">Total Shedules</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-2">
+                                <i class="pe-7s-cash"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">21</span></div>
+                                    <div class="stat-heading">Completed Recruitment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-five">
+                            <div class="stat-icon dib flat-color-3">
+                                <i class="pe-7s-cash"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="text-left dib">
+                                    <div class="stat-text"><span class="count">10</span></div>
+                                    <div class="stat-heading">Pending Recruitment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+<!--        <div class="row">-->
+<!--            <div class="col-lg-11 col-md-11">-->
+<!--                <div class="card" >-->
+<!--                    <div class="card-body">-->
+
+<!--                        <p class="table_head_title"> Recent incomplete Recruitments</p>-->
+
+<!--                        <div class="table-responsive" >-->
+<!--                            <table class="table" id="modal_table" width="100%">-->
+<!--                                <thead>-->
+<!--                                <tr>-->
+
+<!--                                    <td class="t_head">Names</td>-->
+<!--                                    <td class="t_head">PhoneNumber</td>-->
+<!--                                    <td class="t_head">Email Address</td>-->
+<!--                                    <td class="t_head">Id Number</td>-->
+<!--                                    <td class="t_head">Action</td>-->
+<!--                                </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody id="myTable">-->
+<!--                                @foreach ($incomplete as $incomplet)-->
+<!--                                <tr id="t_data">-->
+
+<!--                                    <td> {!! $incomplet['fname'] !!}  {!! $incomplet['lname'] !!} </td>-->
+<!--                                    <td> {!! $incomplet['phono'] !!} </td>-->
+<!--                                    <td> {!! $incomplet['email'] !!} </td>-->
+<!--                                    <td> {!! $incomplet['id_no'] !!} </td>-->
+<!--                                    <td>   <a type="button" href="/completerecruit/{!! $incomplet['id'] !!}" class="btn btn-success">Continue</a>-->
+<!--                                        <a type="button" href="/discardrecruit/{!! $incomplet['id'] !!}" class="btn btn-danger">Discard</a>    </td>-->
+<!--                                </tr>-->
+<!--                                @endforeach-->
+
+
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-lg-11 col-md-11">-->
+<!--                <div class="card">-->
+<!--                    <div class="card-body">-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-sm-12">-->
+<!--                                <p class="table_head_title"> Recent Recruitments</p>-->
+<!--                                <div class="table-responsive" >-->
+
+<!--                                    <table class="table  " id="modal_table1" >-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+
+<!--                                            <td class="t_head">Names</td>-->
+<!--                                            <td class="t_head">PhoneNumber</td>-->
+<!--                                            <td class="t_head">Email Address</td>-->
+<!--                                            <td class="t_head">Id Number</td>-->
+<!--                                            <td class="t_head">Action</td>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody id="myTable">-->
+<!--                                        @foreach ($complete as $complet)-->
+<!--                                        <tr id="t_data">-->
+
+<!--                                            <td> {!! $complet['fname'] !!}  {!! $complet['lname'] !!} </td>-->
+<!--                                            <td> {!! $complet['phono'] !!} </td>-->
+<!--                                            <td> {!! $complet['email'] !!} </td>-->
+<!--                                            <td> {!! $complet['id_no'] !!} </td>-->
+<!--                                            <td>   <a type="button" href="/completerecruit/{!! $complet['id'] !!}" class="btn btn-secondary">view more</a>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        @endforeach-->
+
+
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+        </div>
+
+
+
+    </div>

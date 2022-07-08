@@ -1,0 +1,644 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+
+    .required{
+        color: #094c7f;
+    }
+    #newlinktpl{
+
+    margin-top:10px;
+        background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 2px 2px 2px rgb(0 0 0 / 20%);
+    padding: 10px 10px 30px 10px;
+    box-sizing: border-box;
+    width: 94%;
+
+    position: relative;
+}
+
+  #opt-row. input, #opt-row. textarea {
+    padding: 0px 8px 4px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+</style>
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+
+
+
+                <div class="card">
+                    <div class="card-body">
+                        <!-- MultiStep Form -->
+                        <div class="container-fluid" id="grad1">
+                            <div class="row justify-content-center mt-0">
+                                <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
+
+
+                                    <p>Fill all form field to go to next step</p>
+                                    <div id="msform">
+
+
+                                        <!-- fieldsets -->
+                                        <fieldset id="basicreq">
+                                            <div class="form-card" style="color:rgb(39, 39, 39);">
+                                                <h2 class="fs-title">Building Location</h2>
+
+
+                                                    <form id="user_basic_per_form">
+
+                                                    <div class="basic">
+
+                                                        <div class="mb-3">
+
+                                                            <label for="exampleInputEmail1" class="form-label">Region</label>
+                                                            <select name="region" id="" class="form-control">
+                                                                <option> Select Region</option>
+                                                                <option value="test">Test</option>
+<!--                                                                @foreach ($regions as $region )-->
+<!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
+<!--                                                                @endforeach-->
+                                                            </select>
+                                                        </div>  </div>
+
+                                                    <div class="basic">
+                                                        <div class="mb-3">
+
+                                                            <label for="exampleInputEmail1" class="form-label">Zones</label>
+                                                            <select name="zone" id="" class="form-control">
+                                                                <option> Select Region</option>
+                                                                <option value="test">Test</option>
+                                                                <!--                                                                @foreach ($regions as $region )-->
+                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
+                                                                <!--                                                                @endforeach-->
+                                                            </select>
+                                                        </div></div>
+
+                                                    <div class="basic">
+                                                        <div class="mb-3">
+
+                                                            <label for="exampleInputEmail1" class="form-label">Areas</label>
+                                                            <select name="area" id="" class="form-control">
+                                                                <option> Select Region</option>
+                                                                <option value="test">Test</option>
+                                                                <!--                                                                @foreach ($regions as $region )-->
+                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
+                                                                <!--                                                                @endforeach-->
+                                                            </select>
+                                                        </div> </div>
+                                                    <div class="basic">
+                                                        <div class="mb-3">
+                                                            <input type="text" name="user_id" value="{{$user->id}}" hidden>
+                                                            <label for="exampleInputEmail1" class="form-label">Cluster</label>
+                                                            <select name="cluster" id="" class="form-control">
+                                                                <option> Select Region</option>
+                                                                <option value="test">Test</option>
+                                                                <!--                                                                @foreach ($regions as $region )-->
+                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
+                                                                <!--                                                                @endforeach-->
+                                                            </select>
+                                                        </div></div>
+
+<!--                                                    <div class="basic">-->
+<!--                                                        <div class="row">-->
+<!--                                                            <div class="col-sm-10">-->
+<!--                                                                <label for="name">Recommendation<span class="required">*</span></label><br>-->
+<!--                                                                <textarea class="form-control recomendation" id="recomendation" name="recomendation" rows="2" required> </textarea>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+
+<!--                                                    </div>-->
+
+                                            </div>
+                                                    <input  type="button" name="next" onclick="continu()" class="next action-button"  value="Continue"/>
+
+
+
+
+                                        </fieldset>
+                                        <fieldset id="personalreq">
+                                            <div class="form-card Personal">
+                                                <h2 class="fs-title">Building Information</h2>
+                                                <div class="form-group">
+                                                    <label for="name">Building name <span class="required">*</span></label>
+                                                    <input type="text" name="building_name"/>
+                                                </div>
+                                                <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-sm-10">
+                                                    <label for="name">Building Description<span class="required">*</span></label><br>
+                                                    <textarea class="form-control recomendation" id="recomendation" name="building_description" rows="2" required> </textarea>
+                                                </div>
+                                            </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="mb-3">
+                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden>
+                                                    <label for="" class="form-label">Building Type</label>
+                                                    <select name="building_type" id="" class="form-control">
+                                                        <option> Select Building Type</option>
+                                                        <option value="Residential">Residential</option>
+                                                        <option value="Commercial">Commercial</option>
+                                                        <option value="Residential&Commercial">Residential and Commercial</option>
+                                                </select>
+                                                </div>
+                                            </div>
+
+                                                <div class="form-group">
+                                                    <label for="name">Possible sales <span class="required">*</span></label>
+                                                    <input type="text" name="possible_sales"/>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="name">Possible sales <span class="required">*</span></label>
+                                                    <input type="text" name="building_photos"/>
+                                                </div>
+<!--                                                <label for="name">Building Picturs<span class="required">*</span></label>-->
+<!--                                                <div class="custom-file">-->
+
+<!--                                                    <input type="file"  class="custom-file-input" id="pp_photo" name="building_photo" accept="image/png, image/jpg, image/jpeg" >-->
+<!--                                                    <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Passport size photo</label>-->
+<!--                                                    <img style="width: 100px;-->
+<!--                                           height: 150px;-->
+<!--                                           position: relative;-->
+<!--                                           z-index: 2;-->
+<!--                                           margin-bottom: 10px;-->
+<!--                                           display:none;" id="blah" src="#" alt="Image preview" />-->
+
+<!--                                                    <script>-->
+<!--            function readURL(input) {-->
+<!--            if (input.files && input.files[0]) {-->
+<!--             var reader = new FileReader();-->
+
+<!--             reader.onload = function (e) {-->
+
+<!--                 document.getElementById('blah').style.display= 'block';-->
+<!--                 $('#blah').attr('src', e.target.result);-->
+
+<!--             }-->
+
+<!--             reader.readAsDataURL(input.files[0]);-->
+<!--            }-->
+<!--            }-->
+
+<!--            $("#pp_photo").change(function(){-->
+<!--            readURL(this);-->
+<!--            });-->
+<!--            </script>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                                <div class="form-group">
+                                                    <input  type="button" name="next" onclick="continu2()" class="next action-button"  value="Continue"/>
+                                                    <input  type="button" name="next" onclick="back1()" class="next action-button"  value="back"/>
+
+                                                </div>
+
+
+                                        </fieldset>
+
+                                        <fieldset id="attachmentreq">
+
+
+
+
+                                                    <h2 class="fs-title">Contact information</h2>
+
+
+
+<!--                                                    <hr/>-->
+<!--                                                    <h5>Other Contacts</h5>-->
+<!--                                                    <div id="form-placeholder"></div>-->
+<!--                                                    <button id="btn-add" type="button" class="btn btn-primary">Add</button>-->
+<!--                                                    <hr/>-->
+
+
+                                            <hr/>
+                                            <h5>Other Contacts</h5>
+                                            <div id="form-placeholder">
+                                                <div id="opt-row.0" class="row">
+                                                  <div class="col-12">
+                                                <div class="form-group">
+                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                </div>  <div class="form-group">
+                                                <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
+                                            </div> <div class="form-group">
+                                                <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
+                                            </div>  <div class="form-group">
+                                                <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
+                                            </div>            </div>
+                                            </div></div>
+
+                                            <hr/>
+
+
+
+
+
+                                                <input  type="button" name="next" onclick="back2()" class="next action-button"  value="back"/>
+
+
+                                                <input type="submit" id="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT"/>
+                                            </form>
+
+
+                                        </fieldset>
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+
+
+
+function continu(){
+
+
+
+    var opacity;
+
+    current_fs = $('#basicreq');
+        next_fs =$('#personalreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
+
+
+
+function continu2(){
+
+
+
+    var opacity;
+
+    current_fs = $('#personalreq');
+        next_fs =$('#attachmentreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
+
+
+function back1(){
+
+
+
+    var opacity;
+
+    current_fs = $('#personalreq');
+        next_fs = $('#basicreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
+
+
+
+function back2(){
+
+
+
+    var opacity;
+
+    current_fs =$('#attachmentreq');
+        next_fs =$('#personalreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
+
+
+function appendUserRow(id, user) {
+            var html = "<div id=\"opt-row." + id + "\" class=\"row\">\n" +
+
+
+                  "     <div class=\"col-12\" style=\"text-align: right;padding: 10px;margin-right: 20px;\" >\n" +
+                   "             <button type=\"button\" onclick=\"delRow(" + id + ")\" class=\"btn btn-danger\">Delete</button>\n" +
+
+                     "        </div>" +
+
+                "     <div class=\"col-12\">\n" +
+                "   <div class=\"form-group\">\n" +
+                "  <input required type=\"text\" class=\"form-control\" id=\"opt-type." + id + "\" name=\"opt-type." + id + "\" placeholder=\"Management Type\" value=\"" + user.type + "\">\n" +
+                 "        </div>" +
+                "  <div class=\"form-group\">\n" +
+                "  <input required type=\"text\" class=\"form-control\" id=\"opt-name." + id + "\" name=\"opt-name." + id + "\" placeholder=\"Full Names\" value=\"" + user.name + "\">\n" +
+                 "        </div>" +
+                " <div class=\"form-group\">\n" +
+                " <input required type=\"text\" class=\"form-control\" id=\"opt-email." + id + "\" name=\"opt-email." + id + "\" placeholder=\"Phone Number\" value=\"" + user.email + "\">\n" +
+                "        </div>" +
+                "  <div class=\"form-group\">\n" +
+                "          <input required type=\"number\" class=\"form-control\" id=\"opt-no." + id + "\" name=\"opt-no." + id + "\" placeholder=\"Id Number\" value=\"" + user.no + "\">\n" +
+               "        </div>" +
+                "            </div>\n" +
+
+                "        </div>";
+            $("#form-placeholder").append(html);
+        }
+
+function delRow(id) {
+            var element = document.getElementById("opt-row." + id);
+            element.parentNode.removeChild(element);
+        }
+
+$(document).ready(function () {
+            var count = 0;
+$("#btn-add").click(function () {
+                appendUserRow(count++, {
+                    type: "",
+                    name: "",
+                    email: "",
+                    no: ""
+                })
+            });
+});
+
+
+
+$(document).ready(function(e){
+    // Submit form data via Ajax
+
+
+       $('#submit').click(function(e) {
+
+        e.preventDefault();
+
+
+
+
+
+
+
+
+
+
+// AJAX code to submit form.
+$.ajax({
+         type: "POST",
+         url: "/admin/addbuilding", //call  to store form data.
+           data: new FormData($('form[id=user_basic_per_form]')[0]),
+         dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+         success: function(data) {
+             console.log(data);
+
+
+
+
+
+      },
+         error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+
+    });
+
+
+  });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#fupForm").on('submit', function(e){
+        e.preventDefault();
+
+
+        next_fs =$('#attachmentreq');
+
+curInputs =  next_fs.find("input[type='file']");
+        isValid = true;
+console.log(curInputs);
+    //     for(var i=0; i<curInputs.length; i++){
+    //       //  console.log(curInputs[i].value);
+    //     if (curInputs[i].files.length == 0){
+
+    //         isValid = false;
+    //         $(curInputs[i]).closest(".custom-file").addClass("has-error");
+    //     //   console.log(curInputs[i].value);
+    //     }
+    // }
+
+
+if(isValid)
+{
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/completerecruit", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+                    console.log(response.status);
+
+if (response.status == 200){
+    toastr.success('documents saved');
+
+    var opacity;
+
+current_fs = $('#attachmentreq');
+    next_fs =$('#basicreq');
+
+
+    next_fs.show();
+
+    current_fs.animate({opacity: 0}, {
+        step: function(now) {
+            // for making fielset appear animation
+            opacity = 1 - now;
+
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            next_fs.css({'opacity': opacity});
+        },
+        duration: 600
+    });
+
+
+
+}
+if (response.status == 202){
+    alert('the email exist try editing the user');
+}
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+    });
+});
+
+                            </script>
+
