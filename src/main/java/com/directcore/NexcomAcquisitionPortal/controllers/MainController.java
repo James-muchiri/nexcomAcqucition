@@ -2,6 +2,7 @@ package com.directcore.NexcomAcquisitionPortal.controllers;
 
 
 import com.directcore.NexcomAcquisitionPortal.model.Building_information;
+import com.directcore.NexcomAcquisitionPortal.model.Region;
 import com.directcore.NexcomAcquisitionPortal.repositories.AdmiRepository;
 import com.directcore.NexcomAcquisitionPortal.services.AdminService;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
@@ -76,6 +77,19 @@ public class MainController {
 
         return (ModelAndView) adminService.teritories( request, v);
 
+    }
+
+
+    @RequestMapping(value = "/addregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object addregion(@ModelAttribute Region request) {
+
+        try {
+            return adminService.addregion(request);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
     }
 
 }

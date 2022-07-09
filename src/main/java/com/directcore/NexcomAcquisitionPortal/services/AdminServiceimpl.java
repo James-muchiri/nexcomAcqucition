@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -234,6 +232,16 @@ roles.setCreated_by(admin.getName());
         v.addObject("regions", regions);
 
         return v;
+    }
+
+    @Override
+    public Object addregion(Region request) {
+
+
+
+        regionRepository.save(request);
+        return "Region added successful";
+
     }
 
 

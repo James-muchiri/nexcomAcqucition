@@ -3,12 +3,11 @@ package com.directcore.NexcomAcquisitionPortal.services;
 
 import com.directcore.NexcomAcquisitionPortal.model.Admi;
 import com.directcore.NexcomAcquisitionPortal.model.Building_information;
+import com.directcore.NexcomAcquisitionPortal.model.Region;
 import com.directcore.NexcomAcquisitionPortal.model.Roles_admin;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
 public interface AdminService {
@@ -41,4 +40,6 @@ public interface AdminService {
     Object myacqusition(HttpSession request, ModelAndView v);
 
     Object teritories(HttpSession request, ModelAndView v);
+
+    Object addregion(Region request);
 }

@@ -131,14 +131,13 @@ body{
 
                     <div class="form-group" id="region_input">
                         <label for="exampleInputEmail1">Region name</label>
-                        <input type="text" class="form-control" id="region_name" name="region_name" aria-describedby="emailHelp">
-                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+
                     </div>
 
                     <div class="form-group" id="region_input">
                         <label for="exampleInputEmail1">Region Description</label>
                         <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
-                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
                     </div>
 
 
@@ -173,8 +172,7 @@ body{
                             <div class="form-group" >
                                 <label for="exampleInputEmail1">Area name</label>
                                 <input type="text" class="form-control" id="area_name" name="area_name" aria-describedby="emailHelp">
-                                {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-                            </div>
+                           </div>
                             <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
                             <input type="text" name="region_id" id="region_id"  hidden>
                         </div>
@@ -216,3 +214,254 @@ body{
         </div>
     </div>
 </div>
+
+
+
+<script>
+
+$(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#region_form").on('submit', function(e){
+        e.preventDefault();
+
+
+
+        next_fs =$('#region_input');
+
+
+curInputs =  next_fs.find("input[type='text']");
+        isValid = true;
+console.log(curInputs);
+        for(var i=0; i<curInputs.length; i++){
+          //  console.log(curInputs[i].value);
+        if (!curInputs[i].value){
+
+            isValid = false;
+            $(curInputs[i]).closest(".form-group").addClass("has-error");
+        //   console.log(curInputs[i].value);
+        }
+    }
+
+
+if(isValid)
+{
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/addregion", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+                    console.log(response.status);
+
+if (response.status == 200){
+    toastr.success('saved');
+
+
+
+    current_fs = $('#new_shedule');
+
+
+
+   current_fs.modal('hide');
+
+
+
+
+}
+if (response.status == 202){
+    alert('the email exist try editing the user');
+}
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+    });
+});
+
+$(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#area_form").on('submit', function(e){
+        e.preventDefault();
+
+
+
+        next_fs =$('#area_input');
+
+
+curInputs =  next_fs.find("input[type='text']");
+        isValid = true;
+console.log(curInputs);
+        for(var i=0; i<curInputs.length; i++){
+          //  console.log(curInputs[i].value);
+        if (!curInputs[i].value){
+
+            isValid = false;
+            $(curInputs[i]).closest(".form-group").addClass("has-error");
+        //   console.log(curInputs[i].value);
+        }
+    }
+
+
+if(isValid)
+{
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/addarea", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+                    console.log(response.status);
+
+if (response.status == 200){
+    toastr.success('saved');
+
+
+
+
+
+
+
+}
+if (response.status == 202){
+    alert('the email exist try editing the user');
+}
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+    });
+});
+
+
+function fetch_region(data){
+
+
+    console.log(data);
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+            type: 'POST',
+            url: "/admin/getregion", //call  to store form data
+
+            data:  {
+                "_token": _token,
+                "region_id": data
+                    },
+
+            cache: false,
+
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+ var t_data= "";
+var areas = response.areas;
+$("#area_table").html("");
+if(areas.length < 1)
+{
+    t_data = "no area added";
+   // console.log(t_data);
+}
+else{
+
+            $.each(areas, function(index, element) {
+
+
+                t_data=t_data+
+                '<tr id="t_data">'+
+                    '<td>'+element+'</td>'+
+                    '<td>'+'<a type="button" onclick="myFunction(\''+element+'\', '+ data+')" class="btn btn-danger">Delete</a>'+'</td>'+
+
+               '</tr>';
+            });
+
+
+
+}
+
+
+$("#area_table").append(t_data);
+
+
+                    document.getElementById('region_id').value = response.id;
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+function myFunction(name,job) {
+    console.log(name,job);
+
+    let _token   = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+            type: 'POST',
+            url: "/admin/removearea", //call  to store form data
+
+            data:  {
+                "_token": _token,
+                "area": name,
+                "region_id": job
+                    },
+
+            cache: false,
+            success: function(response){ //console.log(response);
+                    console.log(response);
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+
+
+
+  </script>
