@@ -85,14 +85,12 @@ body{
                                                     </tr>
                                                     </thead>
                                                     <tbody id="myTable">
-
-                                                    <tr id="t_data" th:each="region : ${regionss}">
+                                                    <tr id="t_dat" th:each="region : ${regions}"  th:onclick="'window.location.href=\'/admin/region/' + ${region.getId()} + '\''">
 
                                                         <td th:text="${region.getName()}"> </td>
 
 
-
-                                                        <!--                                                        <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>-->
+                                                        <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
 
 
                                                     </tr>
@@ -195,6 +193,7 @@ body{
                                 </tr>
                                 </thead>
                                 <tbody id="area_table">
+
 
 
 

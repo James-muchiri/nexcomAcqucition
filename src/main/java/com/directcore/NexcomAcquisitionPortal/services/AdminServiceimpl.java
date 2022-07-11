@@ -2,10 +2,7 @@ package com.directcore.NexcomAcquisitionPortal.services;
 
 
 import com.directcore.NexcomAcquisitionPortal.model.*;
-import com.directcore.NexcomAcquisitionPortal.repositories.AdmiRepository;
-import com.directcore.NexcomAcquisitionPortal.repositories.Building_informationRepository;
-import com.directcore.NexcomAcquisitionPortal.repositories.RegionRepository;
-import com.directcore.NexcomAcquisitionPortal.repositories.RolesRepository;
+import com.directcore.NexcomAcquisitionPortal.repositories.*;
 import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 
@@ -39,6 +36,15 @@ private RolesRepository roleRepository;
 
     @Autowired
     private RegionRepository regionRepository;
+
+    @Autowired
+    private ZoneRepository zoneRepository;
+
+    @Autowired
+    private AreaRepository areaRepository;
+    @Autowired
+    private ClusterRepository clusterRepositoryy;
+
 
     private Pattern regexPattern;
     private Matcher regMatcher;
@@ -242,6 +248,38 @@ roles.setCreated_by(admin.getName());
         regionRepository.save(request);
         return "Region added successful";
 
+    }
+
+    @Override
+    public Object region(Integer id, ModelAndView v, HttpSession request) {
+
+
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+        Region region = regionRepository.findById(id).orElse(null);
+        String idd =  Integer.toString(region.getId());
+
+        List <Zone> zones = (List<Zone>) zoneRepository.findAllByRegionId(idd);
+
+
+   
+
+
+        v.setViewName("region");
+        v.addObject("user", admi);
+        v.addObject("regions", region);
+        v.addObject("zones", zones);
+
+
+        return v;
+    }
+
+    @Override
+    public Object addzone(Integer regionId, String name, String description) {
+
+
+        return "Region added successful";
     }
 
 

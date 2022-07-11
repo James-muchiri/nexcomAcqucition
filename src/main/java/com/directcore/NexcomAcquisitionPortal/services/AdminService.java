@@ -42,4 +42,8 @@ public interface AdminService {
     Object teritories(HttpSession request, ModelAndView v);
 
     Object addregion(Region request);
+
+    Object region(Integer id, ModelAndView v, HttpSession request);
+
+    Object addzone(Integer regionId, String name, String description);
 }

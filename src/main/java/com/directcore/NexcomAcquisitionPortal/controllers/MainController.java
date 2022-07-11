@@ -92,4 +92,27 @@ public class MainController {
         // return  request;
     }
 
+    @GetMapping("/region/{id}")
+
+    public ModelAndView getEmployeesById(@PathVariable Integer id, ModelAndView v, HttpSession request) {
+
+
+
+            return (ModelAndView) adminService.region(id, v, request);
+
+    }
+
+    @RequestMapping(value = "/addregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object addzone(@RequestParam("regionId") Integer regionId, @RequestParam("name") String name, @RequestParam("description") String description) {
+
+        try {
+            return adminService.addzone(regionId, name, description);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+
 }
