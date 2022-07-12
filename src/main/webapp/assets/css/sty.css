@@ -835,7 +835,7 @@ aside.left-panel {
 .right-panel {
   background: #fff;
   margin-left: 280px;
-   }
+  margin-top: 55px; }
   .right-panel .top-left {
     width: 350px;
     float: left; }
@@ -3375,6 +3375,14 @@ select.list-dt:focus {
       width:550px
 
     }
+
+    .container-fluid {
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
   }
   @media (max-width: 650px) {
 
@@ -3391,6 +3399,13 @@ select.list-dt:focus {
       width:400px
 
     }
+    .container-fluid {
+        width: 100%;
+        padding-right: 5px;
+        padding-left: 5px;
+        margin-right: auto;
+        margin-left: auto;
+    }
   }
   @media (max-width: 500px) {
 
@@ -3398,6 +3413,14 @@ select.list-dt:focus {
     .table-responsive{
       width:320px
 
+    }
+
+    .container-fluid {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-right: auto;
+        margin-left: auto;
     }
 
   }

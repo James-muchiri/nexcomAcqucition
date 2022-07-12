@@ -218,6 +218,13 @@ body{
 
 <script>
 
+$(document).ready(function() {
+                $('#modal_table').DataTable( {
+                    "pagingType": "full_numbers"
+                } );
+            } );
+
+
 $(document).ready(function(e){
     // Submit form data via Ajax
     $("#region_form").on('submit', function(e){
@@ -464,3 +471,4 @@ function myFunction(name,job) {
 
 
   </script>
+<section th:replace="footer :: footer"></section>

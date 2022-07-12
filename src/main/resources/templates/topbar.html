@@ -2,43 +2,57 @@
 <html lang="en" th:fragment="topbar">
 
 <head>
-  <title>Nexcom</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <title>Nexcom - Internet Services </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="shortcut icon" th:href="@{/assets/image/favicon.ico}"/>
-
-  <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" th:href="@{/assets/css/sty.css}">
   <link rel="stylesheet" th:href="@{/assets/css/cs-skin-elastic.css}">
   <link rel="stylesheet" th:href="@{/assets/css/themify-icons.css}">
-  <link rel="stylesheet" th:href="@{/assets/css/iziToast.min.css}">  
-  
+  <link rel="stylesheet" th:href="@{/assets/css/iziToast.min.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 
-  <script th:src="@{/assets/js/jquery.min.js}"></script>
-  <script th:src="@{/assets/js/popper.min.js}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script th:src="@{/assets/js/bootstrap.min.js}"></script>
-  <script src="https://partners.pesatel.com/checkout/lin/pesatel.js"></script>
+
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+  <script>
+     toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
+   </script>
 </head>
 <body>
 
-  <div>
 
-    <nav class="navbar navbar-light bg-light" style="background-image: url(/assets/image/bg13.png);
-    background-size: cover;
-    background-position: center;
-    -o-box-shadow:0px 0px  9px -6px;
-    -ms-box-shadow:0px 0px  9px -6px;
-    -moz-box-shadow:0px 0px  9px -6px;
-    -webkit-box-shadow:0px 0px  9px -6px;
-    box-shadow:0px 0px  9px -6px;
-    ">
-      <a  href="http://www.directcore.com" target="_blank" class="mx-auto">
-        <img th:src="@{/assets/image/nexcom_logo.png}" alt=""  style="max-height: 50px; ">
-      </a>
-    </nav>
-    
-  </div>
-  <br>
+
 
 
