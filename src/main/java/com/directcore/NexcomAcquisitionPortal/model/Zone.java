@@ -18,7 +18,7 @@ public class Zone {
     private String description;
 
     @Column(name = "regionId")
-    private String regionId;
+    private Integer regionId;
 
     public Integer getId() {
         return id;
@@ -47,11 +47,11 @@ public class Zone {
 
 
 
-    public String getRegionId() {
+    public Integer getRegionId() {
         return regionId;
     }
 
-    public void setRegionId(String regionId) {
+    public void setRegionId(Integer regionId) {
         this.regionId = regionId;
     }
 

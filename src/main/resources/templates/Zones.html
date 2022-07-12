@@ -63,7 +63,7 @@ body{
                             <div class="card">
                                 <div class="card-header">
 
-                                    <h2 class="fs-title"> <u>{{$region->name}}</u>  Areas</h2>
+                                    <h2 class="fs-title"> <u th:text="${zones.getName()}"></u>  Areas</h2>
                                     <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
                                         Add new Area
                                     </button>
@@ -85,18 +85,16 @@ body{
                                                 </tr>
                                                 </thead>
                                                 <tbody id="myTable">
-                                                @foreach ($zone as $zone )
-                                                <tr id="t_data"  onclick="window.location='/area/{{$zone->id}}/{{$region2->id}}/{{$region->id}}';">
 
-                                                    <td> {!! $zone['name'] !!}</td>
-                                                    <td>
-                                                        {!! $zone['description'] !!}
-                                                    </td>
-                                                    <td>   <a type="button" onclick="fetch_region('{!! $zone['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+                                                <tr id="t_dat" th:each="area : ${areas}"  th:onclick="'window.location.href=\'/admin/area/' + ${area.getId()} + '\''">
+
+                                                    <td th:text="${area.getName()}"> </td>
+
+
+                                                    <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
 
 
                                                 </tr>
-                                                @endforeach
 
 
                                                 </tbody>
@@ -133,22 +131,22 @@ body{
                 <form id="area_form">
 
                     <div class="form-group" id="region_input">
-                        <input type="text" class="form-control" id="region_id" name="region_id" value="{{$region->id}}" hidden>
-                        <label for="exampleInputEmail1">Area name</label>
+                        <input type="text" class="form-control" id="zoneId" name="zoneId" th:value="${zones.getId()}" hidden>
+                        <label for="name">Area name</label>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+
                     </div>
                     <div class="form-group" id="region_input">
-                        <label for="exampleInputEmail1">Description</label>
+                        <label for="description">Description</label>
                         <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
-                        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+
                     </div>
 
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
+
 
                 <button type="submit" class="btn btn-primary">Create Area</button>
 

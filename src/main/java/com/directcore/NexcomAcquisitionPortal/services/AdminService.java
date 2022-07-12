@@ -46,4 +46,18 @@ public interface AdminService {
     Object region(Integer id, ModelAndView v, HttpSession request);
 
     Object addzone(Integer regionId, String name, String description);
+
+    Object zone(Integer id, ModelAndView v, HttpSession request);
+
+    Object addarea(Integer zoneId, String name, String description);
+
+    Object area(Integer id, ModelAndView v, HttpSession request);
+
+    Object addcluster(Integer areaId, String name, String description);
+
+    Object getzonesbyid(Integer id);
+
+    Object getareabyid(Integer id);
+
+    Object getclusterbyid(Integer id);
 }

@@ -18,15 +18,15 @@ public class Cluster {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "region_id")
-    private String region_id;
+    @Column(name = "regionId")
+    private Integer regionId;
 
-    @Column(name = "zone_id")
-    private String zone_id;
+    @Column(name = "zoneId")
+    private Integer zoneId;
 
 
-    @Column(name = "area_id")
-    private String area_id;
+    @Column(name = "areaId")
+    private Integer areaId;
 
     public Integer getId() {
         return id;
@@ -55,28 +55,28 @@ public class Cluster {
 
 
 
-    public String getRegion_id() {
-        return region_id;
+    public Integer getRegion_id() {
+        return regionId;
     }
 
-    public void setRegion_id(String region_id) {
-        this.region_id = region_id;
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 
 
-    public String getZone_id() {
-        return zone_id;
+    public Integer getZoneId() {
+        return zoneId;
     }
 
-    public void setZone_id(String zone_id) {
-        this.zone_id = zone_id;
+    public void setZoneId(Integer zoneId) {
+        this.zoneId = zoneId;
     }
 
-    public String getArea_id() {
-        return area_id;
+    public Integer getAreaId() {
+        return areaId;
     }
 
-    public void setArea_id(String area_id) {
-        this.area_id = area_id;
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
     }
 }

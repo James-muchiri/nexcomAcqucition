@@ -49,7 +49,12 @@ public class MainController {
 
 
 
+    @GetMapping({"/acqusitions"})
+    public ModelAndView acqusitions(HttpSession request, ModelAndView v) {
 
+        return (ModelAndView) adminService.acqusition( request, v);
+
+    }
 
 
 
@@ -102,7 +107,7 @@ public class MainController {
 
     }
 
-    @RequestMapping(value = "/addregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addzone", method = RequestMethod.POST, consumes = { "multipart/form-data" })
     @ResponseBody
     public Object addzone(@RequestParam("regionId") Integer regionId, @RequestParam("name") String name, @RequestParam("description") String description) {
 
@@ -115,4 +120,88 @@ public class MainController {
     }
 
 
-}
+    @GetMapping("/zone/{id}")
+
+    public ModelAndView getAreasforthiszone(@PathVariable Integer id, ModelAndView v, HttpSession request) {
+
+
+
+        return (ModelAndView) adminService.zone(id, v, request);
+
+    }
+
+    @RequestMapping(value = "/addarea", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object addarea(@RequestParam("zoneId") Integer zoneId, @RequestParam("name") String name, @RequestParam("description") String description) {
+
+        try {
+            return adminService.addarea(zoneId, name, description);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+    @GetMapping("/area/{id}")
+
+    public ModelAndView getareacluters(@PathVariable Integer id, ModelAndView v, HttpSession request) {
+
+
+
+        return (ModelAndView) adminService.area(id, v, request);
+
+    }
+
+    @RequestMapping(value = "/addcluster", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description) {
+
+        try {
+            return adminService.addcluster(areaId, name, description);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+
+
+    @GetMapping("/getzonesbyid/{id}")
+    @ResponseBody
+    public Object getzonesbyid(@PathVariable Integer id) {
+
+
+        try {
+            return adminService.getzonesbyid(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+    @GetMapping("/getareasbyid/{id}")
+    @ResponseBody
+    public Object getareabyid(@PathVariable Integer id) {
+
+
+        try {
+            return adminService.getareabyid(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+    @GetMapping("/getclusterbyid/{id}")
+    @ResponseBody
+    public Object getclusterbyid(@PathVariable Integer id) {
+
+
+        try {
+            return adminService.getclusterbyid(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+    }

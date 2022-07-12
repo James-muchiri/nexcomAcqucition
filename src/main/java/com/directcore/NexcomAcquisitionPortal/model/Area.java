@@ -18,11 +18,11 @@ public class Area {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "region_id")
-    private String region_id;
+    @Column(name = "regionId")
+    private Integer regionId;
 
-    @Column(name = "zone_id")
-    private String zone_id;
+    @Column(name = "zoneId")
+    private Integer zoneId;
 
     public Integer getId() {
         return id;
@@ -51,21 +51,21 @@ public class Area {
 
 
 
-    public String getRegion_id() {
-        return region_id;
+    public Integer getRegionId() {
+        return regionId;
     }
 
-    public void setRegion_id(String region_id) {
-        this.region_id = region_id;
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 
 
-    public String getZone_id() {
-        return zone_id;
+    public Integer getZoneId() {
+        return zoneId;
     }
 
-    public void setZone_id(String zone_id) {
-        this.zone_id = zone_id;
+    public void setZoneId(Integer zoneId) {
+        this.zoneId = zoneId;
     }
 
 }

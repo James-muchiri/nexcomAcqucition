@@ -107,63 +107,46 @@ body{
 
                                                         <div class="mb-3">
 
-                                                            <label for="exampleInputEmail1" class="form-label">Region</label>
-                                                            <select name="region" id="" class="form-control">
+                                                            <label for="region_select" class="form-label">Region</label>
+                                                            <select name="region" id="region_select" class="form-control">
                                                                 <option> Select Region</option>
-                                                                <option value="test">Test</option>
-<!--                                                                @foreach ($regions as $region )-->
-<!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
-<!--                                                                @endforeach-->
+
+
+                                                              <option th:each="region : ${regions}" th:text="${region.getName()}" th:value="${region.getId()}" ></option>
+
                                                             </select>
                                                         </div>  </div>
 
                                                     <div class="basic">
                                                         <div class="mb-3">
 
-                                                            <label for="exampleInputEmail1" class="form-label">Zones</label>
-                                                            <select name="zone" id="" class="form-control">
+                                                            <label for="zone_select" class="form-label">Zones</label>
+                                                            <select name="zone" id="zone_select" class="form-control">
                                                                 <option> Select Region</option>
                                                                 <option value="test">Test</option>
-                                                                <!--                                                                @foreach ($regions as $region )-->
-                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
-                                                                <!--                                                                @endforeach-->
-                                                            </select>
+                                                         </select>
                                                         </div></div>
 
                                                     <div class="basic">
                                                         <div class="mb-3">
 
-                                                            <label for="exampleInputEmail1" class="form-label">Areas</label>
-                                                            <select name="area" id="" class="form-control">
-                                                                <option> Select Region</option>
-                                                                <option value="test">Test</option>
-                                                                <!--                                                                @foreach ($regions as $region )-->
-                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
-                                                                <!--                                                                @endforeach-->
-                                                            </select>
+                                                            <label for="area_select" class="form-label">Areas</label>
+                                                            <select name="area" id="area_select" class="form-control">
+                                                                <option> Select Area</option>
+
+                                                        </select>
                                                         </div> </div>
                                                     <div class="basic">
                                                         <div class="mb-3">
                                                             <input type="text" name="user_id" value="{{$user->id}}" hidden>
-                                                            <label for="exampleInputEmail1" class="form-label">Cluster</label>
-                                                            <select name="cluster" id="" class="form-control">
-                                                                <option> Select Region</option>
-                                                                <option value="test">Test</option>
-                                                                <!--                                                                @foreach ($regions as $region )-->
-                                                                <!--                                                                <option value="{{$region->name}}">{{$region->name}} </option>-->
-                                                                <!--                                                                @endforeach-->
-                                                            </select>
+                                                            <label for="cluster_select" class="form-label">Cluster</label>
+                                                            <select name="cluster" id="cluster_select" class="form-control">
+                                                                <option> Select Cluster</option>
+
+                                                        </select>
                                                         </div></div>
 
-<!--                                                    <div class="basic">-->
-<!--                                                        <div class="row">-->
-<!--                                                            <div class="col-sm-10">-->
-<!--                                                                <label for="name">Recommendation<span class="required">*</span></label><br>-->
-<!--                                                                <textarea class="form-control recomendation" id="recomendation" name="recomendation" rows="2" required> </textarea>-->
-<!--                                                            </div>-->
-<!--                                                        </div>-->
 
-<!--                                                    </div>-->
 
                                             </div>
                                                     <input  type="button" name="next" onclick="continu()" class="next action-button"  value="Continue"/>
@@ -210,40 +193,9 @@ body{
                                                     <label for="name">Possible sales <span class="required">*</span></label>
                                                     <input type="text" name="building_photos"/>
                                                 </div>
-<!--                                                <label for="name">Building Picturs<span class="required">*</span></label>-->
-<!--                                                <div class="custom-file">-->
 
-<!--                                                    <input type="file"  class="custom-file-input" id="pp_photo" name="building_photo" accept="image/png, image/jpg, image/jpeg" >-->
-<!--                                                    <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Passport size photo</label>-->
-<!--                                                    <img style="width: 100px;-->
-<!--                                           height: 150px;-->
-<!--                                           position: relative;-->
-<!--                                           z-index: 2;-->
-<!--                                           margin-bottom: 10px;-->
-<!--                                           display:none;" id="blah" src="#" alt="Image preview" />-->
 
-<!--                                                    <script>-->
-<!--            function readURL(input) {-->
-<!--            if (input.files && input.files[0]) {-->
-<!--             var reader = new FileReader();-->
-
-<!--             reader.onload = function (e) {-->
-
-<!--                 document.getElementById('blah').style.display= 'block';-->
-<!--                 $('#blah').attr('src', e.target.result);-->
-
-<!--             }-->
-
-<!--             reader.readAsDataURL(input.files[0]);-->
-<!--            }-->
-<!--            }-->
-
-<!--            $("#pp_photo").change(function(){-->
-<!--            readURL(this);-->
-<!--            });-->
-<!--            </script>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
+                                            </div>
                                                 <div class="form-group">
                                                     <input  type="button" name="next" onclick="continu2()" class="next action-button"  value="Continue"/>
                                                     <input  type="button" name="next" onclick="back1()" class="next action-button"  value="back"/>
@@ -255,25 +207,9 @@ body{
 
                                         <fieldset id="attachmentreq">
 
+                                            <div class="form-card Personal">
+                                                <h2 class="fs-title">Contact information</h2>
 
-
-
-                                                    <h2 class="fs-title">Contact information</h2>
-
-
-
-<!--                                                    <hr/>-->
-<!--                                                    <h5>Other Contacts</h5>-->
-<!--                                                    <div id="form-placeholder"></div>-->
-<!--                                                    <button id="btn-add" type="button" class="btn btn-primary">Add</button>-->
-<!--                                                    <hr/>-->
-
-
-                                            <hr/>
-                                            <h5>Other Contacts</h5>
-                                            <div id="form-placeholder">
-                                                <div id="opt-row.0" class="row">
-                                                  <div class="col-12">
                                                 <div class="form-group">
                                                     <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
                                                 </div>  <div class="form-group">
@@ -282,10 +218,11 @@ body{
                                                 <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
                                             </div>  <div class="form-group">
                                                 <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
-                                            </div>            </div>
-                                            </div></div>
+                                            </div>
 
-                                            <hr/>
+                                            </div>
+
+
 
 
 
@@ -448,6 +385,109 @@ function back2(){
 
 }
 
+
+
+$('#region_select').change(function() {
+    var vall = $(this).val();
+
+
+// AJAX code to submit form.
+$.ajax({
+         type: "GET",
+         url: "/admin/getzonesbyid/"+vall, //call  to store form data
+
+         cache: false,
+         success: function(data) {
+             console.log(data);
+             $('#zone_select').append("");
+             var option = "<option> Select zone</option>";
+             $.each(data, function(index, element) {
+            option = option +
+            '<option value="'+element.id+'">'+element.name+'</option>';
+
+            $('#zone_select').html(option);
+});
+
+
+
+
+         },
+         error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+
+    });
+
+});
+
+$('#zone_select').change(function() {
+    var vall = $(this).val();
+
+
+// AJAX code to submit form.
+$.ajax({
+         type: "GET",
+         url: "/admin/getareasbyid/"+vall, //call  to store form data
+
+         cache: false,
+         success: function(data) {
+             console.log(data);
+             $('#area_select').append("");
+             var option = "<option> Select zone</option>";
+             $.each(data, function(index, element) {
+            option = option +
+            '<option value="'+element.id+'">'+element.name+'</option>';
+
+            $('#area_select').html(option);
+});
+
+
+
+
+         },
+         error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+
+    });
+
+});
+
+$('#area_select').change(function() {
+    var vall = $(this).val();
+
+
+// AJAX code to submit form.
+$.ajax({
+         type: "GET",
+         url: "/admin/getclusterbyid/"+vall, //call  to store form data
+
+         cache: false,
+         success: function(data) {
+             console.log(data);
+             $('#cluster_select').append("");
+             var option = "<option> Select zone</option>";
+             $.each(data, function(index, element) {
+            option = option +
+            '<option value="'+element.id+'">'+element.name+'</option>';
+
+            $('#cluster_select').html(option);
+});
+
+
+
+
+         },
+         error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+
+    });
+
+});
 
 function appendUserRow(id, user) {
             var html = "<div id=\"opt-row." + id + "\" class=\"row\">\n" +

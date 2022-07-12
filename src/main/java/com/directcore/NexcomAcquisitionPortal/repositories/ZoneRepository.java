@@ -4,12 +4,18 @@ package com.directcore.NexcomAcquisitionPortal.repositories;
 import com.directcore.NexcomAcquisitionPortal.model.Zone;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ZoneRepository extends CrudRepository<Zone, Long> {
+import java.util.List;
+import java.util.Optional;
+
+public interface ZoneRepository extends CrudRepository<Zone, Integer> {
 
 
 
 
 
 
-    Object findAllByRegionId(String idd);
+    List<Zone> findAllByRegionId(Integer id);
+
+
+
 }

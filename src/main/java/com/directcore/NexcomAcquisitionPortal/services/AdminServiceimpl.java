@@ -43,7 +43,7 @@ private RolesRepository roleRepository;
     @Autowired
     private AreaRepository areaRepository;
     @Autowired
-    private ClusterRepository clusterRepositoryy;
+    private ClusterRepository clusterRepository;
 
 
     private Pattern regexPattern;
@@ -177,10 +177,13 @@ roles.setCreated_by(admin.getName());
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        modelAndView.addObject("user", admi);
-        return modelAndView;
+
+
+
+        v.setViewName("index");
+        v.addObject("user", admi);
+
+        return v;
 
     }
 
@@ -188,10 +191,11 @@ roles.setCreated_by(admin.getName());
     public Object acqusition(HttpSession request, ModelAndView v) {
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
-
+        List <Region> regions = (List<Region>) regionRepository.findAll();
 
         v.setViewName("acqusition");
         v.addObject("user", admi);
+        v.addObject("regions", regions);
         return v;
 
     }
@@ -258,9 +262,13 @@ roles.setCreated_by(admin.getName());
         Admi admi = admiRepository.findById(user_admin);
 
         Region region = regionRepository.findById(id).orElse(null);
-        String idd =  Integer.toString(region.getId());
 
-        List <Zone> zones = (List<Zone>) zoneRepository.findAllByRegionId(idd);
+
+
+
+        List <Zone> zones = (List<Zone>) zoneRepository.findAllByRegionId(region.getId());
+
+
 
 
    
@@ -278,8 +286,132 @@ roles.setCreated_by(admin.getName());
     @Override
     public Object addzone(Integer regionId, String name, String description) {
 
+        Zone zone = new Zone();
+
+        zone.setRegionId(regionId);
+        zone.setName(name);
+        zone.setDescription(description);
+        zoneRepository.save(zone);
 
         return "Region added successful";
+    }
+
+    @Override
+    public Object zone(Integer id, ModelAndView v, HttpSession request) {
+
+
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+        Zone zone =  zoneRepository.findById(id).orElse(null);
+
+
+        List <Area> areas =  areaRepository.findAllByZoneId(zone.getId());
+
+
+
+
+
+        v.setViewName("Zones");
+        v.addObject("user", admi);
+
+        v.addObject("zones", zone);
+        v.addObject("areas", areas);
+
+
+        return v;
+    }
+
+    @Override
+    public Object addarea(Integer zoneId, String name, String description) {
+
+
+
+        Zone zone = (Zone) zoneRepository.findById(zoneId).orElse(null);
+
+        Region region = regionRepository.findById(zone.getRegionId()).orElse(null);
+
+   Area area = new Area();
+
+        area.setName(name);
+        area.setDescription(description);
+        area.setRegionId(region.getId());
+        area.setZoneId(zoneId);
+        areaRepository.save(area);
+
+        return "Region added successful";
+
+
+    }
+
+    @Override
+    public Object area(Integer id, ModelAndView v, HttpSession request) {
+
+
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+       Area area = (Area) areaRepository.findById(id);
+
+
+        List <Cluster> clusters = (List<Cluster>) clusterRepository.findAllByAreaId(area.getId());
+
+
+
+
+
+        v.setViewName("areas");
+        v.addObject("user", admi);
+        v.addObject("areas", area);
+        v.addObject("clusters", clusters);
+
+
+        return v;
+    }
+
+    @Override
+    public Object addcluster(Integer areaId, String name, String description) {
+
+
+
+        Area area = (Area) areaRepository.findById(areaId);
+
+
+
+      Cluster cluster = new Cluster();
+
+        cluster.setName(name);
+        cluster.setDescription(description);
+        cluster.setRegionId(area.getRegionId());
+        cluster.setZoneId(area.getZoneId());
+        cluster.setAreaId(area.getId());
+        clusterRepository.save(cluster);
+
+        return "Region added successful";
+
+
+    }
+
+    @Override
+    public Object getzonesbyid(Integer id) {
+
+        List <Zone> zones = zoneRepository.findAllByRegionId(id);
+
+        return zones;
+    }
+
+    @Override
+    public Object getareabyid(Integer id) {
+
+        List <Area> areas = areaRepository.findAllByZoneId(id);
+        return  areas;
+    }
+
+    @Override
+    public Object getclusterbyid(Integer id) {
+
+        List <Cluster> clusters = clusterRepository.findAllByAreaId(id);
+        return clusters;
     }
 
 

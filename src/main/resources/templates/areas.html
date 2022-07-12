@@ -62,7 +62,7 @@ body{
               <div class="card">
                 <div class="card-header">
 
-                  <h2 class="fs-title"> <u>{{$area->name}}</u>  Clusters</h2>
+                  <h2 class="fs-title"> <u th:text="${areas.getName()}"></u>   Clusters</h2>
                   <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
                     Add new Cluster
                   </button>
@@ -84,18 +84,18 @@ body{
                         </tr>
                         </thead>
                         <tbody id="myTable">
-                        @foreach ($cluster as $clust )
-                        <tr id="t_data"  >
 
-                          <td> {!! $clust['name'] !!}</td>
-                          <td>
-                            {!! $clust['description'] !!}
-                          </td>
-                          <td>   <a type="button" onclick="fetch_region('{!! $clust['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+
+                        <tr id="t_dat" th:each="cluster : ${clusters}" >
+
+                          <td th:text="${cluster.getName()}"> </td>
+
+
+                          <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
 
 
                         </tr>
-                        @endforeach
+
 
 
                         </tbody>
@@ -126,7 +126,7 @@ body{
           <form id="cluster_form">
 
             <div class="form-group" id="region_input">
-              <input type="text" class="form-control" id="region_id" name="region_id" value="{{$area->id}}" hidden>
+              <input type="text" class="form-control" id="areaId" name="areaId" th:value="${areas.getId()}"hidden>
               <label for="exampleInputEmail1">Cluster name</label>
               <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
               {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}

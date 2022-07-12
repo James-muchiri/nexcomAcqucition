@@ -85,7 +85,7 @@ body{
                                                 </thead>
                                                 <tbody id="myTable">
 
-                                                <tr id="t_dat" th:each="zone : ${zones}"  th:onclick="'window.location.href=\'/admin/region/' + ${zone.getId()} + '\''">
+                                                <tr id="t_dat" th:each="zone : ${zones}"  th:onclick="'window.location.href=\'/admin/zone/' + ${zone.getId()} + '\''">
 
                                                     <td th:text="${zone.getName()}"> </td>
 
@@ -126,7 +126,7 @@ body{
                     <form id="zone_form">
 
                         <div class="form-group" id="region_input">
-                            <input type="text" class="form-control" id="region_id" name="regionId" th:vale="${regions.getId()}" hidden>
+                            <input type="text" class="form-control" id="regionId" name="regionId" th:value="${regions.getId()}" >
                             <label for="exampleInputEmail1">Zone name</label>
                             <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
                      </div>
@@ -140,7 +140,7 @@ body{
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
+
 
                     <button type="submit" class="btn btn-primary">Create Zone</button>
 
@@ -172,7 +172,7 @@ curInputs =  next_fs.find("input[type='text']");
         isValid = true;
 console.log(curInputs);
         for(var i=0; i<curInputs.length; i++){
-          //  console.log(curInputs[i].value);
+            console.log(curInputs[i].value);
         if (!curInputs[i].value){
 
             isValid = false;
