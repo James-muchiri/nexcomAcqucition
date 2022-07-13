@@ -204,4 +204,67 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/editregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object editregion(@RequestParam("regionIdd") Integer regionId, @RequestParam("name") String name) {
+
+        try {
+            return adminService.editregion(regionId, name);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @RequestMapping(value = "/editzone", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object editedit(@RequestParam("zoneIdd") Integer zoneId, @RequestParam("name") String name) {
+
+        try {
+            return adminService.editzone(zoneId, name);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+
+    @RequestMapping(value = "/editarea", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object editarea(@RequestParam("areaIdd") Integer areaId, @RequestParam("name") String name) {
+
+        try {
+            return adminService.editarea(areaId, name);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @GetMapping("/updatecluster/{id}")
+    @ResponseBody
+    public Object updatecluster(@PathVariable Integer id) {
+
+
+
+        try {
+            return adminService.updatecluster(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @RequestMapping(value = "/editcluster", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @ResponseBody
+    public Object editcluster(@RequestParam("clusterId") Integer clusterId, @RequestParam("name") String name) {
+
+        try {
+            return adminService.editcluster(clusterId, name);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
     }

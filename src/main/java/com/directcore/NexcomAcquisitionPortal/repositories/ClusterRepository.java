@@ -11,7 +11,7 @@ public interface ClusterRepository extends CrudRepository<Cluster, Long> {
 
 
 
-
+    Object findById(Integer id);
 
     List<Cluster>  findAllByAreaId(Integer id);
 }

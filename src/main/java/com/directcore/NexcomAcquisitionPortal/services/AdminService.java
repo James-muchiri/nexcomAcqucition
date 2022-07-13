@@ -60,4 +60,14 @@ public interface AdminService {
     Object getareabyid(Integer id);
 
     Object getclusterbyid(Integer id);
+
+    Object editregion(Integer regionId, String name);
+
+    Object editzone(Integer zoneId, String name);
+
+    Object editarea(Integer areaId, String name);
+
+    Object updatecluster(Integer clusterId);
+
+    Object editcluster(Integer clusterId, String name);
 }

@@ -3411,7 +3411,7 @@ select.list-dt:focus {
 
 
     .table-responsive{
-      width:320px
+      width:360px
 
     }
 
@@ -3423,4 +3423,32 @@ select.list-dt:focus {
         margin-left: auto;
     }
 
+
   }
+
+    @media (max-width: 436px) {
+
+
+      .table-responsive{
+        width:320px
+
+      }
+      }
+
+          @media (max-width: 436px) {
+
+
+            .table-responsive{
+              width:300px
+
+            }
+            }
+
+               @media (max-width: 364px) {
+
+
+                        .table-responsive{
+                          width:250px
+
+                        }
+                        }

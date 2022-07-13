@@ -52,11 +52,42 @@ body{
 
   </div>
   <div class="container-fluid" >
+
+    <div class="row justify-content-center mt-0">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+
+            <h2 class="fs-title"> Edit Name</h2>
+
+          </div>
+          <div class="card-body">
+
+            <div style="padding: 20px;">
+              <form id="edit_name">
+                <div id="area_input" >
+
+
+                  <div class="form-group" >
+                    <label for="editname">Edit Name</label>
+                    <input type="text" class="form-control" id="editname" name="name" th:value="${areas.getName()}">
+                  </div>
+
+                  <input type="text" name="areaIdd" id="areaIdd"  hidden th:value="${areas.getId()}">
+                </div>
+                <button type="submit" class="btn btn-primary">Edit Name</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row justify-content-center mt-0">
       <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
         <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-          {{-- <h2><strong>Sign Up Your User Account</strong></h2>
-          <p>Fill all form field to go to next step</p> --}}
+
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
@@ -90,11 +121,9 @@ body{
 
                           <td th:text="${cluster.getName()}"> </td>
 
-
-                          <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
-
-
-                        </tr>
+                          <td th:text="${cluster.getDescription()}"> </td>
+                          <td>   <a type="button" th:attr="onclick=|updatecluster('${cluster.getId()}')|" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+                      </tr>
 
 
 
@@ -117,7 +146,7 @@ body{
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">New Area</h5>
+          <h5 class="modal-title" id="exampleModalCenterTitle">New Cluster</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -129,13 +158,13 @@ body{
               <input type="text" class="form-control" id="areaId" name="areaId" th:value="${areas.getId()}"hidden>
               <label for="exampleInputEmail1">Cluster name</label>
               <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
-              {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+
             </div>
 
             <div class="form-group" id="region_input">
               <label for="exampleInputEmail1">Description</label>
               <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
-              {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+
             </div>
 
 
@@ -151,13 +180,54 @@ body{
       </div>
     </div>
   </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="update_region" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Cluster Update</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div style="padding: 20px;">
+            <form id="edit_cluster_name">
+              <div id="area_input" >
+
+
+                <div class="form-group" >
+                  <label for="clustername">Cluster name</label>
+                  <input type="text" class="form-control" id="clustername" name="name" aria-describedby="emailHelp">
+
+                </div>
+
+                <input type="text" name="clusterId" id="clusterId"  hidden>
+              </div>
+
+
+
+          </div>
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
 
-$(document).ready(function() {
-                $('#modal_table').DataTable( {
-                    "pagingType": "full_numbers"
-                } );
-            } );
+
 
 
             $(document).ready(function(e){
@@ -202,26 +272,113 @@ if(isValid)
             },
             success: function(response){ //console.log(response);
                     console.log(response);
-                    console.log(response.status);
+                    console.log(response.msg);
 
-if (response.status == 200){
-    toastr.success('saved');
+ if (response.success) {
 
-
-
-    current_fs = $('#new_shedule');
-
-
-
-   current_fs.modal('hide');
-
-
+    toastr.success(response.msg);
+    $('#new_shedule').modal('hide');
+     $("#cluster_form")[0].reset();
 
 
 }
-if (response.status == 202){
-    alert('the email exist try editing the user');
+else{
+toastr.success(response.msg);
+$('#new_shedule').modal('hide');
+$("#cluster_form")[0].reset();
 }
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+    });
+});
+
+
+
+
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_name").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/editarea", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+     document.getElementById('editname').value = response.area;
+
+
+}
+else{
+toastr.success(response.msg);
+
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+
+
+function updatecluster(data){
+
+
+    console.log(data);
+
+    $.ajax({
+            type: 'GET',
+            url: "/admin/updatecluster/"+ data, //call  to store form data
+
+
+            cache: false,
+
+            success: function(response){ //console.log(response);
+                    console.log(response);
+
+                document.getElementById('clustername').value = response.name;
+
+
+
+
+                    document.getElementById('clusterId').value = response.id;
 
 
 
@@ -234,6 +391,60 @@ if (response.status == 202){
          },
         });
 }
+
+
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_cluster_name").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/editcluster", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+    $('#update_region').modal('hide');
+
+
+}
+else{
+toastr.success(response.msg);
+$('#update_region').modal('hide');
+}
+
+
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
     });
 });
 </script>

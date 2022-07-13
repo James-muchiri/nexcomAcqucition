@@ -3,6 +3,7 @@ package com.directcore.NexcomAcquisitionPortal.services;
 
 import com.directcore.NexcomAcquisitionPortal.model.*;
 import com.directcore.NexcomAcquisitionPortal.repositories.*;
+import com.directcore.NexcomAcquisitionPortal.repositories.Contact_infoRepository;
 import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,9 +26,6 @@ public class AdminServiceimpl implements com.directcore.NexcomAcquisitionPortal.
     private AdmiRepository admiRepository;
 @Autowired
 private RolesRepository roleRepository;
-
-    @Autowired
-    private Building_informationRepository building_informationRepository;
 
 
 
@@ -45,6 +44,12 @@ private RolesRepository roleRepository;
     @Autowired
     private ClusterRepository clusterRepository;
 
+
+    @Autowired
+    private Contact_infoRepository contact_infoRepository;
+
+    @Autowired
+    private  Building_infoRepository building_infoRepository;
 
     private Pattern regexPattern;
     private Matcher regMatcher;
@@ -206,8 +211,58 @@ roles.setCreated_by(admin.getName());
     public Object addbuilding(Building_information request) {
 
 
-            building_informationRepository.save(request);
-            return "User Registered successful";
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+            Building_info building_info = new Building_info();
+
+
+            Region region = regionRepository.findById(request.getRegion()).orElse(null);
+            building_info.setRegion(region.getName());
+
+            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
+            building_info.setZone(zone.getName());
+
+            Area area = (Area) areaRepository.findById(request.getArea());
+            building_info.setArea(area.getName());
+
+            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
+            building_info.setCluster(cluster.getName());
+
+            building_info.setBuilding_name(request.getBuilding_name());
+            building_info.setBuilding_description(request.getBuilding_description());
+            building_info.setBuilding_photos(request.getBuilding_photos());
+            building_info.setPossible_sales(request.getPossible_sales());
+            building_info.setBuilding_type(request.getBuilding_type());
+
+
+            Contact_info contact_info = new Contact_info();
+
+            contact_info.setBuildingId(building_info.getId());
+            contact_info.setManagement_type(request.getManagement_type());
+            contact_info.setFull_names(request.getFull_names());
+            contact_info.setPhone_number(request.getPhone_number());
+            contact_info.setId_number(request.getId_number());
+
+
+
+
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
 
 
 
@@ -218,13 +273,13 @@ roles.setCreated_by(admin.getName());
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-        List<Building_information> building_information = (List<Building_information>) building_informationRepository.findAll();
 
 
+        List <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
 
         v.setViewName("myacqusitions");
         v.addObject("user", admi);
-        v.addObject("buildings", building_information);
+        v.addObject("buildings", building_infos);
         return v;
     }
 
@@ -248,9 +303,22 @@ roles.setCreated_by(admin.getName());
     public Object addregion(Region request) {
 
 
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
 
-        regionRepository.save(request);
-        return "Region added successful";
+            regionRepository.save(request);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
 
     }
 
@@ -286,14 +354,29 @@ roles.setCreated_by(admin.getName());
     @Override
     public Object addzone(Integer regionId, String name, String description) {
 
-        Zone zone = new Zone();
 
-        zone.setRegionId(regionId);
-        zone.setName(name);
-        zone.setDescription(description);
-        zoneRepository.save(zone);
 
-        return "Region added successful";
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+            Zone zone = new Zone();
+
+            zone.setRegionId(regionId);
+            zone.setName(name);
+            zone.setDescription(description);
+            zoneRepository.save(zone);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
     }
 
     @Override
@@ -326,21 +409,32 @@ roles.setCreated_by(admin.getName());
     public Object addarea(Integer zoneId, String name, String description) {
 
 
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
 
-        Zone zone = (Zone) zoneRepository.findById(zoneId).orElse(null);
+            Zone zone = (Zone) zoneRepository.findById(zoneId).orElse(null);
 
-        Region region = regionRepository.findById(zone.getRegionId()).orElse(null);
+            Region region = regionRepository.findById(zone.getRegionId()).orElse(null);
 
-   Area area = new Area();
+            Area area = new Area();
 
-        area.setName(name);
-        area.setDescription(description);
-        area.setRegionId(region.getId());
-        area.setZoneId(zoneId);
-        areaRepository.save(area);
+            area.setName(name);
+            area.setDescription(description);
+            area.setRegionId(region.getId());
+            area.setZoneId(zoneId);
+            areaRepository.save(area);
 
-        return "Region added successful";
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
 
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
 
     }
 
@@ -374,20 +468,34 @@ roles.setCreated_by(admin.getName());
 
 
 
-        Area area = (Area) areaRepository.findById(areaId);
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+            Area area = (Area) areaRepository.findById(areaId);
 
 
 
-      Cluster cluster = new Cluster();
+            Cluster cluster = new Cluster();
 
-        cluster.setName(name);
-        cluster.setDescription(description);
-        cluster.setRegionId(area.getRegionId());
-        cluster.setZoneId(area.getZoneId());
-        cluster.setAreaId(area.getId());
-        clusterRepository.save(cluster);
+            cluster.setName(name);
+            cluster.setDescription(description);
+            cluster.setRegionId(area.getRegionId());
+            cluster.setZoneId(area.getZoneId());
+            cluster.setAreaId(area.getId());
+            clusterRepository.save(cluster);
 
-        return "Region added successful";
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
 
 
     }
@@ -412,6 +520,119 @@ roles.setCreated_by(admin.getName());
 
         List <Cluster> clusters = clusterRepository.findAllByAreaId(id);
         return clusters;
+    }
+
+    @Override
+    public Object editregion(Integer regionId, String name) {
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+            Region region = regionRepository.findById(regionId).orElse(null);
+
+            region.setName(name);
+            regionRepository.save(region);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+            rdata.put("region", region.getName());
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object editzone(Integer zoneId, String name) {
+
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+            Zone zone = zoneRepository.findById(zoneId).orElse(null);
+            zone.setName(name);
+            zoneRepository.save(zone);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+            rdata.put("zone", zone.getName());
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+    }
+
+    @Override
+    public Object editarea(Integer areaId, String name) {
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+            Area area = (Area) areaRepository.findById(areaId);
+
+            area.setName(name);
+            areaRepository.save(area);
+
+        rdata.put("success", 1);
+        rdata.put("msg", "successful.");
+            rdata.put("area", area.getName());
+
+        return rdata;
+
+    } catch (Exception e) {
+        rdata.put("success", 0);
+        rdata.put("msg", "An error occured! ");
+        return rdata;
+    }
+    }
+
+    @Override
+    public Object updatecluster(Integer clusterId) {
+        Cluster cluster = (Cluster) clusterRepository.findById(clusterId);
+
+        return  cluster;
+    }
+
+    @Override
+    public Object editcluster(Integer clusterId, String name) {
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+       Cluster cluster = (Cluster) clusterRepository.findById(clusterId);
+       cluster.setName(name);
+       clusterRepository.save(cluster);
+
+
+                rdata.put("success", 1);
+                rdata.put("msg", "successful.");
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+
+
+
     }
 
 

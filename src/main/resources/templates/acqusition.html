@@ -434,7 +434,7 @@ $.ajax({
          success: function(data) {
              console.log(data);
              $('#area_select').append("");
-             var option = "<option> Select zone</option>";
+             var option = "<option> Select Area</option>";
              $.each(data, function(index, element) {
             option = option +
             '<option value="'+element.id+'">'+element.name+'</option>';
@@ -468,7 +468,7 @@ $.ajax({
          success: function(data) {
              console.log(data);
              $('#cluster_select').append("");
-             var option = "<option> Select zone</option>";
+             var option = "<option> Select Cluster</option>";
              $.each(data, function(index, element) {
             option = option +
             '<option value="'+element.id+'">'+element.name+'</option>';

@@ -85,12 +85,14 @@ body{
                                                     </tr>
                                                     </thead>
                                                     <tbody id="myTable">
-                                                    <tr id="t_dat" th:each="region : ${regions}"  th:onclick="'window.location.href=\'/admin/region/' + ${region.getId()} + '\''">
+<!--                                                    th:onclick="'window.location.href=\'/admin/region/' + ${region.getId()} + '\''"-->
+                                                    <tr id="t_dat" th:each="region : ${regions}"  >
 
                                                         <td th:text="${region.getName()}"> </td>
 
 
-                                                        <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+                                                        <td th:text="${region.getDescription()}"> </td>
+                                                        <td>   <a type="button"  th:href="@{/admin/region/__${region.getId()}__}"  class="btn btn-success">Update</a></td>
 
 
                                                     </tr>
@@ -128,13 +130,13 @@ body{
                 <form id="region_form">
 
                     <div class="form-group" id="region_input">
-                        <label for="exampleInputEmail1">Region name</label>
+                        <label for="name">Region name</label>
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
 
                     </div>
 
                     <div class="form-group" id="region_input">
-                        <label for="exampleInputEmail1">Region Description</label>
+                        <label for="description">Region Description</label>
                         <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
                     </div>
 
@@ -152,77 +154,13 @@ body{
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="update_region" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Region Update</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div style="padding: 20px;">
-                    <form id="area_form">
-                        <div id="area_input" >
 
-
-                            <div class="form-group" >
-                                <label for="exampleInputEmail1">Area name</label>
-                                <input type="text" class="form-control" id="area_name" name="area_name" aria-describedby="emailHelp">
-                           </div>
-                            <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
-                            <input type="text" name="region_id" id="region_id"  hidden>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create Area</button>
-
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="table-responsive" >
-                            <table class="table table-striped mt32 customers-list " id="modal_table">
-                                <thead>
-                                <tr>
-
-
-                                    <td class="t_head">Areas</td>
-
-                                    <td class="t_head">Action</td>
-
-                                </tr>
-                                </thead>
-                                <tbody id="area_table">
-
-
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
 <script>
 
-$(document).ready(function() {
-                $('#modal_table').DataTable( {
-                    "pagingType": "full_numbers"
-                } );
-            } );
+
 
 
 $(document).ready(function(e){
@@ -266,26 +204,21 @@ if(isValid)
                 $('#fupForm').css("opacity",".5");
             },
             success: function(response){ //console.log(response);
-                    console.log(response);
-                    console.log(response.status);
+              console.log(response);
+                    console.log(response.msg);
 
-if (response.status == 200){
-    toastr.success('saved');
+ if (response.success) {
 
-
-
-    current_fs = $('#new_shedule');
-
-
-
-   current_fs.modal('hide');
-
-
+    toastr.success(response.msg);
+    $('#new_shedule').modal('hide');
+    $("#region_form")[0].reset();
 
 
 }
-if (response.status == 202){
-    alert('the email exist try editing the user');
+else{
+toastr.success(response.msg);
+$('#new_shedule').modal('hide');
+$("#region_form")[0].reset();
 }
 
 

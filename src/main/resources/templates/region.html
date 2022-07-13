@@ -52,11 +52,42 @@ body{
 
     </div>
     <div class="container-fluid" >
+
+
+        <div class="row justify-content-center mt-0">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+
+                        <h2 class="fs-title"> Edit Name</h2>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div style="padding: 20px;">
+                            <form id="edit_name">
+                                <div id="area_input" >
+
+
+                                    <div class="form-group" >
+                                        <label for="editname">Edit Name</label>
+                                        <input type="text" class="form-control" id="editname" name="name" th:value="${regions.getName()}">
+                                    </div>
+
+                                    <input type="text" name="regionIdd" id="regionIdd"  hidden th:value="${regions.getId()}">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Edit Name</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center mt-0">
             <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    {{-- <h2><strong>Sign Up Your User Account</strong></h2>
-                    <p>Fill all form field to go to next step</p> --}}
+
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card">
@@ -85,12 +116,12 @@ body{
                                                 </thead>
                                                 <tbody id="myTable">
 
-                                                <tr id="t_dat" th:each="zone : ${zones}"  th:onclick="'window.location.href=\'/admin/zone/' + ${zone.getId()} + '\''">
+                                                <tr id="t_dat" th:each="zone : ${zones}"  >
 
                                                     <td th:text="${zone.getName()}"> </td>
+                                                    <td th:text="${zone.getDescription()}"> </td>
 
-
-                                                    <td>   <a type="button" onclick="fetch_region('{!! $regions['id'] !!}')" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+                                                    <td>   <a type="button"  th:href="@{/admin/zone/__${zone.getId()}__}"  class="btn btn-success">Update</a></td>
 
 
                                                 </tr>
@@ -126,13 +157,13 @@ body{
                     <form id="zone_form">
 
                         <div class="form-group" id="region_input">
-                            <input type="text" class="form-control" id="regionId" name="regionId" th:value="${regions.getId()}" >
-                            <label for="exampleInputEmail1">Zone name</label>
+                            <input type="text" class="form-control" id="regionId" name="regionId" th:value="${regions.getId()}" hidden>
+                            <label for="name">Zone name</label>
                             <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
                      </div>
 
                         <div class="form-group" id="region_input">
-                            <label for="exampleInputEmail1">Description</label>
+                            <label for="description">Description</label>
                             <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
                       </div>
 
@@ -151,11 +182,7 @@ body{
     </div>
     <script>
 
-$(document).ready(function() {
-                $('#modal_table').DataTable( {
-                    "pagingType": "full_numbers"
-                } );
-            } );
+
 
 
             $(document).ready(function(e){
@@ -200,25 +227,20 @@ if(isValid)
             },
             success: function(response){ //console.log(response);
                     console.log(response);
-                    console.log(response.status);
+                    console.log(response.msg);
 
-if (response.status == 200){
-    toastr.success('saved');
+ if (response.success) {
 
-
-
-    current_fs = $('#new_shedule');
-
-
-
-   current_fs.modal('hide');
-
-
+    toastr.success(response.msg);
+    $('#new_shedule').modal('hide');
+    $("#zone_form")[0].reset();
 
 
 }
-if (response.status == 202){
-    alert('the email exist try editing the user');
+else{
+toastr.success(response.msg);
+$('#new_shedule').modal('hide');
+$("#zone_form")[0].reset();
 }
 
 
@@ -232,6 +254,59 @@ if (response.status == 202){
          },
         });
 }
+    });
+});
+
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_name").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/editregion", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                          console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+     document.getElementById('editname').value = response.region;
+
+
+}
+else{
+toastr.success(response.msg);
+
+}
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
     });
 });
 </script>
