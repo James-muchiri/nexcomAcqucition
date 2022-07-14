@@ -32162,3 +32162,1743 @@ Caused by: java.sql.SQLException: Incorrect file format 'admi_roles'
 2022-07-14 17:08:00.383  INFO 33271 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2022-07-14 17:08:00.385  INFO 33271 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2022-07-14 17:08:00.403  INFO 33271 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:37:55.455  INFO 17447 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 17447 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:37:55.459  INFO 17447 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:37:56.539  INFO 17447 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:37:56.649  INFO 17447 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:37:57.517  INFO 17447 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:37:57.588  INFO 17447 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:37:57.823  INFO 17447 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:37:57.955  INFO 17447 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:37:58.738  INFO 17447 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:37:58.759  INFO 17447 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:38:00.109 DEBUG 17447 --- [Test worker] org.hibernate.SQL                        : 
+    
+    create table building_info (
+       id integer not null auto_increment,
+        area varchar(255),
+        building_description varchar(255),
+        building_name varchar(255),
+        building_photos varchar(255),
+        building_type varchar(255),
+        cluster varchar(255),
+        possible_sales varchar(255),
+        region varchar(255),
+        zone varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2022-07-14 21:38:00.534 DEBUG 17447 --- [Test worker] org.hibernate.SQL                        : 
+    
+    create table contact_info (
+       id integer not null auto_increment,
+        building_id integer,
+        full_names varchar(255),
+        id_number varchar(255),
+        management_type varchar(255),
+        phone_number varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2022-07-14 21:38:00.883 DEBUG 17447 --- [Test worker] org.hibernate.SQL                        : 
+    
+    create table images_info (
+       id integer not null auto_increment,
+        building_id integer,
+        name varchar(255),
+        primary key (id)
+    ) engine=MyISAM
+2022-07-14 21:38:01.296 DEBUG 17447 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:38:01.709 DEBUG 17447 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:38:02.001  INFO 17447 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:38:02.025  INFO 17447 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:38:03.331  WARN 17447 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:38:03.721  INFO 17447 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:38:04.320  INFO 17447 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:38:04.333  INFO 17447 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 9.408 seconds (JVM running for 11.662)
+2022-07-14 21:38:05.501  INFO 17447 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:38:05.506  INFO 17447 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 21:38:05.542  INFO 17447 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:38:10.563  INFO 17527 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 17527 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:38:10.570  INFO 17527 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:38:11.929  INFO 17527 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:38:12.066  INFO 17527 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:38:13.409  INFO 17527 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 21:38:13.431  INFO 17527 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 21:38:13.431  INFO 17527 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 21:38:14.937  INFO 17527 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 21:38:14.938  INFO 17527 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4176 ms
+2022-07-14 21:38:15.290  INFO 17527 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:38:15.404  INFO 17527 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:38:15.764  INFO 17527 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:38:16.061  INFO 17527 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:38:17.054  INFO 17527 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:38:17.113  INFO 17527 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:38:18.924 DEBUG 17527 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:38:19.206 DEBUG 17527 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:38:19.531  INFO 17527 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:38:19.568  INFO 17527 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:38:19.898  INFO 17527 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 21:38:20.750  WARN 17527 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:38:21.040  INFO 17527 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:38:21.434  INFO 17527 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 21:38:21.466  INFO 17527 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:38:21.538  INFO 17527 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 12.315 seconds (JVM running for 14.493)
+2022-07-14 21:40:13.047  INFO 17527 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 21:40:13.051  INFO 17527 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 21:40:13.059  INFO 17527 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2022-07-14 21:40:22.780 DEBUG 17527 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+2022-07-14 21:40:22.786 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+2022-07-14 21:40:22.863 DEBUG 17527 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+2022-07-14 21:40:22.866 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+2022-07-14 21:40:23.072 DEBUG 17527 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:40:23.074 TRACE 17527 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:40:29.635 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:40:29.647 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:40:29.829 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_8_,
+            region0_.description as descript2_8_,
+            region0_.name as name3_8_ 
+        from
+            region region0_
+2022-07-14 21:40:30.828 DEBUG 17527 --- [http-nio-8872-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:40:30.834 TRACE 17527 --- [http-nio-8872-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:40:30.853 DEBUG 17527 --- [http-nio-8872-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_8_,
+            region0_.description as descript2_8_,
+            region0_.name as name3_8_ 
+        from
+            region region0_
+2022-07-14 21:40:33.889 DEBUG 17527 --- [http-nio-8872-exec-2] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Zone as generatedAlias0 
+    where
+        generatedAlias0.regionId=:param0 */ select
+            zone0_.id as id1_9_,
+            zone0_.description as descript2_9_,
+            zone0_.name as name3_9_,
+            zone0_.region_id as region_i4_9_ 
+        from
+            zone zone0_ 
+        where
+            zone0_.region_id=?
+2022-07-14 21:40:33.893 TRACE 17527 --- [http-nio-8872-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:40:35.300  WARN 17527 --- [http-nio-8872-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "test"]
+2022-07-14 21:40:52.974 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:40:52.989 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:40:53.005 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_8_,
+            region0_.description as descript2_8_,
+            region0_.name as name3_8_ 
+        from
+            region region0_
+2022-07-14 21:40:55.996 DEBUG 17527 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:40:56.011 TRACE 17527 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:40:56.099 DEBUG 17527 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    select
+        region0_.id as id1_8_0_,
+        region0_.description as descript2_8_0_,
+        region0_.name as name3_8_0_ 
+    from
+        region region0_ 
+    where
+        region0_.id=?
+2022-07-14 21:40:56.114 TRACE 17527 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:40:56.155 DEBUG 17527 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Zone as generatedAlias0 
+    where
+        generatedAlias0.regionId=:param0 */ select
+            zone0_.id as id1_9_,
+            zone0_.description as descript2_9_,
+            zone0_.name as name3_9_,
+            zone0_.region_id as region_i4_9_ 
+        from
+            zone zone0_ 
+        where
+            zone0_.region_id=?
+2022-07-14 21:40:56.158 TRACE 17527 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:06.425 DEBUG 17527 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+2022-07-14 21:41:06.469 DEBUG 17527 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+2022-07-14 21:41:06.542 DEBUG 17527 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Zone
+        */ insert 
+        into
+            zone
+            (description, name, region_id, id) 
+        values
+            (?, ?, ?, ?)
+2022-07-14 21:41:06.544 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [tp link switch]
+2022-07-14 21:41:06.545 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [admin]
+2022-07-14 21:41:06.547 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [1]
+2022-07-14 21:41:06.554 TRACE 17527 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [83]
+2022-07-14 21:41:09.324 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:09.328 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:09.348 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    select
+        region0_.id as id1_8_0_,
+        region0_.description as descript2_8_0_,
+        region0_.name as name3_8_0_ 
+    from
+        region region0_ 
+    where
+        region0_.id=?
+2022-07-14 21:41:09.350 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:09.363 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Zone as generatedAlias0 
+    where
+        generatedAlias0.regionId=:param0 */ select
+            zone0_.id as id1_9_,
+            zone0_.description as descript2_9_,
+            zone0_.name as name3_9_,
+            zone0_.region_id as region_i4_9_ 
+        from
+            zone zone0_ 
+        where
+            zone0_.region_id=?
+2022-07-14 21:41:09.379 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:10.866 DEBUG 17527 --- [http-nio-8872-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:10.874 TRACE 17527 --- [http-nio-8872-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:10.891 DEBUG 17527 --- [http-nio-8872-exec-4] org.hibernate.SQL                        : 
+    select
+        zone0_.id as id1_9_0_,
+        zone0_.description as descript2_9_0_,
+        zone0_.name as name3_9_0_,
+        zone0_.region_id as region_i4_9_0_ 
+    from
+        zone zone0_ 
+    where
+        zone0_.id=?
+2022-07-14 21:41:10.898 TRACE 17527 --- [http-nio-8872-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:41:10.926 DEBUG 17527 --- [http-nio-8872-exec-4] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.zoneId=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.zone_id=?
+2022-07-14 21:41:10.948 TRACE 17527 --- [http-nio-8872-exec-4] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:41:18.441 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    select
+        zone0_.id as id1_9_0_,
+        zone0_.description as descript2_9_0_,
+        zone0_.name as name3_9_0_,
+        zone0_.region_id as region_i4_9_0_ 
+    from
+        zone zone0_ 
+    where
+        zone0_.id=?
+2022-07-14 21:41:18.444 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:41:18.464 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    select
+        region0_.id as id1_8_0_,
+        region0_.description as descript2_8_0_,
+        region0_.name as name3_8_0_ 
+    from
+        region region0_ 
+    where
+        region0_.id=?
+2022-07-14 21:41:18.474 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:20.111 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Area
+        */ insert 
+        into
+            area
+            (description, name, region_id, zone_id) 
+        values
+            (?, ?, ?, ?)
+2022-07-14 21:41:20.112 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [tp link switch]
+2022-07-14 21:41:20.112 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [admin]
+2022-07-14 21:41:20.112 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [INTEGER] - [1]
+2022-07-14 21:41:20.113 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [83]
+2022-07-14 21:41:21.083 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:21.092 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:21.110 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    select
+        zone0_.id as id1_9_0_,
+        zone0_.description as descript2_9_0_,
+        zone0_.name as name3_9_0_,
+        zone0_.region_id as region_i4_9_0_ 
+    from
+        zone zone0_ 
+    where
+        zone0_.id=?
+2022-07-14 21:41:21.116 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:41:21.133 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.zoneId=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.zone_id=?
+2022-07-14 21:41:21.145 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:41:23.858 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:23.876 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:23.911 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.id=?
+2022-07-14 21:41:23.914 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:23.943 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 
+    where
+        generatedAlias0.areaId=:param0 */ select
+            cluster0_.id as id1_5_,
+            cluster0_.area_id as area_id2_5_,
+            cluster0_.description as descript3_5_,
+            cluster0_.name as name4_5_,
+            cluster0_.region_id as region_i5_5_,
+            cluster0_.zone_id as zone_id6_5_ 
+        from
+            cluster cluster0_ 
+        where
+            cluster0_.area_id=?
+2022-07-14 21:41:23.945 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:30.991 DEBUG 17527 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.id=?
+2022-07-14 21:41:30.996 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:33.086 DEBUG 17527 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Cluster
+        */ insert 
+        into
+            cluster
+            (area_id, description, name, region_id, zone_id) 
+        values
+            (?, ?, ?, ?, ?)
+2022-07-14 21:41:33.086 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:33.086 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [tp link switch]
+2022-07-14 21:41:33.087 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [admin]
+2022-07-14 21:41:33.087 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [INTEGER] - [1]
+2022-07-14 21:41:33.087 TRACE 17527 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [INTEGER] - [83]
+2022-07-14 21:41:51.006 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:51.019 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:51.037 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.id=?
+2022-07-14 21:41:51.039 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:51.051 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 
+    where
+        generatedAlias0.areaId=:param0 */ select
+            cluster0_.id as id1_5_,
+            cluster0_.area_id as area_id2_5_,
+            cluster0_.description as descript3_5_,
+            cluster0_.name as name4_5_,
+            cluster0_.region_id as region_i5_5_,
+            cluster0_.zone_id as zone_id6_5_ 
+        from
+            cluster cluster0_ 
+        where
+            cluster0_.area_id=?
+2022-07-14 21:41:51.053 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:41:56.110 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:56.114 TRACE 17527 --- [http-nio-8872-exec-10] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:56.170 DEBUG 17527 --- [http-nio-8872-exec-10] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_8_,
+            region0_.description as descript2_8_,
+            region0_.name as name3_8_ 
+        from
+            region region0_
+2022-07-14 21:41:56.505 DEBUG 17527 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:41:56.508 TRACE 17527 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:41:56.517 DEBUG 17527 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_8_,
+            region0_.description as descript2_8_,
+            region0_.name as name3_8_ 
+        from
+            region region0_
+2022-07-14 21:42:01.662 DEBUG 17527 --- [http-nio-8872-exec-7] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Zone as generatedAlias0 
+    where
+        generatedAlias0.regionId=:param0 */ select
+            zone0_.id as id1_9_,
+            zone0_.description as descript2_9_,
+            zone0_.name as name3_9_,
+            zone0_.region_id as region_i4_9_ 
+        from
+            zone zone0_ 
+        where
+            zone0_.region_id=?
+2022-07-14 21:42:01.665 TRACE 17527 --- [http-nio-8872-exec-7] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:03.233 DEBUG 17527 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.zoneId=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.zone_id=?
+2022-07-14 21:42:03.236 TRACE 17527 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:42:06.032 DEBUG 17527 --- [http-nio-8872-exec-9] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 
+    where
+        generatedAlias0.areaId=:param0 */ select
+            cluster0_.id as id1_5_,
+            cluster0_.area_id as area_id2_5_,
+            cluster0_.description as descript3_5_,
+            cluster0_.name as name4_5_,
+            cluster0_.region_id as region_i5_5_,
+            cluster0_.zone_id as zone_id6_5_ 
+        from
+            cluster cluster0_ 
+        where
+            cluster0_.area_id=?
+2022-07-14 21:42:06.035 TRACE 17527 --- [http-nio-8872-exec-9] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.342 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    select
+        region0_.id as id1_8_0_,
+        region0_.description as descript2_8_0_,
+        region0_.name as name3_8_0_ 
+    from
+        region region0_ 
+    where
+        region0_.id=?
+2022-07-14 21:42:35.342 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.347 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    select
+        zone0_.id as id1_9_0_,
+        zone0_.description as descript2_9_0_,
+        zone0_.name as name3_9_0_,
+        zone0_.region_id as region_i4_9_0_ 
+    from
+        zone zone0_ 
+    where
+        zone0_.id=?
+2022-07-14 21:42:35.347 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [83]
+2022-07-14 21:42:35.351 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Area as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            area0_.id as id1_3_,
+            area0_.description as descript2_3_,
+            area0_.name as name3_3_,
+            area0_.region_id as region_i4_3_,
+            area0_.zone_id as zone_id5_3_ 
+        from
+            area area0_ 
+        where
+            area0_.id=?
+2022-07-14 21:42:35.352 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.358 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            cluster0_.id as id1_5_,
+            cluster0_.area_id as area_id2_5_,
+            cluster0_.description as descript3_5_,
+            cluster0_.name as name4_5_,
+            cluster0_.region_id as region_i5_5_,
+            cluster0_.zone_id as zone_id6_5_ 
+        from
+            cluster cluster0_ 
+        where
+            cluster0_.id=?
+2022-07-14 21:42:35.359 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.366 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Building_info
+        */ insert 
+        into
+            building_info
+            (area, building_description, building_name, building_photos, building_type, cluster, possible_sales, region, zone) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-07-14 21:42:35.367 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [admin]
+2022-07-14 21:42:35.368 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [ ggg]
+2022-07-14 21:42:35.368 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [ff]
+2022-07-14 21:42:35.369 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [unnamed.jpg]
+2022-07-14 21:42:35.369 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [Residential]
+2022-07-14 21:42:35.369 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [6] as [VARCHAR] - [admin]
+2022-07-14 21:42:35.369 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [7] as [VARCHAR] - [125]
+2022-07-14 21:42:35.369 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [8] as [VARCHAR] - [admin]
+2022-07-14 21:42:35.370 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [9] as [VARCHAR] - [admin]
+2022-07-14 21:42:35.446 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Contact_info
+        */ insert 
+        into
+            contact_info
+            (building_id, full_names, id_number, management_type, phone_number) 
+        values
+            (?, ?, ?, ?, ?)
+2022-07-14 21:42:35.447 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.447 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [james muchiri]
+2022-07-14 21:42:35.447 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [3] as [VARCHAR] - [35124569]
+2022-07-14 21:42:35.448 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [4] as [VARCHAR] - [hh ]
+2022-07-14 21:42:35.448 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [5] as [VARCHAR] - [0718360109]
+2022-07-14 21:42:35.497 DEBUG 17527 --- [http-nio-8872-exec-5] org.hibernate.SQL                        : 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Images_info
+        */ insert 
+        into
+            images_info
+            (building_id, name) 
+        values
+            (?, ?)
+2022-07-14 21:42:35.497 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:42:35.498 TRACE 17527 --- [http-nio-8872-exec-5] o.h.type.descriptor.sql.BasicBinder      : binding parameter [2] as [VARCHAR] - [unnamed.jpg]
+2022-07-14 21:51:07.812  INFO 17527 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:51:07.829  INFO 17527 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 21:51:07.880  INFO 17527 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:51:29.593  INFO 18770 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 18770 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:51:29.600  INFO 18770 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:51:30.945  INFO 18770 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:51:31.066  INFO 18770 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:51:32.122  INFO 18770 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:51:32.202  INFO 18770 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:51:32.475  INFO 18770 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:51:32.669  INFO 18770 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:51:33.330  INFO 18770 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:51:33.353  INFO 18770 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:51:34.802 DEBUG 18770 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:51:35.114 DEBUG 18770 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:51:35.407  INFO 18770 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:51:35.429  INFO 18770 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:51:36.664  WARN 18770 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:51:37.029  INFO 18770 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:51:37.566  INFO 18770 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:51:37.575  INFO 18770 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 8.551 seconds (JVM running for 10.481)
+2022-07-14 21:51:37.838  INFO 18770 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:51:37.840  INFO 18770 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 21:51:37.850  INFO 18770 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:51:40.365  INFO 18819 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 18819 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:51:40.371  INFO 18819 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:51:41.882  INFO 18819 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:51:42.068  INFO 18819 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 136 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:51:43.438  INFO 18819 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 21:51:43.469  INFO 18819 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 21:51:43.471  INFO 18819 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 21:51:44.797  INFO 18819 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 21:51:44.798  INFO 18819 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4258 ms
+2022-07-14 21:51:45.115  INFO 18819 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:51:45.214  INFO 18819 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:51:45.545  INFO 18819 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:51:45.748  INFO 18819 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:51:46.242  INFO 18819 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:51:46.276  INFO 18819 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:51:47.893 DEBUG 18819 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:51:48.159 DEBUG 18819 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:51:48.619  INFO 18819 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:51:48.651  INFO 18819 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:51:48.944  INFO 18819 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 21:51:49.829  WARN 18819 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:51:50.103  INFO 18819 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:51:50.475  INFO 18819 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 21:51:50.500  INFO 18819 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:51:50.516  INFO 18819 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 11.276 seconds (JVM running for 12.213)
+2022-07-14 21:54:35.089  INFO 18819 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 21:54:35.097  INFO 18819 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 21:54:35.110  INFO 18819 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2022-07-14 21:54:36.449 DEBUG 18819 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:54:36.489 TRACE 18819 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:54:36.701 DEBUG 18819 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_
+2022-07-14 21:54:53.941 DEBUG 18819 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 21:54:53.944 TRACE 18819 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 21:54:53.956 DEBUG 18819 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 21:54:53.958 TRACE 18819 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:54:53.966 DEBUG 18819 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 21:54:53.968 TRACE 18819 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:54:53.975 DEBUG 18819 --- [http-nio-8872-exec-8] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 21:54:53.976 TRACE 18819 --- [http-nio-8872-exec-8] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 21:55:56.150  INFO 18819 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:55:56.156  INFO 18819 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 21:55:56.194  INFO 18819 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:58:39.935  INFO 19773 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 19773 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:58:39.941  INFO 19773 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:58:41.292  INFO 19773 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:58:41.425  INFO 19773 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:58:42.510  INFO 19773 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:58:42.608  INFO 19773 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:58:42.934  INFO 19773 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:58:43.132  INFO 19773 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:58:43.745  INFO 19773 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:58:43.784  INFO 19773 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:58:45.324 DEBUG 19773 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:58:45.597 DEBUG 19773 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:58:46.764  INFO 19773 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:58:46.786  INFO 19773 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:58:48.445  WARN 19773 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:58:49.013  INFO 19773 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:58:49.607  INFO 19773 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:58:49.619  INFO 19773 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 10.258 seconds (JVM running for 12.144)
+2022-07-14 21:58:49.975  INFO 19773 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:58:49.986  INFO 19773 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 21:58:50.009  INFO 19773 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 21:58:52.650  INFO 19848 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 19848 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 21:58:52.657  INFO 19848 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 21:58:54.170  INFO 19848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 21:58:54.360  INFO 19848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 147 ms. Found 9 JPA repository interfaces.
+2022-07-14 21:58:55.762  INFO 19848 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 21:58:55.790  INFO 19848 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 21:58:55.791  INFO 19848 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 21:58:57.244  INFO 19848 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 21:58:57.245  INFO 19848 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4456 ms
+2022-07-14 21:58:57.666  INFO 19848 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 21:58:57.813  INFO 19848 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 21:58:58.219  INFO 19848 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 21:58:58.499  INFO 19848 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 21:58:59.092  INFO 19848 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 21:58:59.126  INFO 19848 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 21:59:00.916 DEBUG 19848 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 21:59:01.235 DEBUG 19848 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 21:59:01.510  INFO 19848 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 21:59:01.541  INFO 19848 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 21:59:01.787  INFO 19848 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 21:59:02.665  WARN 19848 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 21:59:02.959  INFO 19848 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 21:59:03.325  INFO 19848 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 21:59:03.343  INFO 19848 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 21:59:03.361  INFO 19848 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 11.818 seconds (JVM running for 12.79)
+2022-07-14 21:59:20.589  INFO 19848 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 21:59:20.591  INFO 19848 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 21:59:20.593  INFO 19848 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-07-14 22:22:40.958  INFO 19848 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:22:40.999  INFO 19848 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:22:41.043  INFO 19848 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:23:04.355  INFO 22970 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 22970 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:23:04.358  INFO 22970 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:23:05.745  INFO 22970 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:23:05.900  INFO 22970 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 143 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:23:07.017  INFO 22970 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:23:07.084  INFO 22970 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:23:07.338  INFO 22970 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:23:07.516  INFO 22970 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:23:08.284  INFO 22970 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:23:08.308  INFO 22970 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:23:09.883 DEBUG 22970 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:23:10.275 DEBUG 22970 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:23:10.641  INFO 22970 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:23:10.664  INFO 22970 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:23:12.321  WARN 22970 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:23:12.839  INFO 22970 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:23:13.552  INFO 22970 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:23:13.565  INFO 22970 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 9.895 seconds (JVM running for 12.075)
+2022-07-14 22:23:13.983  INFO 22970 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:23:13.985  INFO 22970 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:23:14.000  INFO 22970 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:23:17.592  INFO 23066 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 23066 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:23:17.627  INFO 23066 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:23:19.210  INFO 23066 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:23:19.403  INFO 23066 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 172 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:23:20.772  INFO 23066 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 22:23:20.843  INFO 23066 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 22:23:20.845  INFO 23066 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 22:23:22.359  INFO 23066 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 22:23:22.361  INFO 23066 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4522 ms
+2022-07-14 22:23:22.835  INFO 23066 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:23:22.972  INFO 23066 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:23:23.344  INFO 23066 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:23:23.613  INFO 23066 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:23:24.485  INFO 23066 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:23:24.557  INFO 23066 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:23:26.544 DEBUG 23066 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:23:26.857 DEBUG 23066 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:23:27.940  INFO 23066 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:23:27.979  INFO 23066 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:23:28.377  INFO 23066 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 22:23:29.353  WARN 23066 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:23:29.660  INFO 23066 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:23:30.304  INFO 23066 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 22:23:30.337  INFO 23066 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:23:30.368  INFO 23066 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 14.102 seconds (JVM running for 15.601)
+2022-07-14 22:24:13.378  INFO 23066 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 22:24:13.383  INFO 23066 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 22:24:13.386  INFO 23066 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-07-14 22:29:36.362 DEBUG 23066 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 22:29:36.369 TRACE 23066 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 22:29:36.429 DEBUG 23066 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 22:29:36.437 TRACE 23066 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:29:36.461 DEBUG 23066 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 22:29:36.476 TRACE 23066 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:29:36.487 DEBUG 23066 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 22:29:36.488 TRACE 23066 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:29:44.708 DEBUG 23066 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 22:29:44.712 TRACE 23066 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 22:29:44.724 DEBUG 23066 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 22:29:44.727 TRACE 23066 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:29:44.747 DEBUG 23066 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 22:29:44.750 TRACE 23066 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:29:44.762 DEBUG 23066 --- [http-nio-8872-exec-6] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 22:29:44.765 TRACE 23066 --- [http-nio-8872-exec-6] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:37:03.640  INFO 23066 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:37:03.646  INFO 23066 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:37:03.699  INFO 23066 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:37:21.605  INFO 24674 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 24674 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:37:21.615  INFO 24674 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:37:24.095  INFO 24674 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:37:24.303  INFO 24674 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 189 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:37:26.071  INFO 24674 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:37:26.134  INFO 24674 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:37:26.368  INFO 24674 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:37:26.551  INFO 24674 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:37:27.080  INFO 24674 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:37:27.104  INFO 24674 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:37:28.542 DEBUG 24674 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:37:28.809 DEBUG 24674 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:37:29.076  INFO 24674 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:37:29.097  INFO 24674 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:37:30.585  WARN 24674 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:37:31.088  INFO 24674 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:37:31.749  INFO 24674 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:37:31.762  INFO 24674 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 11.495 seconds (JVM running for 15.785)
+2022-07-14 22:37:32.135  INFO 24674 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:37:32.138  INFO 24674 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:37:32.152  INFO 24674 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:37:34.652  INFO 24808 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 24808 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:37:34.658  INFO 24808 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:37:36.124  INFO 24808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:37:36.299  INFO 24808 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 151 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:37:37.751  INFO 24808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 22:37:37.776  INFO 24808 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 22:37:37.777  INFO 24808 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 22:37:39.243  INFO 24808 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 22:37:39.244  INFO 24808 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4456 ms
+2022-07-14 22:37:39.658  INFO 24808 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:37:39.814  INFO 24808 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:37:40.192  INFO 24808 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:37:40.475  INFO 24808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:37:41.028  INFO 24808 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:37:41.056  INFO 24808 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:37:42.837 DEBUG 24808 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:37:43.241 DEBUG 24808 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:37:44.400  INFO 24808 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:37:44.429  INFO 24808 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:37:44.815  INFO 24808 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 22:37:45.890  WARN 24808 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:37:46.195  INFO 24808 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:37:46.589  INFO 24808 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 22:37:46.625  INFO 24808 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:37:46.642  INFO 24808 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 13.1 seconds (JVM running for 14.058)
+2022-07-14 22:38:17.953  INFO 24808 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 22:38:17.954  INFO 24808 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 22:38:17.956  INFO 24808 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-07-14 22:39:07.020 DEBUG 24808 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 22:39:07.026 TRACE 24808 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 22:39:07.096 DEBUG 24808 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 22:39:07.097 TRACE 24808 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:39:07.106 DEBUG 24808 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 22:39:07.108 TRACE 24808 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:39:07.117 DEBUG 24808 --- [http-nio-8872-exec-3] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 22:39:07.128 TRACE 24808 --- [http-nio-8872-exec-3] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:39:33.093  INFO 24808 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:39:33.108  INFO 24808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:39:33.179  INFO 24808 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:40:07.676  INFO 25694 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 25694 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:40:07.680  INFO 25694 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:40:09.062  INFO 25694 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:40:09.198  INFO 25694 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:40:10.305  INFO 25694 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:40:10.394  INFO 25694 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:40:10.705  INFO 25694 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:40:10.882  INFO 25694 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:40:11.535  INFO 25694 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:40:11.558  INFO 25694 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:40:13.099 DEBUG 25694 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:40:13.415 DEBUG 25694 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:40:14.614  INFO 25694 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:40:14.637  INFO 25694 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:40:16.326  WARN 25694 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:40:16.841  INFO 25694 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:40:17.578  INFO 25694 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:40:17.592  INFO 25694 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 10.492 seconds (JVM running for 12.305)
+2022-07-14 22:40:17.925  INFO 25694 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:40:17.928  INFO 25694 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:40:17.943  INFO 25694 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:40:20.388  INFO 25792 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 25792 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:40:20.397  INFO 25792 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:40:21.918  INFO 25792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:40:22.083  INFO 25792 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 142 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:40:23.511  INFO 25792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 22:40:23.538  INFO 25792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 22:40:23.539  INFO 25792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 22:40:25.035  INFO 25792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 22:40:25.036  INFO 25792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4513 ms
+2022-07-14 22:40:25.397  INFO 25792 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:40:25.507  INFO 25792 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:40:25.872  INFO 25792 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:40:26.136  INFO 25792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:40:26.700  INFO 25792 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:40:26.740  INFO 25792 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:40:28.476 DEBUG 25792 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:40:28.754 DEBUG 25792 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:40:29.055  INFO 25792 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:40:29.089  INFO 25792 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:40:29.461  INFO 25792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 22:40:30.617  WARN 25792 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:40:30.951  INFO 25792 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:40:31.404  INFO 25792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 22:40:31.436  INFO 25792 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:40:31.451  INFO 25792 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 12.114 seconds (JVM running for 13.017)
+2022-07-14 22:41:51.769  INFO 25792 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 22:41:51.773  INFO 25792 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 22:41:51.777  INFO 25792 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-07-14 22:41:58.077 DEBUG 25792 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 22:41:58.100 TRACE 25792 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 22:41:58.244 DEBUG 25792 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 22:41:58.245 TRACE 25792 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:41:58.253 DEBUG 25792 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 22:41:58.254 TRACE 25792 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:41:58.265 DEBUG 25792 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 22:41:58.266 TRACE 25792 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:42:39.907  INFO 25792 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:42:39.918  INFO 25792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:42:39.971  INFO 25792 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:42:54.730  INFO 26281 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 26281 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:42:54.738  INFO 26281 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:42:56.068  INFO 26281 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:42:56.205  INFO 26281 --- [Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:42:57.247  INFO 26281 --- [Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:42:57.333  INFO 26281 --- [Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:42:57.632  INFO 26281 --- [Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:42:57.843  INFO 26281 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:42:58.418  INFO 26281 --- [Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:42:58.441  INFO 26281 --- [Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:42:59.961 DEBUG 26281 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:43:00.790 DEBUG 26281 --- [Test worker] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:43:01.100  INFO 26281 --- [Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:43:01.123  INFO 26281 --- [Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:43:02.573  WARN 26281 --- [Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:43:03.074  INFO 26281 --- [Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:43:03.813  INFO 26281 --- [Test worker] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:43:03.828  INFO 26281 --- [Test worker] .NexcomAcquisitionPortalApplicationTests : Started NexcomAcquisitionPortalApplicationTests in 9.736 seconds (JVM running for 11.418)
+2022-07-14 22:43:04.163  INFO 26281 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:43:04.165  INFO 26281 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-07-14 22:43:04.182  INFO 26281 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-07-14 22:43:06.576  INFO 26354 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Starting NexcomAcquisitionPortalApplication using Java 11.0.15 on engineer with PID 26354 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+2022-07-14 22:43:06.584  INFO 26354 --- [main] c.d.N.NexcomAcquisitionPortalApplication : No active profile set, falling back to 1 default profile: "default"
+2022-07-14 22:43:08.205  INFO 26354 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-07-14 22:43:08.398  INFO 26354 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 9 JPA repository interfaces.
+2022-07-14 22:43:09.596  INFO 26354 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8872 (http)
+2022-07-14 22:43:09.623  INFO 26354 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-07-14 22:43:09.624  INFO 26354 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-14 22:43:11.045  INFO 26354 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-07-14 22:43:11.046  INFO 26354 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4322 ms
+2022-07-14 22:43:11.391  INFO 26354 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-14 22:43:11.539  INFO 26354 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-14 22:43:11.952  INFO 26354 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-14 22:43:12.275  INFO 26354 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-07-14 22:43:12.848  INFO 26354 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-07-14 22:43:12.879  INFO 26354 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-07-14 22:43:14.903 DEBUG 26354 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+2022-07-14 22:43:15.837 DEBUG 26354 --- [main] org.hibernate.SQL                        : 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+2022-07-14 22:43:16.213  INFO 26354 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-14 22:43:16.252  INFO 26354 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-07-14 22:43:16.634  INFO 26354 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : AuthenticationFilter initialized
+2022-07-14 22:43:17.697  WARN 26354 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 22:43:18.035  INFO 26354 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-07-14 22:43:18.464  INFO 26354 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8872 (http) with context path ''
+2022-07-14 22:43:18.497  INFO 26354 --- [main] s.a.ScheduledAnnotationBeanPostProcessor : No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+2022-07-14 22:43:18.515  INFO 26354 --- [main] c.d.N.NexcomAcquisitionPortalApplication : Started NexcomAcquisitionPortalApplication in 12.987 seconds (JVM running for 13.905)
+2022-07-14 22:45:16.637  INFO 26354 --- [http-nio-8872-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-14 22:45:16.639  INFO 26354 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-07-14 22:45:16.642  INFO 26354 --- [http-nio-8872-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-07-14 22:45:18.750 DEBUG 26354 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_1_,
+            admi0_.create_date_time as create_d2_1_,
+            admi0_.email as email3_1_,
+            admi0_.name as name4_1_,
+            admi0_.phone as phone5_1_,
+            admi0_.update_date_time as update_d6_1_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?
+2022-07-14 22:45:18.757 TRACE 26354 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [38]
+2022-07-14 22:45:18.813 DEBUG 26354 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Building_info as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            building_i0_.id as id1_4_,
+            building_i0_.area as area2_4_,
+            building_i0_.building_description as building3_4_,
+            building_i0_.building_name as building4_4_,
+            building_i0_.building_photos as building5_4_,
+            building_i0_.building_type as building6_4_,
+            building_i0_.cluster as cluster7_4_,
+            building_i0_.possible_sales as possible8_4_,
+            building_i0_.region as region9_4_,
+            building_i0_.zone as zone10_4_ 
+        from
+            building_info building_i0_ 
+        where
+            building_i0_.id=?
+2022-07-14 22:45:18.814 TRACE 26354 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:45:18.823 DEBUG 26354 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Contact_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            contact_in0_.id as id1_6_,
+            contact_in0_.building_id as building2_6_,
+            contact_in0_.full_names as full_nam3_6_,
+            contact_in0_.id_number as id_numbe4_6_,
+            contact_in0_.management_type as manageme5_6_,
+            contact_in0_.phone_number as phone_nu6_6_ 
+        from
+            contact_info contact_in0_ 
+        where
+            contact_in0_.building_id=?
+2022-07-14 22:45:18.825 TRACE 26354 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
+2022-07-14 22:45:18.835 DEBUG 26354 --- [http-nio-8872-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Images_info as generatedAlias0 
+    where
+        generatedAlias0.buildingId=:param0 */ select
+            images_inf0_.id as id1_7_,
+            images_inf0_.building_id as building2_7_,
+            images_inf0_.name as name3_7_ 
+        from
+            images_info images_inf0_ 
+        where
+            images_inf0_.building_id=?
+2022-07-14 22:45:18.836 TRACE 26354 --- [http-nio-8872-exec-1] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [INTEGER] - [1]
