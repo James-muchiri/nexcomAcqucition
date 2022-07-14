@@ -8,13 +8,20 @@ import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,6 +29,10 @@ import java.util.regex.Pattern;
 
 @Service
 public class AdminServiceimpl implements com.directcore.NexcomAcquisitionPortal.services.AdminService {
+
+    private final Path root = Paths.get("uploads");
+
+
     @Autowired
     private AdmiRepository admiRepository;
 @Autowired
@@ -51,10 +62,15 @@ private RolesRepository roleRepository;
     @Autowired
     private  Building_infoRepository building_infoRepository;
 
+    @Autowired
+    private  Imags_infoRepository imags_infoRepository;
+
     private Pattern regexPattern;
     private Matcher regMatcher;
 
     private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
+
+
 
 
     @Override
@@ -207,8 +223,10 @@ roles.setCreated_by(admin.getName());
 
 
 
+
+
     @Override
-    public Object addbuilding(Building_information request) {
+    public Object addbuilding(Building_information request, MultipartFile file) {
 
 
 
@@ -233,10 +251,10 @@ roles.setCreated_by(admin.getName());
 
             building_info.setBuilding_name(request.getBuilding_name());
             building_info.setBuilding_description(request.getBuilding_description());
-            building_info.setBuilding_photos(request.getBuilding_photos());
+            building_info.setBuilding_photos(file.getOriginalFilename());
             building_info.setPossible_sales(request.getPossible_sales());
             building_info.setBuilding_type(request.getBuilding_type());
-
+            building_infoRepository.save(building_info);
 
             Contact_info contact_info = new Contact_info();
 
@@ -245,12 +263,34 @@ roles.setCreated_by(admin.getName());
             contact_info.setFull_names(request.getFull_names());
             contact_info.setPhone_number(request.getPhone_number());
             contact_info.setId_number(request.getId_number());
+            contact_infoRepository.save(contact_info);
+
+
+
+            // String UPLOADED_FOLDER = "C/temp/";
+           // Path p = Paths.get("uploads");
+
+
+//            // Get the file and save it somewhere
+//            byte[] bytes = file.getBytes();
+//            Path path = Paths.get(p + file.getOriginalFilename());
+//
+//            Files.write(path, bytes);
 
 
 
 
 
 
+            if (!Files.exists(root)) {
+                Files.createDirectories(root);
+            }
+            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+
+            Images_info images_info = new Images_info();
+            images_info.setBuildingId(building_info.getId());
+            images_info.setName(file.getOriginalFilename());
+            imags_infoRepository.save(images_info);
 
             rdata.put("success", 1);
             rdata.put("msg", "successful.");
@@ -259,6 +299,7 @@ roles.setCreated_by(admin.getName());
             return rdata;
 
         } catch (Exception e) {
+            e.printStackTrace();
             rdata.put("success", 0);
             rdata.put("msg", "An error occured! ");
             return rdata;
@@ -635,5 +676,38 @@ roles.setCreated_by(admin.getName());
 
     }
 
+    @Override
+    public Object myacqusitionbyid(Integer id, HttpSession request, ModelAndView v) {
 
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+     Building_info building_info = (Building_info) building_infoRepository.findById(id);
+
+     Contact_info contact_info = contact_infoRepository.findByBuildingId(building_info.getId());
+
+     Images_info images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+        v.setViewName("myacqusition");
+        v.addObject("user", admi);
+        v.addObject("buildings", building_info);
+        v.addObject("contact", contact_info);
+        v.addObject("images", images_info);
+        return v;
+
+    }
+
+    @Override
+    public Resource load(String filename) throws MalformedURLException {
+ 
+            Path file = root.resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                return resource;
+            } else {
+                throw new RuntimeException("Could not read the file!");
+         
+      
+    }
+            }
+    
+    
 }

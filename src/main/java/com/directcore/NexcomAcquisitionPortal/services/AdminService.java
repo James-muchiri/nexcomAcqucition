@@ -5,10 +5,13 @@ import com.directcore.NexcomAcquisitionPortal.model.Admi;
 import com.directcore.NexcomAcquisitionPortal.model.Building_information;
 import com.directcore.NexcomAcquisitionPortal.model.Region;
 import com.directcore.NexcomAcquisitionPortal.model.Roles_admin;
+import org.springframework.core.io.Resource;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.net.MalformedURLException;
 
 public interface AdminService {
 
@@ -35,7 +38,7 @@ public interface AdminService {
 
     Object acqusition(HttpSession request, ModelAndView v);
 
-     Object addbuilding(Building_information request);
+     Object addbuilding(Building_information request, MultipartFile file);
 
     Object myacqusition(HttpSession request, ModelAndView v);
 
@@ -70,4 +73,8 @@ public interface AdminService {
     Object updatecluster(Integer clusterId);
 
     Object editcluster(Integer clusterId, String name);
+
+    Object myacqusitionbyid(Integer id, HttpSession request, ModelAndView v);
+
+    Resource load(String filename) throws MalformedURLException;
 }

@@ -69,10 +69,10 @@ body{
                                                 <thead>
                                                 <tr>
 
-                                                    <td class="t_head">Names</td>
-                                                    <td class="t_head">PhoneNumber</td>
-                                                    <td class="t_head">Email Address</td>
-                                                    <td class="t_head">Id Number</td>
+                                                    <td class="t_head">Building Name</td>
+                                                    <td class="t_head">Building Description</td>
+                                                    <td class="t_head">Building Type</td>
+                                                    <td class="t_head">Possible Sales</td>
                                                     <td class="t_head">Action</td>
                                                 </tr>
                                                 </thead>
@@ -80,16 +80,12 @@ body{
 
                                                 <tr id="t_data" th:each="building : ${buildings}">
 
-                                                    <td th:text="${building.getZone()}"> </td>
-                                                    <td th:text="${building.getZone()}"> </td>
                                                     <td th:text="${building.getBuilding_name()}"> </td>
-                                                    <td th:text="${building.getBuilding_name()}"> </td>
-                                                    <td th:text="${building.getBuilding_name()}"> </td>
+                                                    <td th:text="${building.getBuilding_description()}"> </td>
+                                                    <td th:text="${building.getBuilding_type()}"> </td>
+                                                    <td th:text="${building.getPossible_sales()}"> </td>
+                                                    <td>   <a type="button"  th:href="@{/admin/myacqusition/__${building.getId()}__}"  class="btn btn-success">View more</a></td>
 
-
-
-<!--                                                    <td>   <a type="button" href="/recruit/{!! $recruits['id'] !!}" class="btn btn-success">Update</a>-->
-<!--                                                    </td>-->
                                                 </tr>
 
 

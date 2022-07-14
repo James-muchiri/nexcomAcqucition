@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface Building_infoRepository extends CrudRepository<Building_info, Long> {
 
+    Object findById(Integer id);
+
 }

@@ -3452,3 +3452,34 @@ select.list-dt:focus {
 
                         }
                         }
+
+
+                        .card-header:first-child {
+                            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+                        }
+
+                        .card-header {
+                            background: 0 0;
+                            padding: 1.25rem;
+                            border-bottom: 1px solid #ededed;
+                        }
+                        .card-title {
+                            color: #333;
+                            margin-bottom: 20px;
+                        }
+
+                        .btn-theme {
+                            background: #f1bd06;
+                            border-bottom: 5px solid #094c7f;
+                        }
+
+                        .ctm-border-radius {
+                            border-radius: 10px;
+                        }
+                        .text-white {
+                            color: #fff!important;
+                        }
+
+                        .text-primary {
+                            color: #3e007c!important;
+                        }

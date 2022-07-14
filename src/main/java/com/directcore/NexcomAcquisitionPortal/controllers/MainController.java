@@ -10,12 +10,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +48,7 @@ public class MainController {
     Map<String, Object> finale = new HashMap<String, Object>();
 
 
+
     @GetMapping({"/index"})
     public ModelAndView index(HttpSession request, ModelAndView v) {
 
@@ -60,14 +69,22 @@ public class MainController {
 
     @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = { "multipart/form-data" })
     @ResponseBody
-    public Object doSignUp(@ModelAttribute Building_information request) {
+    public Object doSignUp(@RequestParam("pp_photo") MultipartFile file, @ModelAttribute Building_information request) {
 
         try {
-            return adminService.addbuilding(request);
+            return adminService.addbuilding(request, file);
         } catch (Exception e) {
             return "Failed!";
         }
-       // return  request;
+
+
+
+
+
+
+
+
+
     }
 
     @GetMapping({"/myacqusitions"})
@@ -266,5 +283,22 @@ public class MainController {
         }
         // return  request;
     }
+
+    @GetMapping("/myacqusition/{id}")
+    public ModelAndView myacqusition(@PathVariable Integer id, HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.myacqusitionbyid(id, request, v);
+
+    }
+
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) throws MalformedURLException {
+        Resource file = adminService.load(filename);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+
 
     }
