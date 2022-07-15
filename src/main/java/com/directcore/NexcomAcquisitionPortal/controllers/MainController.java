@@ -2,6 +2,7 @@ package com.directcore.NexcomAcquisitionPortal.controllers;
 
 
 import com.directcore.NexcomAcquisitionPortal.model.Building_information;
+import com.directcore.NexcomAcquisitionPortal.model.Contact_info;
 import com.directcore.NexcomAcquisitionPortal.model.Region;
 import com.directcore.NexcomAcquisitionPortal.repositories.AdmiRepository;
 import com.directcore.NexcomAcquisitionPortal.services.AdminService;
@@ -19,11 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,26 +45,23 @@ public class MainController {
     Map<String, Object> finale = new HashMap<String, Object>();
 
 
-
     @GetMapping({"/index"})
     public ModelAndView index(HttpSession request, ModelAndView v) {
 
-        return (ModelAndView) adminService.index( request, v);
+        return (ModelAndView) adminService.index(request, v);
 
     }
-
 
 
     @GetMapping({"/acqusitions"})
     public ModelAndView acqusitions(HttpSession request, ModelAndView v) {
 
-        return (ModelAndView) adminService.acqusition( request, v);
+        return (ModelAndView) adminService.acqusition(request, v);
 
     }
 
 
-
-    @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object doSignUp(@RequestParam("pp_photo") MultipartFile file, @ModelAttribute Building_information request) {
 
@@ -78,31 +72,24 @@ public class MainController {
         }
 
 
-
-
-
-
-
-
-
     }
 
     @GetMapping({"/myacqusitions"})
     public ModelAndView myacqusitions(HttpSession request, ModelAndView v) {
 
-        return (ModelAndView) adminService.myacqusition( request, v);
+        return (ModelAndView) adminService.myacqusition(request, v);
 
     }
 
     @GetMapping({"/Teritories"})
     public ModelAndView Teritories(HttpSession request, ModelAndView v) {
 
-        return (ModelAndView) adminService.teritories( request, v);
+        return (ModelAndView) adminService.teritories(request, v);
 
     }
 
 
-    @RequestMapping(value = "/addregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addregion", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object addregion(@ModelAttribute Region request) {
 
@@ -119,12 +106,11 @@ public class MainController {
     public ModelAndView getEmployeesById(@PathVariable Integer id, ModelAndView v, HttpSession request) {
 
 
-
-            return (ModelAndView) adminService.region(id, v, request);
+        return (ModelAndView) adminService.region(id, v, request);
 
     }
 
-    @RequestMapping(value = "/addzone", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addzone", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object addzone(@RequestParam("regionId") Integer regionId, @RequestParam("name") String name, @RequestParam("description") String description) {
 
@@ -142,12 +128,11 @@ public class MainController {
     public ModelAndView getAreasforthiszone(@PathVariable Integer id, ModelAndView v, HttpSession request) {
 
 
-
         return (ModelAndView) adminService.zone(id, v, request);
 
     }
 
-    @RequestMapping(value = "/addarea", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addarea", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object addarea(@RequestParam("zoneId") Integer zoneId, @RequestParam("name") String name, @RequestParam("description") String description) {
 
@@ -158,17 +143,17 @@ public class MainController {
         }
         // return  request;
     }
+
     @GetMapping("/area/{id}")
 
     public ModelAndView getareacluters(@PathVariable Integer id, ModelAndView v, HttpSession request) {
-
 
 
         return (ModelAndView) adminService.area(id, v, request);
 
     }
 
-    @RequestMapping(value = "/addcluster", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/addcluster", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description) {
 
@@ -179,7 +164,6 @@ public class MainController {
         }
         // return  request;
     }
-
 
 
     @GetMapping("/getzonesbyid/{id}")
@@ -221,7 +205,7 @@ public class MainController {
 
     }
 
-    @RequestMapping(value = "/editregion", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/editregion", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object editregion(@RequestParam("regionIdd") Integer regionId, @RequestParam("name") String name) {
 
@@ -233,7 +217,7 @@ public class MainController {
         // return  request;
     }
 
-    @RequestMapping(value = "/editzone", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/editzone", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object editedit(@RequestParam("zoneIdd") Integer zoneId, @RequestParam("name") String name) {
 
@@ -246,7 +230,7 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/editarea", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/editarea", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object editarea(@RequestParam("areaIdd") Integer areaId, @RequestParam("name") String name) {
 
@@ -263,7 +247,6 @@ public class MainController {
     public Object updatecluster(@PathVariable Integer id) {
 
 
-
         try {
             return adminService.updatecluster(id);
         } catch (Exception e) {
@@ -272,7 +255,7 @@ public class MainController {
         // return  request;
     }
 
-    @RequestMapping(value = "/editcluster", method = RequestMethod.POST, consumes = { "multipart/form-data" })
+    @RequestMapping(value = "/editcluster", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
     public Object editcluster(@RequestParam("clusterId") Integer clusterId, @RequestParam("name") String name) {
 
@@ -300,5 +283,84 @@ public class MainController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
+    @RequestMapping(value = "/addimage", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object addimage(@RequestParam("buildingId") Integer buildingId, @RequestParam("pp_photo") MultipartFile file) {
+
+        try {
+            return adminService.addimage(buildingId, file);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+
+    @GetMapping("/deleteimage/{id}")
+    @ResponseBody
+    public Object deleteimage(@PathVariable Integer id) {
+
+
+        try {
+            return adminService.deleteimage(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
 
     }
+
+    @RequestMapping(value = "/addcontact", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object addcontact(@ModelAttribute Contact_info request) {
+
+        try {
+            return adminService.addcontact(request);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+    @GetMapping("/fetchcontact/{id}")
+    @ResponseBody
+    public Object fetchcontact(@PathVariable Integer id) {
+
+
+        try {
+            return adminService.fetchcontact(id);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @RequestMapping(value = "/editcontact", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object editcontact(@RequestParam("contactId") Integer contactId, @RequestParam("management_type") String management_type,
+                              @RequestParam("full_names") String full_names, @RequestParam("phone_number") String phone_number,
+                              @RequestParam("id_number") String id_number) {
+
+        try {
+            return adminService.editcontact(contactId, management_type, full_names, phone_number, id_number);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+
+    @RequestMapping(value = "/editbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object editbuillding(@RequestParam("buildingId") Integer buildingId, @RequestParam("building_name") String building_name,
+                              @RequestParam("building_description") String building_description, @RequestParam("building_type") String building_type,
+                              @RequestParam("possible_sales") String possible_sales) {
+
+        try {
+            return adminService.editbuilding(buildingId, building_description, building_name,building_type, possible_sales);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+}

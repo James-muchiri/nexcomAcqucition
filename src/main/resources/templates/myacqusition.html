@@ -56,7 +56,7 @@ body{
             <div class="col-xl-4 col-lg-12 col-md-12">
                 <div class="card flex-fill ctm-border-radius shadow-sm grow">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Building Information</h4>
+                        <h4 class="card-title mb-0">Building Profile</h4>
                     </div>
                     <div class="card-body text-center">
                         <p class="card-text mb-3"><span class="text-primary">Building Name :</span><b th:text="${buildings.getBuilding_name()}"></b></p>
@@ -65,37 +65,28 @@ body{
                         <p class="card-text mb-3"><span class="text-primary">Possible Sales :</span> <b th:text="${buildings.getPossible_sales()}"></b> </p>
                         <p class="card-text mb-3"><span class="text-primary">Acqusition Date:</span> 05 May 1990</p>
 
-                       <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_basicInformation"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                       <a  class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_basicInformation"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6 d-flex">
                 <div class="card flex-fill  ctm-border-radius shadow-sm grow">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Contact Information</h4>
+                        <h4 class="card-title mb-0">Contact Profile</h4>
                     </div>
-                    <div class="card-body text-center" style="overflow-y:scroll; height:280px;">
-                        <di>
-                            <h4 class="card-title mb-0">1</h4>
+                    <div class="card-body text-center" style="overflow-y:scroll; height:270px;" >
+                        <di th:each="contact, iterStat : ${contacts}" >
+                            <h4 class="card-title mb-0" th:text="${iterStat.count}" ></h4>
                             <p class="card-text mb-3"><span class="text-primary">Management Type : </span> <b th:text="${contact.getManagement_type()}"></b></p>
                             <p class="card-text mb-3"><span class="text-primary">Full Names : </span> <b th:text="${contact.getFull_names()}"></b></p>
                             <p class="card-text mb-3"><span class="text-primary">Phone Number : </span><b th:text="${contact.getPhone_number()}"></b></p>
                             <p class="card-text mb-3"><span class="text-primary">Id Number : </span><b th:text="${contact.getId_number()}"></b></p>
 
-                            <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a th:attr="onclick=|fetchcontact('${contact.getId()}')|" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                        <hr>
 
-                        </di><di>
-                        <h4 class="card-title mb-0">2</h4>
-                        <p class="card-text mb-3"><span class="text-primary">Management Type : </span> <b th:text="${contact.getManagement_type()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Full Names : </span> <b th:text="${contact.getFull_names()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Phone Number : </span><b th:text="${contact.getPhone_number()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Id Number : </span><b th:text="${contact.getId_number()}"></b></p>
+                        </di>
 
-                       <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-
-                        <hr>
-                    </di>
                         <div style="padding:20px;">
                         <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#add_Contact"><i class="fa fa-plus" aria-hidden="true"></i></a>
                         </div>
@@ -118,8 +109,8 @@ body{
                                 <p class="card-text mb-3"><span class="text-primary">Area : </span><b th:text="${buildings.getArea()}"></b></p>
                                 <p class="card-text mb-3"><span class="text-primary">Cluster : </span><b th:text="${buildings.getCluster()}"></b></p>
 
-                            <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                         </div>
+<!--                            <a href="javascript:void(0)"  class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
+                                         </div>
                         </div>
                     </div>
 
@@ -133,10 +124,18 @@ body{
                             <div class="card-header">
                                 <h4 class="card-title mb-0">Building Images</h4>
                             </div>
-                            <div class="card-body text-center">
-                                <img   src="/upload/unnamed.jpg"  alt="nexcom">
-                                <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            </div>
+                            <div class="card-body">
+                     <div class="row">
+                                <div class="col-xl-3  text-center" th:each="image : ${images}">
+                                    <a th:attr="onclick=|deleteimage('${image.getId()}')|"  class="btn btn-theme ctm-border-radius text-white btn-sm" ><i class="fa fa-times" aria-hidden="true"></i></a>
+
+                                    <img th:src="@{/upload/{i}(i=${image.getName()})}" alt="Building image">
+                                </div>
+                                <div class="col-xl-3 text-center justify-center">
+                                    <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#add_images"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                </div>
+                                </div>
+                           </div>
                         </div>
                     </div>
 
@@ -148,55 +147,7 @@ body{
 
 
 
-    <div class="modal fade" id="add_basicInformation">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
 
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title mb-3">Building Information</h4>
-
-                    <div class="form-group">
-                        <label for="name">Building name <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="building_name"/>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-10">
-                                <label for="name">Building Description<span class="required">*</span></label><br>
-                                <textarea class="form-control recomendation" id="recomendation" name="building_description" rows="2" required> </textarea>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <input type="text" name="user_id" value="{{$user->id}}" hidden>
-                            <label for="" class="form-label">Building Type</label>
-                            <select name="building_type" id="" class="form-control">
-                                <option> Select Building Type</option>
-                                <option value="Residential">Residential</option>
-                                <option value="Commercial">Commercial</option>
-                                <option value="Residential&Commercial">Residential and Commercial</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Possible sales <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="possible_sales"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="name">Possible sales <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="building_photos"/>
-                    </div>
-                    <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">Add</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="modal fade" id="edit_basicInformation">
@@ -206,25 +157,26 @@ body{
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title mb-3">Edit Basic Information</h4>
+                    <form id="edit_building">
                     <div class="form-group">
                         <label for="name">Building name <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="building_name"/>
+                        <input type="text" class="form-control"  name="building_name" th:value="${buildings.getBuilding_name()}" />
                     </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-10">
                                 <label for="name">Building Description<span class="required">*</span></label><br>
-                                <textarea class="form-control recomendation" id="recomendation" name="building_description" rows="2" required> </textarea>
+                                <textarea class="form-control recomendation" id="recomendation" th:text="${buildings.getBuilding_description()}" name="building_description" rows="2" required> </textarea>
                             </div>
                         </div>
 
                     </div>
                     <div class="form-group">
                         <div class="mb-3">
-                            <input type="text" name="user_id" value="{{$user->id}}" hidden>
+
                             <label for="" class="form-label">Building Type</label>
                             <select name="building_type" id="" class="form-control">
-                                <option> Select Building Type</option>
+
                                 <option value="Residential">Residential</option>
                                 <option value="Commercial">Commercial</option>
                                 <option value="Residential&Commercial">Residential and Commercial</option>
@@ -234,17 +186,14 @@ body{
 
                     <div class="form-group">
                         <label for="name">Possible sales <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="possible_sales"/>
+                        <input type="text" class="form-control"  name="possible_sales" th:value="${buildings.getPossible_sales()}"/>
                     </div>
 
-                    <div class="form-group">
-                        <label for="name">Possible sales <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="building_photos"/>
-                    </div>
-
+                        <input type="text" class="form-control"  name="buildingId" th:value="${buildings.getId()}" hidden/>
 
                     <button type="button" class="btn btn-danger float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -257,20 +206,26 @@ body{
 
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title mb-3">Edit Contact</h4>
-
-                    <div class="form-group">
-                        <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                    <h4 class="modal-title mb-3">Add Contact</h4>
+                    <form id="edit_1_contact">
+                        <div class="form-group">
+                            <label> Management Name</label>
+                            <input required="" type="text" class="form-control" id="management_type" name="management_type" placeholder="Management name" value="">
+                        </div>  <div class="form-group">
+                        <label> Full Name</label>
+                        <input required="" type="text" class="form-control"  id="full_names" name="full_names" placeholder="Full Names" value="">
+                    </div> <div class="form-group">
+                        <label> Phone Number</label>
+                        <input required="" type="text" class="form-control" id="phone_number"  name="phone_number" placeholder="Phone Number" value="">
                     </div>  <div class="form-group">
-                    <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
-                </div> <div class="form-group">
-                    <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
-                </div>  <div class="form-group">
-                    <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
-                </div>
+                        <label> Id Number</label>
+                        <input required="" type="number" class="form-control" id="id_number"  name="id_number" placeholder="Id Number" value="">
+                        <input type="text" name="contactId" id="contactId" value="" hidden>
+                    </div>
 
-                    <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                        <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -283,24 +238,396 @@ body{
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title mb-3">Add Contact</h4>
-
+                    <form id="add_new_contact">
                     <div class="form-group">
-                        <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                        <label> Management Name</label>
+                        <input required="" type="text" class="form-control"  name="management_type" placeholder="Management name" value="">
                     </div>  <div class="form-group">
-                    <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
+                    <label> Full Name</label>
+                    <input required="" type="text" class="form-control"  name="full_names" placeholder="Full Names" value="">
                 </div> <div class="form-group">
-                    <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
+                    <label> Phone Number</label>
+                    <input required="" type="text" class="form-control"  name="phone_number" placeholder="Phone Number" value="">
                 </div>  <div class="form-group">
-                    <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
+                    <label> Id Number</label>
+                    <input required="" type="number" class="form-control"  name="id_number" placeholder="Id Number" value="">
+                        <input type="text" name="buildingId" th:value="${buildings.getId()}" hidden>
                 </div>
 
                     <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="modal fade" id="add_images">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title mb-3">Add Image</h4>
+                    <form id="add_image">
+                    <div class="form-group">
+
+                        <label for="name">Building photo<span class="required">*</span></label>
+                        <div class="custom-file">
+
+                            <input type="file"  class="custom-file-input" id="pp_photo" name="pp_photo" accept="image/png, image/jpg, image/jpeg" >
+                            <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Building photo</label>
+                            <img style="width: 100px;
+                                           height: 150px;
+                                           position: relative;
+                                           z-index: 2;
+                                           margin-bottom: 10px;
+                                           display:none;" id="blah" src="#" alt="Image preview" />
+
+                            <script>
+            function readURL(input) {
+            if (input.files && input.files[0]) {
+             var reader = new FileReader();
+
+             reader.onload = function (e) {
+
+                 document.getElementById('blah').style.display= 'block';
+                 $('#blah').attr('src', e.target.result);
+
+             }
+
+             reader.readAsDataURL(input.files[0]);
+            }
+            }
+
+            $("#pp_photo").change(function(){
+            readURL(this);
+            });
+            </script>
+                        </div>  </div>
+                 <input type="text" name="buildingId" th:value="${buildings.getId()}" hidden>
+
+                    <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script>
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#add_image").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/addimage", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#add_images').modal('hide');
+     $("#add_image")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+
+
+
+  $('#add_images').modal('hide');
+     $("#add_image")[0].reset();
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#add_new_contact").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/addcontact", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#add_Contact').modal('hide');
+     $("#add_new_contact")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+
+
+ $('#add_Contact').modal('hide');
+     $("#add_new_contact")[0].reset();
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+
+function deleteimage(data){
+
+
+    console.log(data);
+
+    $.ajax({
+            type: 'GET',
+            url: "/admin/deleteimage/"+ data, //call  to store form data
+
+
+            cache: false,
+
+            success: function(response){ //console.log(response);
+                          console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#add_images').modal('hide');
+     $("#add_image")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+
+
+
+  $('#add_images').modal('hide');
+     $("#add_image")[0].reset();
+}
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+
+
+function fetchcontact(data){
+
+
+    console.log(data);
+
+    $.ajax({
+            type: 'GET',
+            url: "/admin/fetchcontact/"+ data, //call  to store form data
+
+
+            cache: false,
+
+            success: function(response){ //console.log(response);
+                          console.log(response);
+
+
+                document.getElementById('contactId').value = response.id;
+                document.getElementById('management_type').value = response.management_type;
+                document.getElementById('full_names').value = response.full_names;
+                document.getElementById('phone_number').value = response.phone_number;
+                document.getElementById('id_number').value = response.id_number;
+
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+
+
+   $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_building").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/editbuilding", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#edit_basicInformation').modal('hide');
+     $("#edit_building")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+
+
+  $('#edit_basicInformation').modal('hide');
+     $("#edit_building")[0].reset();
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+
+
+   $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_1_contact").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/editcontact", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#edit_Contact').modal('hide');
+     $("#edit_1_contact")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+
+
+ $('#edit_Contact').modal('hide');
+     $("#edit_1_contact")[0].reset();
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+</script>
 
 <section th:replace="footer :: footer"></section>
 

@@ -683,13 +683,13 @@ roles.setCreated_by(admin.getName());
         Admi admi = admiRepository.findById(user_admin);
      Building_info building_info = (Building_info) building_infoRepository.findById(id);
 
-     Contact_info contact_info = contact_infoRepository.findByBuildingId(building_info.getId());
+     List <Contact_info> contact_infos = contact_infoRepository.findByBuildingId(building_info.getId());
 
-     Images_info images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+   List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
         v.setViewName("myacqusition");
         v.addObject("user", admi);
         v.addObject("buildings", building_info);
-        v.addObject("contact", contact_info);
+        v.addObject("contacts", contact_infos);
         v.addObject("images", images_info);
         return v;
 
@@ -708,6 +708,156 @@ roles.setCreated_by(admin.getName());
       
     }
             }
-    
-    
+
+    @Override
+    public Object addimage(Integer buildingId, MultipartFile file) {
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+        if (!Files.exists(root)) {
+            Files.createDirectories(root);
+        }
+        Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+
+        Images_info images_info = new Images_info();
+        images_info.setBuildingId(buildingId);
+        images_info.setName(file.getOriginalFilename());
+        imags_infoRepository.save(images_info);
+
+        rdata.put("success", 1);
+        rdata.put("msg", "successful.");
+
+
+        return rdata;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        rdata.put("success", 0);
+        rdata.put("msg", "An error occured! ");
+        return rdata;
+    }
+
+
+    }
+
+    @Override
+    public Object deleteimage(Integer id) {
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+            Images_info images_info =imags_infoRepository.findById(id);
+
+            Files.delete(this.root.resolve(images_info.getName()));
+
+            imags_infoRepository.delete(images_info);
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object addcontact(Contact_info request) {
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+            contact_infoRepository.save(request);
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object fetchcontact(Integer id) {
+
+
+        Contact_info contact_info = contact_infoRepository.findById(id);
+        return contact_info;
+    }
+
+    @Override
+    public Object editcontact(Integer contactId, String management_type, String full_names, String phone_number, String id_number) {
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+            Contact_info contact_info = contact_infoRepository.findById(contactId);
+
+
+            contact_info.setManagement_type(management_type);
+            contact_info.setFull_names(full_names);
+            contact_info.setPhone_number(phone_number);
+            contact_info.setId_number(id_number);
+            contact_infoRepository.save(contact_info);
+
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object editbuilding(Integer buildingId, String building_description, String building_name, String building_type, String possible_sales) {
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+
+
+            Building_info building_info = building_infoRepository.findById(buildingId);
+            building_info.setBuilding_name(building_name);
+            building_info.setBuilding_description(building_description);
+            building_info.setPossible_sales(possible_sales);
+            building_info.setBuilding_type(building_type);
+            building_infoRepository.save(building_info);
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+
 }

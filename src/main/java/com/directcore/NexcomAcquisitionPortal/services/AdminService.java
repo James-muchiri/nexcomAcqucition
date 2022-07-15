@@ -1,10 +1,7 @@
 package com.directcore.NexcomAcquisitionPortal.services;
 
 
-import com.directcore.NexcomAcquisitionPortal.model.Admi;
-import com.directcore.NexcomAcquisitionPortal.model.Building_information;
-import com.directcore.NexcomAcquisitionPortal.model.Region;
-import com.directcore.NexcomAcquisitionPortal.model.Roles_admin;
+import com.directcore.NexcomAcquisitionPortal.model.*;
 import org.springframework.core.io.Resource;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,4 +74,17 @@ public interface AdminService {
     Object myacqusitionbyid(Integer id, HttpSession request, ModelAndView v);
 
     Resource load(String filename) throws MalformedURLException;
+
+    Object addimage(Integer buildingId, MultipartFile file);
+
+    Object deleteimage(Integer id);
+
+    Object addcontact(Contact_info request);
+
+    Object fetchcontact(Integer id);
+
+
+    Object editcontact(Integer contactId, String management_type, String full_names, String phone_number, String id_number);
+
+    Object editbuilding(Integer buildingId, String building_description, String building_name, String building_type, String possible_sales);
 }
