@@ -183,13 +183,60 @@ body{
                                                 </select>
                                                 </div>
                                             </div>
+                                                <div class="form-group">
+                                                    <div class="mb-3">
+                                                        <input type="text" name="user_id" value="{{$user->id}}" hidden>
+                                                        <label for="" class="form-label">Building State</label>
+                                                        <select name="building_state" id="" class="form-control">
+                                                            <option> Select Building Type</option>
+                                                            <option value="Residential">New Building</option>
+                                                            <option value="Commercial">Under Development</option>
+                                                            <option value="Residential&Commercial">Exsisting Building</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="mb-3">
+                                                        <input type="text" name="user_id" value="{{$user->id}}" hidden>
+                                                        <label for="" class="form-label">Source of Power</label>
+                                                        <select name="building_state" id="" class="form-control">
+                                                            <option> Select Building Type</option>
+                                                            <option value="Residential">Kenya Power only</option>
+                                                            <option value="Commercial">kenya power & generator</option>
+                                                            <option value="Residential&Commercial">Kenya power & solar</option>
+                                                            <option value="Residential&Commercial">Kenya power, solar & generator</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="mb-3">
+                                                        <input type="text" name="user_id" value="{{$user->id}}" hidden>
+                                                        <label for="" class="form-label">Building Security</label>
+                                                        <select name="building_state" id="" class="form-control">
+                                                            <option> Select Building Type</option>
+                                                            <option value="Residential">Secure</option>
+                                                            <option value="Commercial">Insecure</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="name">Street Name<span class="required">*</span></label>
+                                                    <input type="text" name="street_name"/>
+                                                </div>
 
                                                 <div class="form-group">
                                                     <label for="name">Possible sales <span class="required">*</span></label>
                                                     <input type="text" name="possible_sales"/>
                                                 </div>
 
-
+                                                <div class="row">
+                                                    <div class="col-sm-10">
+                                                        <label for="name">Terms of Agreement<span class="required">*</span></label><br>
+                                                        <textarea class="form-control recomendation" id="recomendation" name="terms_of_aggrement" rows="2" required> </textarea>
+                                                    </div>
+                                                </div>
 
                                                 <label for="name">Building photo<span class="required">*</span></label>
                                                 <div class="custom-file">
@@ -239,7 +286,48 @@ body{
                                         <fieldset id="attachmentreq">
 
                                             <div class="form-card Personal">
-                                                <h2 class="fs-title">Contact information</h2>
+                                                <h2 class="fs-title">Sales Profile</h2>
+
+                                                <div class="form-group">
+                                                    <label > Number of units</label>
+                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label > Average rent</label>
+                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label > Exsisting providers</label>
+                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label > How many people use internet?</label>
+                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
+                                            </div> <div class="form-group">
+                                                <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
+                                            </div>  <div class="form-group">
+                                                <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
+                                            </div>
+
+                                            </div>
+
+
+
+
+
+
+</form>
+
+
+                                        </fieldset>
+
+                                        <fieldset id="attachmentreq">
+
+                                            <div class="form-card Personal">
+                                                <h2 class="fs-title">Contact Profile</h2>
 
                                                 <div class="form-group">
                                                     <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
