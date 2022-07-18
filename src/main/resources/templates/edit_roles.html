@@ -1,0 +1,130 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+
+</section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+
+    </div>
+    <div class="container-fluid" >
+
+
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">edit Role</h5>
+
+
+                    </div>
+                    <div class="modal-body">
+
+
+                        <form id="rolesform">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group row">
+
+                                        <div class="col-md-12">
+                                            <input id="name" type="text" class="form-control" name="name"   th:value="${role.name}" required autofocus>
+                                            <label for="name" class="col-md-12 col-form-label ">Names</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group row">
+
+                                        <div class="col-md-12">
+                                            <label  class="col-md-12 col-form-label ">Roles</label>
+
+
+                                            <input type="checkbox" name="roles" value="orders"  th:checked="${#lists.contains(role.role, 'orders')}"> Manage Orders<br>
+                                            <input type="checkbox" name="roles" value="products" th:checked="${#lists.contains(role.role, 'products')}"> Manage Products<br>
+                                            <input type="checkbox" name="roles" value="deliveries" th:checked="${#lists.contains(role.role, 'deliveries')}"> Manage Deliveries<br>
+                                            <input type="checkbox" name="roles" value="sms" th:checked="${#lists.contains(role.role, 'sms')}"> Manage Sms<br>
+                                            <input type="checkbox" name="roles" value="finance" th:checked="${#lists.contains(role.role, 'finance')}"> Finance<br>
+                                            <input type="checkbox" name="roles" value="customer_care" th:checked="${#lists.contains(role.role, 'customer_care')}"> Customer Care<br>
+                                            <input type="checkbox" name="roles" value="admin_config" th:checked="${#lists.contains(role.role, 'admin_config')}"> Admin Configuration<br>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <div class="form-group row">
+
+                                        <div class="col-md-12">
+                                            <input id="description" type="text" class="form-control" name="description"  th:value="${role.description}" required autofocus>
+                                            <label for="description" class="col-md-12 col-form-label ">Role Description</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <input type="text" class="form-control" id="id" name="id"  th:value="${role.id}" hidden>
+
+                        <button type="submit" class="btn btn-primary" id="portalrolesedit">Save Role</button>
+                    </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<section th:replace="footer :: footer"></section>

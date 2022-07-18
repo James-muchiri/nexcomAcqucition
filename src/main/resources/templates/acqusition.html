@@ -65,6 +65,15 @@ body{
     font-size: 16px;
     letter-spacing: 1px;
 }
+
+input.error {
+    border: 1px solid red;
+}
+
+label.error {
+    font-weight: normal;
+    color: red;
+}
 </style>
 <div class="content">
 
@@ -173,10 +182,10 @@ body{
                                                 </div>
                                                 <div class="form-group">
                                                 <div class="mb-3">
-                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden>
-                                                    <label for="" class="form-label">Building Type</label>
-                                                    <select name="building_type" id="" class="form-control">
-                                                        <option> Select Building Type</option>
+
+                                                    <label for="" class="form-label">Building Use Type</label>
+                                                    <select name="use_type" id="use_type" class="form-control">
+                                                        <option> Select Building Use Type</option>
                                                         <option value="Residential">Residential</option>
                                                         <option value="Commercial">Commercial</option>
                                                         <option value="Residential&Commercial">Residential and Commercial</option>
@@ -185,26 +194,35 @@ body{
                                             </div>
                                                 <div class="form-group">
                                                     <div class="mb-3">
-                                                        <input type="text" name="user_id" value="{{$user->id}}" hidden>
-                                                        <label for="" class="form-label">Building State</label>
-                                                        <select name="building_state" id="" class="form-control">
+
+                                                        <label for="" class="form-label">Building Type</label>
+                                                        <select name="building_type" id="building_type" class="form-control">
                                                             <option> Select Building Type</option>
-                                                            <option value="Residential">New Building</option>
-                                                            <option value="Commercial">Under Development</option>
-                                                            <option value="Residential&Commercial">Exsisting Building</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="mb-3">
-                                                        <input type="text" name="user_id" value="{{$user->id}}" hidden>
+
+                                                        <label for="" class="form-label">Building State</label>
+                                                        <select name="state" id="state" class="form-control">
+                                                            <option> State of the building</option>
+                                                            <option value="New Building">New Building</option>
+                                                            <option value="Under Development">Under Development</option>
+                                                            <option value="Exsisting Building">Exsisting Building</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="mb-3">
+
                                                         <label for="" class="form-label">Source of Power</label>
-                                                        <select name="building_state" id="" class="form-control">
-                                                            <option> Select Building Type</option>
-                                                            <option value="Residential">Kenya Power only</option>
-                                                            <option value="Commercial">kenya power & generator</option>
-                                                            <option value="Residential&Commercial">Kenya power & solar</option>
-                                                            <option value="Residential&Commercial">Kenya power, solar & generator</option>
+                                                        <select name="power" id="" class="form-control">
+                                                            <option> Source of power</option>
+                                                            <option value="Kenya Power only">Kenya Power only</option>
+                                                            <option value="kenya power & generator">kenya power & generator</option>
+                                                            <option value="Kenya power & solar">Kenya power & solar</option>
+                                                            <option value="Kenya power, solar & generator">Kenya power, solar & generator</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -213,10 +231,10 @@ body{
                                                     <div class="mb-3">
                                                         <input type="text" name="user_id" value="{{$user->id}}" hidden>
                                                         <label for="" class="form-label">Building Security</label>
-                                                        <select name="building_state" id="" class="form-control">
-                                                            <option> Select Building Type</option>
-                                                            <option value="Residential">Secure</option>
-                                                            <option value="Commercial">Insecure</option>
+                                                        <select name="security" id="" class="form-control">
+                                                            <option> Security Level</option>
+                                                            <option value="Secure">Secure</option>
+                                                            <option value="Insecure">Insecure</option>
 
                                                         </select>
                                                     </div>
@@ -230,11 +248,14 @@ body{
                                                     <label for="name">Possible sales <span class="required">*</span></label>
                                                     <input type="text" name="possible_sales"/>
                                                 </div>
-
+                                                <div class="form-group">
+                                                    <label for="name">Right Of Access <span class="required">*</span></label>
+                                                    <input type="text" name="RoA"/>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-sm-10">
                                                         <label for="name">Terms of Agreement<span class="required">*</span></label><br>
-                                                        <textarea class="form-control recomendation" id="recomendation" name="terms_of_aggrement" rows="2" required> </textarea>
+                                                        <textarea class="form-control recomendation" id="recomendation" name="ToA" rows="2" required> </textarea>
                                                     </div>
                                                 </div>
 
@@ -242,7 +263,7 @@ body{
                                                 <div class="custom-file">
 
                                                     <input type="file"  class="custom-file-input" id="pp_photo" name="pp_photo" accept="image/png, image/jpg, image/jpeg" >
-                                                    <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Building photo<</label>
+                                                    <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Building photo</label>
                                                     <img style="width: 100px;
                                            height: 150px;
                                            position: relative;
@@ -283,43 +304,48 @@ body{
 
                                         </fieldset>
 
-                                        <fieldset id="attachmentreq">
+                                        <fieldset id="sales_profile">
 
                                             <div class="form-card Personal">
                                                 <h2 class="fs-title">Sales Profile</h2>
 
                                                 <div class="form-group">
                                                     <label > Number of units</label>
-                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                    <input required="" type="text" class="form-control" id="" name="numberofUnits" placeholder="Number of units" value="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label > Average rent</label>
-                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                    <input required="" type="text" class="form-control" id="" name="rent" placeholder="Average rent" value="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label > Exsisting providers</label>
-                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                    <input required="" type="text" class="form-control" id="" name="exsistingProvider" placeholder="Exsisting providers" value="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label > How many people use internet?</label>
-                                                    <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
+                                                    <input required="" type="text" class="form-control" id="" name="internetUsers" placeholder=" How many people use internet?" value="">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label > Number of Blocks</label>
+                                                    <input required="" type="text" class="form-control" id="" name="blocks" placeholder="Number of Blocks" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
-                                            </div> <div class="form-group">
-                                                <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
-                                            </div>  <div class="form-group">
-                                                <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
+                                                    <label > Number of Floors</label>
+                                                    <input required="" type="text" class="form-control" id="" name="floors" placeholder="Number of Floors" value="">
+                                                </div>
+
+
+
                                             </div>
 
+
+                                            <div class="form-group">
+                                            <input  type="button" name="next" onclick="continu3()" class="next action-button"  value="Continue"/>
+                                            <input  type="button" name="next" onclick="back2()" class="next action-button"  value="back"/>
+
                                             </div>
 
-
-
-
-
-
-</form>
 
 
                                         </fieldset>
@@ -330,15 +356,24 @@ body{
                                                 <h2 class="fs-title">Contact Profile</h2>
 
                                                 <div class="form-group">
+                                                    <label > Management Type</label>
                                                     <input required="" type="text" class="form-control" id="opt-type.0" name="management_type" placeholder="Management Type" value="">
                                                 </div>  <div class="form-group">
+                                                <label > Full Names</label>
                                                 <input required="" type="text" class="form-control" id="opt-name.0" name="full_names" placeholder="Full Names" value="">
                                             </div> <div class="form-group">
+                                                <label > Phone Number</label>
                                                 <input required="" type="text" class="form-control" id="opt-email.0" name="phone_number" placeholder="Phone Number" value="">
                                             </div>  <div class="form-group">
+                                                <label > Id Number</label>
                                                 <input required="" type="number" class="form-control" id="opt-no.0" name="id_number" placeholder="Id Number" value="">
+                                            </div>  <div class="form-group">
+                                                <label for="email"> Email Address</label>
+                                                <input required="" type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="">
                                             </div>
 
+
+
                                             </div>
 
 
@@ -347,7 +382,7 @@ body{
 
 
 
-                                                <input  type="button" name="next" onclick="back2()" class="next action-button"  value="back"/>
+                                                <input  type="button" name="next" onclick="back3()" class="next action-button"  value="back"/>
 
 
                                                 <input type="submit" id="submit" name="submit" class="btn btn-success submitBtn" value="SUBMIT"/>
@@ -356,7 +391,7 @@ body{
 
                                         </fieldset>
 
-
+                                    </div>
 
 
                                     </div>
@@ -418,7 +453,7 @@ function continu2(){
     var opacity;
 
     current_fs = $('#personalreq');
-        next_fs =$('#attachmentreq');
+        next_fs =$('#sales_profile');
 
 
         next_fs.show();
@@ -442,6 +477,35 @@ function continu2(){
 }
 
 
+function continu3(){
+
+
+
+    var opacity;
+
+    current_fs = $('#sales_profile');
+        next_fs =$('#attachmentreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
 function back1(){
 
 
@@ -480,7 +544,7 @@ function back2(){
 
     var opacity;
 
-    current_fs =$('#attachmentreq');
+    current_fs =$('#sales_profile');
         next_fs =$('#personalreq');
 
 
@@ -504,7 +568,35 @@ function back2(){
 
 }
 
+function back3(){
 
+
+
+    var opacity;
+
+    current_fs =$('#attachmentreq');
+        next_fs =$('#sales_profile');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+
+
+}
 
 $('#region_select').change(function() {
     var vall = $(this).val();
@@ -663,6 +755,10 @@ $(document).ready(function(e){
 
         e.preventDefault();
 
+  var $form = $(this);
+
+  // check if the input is valid using a 'valid' property
+  if (!$form.valid) return false;
 
 
 
@@ -697,12 +793,13 @@ $.ajax({
     });
 
 
+
   });
 
 });
 
 
-
+  });
 
 
 
@@ -798,6 +895,48 @@ if (response.status == 202){
 }
     });
 });
+
+
+
+$('#use_type').change(function() {
+    var vall = $(this).val();
+ var option = "<option> Select Building Type</option>";
+if(vall == "Residential"){
+
+
+            option = option +
+            '<option value="appartment">Appartment</option>'+
+            '<option value="standalone">Stand Alone</option>'+
+            '<option value="townhouse">Townhouse</option>';
+
+}else if(vall == "Commercial"){
+
+  option = option +
+            '<option value="businesspack">Business Pack</option>'+
+            '<option value="shopingmall">Shoping Mall</option>'+
+            '<option value="officeblock">Offfice Blocks</option>';
+
+}else if(vall == "Residential&Commercial"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}
+
+
+   $("#building_type").html("");
+      $("#building_type").append(option);
+
+});
+
+
+
+
+
+
+
 
                             </script>
 

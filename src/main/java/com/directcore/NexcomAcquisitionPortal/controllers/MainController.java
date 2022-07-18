@@ -363,4 +363,18 @@ public class MainController {
 
     }
 
+    @GetMapping({"/admin_roles"})
+    public ModelAndView admin_roles(HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.admin_roles(request, v);
+
+    }
+
+    @GetMapping("/getPortalroleById/{id}")
+    public ModelAndView getPortalroleById(@PathVariable Integer id, HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.getPortalroleById(id, request, v);
+
+    }
+
 }

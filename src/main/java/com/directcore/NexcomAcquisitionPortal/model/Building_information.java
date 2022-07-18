@@ -29,6 +29,22 @@ public class Building_information {
     private String possible_sales;
     @Column(name = "building_photos")
     private String building_photos;
+    @Column(name = "use_type")
+    private String use_type;
+    @Column(name = "street_name")
+    private String street_name;
+    @Column(name = "power")
+    private String power;
+    @Column(name = "state")
+    private String state;
+    @Column(name = "RoA")
+    private String RoA;
+    @Column(name = "ToA")
+    private String ToA;
+    @Column(name = "security")
+    private String security;
+    @Column(name = "comments")
+    private String comments;
 
     // contact information
     @Column(name = "management_type")
@@ -39,8 +55,63 @@ public class Building_information {
     private String phone_number;
     @Column(name = "id_number")
     private String id_number;
+    @Column(name = "email")
+    private String email;
 
 
+    // sales profile
+
+    @Column(name = "numberofUnits")
+    private String NumberofUnits;
+    @Column(name = "packagesPosible")
+    private String packagesPosible;
+    @Column(name = "rent")
+    private String rent;
+    @Column(name = "exsistingProviders")
+    private String exsistingProviders;
+    @Column(name = "internetUsers")
+    private String internetUsers;
+
+
+    @Column(name = "blocks")
+    private String blocks;
+    @Column(name = "floors")
+    private String floors;
+
+
+    public String getBlocks() {
+        return blocks;
+    }
+
+    public void setBlocks(String blocks) {
+        this.blocks = blocks;
+    }
+
+    public String getFloors() {
+        return floors;
+    }
+
+    public void setFloors(String floors) {
+        this.floors = floors;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+
+
+    public String getUse_type() {
+        return use_type;
+    }
+
+    public void setUse_type(String use_type) {
+        this.use_type = use_type;
+    }
 
 
 
@@ -140,5 +211,103 @@ public class Building_information {
 
     public void setId_number(String id_number) {
         this.id_number = id_number;
+    }
+
+    public String getStreet_name() {
+        return street_name;
+    }
+
+    public void setStreet_name(String street_name) {
+        this.street_name = street_name;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getRoA() {
+        return RoA;
+    }
+
+    public void setRoA(String roA) {
+        RoA = roA;
+    }
+
+    public String getToA() {
+        return ToA;
+    }
+
+    public void setToA(String toA) {
+        ToA = toA;
+    }
+
+    public String getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(String security) {
+        this.security = security;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNumberofUnits() {
+        return NumberofUnits;
+    }
+
+    public void setNumberofUnits(String numberofUnits) {
+        NumberofUnits = numberofUnits;
+    }
+
+    public String getPackagesPosible() {
+        return packagesPosible;
+    }
+
+    public void setPackagesPosible(String packagesPosible) {
+        this.packagesPosible = packagesPosible;
+    }
+
+    public String getRent() {
+        return rent;
+    }
+
+    public void setRent(String rent) {
+        this.rent = rent;
+    }
+
+    public String getExsistingProviders() {
+        return exsistingProviders;
+    }
+
+    public void setExsistingProviders(String exsistingProviders) {
+        this.exsistingProviders = exsistingProviders;
+    }
+
+    public String getInternetUsers() {
+        return internetUsers;
+    }
+
+    public void setInternetUsers(String internetUsers) {
+        this.internetUsers = internetUsers;
     }
 }

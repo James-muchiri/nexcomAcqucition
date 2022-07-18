@@ -1,0 +1,402 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+
+</section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+
+    </div>
+    <div class="container-fluid" >
+
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">Portal Roles</h4>
+                        <a class="btn btn-primary" href="#" style="float:right;" data-toggle="modal" data-target="#newPortalroles" data-whatever="@getbootstrap"><i class="fa fa -cog"></i>New roles</a>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+
+        <!-- row -->
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table class="table table-lg table-hover" id="modal_table">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Roles</th>
+                                    <th>Date Created</th>
+                                    <th>Created By</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+
+                                <tbody th:if="${roles != null}">
+                                <tr  th:each="role : ${roles}">
+                                    <td th:text="${role.name}">user name</td>
+
+                                    <td>
+                                        <div th:each="role_name : ${role.role}" th:text="${role_name}"  >roles</div></td>
+
+                                    <td><div class="label text-success bg-success-light" th:text="${role.createDateTime}" ></div></td>
+                                    <td><div class="label text-success bg-success-light" th:text="${role.created_by}" ></div></td>
+                                    <td>
+                                        <a   th:href="@{|/admin/getPortalroleById/${role.id}|}" class="btn btn-primary">Edit</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                                <tbody th:unless="${roles != null}">
+                                <tr>
+                                    <P>no roles yet</P>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- row -->
+
+    </div>
+
+
+    <div class="modal fade" id="newPortalroles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User Roles</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="rolesform">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <input id="name" type="text" class="form-control" name="name"  required autofocus>
+                                        <label for="name" class="col-md-12 col-form-label ">Names</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <label  class="col-md-12 col-form-label ">Roles</label>
+
+
+                                        <input type="checkbox" name="roles" value="orders"> Create new Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="products">View Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="deliveries">Edit Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="sms"> Manage Teritories<br>
+                                        <input type="checkbox" name="roles" value="finance">Manage Users<br>
+                                        <input type="checkbox" name="roles" value="customer_care">Manage Roles<br>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <input id="description" type="text" class="form-control" name="description"  required autofocus>
+                                        <label for="description" class="col-md-12 col-form-label ">Role Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="portalroles">Save Role</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editPortalroles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User Roles</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="rolesform">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <input id="name" type="text" class="form-control" name="name"  required autofocus>
+                                        <label for="name" class="col-md-12 col-form-label ">Names</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <label  class="col-md-12 col-form-label ">Roles</label>
+
+
+                                        <input type="checkbox" name="roles" value="orders"> Create new Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="products">View Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="deliveries">Edit Acqusitions<br>
+                                        <input type="checkbox" name="roles" value="sms"> Manage Teritories<br>
+                                        <input type="checkbox" name="roles" value="finance">Manage Users<br>
+                                        <input type="checkbox" name="roles" value="customer_care">Manage Roles<br>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+
+                                <div class="form-group row">
+
+                                    <div class="col-md-12">
+                                        <input id="description" type="text" class="form-control" name="description"  required autofocus>
+                                        <label for="description" class="col-md-12 col-form-label ">Role Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="portalroles">Save Role</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+
+               $(document).ready(function(){
+                    $('#portalroles').click(function(e){
+                        e.preventDefault();
+            var roles=[];
+             $("input:checkbox[name=roles]:checked").each(function(){
+                  roles.push($(this).val());
+                  console.log("btn clicked");
+               });
+   console.log(roles);
+
+                        $.ajax({
+                            url: "/admin/portalRoles",
+                            method: 'post',
+                            data: {
+
+                                name: $('#name').val(),
+                                role: roles,
+                                description: $('#description').val(),
+                            },
+                            success: function(data){
+                                $('role_success').show();
+
+                                $('#role_success').text(data);
+                                 alert(data);
+                                $("#portalroles")[0].reset();
+
+                                setTimeout(function() {
+
+
+                                $('#success').hide();
+
+                                }, 3000);
+                            },
+                            error: function(response) {
+
+                                $('#error').show();
+              $('#error').text(response.responseJSON.message);
+
+           }
+                        });
+                    });
+                });
+
+
+
+
+
+                function editPortaroles(id){
+    console.log("get portal role id");
+
+    var dataId = id;
+
+    console.log(dataId);
+
+    $.ajax({
+    type: 'get',
+    data:  dataId,
+    url: '/admin/getPortalroleById/'+dataId,
+    success:
+        function( data ){
+           var t_data="";
+           t_data=t_data+
+                '<form>'+
+                '<div class="row">'+
+                   ' <div class="col-sm-4">'+
+                       ' <div class="form-group row">'+
+
+                         '   <div class="col-md-12">'+
+                             '   <input id="nam" type="text" class="form-control" name="name"  required autofocus>'+
+                             '  <label for="emai" class="col-md-12 col-form-label ">Names</label>'+
+                         '   </div>'+
+                      '  </div>'+
+                 '   </div>'+
+                  '  <div class="col-sm-4">'+
+                        '<div class="form-group row">'+
+
+                            '<div class="col-md-12">'+
+                             '   <input id="emai" type="email" class="form-control" name="email" required autocomplete="email" autofocus>'+
+  '<label for="emai" class="col-md-12 col-form-label ">E-Mail Address</label>'+
+                          '  </div>'+
+                       ' </div>'+
+                   ' </div>'+
+                   ' <div class="col-sm-4">'+
+
+                     '   <div class="form-group row">'+
+
+                          '  <div class="col-md-12">'+
+                            '    <input id="phon" type="text" class="form-control" name="phone_number"  required autofocus>'+
+                             '   <label for="phon" class="col-md-12 col-form-label ">Phone Number</label>'+
+                           ' </div>'+
+                     '   </div>'+
+                  '  </div>'+
+             '   </div>'+
+
+                   ' <div class="row">'+
+                   ' <div class="col-sm-2" >'+
+                   '   </div>'+
+                     ' <div class="col-sm-3" >'+
+                     '<p> user roles</p>'+
+                       ' <select name="Testing" id="rolediv" multiple="multiple">   '+
+                         ' <option value="1"> One  '+
+                         ' <option value="2"> Two  '+
+                         ' <option value="3"> Three'+
+                        '</select>'+
+
+                     '   </div>'+
+                       '   <div class="col-sm-2 arrows">'+
+
+                     '  <a href="#link"  class="btn btn-info role-btn" role="button">Add</a>'+
+                       '<a href="#link" class="btn btn-info role-btn" role="button">Remove</a>'+
+
+                     '   </div>'+
+                       '   <div class="col-sm-3">'+
+                       '<p> available roles</p>'+
+ '<select name="Testing"  id="rolediv"  multiple="multiple">  '+
+                         ' <option value="1"> One  '+
+                         ' <option value="2"> Two  '+
+                         ' <option value="3"> Three'+
+                        '</select>'+
+
+                     '   </div>'+
+                   ' </div>';
+            $("#modal_table1").html("");
+             $("#modal_table1").append(t_data);
+
+        }
+    });
+};
+
+                            </script>
+
+
+<section th:replace="footer :: footer"></section>

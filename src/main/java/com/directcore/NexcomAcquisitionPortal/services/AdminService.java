@@ -87,4 +87,10 @@ public interface AdminService {
     Object editcontact(Integer contactId, String management_type, String full_names, String phone_number, String id_number);
 
     Object editbuilding(Integer buildingId, String building_description, String building_name, String building_type, String possible_sales);
+
+    Object admin_roles(HttpSession request, ModelAndView v);
+
+    Object fetchRole(Integer id);
+
+    Object getPortalroleById(Integer id, HttpSession request, ModelAndView v);
 }

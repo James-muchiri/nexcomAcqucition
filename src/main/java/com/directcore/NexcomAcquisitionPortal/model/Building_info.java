@@ -25,12 +25,29 @@ public class Building_info {
     private String building_name;
     @Column(name = "building_description")
     private String building_description;
-    @Column(name = "building_type")
+      @Column(name = "building_type")
     private String building_type;
     @Column(name = "possible_sales")
     private String possible_sales;
     @Column(name = "building_photos")
     private String building_photos;
+    @Column(name = "use_type")
+    private String use_type;
+    @Column(name = "street_name")
+    private String street_name;
+    @Column(name = "power")
+    private String power;
+    @Column(name = "state")
+    private String state;
+    @Column(name = "RoA")
+    private String RoA;
+    @Column(name = "ToA")
+    private String ToA;
+    @Column(name = "security")
+    private String security;
+    @Column(name = "comments")
+    private String comments;
+
 
 
     public Integer getId() {
@@ -111,4 +128,67 @@ public class Building_info {
     }
 
 
+    public String getUse_type() {
+        return use_type;
+    }
+
+    public void setUse_type(String use_type) {
+        this.use_type = use_type;
+    }
+
+    public String getStreet_name() {
+        return street_name;
+    }
+
+    public void setStreet_name(String street_name) {
+        this.street_name = street_name;
+    }
+
+    public String getPower() {
+        return power;
+    }
+
+    public void setPower(String power) {
+        this.power = power;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getRoA() {
+        return RoA;
+    }
+
+    public void setRoA(String roA) {
+        RoA = roA;
+    }
+
+    public String getToA() {
+        return ToA;
+    }
+
+    public void setToA(String toA) {
+        ToA = toA;
+    }
+
+    public String getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(String security) {
+        this.security = security;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 }

@@ -20,8 +20,11 @@ public class Contact_info {
     @Column(name = "id_number")
     private String id_number;
 
+
     @Column(name = "buildingId")
     private Integer buildingId;
+    @Column(name = "email")
+    private String email;
 
 
 
@@ -68,5 +71,15 @@ public class Contact_info {
 
     public void setId_number(String id_number) {
         this.id_number = id_number;
+    }
+
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

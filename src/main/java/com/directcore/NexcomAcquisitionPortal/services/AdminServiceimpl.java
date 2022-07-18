@@ -65,6 +65,9 @@ private RolesRepository roleRepository;
     @Autowired
     private  Imags_infoRepository imags_infoRepository;
 
+    @Autowired
+    private  Sales_profileRepository sales_profileRepository;
+
     private Pattern regexPattern;
     private Matcher regMatcher;
 
@@ -254,6 +257,15 @@ roles.setCreated_by(admin.getName());
             building_info.setBuilding_photos(file.getOriginalFilename());
             building_info.setPossible_sales(request.getPossible_sales());
             building_info.setBuilding_type(request.getBuilding_type());
+            building_info.setUse_type(request.getUse_type());
+            building_info.setStreet_name(request.getStreet_name());
+            building_info.setPower(request.getPower());
+            building_info.setState(request.getState());
+            building_info.setRoA(request.getRoA());
+            building_info.setToA(request.getToA());
+            building_info.setSecurity(request.getSecurity());
+            building_info.setComments(request.getComments());
+
             building_infoRepository.save(building_info);
 
             Contact_info contact_info = new Contact_info();
@@ -263,7 +275,22 @@ roles.setCreated_by(admin.getName());
             contact_info.setFull_names(request.getFull_names());
             contact_info.setPhone_number(request.getPhone_number());
             contact_info.setId_number(request.getId_number());
+            contact_info.setEmail(request.getEmail());
             contact_infoRepository.save(contact_info);
+
+
+            // sales profile
+            Sales_profile sales_profile = new Sales_profile();
+            sales_profile.setBuildingId(building_info.getId());
+            sales_profile.setNumberofUnits(request.getNumberofUnits());
+            sales_profile.setPackagesPosible(request.getPackagesPosible());
+            sales_profile.setRent(request.getRent());
+            sales_profile.setExsistingProviders(request.getExsistingProviders());
+            sales_profile.setInternetUsers(request.getInternetUsers());
+            sales_profile.setBlocks(request.getBlocks());
+            sales_profile.setFloors(request.getFloors());
+            sales_profileRepository.save(sales_profile);
+
 
 
 
@@ -857,6 +884,43 @@ roles.setCreated_by(admin.getName());
             rdata.put("msg", "An error occured! ");
             return rdata;
         }
+    }
+
+    @Override
+    public Object admin_roles(HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+       List <Roles_admin> roles_admins = roleRepository.findAll();
+
+
+        v.setViewName("admin_roles");
+        v.addObject("user", admi);
+        v.addObject("roles", roles_admins);
+
+        return v;
+    }
+
+    @Override
+    public Object fetchRole(Integer id) {
+        Roles_admin rolesAdmin = roleRepository.findAllById(id);
+        return rolesAdmin;
+    }
+
+    @Override
+    public Object getPortalroleById(Integer id, HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+        List <Roles_admin> roles_admins = roleRepository.findAll();
+        Roles_admin role = roleRepository.findAllById(id);
+
+        v.setViewName("edit_roles");
+        v.addObject("user", admi);
+        v.addObject("role", role);
+         return v;
     }
 
 
