@@ -95,4 +95,6 @@ public interface AdminService {
     Object editportalRoles(Roles_admin rolesAdmin);
 
     Object portalUsers(HttpSession request, ModelAndView v);
+
+    Object getuser(HttpSession request, ModelAndView v, Integer id);
 }

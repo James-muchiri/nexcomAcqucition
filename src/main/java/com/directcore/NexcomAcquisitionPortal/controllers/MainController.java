@@ -424,13 +424,17 @@ public class MainController {
     }
 
 
-//    //   // get portal user by id
-//    @GetMapping(path = "/getPortalUserById/{id}")
-//    public  Object getuser(@PathVariable final Integer id, Model model){
-//        Admi admi = (Admi) admiRepository.findById(id);
-//        List <Roles_admin>  rolesAdmin = roleRepository.findAll();
-//        model.addAttribute("admin", admi);
-//        model.addAttribute("roles", rolesAdmin);
-//        return "admin/edit_portalUsers";
-//    }
+
+
+
+    //   // get portal user by id
+    @GetMapping(path = "/getPortalUserById/{id}")
+    public ModelAndView getuser(@PathVariable final Integer id, HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.getuser(request, v, id);
+
+    }
+
+
+
 }

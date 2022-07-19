@@ -1,0 +1,371 @@
+<section th:replace="topbar :: topbar"></section>
+
+
+<section th:replace="sidebar :: sidebar"></section>
+
+
+<section th:replace="header :: header"></section>
+
+</section>
+<style>
+          table{
+            font-size: 14px;
+        }
+body{
+    background-color: #dedede;
+}
+.customers-list{
+            background-color: #ffffff;
+
+        }
+        hr{
+            color: black;
+        }
+        #tab{
+            background-color: #ffffff;
+            padding-left: 10px;
+            border-radius: 10px;
+
+        }
+        #tab p{
+            text-align: center;
+            padding-top: 13px;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+
+        }
+</style>
+
+<div class="content">
+
+
+
+    <!-- /Widgets -->
+    <div class="container-fluid">
+        <div class="row" id="tab">
+            <p style="float: left;"> Dashboard</p>
+        </div>
+        <div class="row" >
+            <hr>
+        </div>
+
+    </div>
+    <div class="container-fluid" >
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tabs effect-1">
+
+            <!-- tab-title -->
+            <input type="radio" id="tab-1" name="tab-effect-1" checked="checked">
+            <span>Shedules</span>
+
+            <input type="radio" id="tab-2" name="tab-effect-1">
+            <span>Attendance</span>
+
+            <input type="radio" id="tab-3" name="tab-effect-1">
+            <span>Attendance History</span>
+
+
+
+            <!-- tab-content -->
+            <div class="tab-content">
+                <section id="tab-item-1">
+
+
+
+
+
+
+                    <div class="container-fluid" >
+                        <div class="row justify-content-center mt-0">
+                            <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
+                                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2 class="fs-title">User Details</h2>
+
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <div class="container">
+
+                                                                <div class="row" id="adminp">
+                                                                    <div class="col-sm-6">
+                                                                        <p>First Name</p>
+                                                                        <a th:text="${admin_user.getName()}" ></a><br>
+
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+
+                                                                        <p>Email</p>
+                                                                        <a th:text="${admin_user.getEmail()}" ></a><br>       <br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+                <section id="tab-item-2">
+                    <div class="container-fluid" >
+                        <div class="row justify-content-center mt-0">
+                            <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
+                                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2 class="fs-title">Login logs</h2>
+
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <table class="table table-striped mt32 customers-list" >
+                                                                <thead>
+                                                                <tr>
+
+                                                                    <td class="t_head">Select</td>
+                                                                    <td class="t_head">Role Name</td>
+
+                                                                </thead>
+                                                                <tbody id="myTable">
+                                                                <input type="text" name="user_by_id" id="user_by_id" value="{{$user->id}}" hidden>
+                                                                @foreach ($roles as $user_role)
+                                                                <tr id="t_data">
+
+                                                                    @php
+
+
+
+                                                                    if (in_array($user_role->name, $role)){
+                                                                    echo '<td>  <input type="checkbox" onclick="delete_role_2_user(',$user_role['id'],')" checked="checked"   value="',$user_role['id'],'">
+                                                                </td>';
+                                                                    }
+                                                                    else {
+                                                                    echo '<td>  <input type="checkbox" onclick="add_role_2_user(',$user_role['id'],')"  value="',$user_role['id'],'">
+                                                                </td>';
+                                                                    }
+
+                                                                    @endphp
+
+
+
+                                                                    <td>  <input type="checkbox" name="roles" value="orders"  th:checked="${#lists.contains(role.role, 'orders')}">
+                                                                </td>
+
+
+
+
+
+                                                                    <td><label for="langs_javascript">{{$user_role->name}}</label>  </td>
+                                                                </tr>
+                                                                @endforeach
+
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="tab-item-3">
+                    <div class="container-fluid" >
+                        <div class="row justify-content-center mt-0">
+                            <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
+                                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <h2 class="fs-title">Attendance History</h2>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <label for="search_by" > Search By</label>
+                                                            <select name="search_by" id="search_by" class="form-control">
+                                                                <option selected> search by  </option>
+                                                                <option value="date"> by date </option>
+                                                                <option value="area"> by area </option>
+
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group" id="search_area" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <label for="exampleInputEmail1">Area name</label>
+                                                                        <input type="text" class="form-control" id="search_area_value" aria-describedby="emailHelp">
+                                                                    </div>
+                                                                </div></div>
+
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group" id="search_date" style="display: none;">
+
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <label for="date">Date</label> <input id="search_date_value"  type="date" class="form-control">
+                                                                    </div>
+                                                                </div></div>
+
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="form-group" id="search_btn" style="display: none;">
+
+                                                                <input type="button"  id="name" name="name" value="Search"  onclick="search_history()">
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+
+                                                            <table class="table table-striped " id="history_table" width="100%">
+                                                                <thead>
+                                                                <tr>
+
+                                                                    <td class="t_head">Date</td>
+                                                                    <td class="t_head">Area</td>
+                                                                    <td class="t_head">Start Time</td>
+                                                                    <td class="t_head">End Time</td>
+                                                                    <td class="t_head">Action</td>
+
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="shedule_history">
+                                                                @foreach ($shedule as $shedules )
+                                                                @if ($shedules['date'] <= date("Y-m-d"))
+
+                                                                <tr id="t_data">
+
+                                                                    <td> {!! $shedules['date'] !!}</td>
+                                                                    <td> {!! $shedules['area'] !!} </td>
+                                                                    <td> {!! $shedules['start_time'] !!} </td>
+                                                                    <td> {!! $shedules['end_time'] !!} </td>
+                                                                    <td>  <a href="/attendance/history/{{$shedules['id']}}">view</a> </td>
+
+                                                                </tr>
+                                                                @endif
+                                                                @endforeach
+
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="tab-item-4">
+                    dwr
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+<script>
+function addrole(){
+    var e = document.getElementById("rolediv1");
+	var strUser = e.value;
+
+
+	    $.ajax({
+            type: 'POST',
+            url: "/admin/useraddrole/"+strUser , //call  to store form data
+
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+     document.getElementById('editname').value = response.area;
+
+
+}
+else{
+toastr.success(response.msg);
+
+}
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+}
+
+</script>
+<section th:replace="footer :: footer"></section>

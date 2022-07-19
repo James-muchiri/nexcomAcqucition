@@ -137,7 +137,7 @@ width: 100px;
                   <td th:text="${user.createDateTime}"></tdth:text></td>
                   <td><div class="label text-success bg-success-light">james muchiri</div></td>
                   <td>
-                    <button th:onclick="|portalUserById('${user.id}')|"   class="btn btn-primary" href="#" data-toggle="modal" data-target="#editPortalUser" data-whatever="@getbootstrap">Edit</button>
+                  <a   th:href="@{|/admin/getPortalUserById/${user.id}|}" class="btn btn-primary">Edit</a>
                   </td>
                 </tr>
 

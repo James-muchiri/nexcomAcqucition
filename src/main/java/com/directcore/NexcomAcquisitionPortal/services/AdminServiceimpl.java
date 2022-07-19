@@ -987,5 +987,30 @@ private RolesRepository roleRepository;
         return v;
     }
 
+    @Override
+    public Object getuser(HttpSession request, ModelAndView v, Integer id) {
+
+
+
+
+
+
+
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+        List <Roles_admin>  rolesAdmin = roleRepository.findAll();
+        Admi user = admiRepository.findById(id);
+
+
+
+        v.setViewName("edit_portalUsers");
+        v.addObject("user", admi);
+        v.addObject("roles", rolesAdmin);
+        v.addObject("admin_user", user);
+
+
+        return v;
+    }
+
 
 }
