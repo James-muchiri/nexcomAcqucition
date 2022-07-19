@@ -35,6 +35,39 @@ body{
             font-weight: 600;
 
         }
+
+        .display-6{
+    background-color: #aeaeae;
+    color: aliceblue;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+#rolediv{
+         border-style: solid;
+  border-color: black;
+  height:150px;
+  width:100px;
+}
+
+// css example
+span {
+  content: "\21CB";
+}
+.arrows{
+  display:block;
+  align-items:center;
+  justify-content:center;
+
+}
+
+.role-btn{
+width: 100px;
+    height: 30px;
+    margin-top:10px;
+
+
+}
 </style>
 
 <div class="content">
@@ -127,4 +160,52 @@ body{
     </div>
 </div>
 
+<script>
+
+     $(document).ready(function(){
+                    $('#portalrolesedit').click(function(e){
+                        e.preventDefault();
+            var roles=[];
+             $("input:checkbox[name=roles]:checked").each(function(){
+                  roles.push($(this).val());
+                  console.log("btn clicked");
+               });
+   console.log(roles);
+
+                        $.ajax({
+                            url: "/admin/portalRolesedit",
+                            method: 'post',
+                            data: {
+
+                                name: $('#name').val(),
+                                role: roles,
+                                description: $('#description').val(),
+                                id: $('#id').val(),
+                            },
+                            success: function(response){
+                            if (response.success) {
+
+    toastr.success(response.msg);
+
+
+
+}
+else{
+toastr.success(response.msg);
+
+}
+
+                            },
+                            error: function(response) {
+
+                                $('#error').show();
+              $('#error').text(response.responseJSON.message);
+
+           }
+                        });
+                    });
+                });
+
+
+</script>
 <section th:replace="footer :: footer"></section>

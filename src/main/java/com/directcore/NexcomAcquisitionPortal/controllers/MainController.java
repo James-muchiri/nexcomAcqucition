@@ -1,9 +1,7 @@
 package com.directcore.NexcomAcquisitionPortal.controllers;
 
 
-import com.directcore.NexcomAcquisitionPortal.model.Building_information;
-import com.directcore.NexcomAcquisitionPortal.model.Contact_info;
-import com.directcore.NexcomAcquisitionPortal.model.Region;
+import com.directcore.NexcomAcquisitionPortal.model.*;
 import com.directcore.NexcomAcquisitionPortal.repositories.AdmiRepository;
 import com.directcore.NexcomAcquisitionPortal.services.AdminService;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
@@ -15,6 +13,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -377,4 +376,61 @@ public class MainController {
 
     }
 
+    @PostMapping("/portalRoles")
+    public @ResponseBody
+   Object newportalRoles(Roles_admin admin_roles , HttpSession request) {
+
+
+
+        try {
+
+            return (ResponseEntity<Object>) adminService.newportalRoles(admin_roles, request);
+
+        } catch (Exception e) {
+            return "Failed!";
+        }
+    }
+
+    @PostMapping(path = "/portalRolesedit")
+    public
+    @ResponseBody
+    Object lokk(Roles_admin rolesAdmin) {
+
+
+        try {
+
+            return (ResponseEntity<Object>) adminService.editportalRoles(rolesAdmin);
+
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+
+
+    @GetMapping({"/admin_users"})
+    public ModelAndView portalUsers(HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.portalUsers(request, v);
+
+    }
+
+    @PostMapping(value="/portalUsers")
+    public @ResponseBody
+    ResponseEntity<Object> newportalUsers(@ModelAttribute Admi newportalUser) {
+
+        return (ResponseEntity<Object>) adminService.newportalUsers(newportalUser);
+    }
+
+
+//    //   // get portal user by id
+//    @GetMapping(path = "/getPortalUserById/{id}")
+//    public  Object getuser(@PathVariable final Integer id, Model model){
+//        Admi admi = (Admi) admiRepository.findById(id);
+//        List <Roles_admin>  rolesAdmin = roleRepository.findAll();
+//        model.addAttribute("admin", admi);
+//        model.addAttribute("roles", rolesAdmin);
+//        return "admin/edit_portalUsers";
+//    }
 }

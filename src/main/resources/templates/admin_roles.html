@@ -35,6 +35,39 @@ body{
             font-weight: 600;
 
         }
+
+        .display-6{
+    background-color: #aeaeae;
+    color: aliceblue;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+#rolediv{
+         border-style: solid;
+  border-color: black;
+  height:150px;
+  width:100px;
+}
+
+// css example
+span {
+  content: "\21CB";
+}
+.arrows{
+  display:block;
+  align-items:center;
+  justify-content:center;
+
+}
+
+.role-btn{
+width: 100px;
+    height: 30px;
+    margin-top:10px;
+
+
+}
 </style>
 
 <div class="content">
@@ -194,72 +227,7 @@ body{
             </div>
         </div>
     </div>
-    <div class="modal fade" id="editPortalroles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add User Roles</h5>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <form id="rolesform">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <div class="form-group row">
-
-                                    <div class="col-md-12">
-                                        <input id="name" type="text" class="form-control" name="name"  required autofocus>
-                                        <label for="name" class="col-md-12 col-form-label ">Names</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="form-group row">
-
-                                    <div class="col-md-12">
-                                        <label  class="col-md-12 col-form-label ">Roles</label>
-
-
-                                        <input type="checkbox" name="roles" value="orders"> Create new Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="products">View Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="deliveries">Edit Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="sms"> Manage Teritories<br>
-                                        <input type="checkbox" name="roles" value="finance">Manage Users<br>
-                                        <input type="checkbox" name="roles" value="customer_care">Manage Roles<br>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-
-                                <div class="form-group row">
-
-                                    <div class="col-md-12">
-                                        <input id="description" type="text" class="form-control" name="description"  required autofocus>
-                                        <label for="description" class="col-md-12 col-form-label ">Role Description</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" id="portalroles">Save Role</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -286,24 +254,27 @@ body{
                                 role: roles,
                                 description: $('#description').val(),
                             },
-                            success: function(data){
-                                $('role_success').show();
+                            success: function(response){
 
-                                $('#role_success').text(data);
-                                 alert(data);
-                                $("#portalroles")[0].reset();
+ if (response.success) {
 
-                                setTimeout(function() {
+    toastr.success(response.msg);
 
 
-                                $('#success').hide();
+  $('#newPortalroles').modal('hide');
+    $("#rolesform")[0].reset();
 
-                                }, 3000);
+}
+else{
+toastr.success(response.msg);
+
+  $('#newPortalroles').modal('hide');
+    $("#rolesform")[0].reset();
+}
+
                             },
                             error: function(response) {
-
-                                $('#error').show();
-              $('#error').text(response.responseJSON.message);
+   console.log(xhr.responseText)
 
            }
                         });

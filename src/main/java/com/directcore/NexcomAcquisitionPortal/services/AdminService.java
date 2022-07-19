@@ -23,8 +23,6 @@ public interface AdminService {
 
     String logout(Model model, HttpSession request);
 
-    String portalUsers(Model model);
-
     Object newportalUsers(Admi newportalUser);
 
     String portalRoles(Model model);
@@ -93,4 +91,8 @@ public interface AdminService {
     Object fetchRole(Integer id);
 
     Object getPortalroleById(Integer id, HttpSession request, ModelAndView v);
+
+    Object editportalRoles(Roles_admin rolesAdmin);
+
+    Object portalUsers(HttpSession request, ModelAndView v);
 }

@@ -138,14 +138,7 @@ private RolesRepository roleRepository;
         return "redirect:login";
     }
 
-    @Override
-    public String portalUsers(Model model) {
-        List<Admi> admi = (List<Admi>) admiRepository.findAll();
 
-         model.addAttribute("users", admi);
-
-        return "admin/portalUsers";
-    }
 
     @Override
     public Object newportalUsers(Admi newportalUser) {
@@ -179,20 +172,40 @@ private RolesRepository roleRepository;
     @Override
     public Object newportalRoles(Roles_admin roles, HttpSession request) {
 
-       Roles_admin role = roleRepository.findByName(roles.getName());
-        if (role != null){
 
-            Error1 error = new Error1();
-            error.setCode("error");
-            error.setMessage("Role already created");
-            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+
+
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+            Roles_admin role = roleRepository.findByName(roles.getName());
+            if (role != null){
+
+                Error1 error = new Error1();
+                error.setCode("error");
+                error.setMessage("Role already created");
+                return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+            }
+            Integer user_admin = (Integer) request.getAttribute("user_admin");
+            Admi admin = admiRepository.findById(user_admin);
+            roles.setCreated_by(admin.getName());
+            roleRepository.save(roles);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
         }
-        Integer user_admin = (Integer) request.getAttribute("user_admin");
-        Admi admin = admiRepository.findById(user_admin);
-roles.setCreated_by(admin.getName());
-        roleRepository.save(roles);
-        String success = "Role created";
-        return new ResponseEntity<Object>(success, HttpStatus.OK);
     }
 
     @Override
@@ -921,6 +934,57 @@ roles.setCreated_by(admin.getName());
         v.addObject("user", admi);
         v.addObject("role", role);
          return v;
+    }
+
+    @Override
+    public Object editportalRoles(Roles_admin rolesAdmin) {
+
+
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+
+
+            Roles_admin rolebyid = roleRepository.findAllById(rolesAdmin.getId());
+            rolebyid.setName(rolesAdmin.getName());
+            rolebyid.setRole(rolesAdmin.getRole());
+            rolebyid.setDescription(rolesAdmin.getDescription());
+            roleRepository.save(rolebyid);
+
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object portalUsers(HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+        List<Admi> admi3 = (List<Admi>) admiRepository.findAll();
+
+        v.setViewName("admin_user");
+        v.addObject("user", admi);
+        v.addObject("users", admi3);
+
+        return v;
     }
 
 
