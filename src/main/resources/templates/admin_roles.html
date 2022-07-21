@@ -8,12 +8,6 @@
 
 </section>
 <style>
-          table{
-            font-size: 14px;
-        }
-body{
-    background-color: #dedede;
-}
 .customers-list{
             background-color: #ffffff;
 
@@ -21,7 +15,7 @@ body{
         hr{
             color: black;
         }
-        #tab{
+      #tab{
             background-color: #ffffff;
             padding-left: 10px;
             border-radius: 10px;
@@ -83,48 +77,35 @@ width: 100px;
             <hr>
         </div>
 
-    </div>
-    <div class="container-fluid" >
 
         <!-- row -->
 
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Portal Roles</h4>
-                        <a class="btn btn-primary" href="#" style="float:right;" data-toggle="modal" data-target="#newPortalroles" data-whatever="@getbootstrap"><i class="fa fa -cog"></i>New roles</a>
-                    </div>
-                </div>
 
 
 
+        <div class="card">
+            <div class="card-header">
+
+                <button style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#newPortalroles" >New Role</button>
 
 
             </div>
-        </div>
+            <div class="card-body">
+                <div class="row">
 
-        <!-- row -->
 
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                        <div class="table-responsive">
-                            <table class="table table-lg table-hover" id="modal_table">
+                    <div class="col-sm-12">
+                        <div class="table-responsive" >
+                            <table class="table table-striped customers-list table-hover " id="modal_table">
                                 <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Roles</th>
-                                    <th>Date Created</th>
-                                    <th>Created By</th>
-                                    <th>Action</th>
+                                    <th class="t_head"> No.</th>
+                                    <th class="t_head">Name</th>
+                                    <th class="t_head">Description </th>
+                                    <th class="t_head">Permissions </th>
+                                    <th class="t_head">Action</th>
                                 </tr>
                                 </thead>
-
                                 <tbody th:if="${roles != null}">
                                 <tr  th:each="role : ${roles}">
                                     <td th:text="${role.name}">user name</td>
@@ -148,8 +129,6 @@ width: 100px;
 
                                 </tbody>
                             </table>
-                        </div>
-                            </div>
                         </div>
 
                     </div>

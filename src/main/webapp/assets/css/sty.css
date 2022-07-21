@@ -1,355 +1,8 @@
-/* This css file is to over write bootstarp css
---------------------------------------------------------- /
-* Theme Name: Ela Admin Template
-* Theme URI: http://demos.jeweltheme.com/
-* Author: jewel_theme
-* Author URI: http://themeforest.net/user/jewel_theme/portfolio
-* Description:
-* Version: 1.0.0
-* License: GNU General Public License v2 or later
-* License URI: http://www.gnu.org/licenses/gpl-2.0.html
-* Tags: html, themplate, Ela Admin
---------------------------------------------------------- */
-/*
-
-
-Googel Fonts  */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
-/* Googel Fonts End
-
-*/
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
-.bg-flat-color-1 {
-  background: #00c292; }
-
-.bg-flat-color-2 {
-  background: #ab8ce4; }
-
-.bg-flat-color-3 {
-  background: #03a9f3; }
-
-.bg-flat-color-4 {
-  background: #fb9678; }
-
-.bg-flat-color-5 {
-  background: #66bb6a; }
-
-.bg-flat-color-6 {
-  background: #5c6bc0; }
-
-.bg-transparent {
-  background-color: transparent; }
-
-.white-color {
-  color: #fff; }
-
-.flat-color-1 {
-  color: #00c292; }
-
-.flat-color-2 {
-  color: #ab8ce4; }
-
-.flat-color-3 {
-  color: #03a9f3; }
-
-.flat-color-4 {
-  color: #fb9678; }
-
-.flat-color-5 {
-  color: #66bb6a; }
-
-.flat-color-6 {
-  color: #5c6bc0; }
-
-.bg-twitter {
-  background: #1da1f2; }
-
-.bg-facebook {
-  background: #3b5998; }
-
-.bg-instagram {
-  background: #833ab4; }
-
-.bg- {
-  background: #ef5350; }
-
-.bg- {
-  background: #4dbd74; }
-
-.bg- {
-  background: #66bb6a; }
-
-.bg-white {
-  background-color: #fff; }
-
-.fade-5 {
-  opacity: 0.5; }
-
-.icon-lg {
-  font-size: 4.68em; }
-
-.fw-r {
-  font-weight: normal; }
-
-.color-gray {
-  color: #868e96; }
-
-.text-up {
-  text-transform: uppercase; }
-
-.br-0 {
-  border: none !important; }
-
-.black-rgba {
-  background-color: rgba(0, 0, 0, 0.15) !important; }
-
-.color-white {
-  color: #fff !important; }
-
-.color-red {
-  color: #dc3545; }
-
-.font-3xl {
-  font-size: 2.8125em; }
-
-.font-4xl {
-  font-size: 3.75em; }
-
-.width-90 {
-  width: 90px; }
-
-.height-15 {
-  height: 15px; }
-
-.height-93 {
-  height: 93px; }
-
-.height-100 {
-  height: 100px; }
-
-.inline-block {
-  display: inline-block; }
-
-.mb-15 {
-  margin-bottom: 15px; }
-
-/*
-
-
-Googel Fonts  */
-/* Googel Fonts End
-
-*/
-.bg-flat-color-1 {
-  background: #00c292; }
-
-.bg-flat-color-2 {
-  background: #ab8ce4; }
-
-.bg-flat-color-3 {
-  background: #03a9f3; }
-
-.bg-flat-color-4 {
-  background: #fb9678; }
-
-.bg-flat-color-5 {
-  background: #66bb6a; }
-
-.bg-flat-color-6 {
-  background: #5c6bc0; }
-
-.bg-transparent {
-  background-color: transparent; }
-
-.white-color {
-  color: #fff; }
-
-.flat-color-1 {
-  color: #00c292; }
-
-.flat-color-2 {
-  color: #ab8ce4; }
-
-.flat-color-3 {
-  color: #03a9f3; }
-
-.flat-color-4 {
-  color: #fb9678; }
-
-.flat-color-5 {
-  color: #66bb6a; }
-
-.flat-color-6 {
-  color: #5c6bc0; }
-
-.bg-twitter {
-  background: #1da1f2; }
-
-.bg-facebook {
-  background: #3b5998; }
-
-.bg-instagram {
-  background: #833ab4; }
-
-.bg- {
-  background: #ef5350; }
-
-.bg- {
-  background: #4dbd74; }
-
-.bg- {
-  background: #66bb6a; }
-
-.bg-white {
-  background-color: #fff; }
-
-.fade-5 {
-  opacity: 0.5; }
-
-.icon-lg {
-  font-size: 4.68em; }
-
-.fw-r {
-  font-weight: normal; }
-
-.color-gray {
-  color: #868e96; }
-
-.text-up {
-  text-transform: uppercase; }
-
-.br-0 {
-  border: none !important; }
-
-.black-rgba {
-  background-color: rgba(0, 0, 0, 0.15) !important; }
-
-.color-white {
-  color: #fff !important; }
-
-.color-red {
-  color: #dc3545; }
-
-.font-3xl {
-  font-size: 2.8125em; }
-
-.font-4xl {
-  font-size: 3.75em; }
-
-.width-90 {
-  width: 90px; }
-
-.height-15 {
-  height: 15px; }
-
-.height-93 {
-  height: 93px; }
-
-.height-100 {
-  height: 100px; }
-
-.inline-block {
-  display: inline-block; }
-
-.mb-15 {
-  margin-bottom: 15px; }
-
-.tdl-holder {
-  margin: 0 auto; }
-  .tdl-holder ul {
-    list-style: none;
-    margin: 0;
-    padding: 0; }
-  .tdl-holder li {
-    position: relative;
-    background-color: transparent;
-    list-style: outside none none;
-    margin: 0;
-    padding: 7px 0; }
-    .tdl-holder li:after, .tdl-holder li:before {
-      content: "\f142";
-      top: 24px;
-      position: absolute;
-      font: normal normal normal 14px/1 FontAwesome;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      z-index: 99;
-      color: #99abb4; }
-    .tdl-holder li:after {
-      left: 10px; }
-    .tdl-holder li:before {
-      left: 14px; }
-    .tdl-holder li span {
-      margin-left: 30px;
-      vertical-align: middle;
-      -webkit-transition: all 0.2s linear;
-      transition: all 0.2s linear; }
-  .tdl-holder label {
-    cursor: pointer;
-    display: block;
-    line-height: 50px;
-    padding: 0 15px;
-    padding-left: 30px;
-    position: relative;
-    margin: 0 !important;
-    background: #fafafa;
-    color: #99abb4;
-    font-size: 15px;
-    -webkit-transition: all 0.2s linear;
-    transition: all 0.2s linear; }
-    .tdl-holder label:hover {
-      background-color: rgba(153, 171, 180, 0.1); }
-    .tdl-holder label a {
-      border-radius: 50%;
-      color: rgba(153, 171, 180, 0.5);
-      float: right;
-      line-height: normal;
-      margin-top: 15px;
-      text-align: center;
-      text-decoration: none;
-      height: 16px;
-      width: 20px;
-      -webkit-transition: all 0.2s linear;
-      transition: all 0.2s linear; }
-      .tdl-holder label a:hover {
-        color: rgba(153, 171, 180, 0.8); }
-  .tdl-holder input[type="checkbox"] {
-    cursor: pointer;
-    opacity: 0;
-    position: absolute; }
-    .tdl-holder input[type="checkbox"] + i {
-      border: 1px solid rgba(153, 171, 180, 0.3);
-      display: block;
-      height: 18px;
-      position: absolute;
-      top: 15px;
-      width: 18px;
-      z-index: 1; }
-    .tdl-holder input[type="checkbox"]:checked + i::after {
-      content: "\e64c";
-      font-family: "Nunito", sans-serif;
-      display: block;
-      color: rgba(153, 171, 180, 0.5);
-      left: 0;
-      position: absolute;
-      top: -16px;
-      z-index: 2; }
-    .tdl-holder input[type="checkbox"]:checked ~ span {
-      text-decoration: line-through; }
-  .tdl-holder input[type="text"] {
-    height: 60px;
-    margin-top: 20px;
-    font-size: 14px; }
 
 .transition {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; }
 
-body {
-  display: table;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  width: 100%; }
 
 p {
   font-size: 16px;
@@ -2364,7 +2017,7 @@ footer.site-footer {
     top: 51px !important; }
 
   .content {
-    padding: 1.25em; }
+    padding: 0.36em; }
 
   .flotRealtime2 {
     height: 330px; }
@@ -2551,10 +2204,7 @@ footer.site-footer {
 
 
 
-.dataTables_wrapper {
-  width: 90%;
 
-}
 
 .glyphicon {
   position: relative;
@@ -2947,13 +2597,13 @@ font-weight: 700;
 .tabs {
 	background: #fff;
 	position: relative;
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .tabs > input,
 .tabs > span {
-	width: 20%;
-	height: 60px;
+	width: 30%;
+	height: 50px;
 	line-height: 60px;
 	position: absolute;
 	top: 0;
@@ -3015,9 +2665,9 @@ font-weight: 700;
 } */
 
 .tab-content {
-	padding: 80px 20px 20px;
+	padding: 70px 20px 20px;
 	width: 100%;
-	min-height: 340px;
+	min-height: 300px;
 }
 
 .tab-content section {
@@ -3106,21 +2756,10 @@ font-weight: 700;
   text-align: center;
   position: relative;
   margin-top: 20px;
+  padding: 8px;
 }
 
-#msform fieldset .form-card {
-  background: white;
-  border: 0 none;
-  border-radius: 0px;
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
-  padding: 10px 10px 30px 10px;
-  box-sizing: border-box;
-  width: 94%;
-  margin: 0 2% 20px 2%;
 
-  /*stacking fieldsets above each other*/
-  position: relative;
-}
 
 #msform fieldset {
   background: white;
@@ -3142,43 +2781,16 @@ font-weight: 700;
 
 #msform fieldset .form-card {
   text-align: left;
-  color: #9E9E9E;
+
 }
 
 
-/*Blue Buttons*/
-#msform .action-button {
-  width: 100px;
-  background: skyblue;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
-}
 
-#msform .action-button:hover, #msform .action-button:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
-}
 
-/*Previous Buttons*/
-#msform .action-button-previous {
-  width: 100px;
-  background: #616161;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 0px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 10px 5px;
-}
 
-#msform .action-button-previous:hover, #msform .action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
-}
+
+
+
 
 /*Dropdown List Exp Date*/
 select.list-dt {
@@ -3208,77 +2820,6 @@ select.list-dt:focus {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: left;
-}
-
-/*progressbar*/
-#progressbar {
-  margin-bottom: 30px;
-  overflow: hidden;
-  color: lightgrey;
-}
-
-#progressbar .active {
-  color: #000000;
-}
-
-#progressbar li {
-  list-style-type: none;
-  font-size: 12px;
-  width: 25%;
-  float: left;
-  position: relative;
-}
-
-/*Icons in the ProgressBar*/
-#progressbar #account:before {
-  font-family: FontAwesome;
-  content: "\f023";
-}
-
-#progressbar #personal:before {
-  font-family: FontAwesome;
-  content: "\f007";
-}
-
-#progressbar #payment:before {
-  font-family: FontAwesome;
-  content: "\f09d";
-}
-
-#progressbar #confirm:before {
-  font-family: FontAwesome;
-  content: "\f00c";
-}
-
-/*ProgressBar before any progress*/
-#progressbar li:before {
-  width: 50px;
-  height: 50px;
-  line-height: 45px;
-  display: block;
-  font-size: 18px;
-  color: #ffffff;
-  background: lightgray;
-  border-radius: 50%;
-  margin: 0 auto 10px auto;
-  padding: 2px;
-}
-
-/*ProgressBar connectors*/
-#progressbar li:after {
-  content: '';
-  width: 100%;
-  height: 2px;
-  background: lightgray;
-  position: absolute;
-  left: 0;
-  top: 25px;
-  z-index: -1;
-}
-
-/*Color number of the step and the connector before it*/
-#progressbar li.active:before, #progressbar li.active:after {
-  background: skyblue;
 }
 
 /*Imaged Radio Buttons*/
@@ -3313,30 +2854,7 @@ select.list-dt:focus {
   object-fit: cover;
 }
 
-.Personal input, #msform textarea {
-  padding: 0px 8px 4px 8px;
-  border: none;
-  border-bottom: 1px solid #ccc;
-  border-radius: 0px;
-  margin-bottom: 25px;
-  margin-top: 2px;
-  width: 100%;
-  box-sizing: border-box;
-  font-family: montserrat;
-  color: #2C3E50;
-  font-size: 16px;
-  letter-spacing: 1px;
-}
 
-.Personal input:focus, #msform textarea:focus {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: none;
-  font-weight: bold;
-  border-bottom: 2px solid skyblue;
-  outline-width: 0;
-}
 .basic{
   padding: 20px;
 }
@@ -3368,118 +2886,3 @@ select.list-dt:focus {
     margin-bottom: 0;
   }
 
-  @media (max-width: 730px) {
-
-
-    .table-responsive{
-      width:550px
-
-    }
-
-    .container-fluid {
-        width: 100%;
-        padding-right: 10px;
-        padding-left: 10px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-  }
-  @media (max-width: 650px) {
-
-
-    .table-responsive{
-      width:450px
-
-    }
-  }
-  @media (max-width: 550px) {
-
-
-    .table-responsive{
-      width:400px
-
-    }
-    .container-fluid {
-        width: 100%;
-        padding-right: 5px;
-        padding-left: 5px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-  }
-  @media (max-width: 500px) {
-
-
-    .table-responsive{
-      width:360px
-
-    }
-
-    .container-fluid {
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-
-  }
-
-    @media (max-width: 436px) {
-
-
-      .table-responsive{
-        width:320px
-
-      }
-      }
-
-          @media (max-width: 436px) {
-
-
-            .table-responsive{
-              width:300px
-
-            }
-            }
-
-               @media (max-width: 364px) {
-
-
-                        .table-responsive{
-                          width:250px
-
-                        }
-                        }
-
-
-                        .card-header:first-child {
-                            border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
-                        }
-
-                        .card-header {
-                            background: 0 0;
-                            padding: 1.25rem;
-                            border-bottom: 1px solid #ededed;
-                        }
-                        .card-title {
-                            color: #333;
-                            margin-bottom: 20px;
-                        }
-
-                        .btn-theme {
-                            background: #f1bd06;
-                            border-bottom: 5px solid #094c7f;
-                        }
-
-                        .ctm-border-radius {
-                            border-radius: 10px;
-                        }
-                        .text-white {
-                            color: #fff!important;
-                        }
-
-                        .text-primary {
-                            color: #3e007c!important;
-                        }
