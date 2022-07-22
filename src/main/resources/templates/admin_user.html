@@ -120,7 +120,8 @@ width: 100px;
                   <td th:text="${user.createDateTime}"></tdth:text></td>
                   <td><div class="label text-success bg-success-light">james muchiri</div></td>
                   <td>
-                  <a   th:href="@{|/admin/getPortalUserById/${user.id}|}" class="btn btn-primary">Edit</a>
+                  <a   th:attr="onclick=|portalUserById(${user.getId()})|"  data-toggle="modal" data-target="#editPortalUser" class="btn btn-primary">Edit</a>
+
                   </td>
                 </tr>
 
@@ -153,8 +154,7 @@ width: 100px;
         </div>
         <div class="modal-body">
 
-          <div class="alert alert-message alert-dismissible fade show" id="success"></div>
-          <div class="alert alert-message alert-dismissible fade show" id="error"></div>
+
           <form id="portalform" >
 
             <div class="form-group row">

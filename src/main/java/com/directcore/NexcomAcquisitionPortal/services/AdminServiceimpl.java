@@ -1041,6 +1041,10 @@ return "ddd";
         return "ddd";
       }
 
+    @Override
+    public Object getuserbyid(Integer id) {
+        Admi admi = admiRepository.findById(id);
 
-
+        return  admi;
+    }
 }

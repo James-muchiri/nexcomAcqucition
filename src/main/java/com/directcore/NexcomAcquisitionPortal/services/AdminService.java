@@ -103,4 +103,6 @@ public interface AdminService {
     Object addPermissions(Integer roleId, String[] data);
 
     Object role_edit(Integer roleId, String name, String is_active);
+
+    Object getuserbyid(Integer id);
 }

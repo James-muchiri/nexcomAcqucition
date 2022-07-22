@@ -436,7 +436,14 @@ public class MainController {
 
     }
 
+    //   // get portal user by id
+    @GetMapping(path = "/getPortalUserByid/{id}")
+    @ResponseBody
+    public Object getuserbyid(@PathVariable final Integer id) {
 
+        return (ModelAndView) adminService.getuserbyid( id);
+
+    }
     @RequestMapping(value = "/addPermissions", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
     @ResponseBody
     public Object addPermissions(@RequestParam("id") Integer roleId, @RequestParam("data") String[] data) {
