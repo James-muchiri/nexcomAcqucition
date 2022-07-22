@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -172,22 +173,15 @@ private RolesRepository roleRepository;
     @Override
     public Object newportalRoles(Roles_admin roles, HttpSession request) {
 
-
-
-
-
-
-
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
 
             Roles_admin role = roleRepository.findByName(roles.getName());
             if (role != null){
 
-                Error1 error = new Error1();
-                error.setCode("error");
-                error.setMessage("Role already created");
-                return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+                 rdata.put("success", 0);
+                rdata.put("msg", "Role already created.");
+                return rdata;
             }
             Integer user_admin = (Integer) request.getAttribute("user_admin");
             Admi admin = admiRepository.findById(user_admin);
@@ -196,8 +190,6 @@ private RolesRepository roleRepository;
 
             rdata.put("success", 1);
             rdata.put("msg", "successful.");
-
-
             return rdata;
 
         } catch (Exception e) {
@@ -936,6 +928,19 @@ private RolesRepository roleRepository;
          return v;
     }
 
+
+
+    @Override
+    public Object getPortalroleByid(Integer id) {
+
+
+
+
+        Roles_admin role = roleRepository.findAllById(id);
+
+        return role;
+    }
+
     @Override
     public Object editportalRoles(Roles_admin rolesAdmin) {
 
@@ -1011,6 +1016,31 @@ private RolesRepository roleRepository;
 
         return v;
     }
+
+    @Override
+    public Object addPermissions(Integer roleId, String[] data) {
+
+        Roles_admin rolesAdmin = roleRepository.findAllById(roleId);
+
+      String[] permissions  = rolesAdmin.getRole();
+
+            rolesAdmin.setRole(data);
+return "ddd";
+
+
+    }
+
+    @Override
+    public Object role_edit(Integer roleId, String name, String is_active) {
+        Roles_admin rolesAdmin = roleRepository.findAllById(roleId);
+
+        rolesAdmin.setName(name);
+        rolesAdmin.setIs_active(is_active);
+        roleRepository.save(rolesAdmin);
+
+        return "ddd";
+      }
+
 
 
 }

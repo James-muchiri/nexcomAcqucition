@@ -99,24 +99,29 @@ width: 100px;
                             <table class="table table-striped customers-list table-hover " id="modal_table">
                                 <thead>
                                 <tr>
-                                    <th class="t_head"> No.</th>
+
                                     <th class="t_head">Name</th>
-                                    <th class="t_head">Description </th>
-                                    <th class="t_head">Permissions </th>
-                                    <th class="t_head">Action</th>
+                                    <th class="t_head">Is Active</th>
+                                    <th class="t_head">Edit Role Name </th>
+                                    <th class="t_head">Manage Privelenges</th>
                                 </tr>
                                 </thead>
                                 <tbody th:if="${roles != null}">
+
                                 <tr  th:each="role : ${roles}">
-                                    <td th:text="${role.name}">user name</td>
+                                    <td th:text="${role.getName}"></td>
+
+<!--                                    <td>-->
+<!--&lt;!&ndash;                                        <div th:each="role_name : ${role.role}" th:text="${role_name}"  ></div></td>&ndash;&gt;-->
+                                    <td><div class="label text-success bg-success-light" th:text="${role.getName}" ></div></td>
 
                                     <td>
-                                        <div th:each="role_name : ${role.role}" th:text="${role_name}"  >roles</div></td>
+<!--                                        <button   th:href="@{|/admin/getPortalroleById/${role.id}|}" class="btn btn-primary">Edit Role</button>-->
+                                        <button  th:attr="onclick=|editPortalroles(${role.getId()})|"   data-toggle="modal" data-target="#admin_role_edit_modal" class="btn btn-primary">Edit Role</button>
+                                    </td>
 
-                                    <td><div class="label text-success bg-success-light" th:text="${role.createDateTime}" ></div></td>
-                                    <td><div class="label text-success bg-success-light" th:text="${role.created_by}" ></div></td>
-                                    <td>
-                                        <a   th:href="@{|/admin/getPortalroleById/${role.id}|}" class="btn btn-primary">Edit</a>
+                                    <td>  <button  class="btn btn-primary" th:attr="onclick=|Permissions(${role.getId()})|"  data-toggle="modal" data-target="#admin_priveleges_modal">Priveleges</button>
+
                                     </td>
                                 </tr>
 
@@ -152,7 +157,6 @@ width: 100px;
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <form id="rolesform">
                         <div class="row">
                             <div class="col-sm-4">
@@ -196,11 +200,139 @@ width: 100px;
 
 
 
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary" id="portalroles">Save Role</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="admin_role_edit_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Roles</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+
+                        <div id="edit_role_form">
+
+
+                        </div>
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a type="submit" onclick="save_edit()" class="btn btn-primary" id="portalroles">Save Role</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="admin_priveleges_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add User Roles</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="">
+
+                    <form id="permissions_table">
+
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-sm-12">
+
+                                <table class="table table-striped customers-list " id="admin_permissions" style="width: 100%">
+                                    <thead>
+                                    <tr>
+                                        <td class="t_head"> Check</td>
+                                        <td class="t_head">Permissions</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody id="admin_permissions_table">
+                                    <input type="text" id="role_id" hidden>
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="emails" name="edit_roles" value="orders"></td>
+                                        <td> Create new Acqusitions</td>
+
+                                    </tr>
+
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="emails" name="edit_roles" value="viewall"></td>
+                                        <td>View Acqusitions</td>
+
+                                    </tr>
+
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="tarrifs" name="edit_roles" value="recruitments"></td>
+                                        <td>Edit Acqusitions</td>
+
+                                    </tr>
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="connected_locations" name="edit_roles" value="roles" ></td>
+                                        <td> Manage Teritories</td>
+
+                                    </tr>
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="connected_locations" name="edit_roles" value="users"></td>
+                                        <td>Manage Users</td>
+
+                                    </tr>
+                                    <tr id="t_data">
+
+                                        <td> <input type="checkbox" id="connected_locations" name="edit_roles" value="regions"></td>
+                                        <td>Manage Roles</td>
+
+                                    </tr>
+
+                                    <input type="text" id="roles_id" name="roles_id"  >
+
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a type="button" class="btn btn-primary" onclick="addPermissions()">Save Role</a>
                 </div>
                 </form>
             </div>
@@ -234,6 +366,7 @@ width: 100px;
                                 description: $('#description').val(),
                             },
                             success: function(response){
+                            console.log(response);
 
  if (response.success) {
 
@@ -245,15 +378,16 @@ width: 100px;
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
-  $('#newPortalroles').modal('hide');
-    $("#rolesform")[0].reset();
+<!--  $('#newPortalroles').modal('hide');-->
+<!--    $("#rolesform")[0].reset();-->
 }
 
                             },
-                            error: function(response) {
+                            error: function(xhr) {
    console.log(xhr.responseText)
+
 
            }
                         });
@@ -264,7 +398,7 @@ toastr.success(response.msg);
 
 
 
-                function editPortaroles(id){
+                function editPortalroles(id){
     console.log("get portal role id");
 
     var dataId = id;
@@ -274,77 +408,196 @@ toastr.success(response.msg);
     $.ajax({
     type: 'get',
     data:  dataId,
-    url: '/admin/getPortalroleById/'+dataId,
+    url: '/admin/getPortalroleByid/'+dataId,
     success:
         function( data ){
            var t_data="";
-           t_data=t_data+
-                '<form>'+
-                '<div class="row">'+
-                   ' <div class="col-sm-4">'+
-                       ' <div class="form-group row">'+
 
-                         '   <div class="col-md-12">'+
-                             '   <input id="nam" type="text" class="form-control" name="name"  required autofocus>'+
-                             '  <label for="emai" class="col-md-12 col-form-label ">Names</label>'+
-                         '   </div>'+
+           if(data.is_active == "yes"){
+            var s_data=   '<option value="yes" selected>Yes</option>';
+
+           }else
+           {
+            var s_data=   '<option value="no" selected>No</option>';
+            }
+
+           t_data=t_data+
+
+                '<div class="row">'+
+                   ' <div class="col-sm-6">'+
+                       ' <div class="form-group">'+
+
+    '  <label for="name" class=" ">Role Name</label>'+
+                             '   <input type="text" class="form-control" id="edit_name" value="'+data.name+'" >'+
+   '   <input  type="text" class="form-control" id="edit_id" value="'+data.id+'"  hidden>'+
+
+
                       '  </div>'+
                  '   </div>'+
                   '  <div class="col-sm-4">'+
-                        '<div class="form-group row">'+
+                        '<div class="form-group">'+
 
-                            '<div class="col-md-12">'+
-                             '   <input id="emai" type="email" class="form-control" name="email" required autocomplete="email" autofocus>'+
-  '<label for="emai" class="col-md-12 col-form-label ">E-Mail Address</label>'+
-                          '  </div>'+
+                                            '<label  class="form-label">Is Active</label>'+
+                                        '<select name="is_active" id="is_active" class="form-control">'+
+
+                                          s_data+
+
+                                        '</select>'+
+
+
                        ' </div>'+
                    ' </div>'+
-                   ' <div class="col-sm-4">'+
 
-                     '   <div class="form-group row">'+
 
-                          '  <div class="col-md-12">'+
-                            '    <input id="phon" type="text" class="form-control" name="phone_number"  required autofocus>'+
-                             '   <label for="phon" class="col-md-12 col-form-label ">Phone Number</label>'+
-                           ' </div>'+
-                     '   </div>'+
-                  '  </div>'+
-             '   </div>'+
 
-                   ' <div class="row">'+
-                   ' <div class="col-sm-2" >'+
-                   '   </div>'+
-                     ' <div class="col-sm-3" >'+
-                     '<p> user roles</p>'+
-                       ' <select name="Testing" id="rolediv" multiple="multiple">   '+
-                         ' <option value="1"> One  '+
-                         ' <option value="2"> Two  '+
-                         ' <option value="3"> Three'+
-                        '</select>'+
 
-                     '   </div>'+
-                       '   <div class="col-sm-2 arrows">'+
 
-                     '  <a href="#link"  class="btn btn-info role-btn" role="button">Add</a>'+
-                       '<a href="#link" class="btn btn-info role-btn" role="button">Remove</a>'+
-
-                     '   </div>'+
-                       '   <div class="col-sm-3">'+
-                       '<p> available roles</p>'+
- '<select name="Testing"  id="rolediv"  multiple="multiple">  '+
-                         ' <option value="1"> One  '+
-                         ' <option value="2"> Two  '+
-                         ' <option value="3"> Three'+
-                        '</select>'+
-
-                     '   </div>'+
                    ' </div>';
-            $("#modal_table1").html("");
-             $("#modal_table1").append(t_data);
+            $("#edit_role_form").html("");
+             $("#edit_role_form").append(t_data);
 
         }
     });
 };
+
+function Permissions(id) {
+    console.log("edit role");
+    var dataId = id;
+
+    $.ajax({
+             type: "GET",
+                url: '/admin/getPortalroleByid/'+dataId,
+             cache: false,
+             success: function(data) {
+
+                document.getElementById('roles_id').value = data.id;
+
+
+                var uncheck=document.getElementsByName('edit_roles');
+ for(var i=0;i<uncheck.length;i++)
+ {
+
+  if(uncheck[i].type=='checkbox')
+  {
+
+   uncheck[i].checked=false;
+
+
+  var permissions = [];
+ permissions =data.role;
+ console.log(uncheck[i].value);
+
+
+ if( permissions.includes(uncheck[i].value)){
+  uncheck[i].checked = true;
+ }
+
+
+
+
+
+
+  }
+
+ }
+
+
+
+
+
+
+
+             },
+
+        });
+
+};
+
+
+function save_edit() {
+    console.log("save Admin user");
+
+    var id = document.getElementById('edit_id').value;
+        var name = document.getElementById('edit_name').value;
+            var is_active = document.getElementById('is_active').value;
+
+
+
+        var formdata = 'edit_id=' + id + '&edit_name=' + name + '&is_active=' + is_active;
+        // validate the form input
+        console.log(formdata);
+
+
+    // AJAX code to submit form.
+    $.ajax({
+             type: "POST",
+             url: "/admin/role_edit", //call  to store form data
+             data: formdata,
+             cache: false,
+             success: function(data) {
+                 console.log(data);
+
+
+		    	toastr.success(data);
+
+
+          },
+             error: function(xhr)
+             {
+               console.log(xhr.responseText)
+             },
+
+        });
+
+    };
+
+
+    function addPermissions() {
+    console.log("save Admin user");
+
+    var id = document.getElementById('roles_id').value;
+
+
+
+       var roles=[];
+             $("input:checkbox[name=edit_roles]:checked").each(function(){
+                  roles.push($(this).val());
+                  console.log("btn clicked");
+               });
+   console.log(roles);
+
+
+
+
+
+        var formdata = 'id=' + id + '&data=' + roles;
+        // validate the form input
+        console.log(formdata);
+
+
+    // AJAX code to submit form.
+    $.ajax({
+             type: "POST",
+             url: "/admin/addPermissions", //call  to store form data
+             data: formdata,
+             cache: false,
+             success: function(data) {
+                 console.log(data);
+
+
+		    	toastr.success(data);
+
+
+          },
+             error: function(xhr)
+             {
+               console.log(xhr.responseText)
+             },
+
+        });
+
+    };
+
 
                             </script>
 

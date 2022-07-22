@@ -369,10 +369,11 @@ public class MainController {
 
     }
 
-    @GetMapping("/getPortalroleById/{id}")
-    public ModelAndView getPortalroleById(@PathVariable Integer id, HttpSession request, ModelAndView v) {
+    @GetMapping("/getPortalroleByid/{id}")
+    public @ResponseBody
+    Object getPortalroleById(@PathVariable Integer id) {
 
-        return (ModelAndView) adminService.getPortalroleById(id, request, v);
+        return  adminService.getPortalroleByid(id);
 
     }
 
@@ -384,7 +385,7 @@ public class MainController {
 
         try {
 
-            return (ResponseEntity<Object>) adminService.newportalRoles(admin_roles, request);
+            return adminService.newportalRoles(admin_roles, request);
 
         } catch (Exception e) {
             return "Failed!";
@@ -435,6 +436,30 @@ public class MainController {
 
     }
 
+
+    @RequestMapping(value = "/addPermissions", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object addPermissions(@RequestParam("id") Integer roleId, @RequestParam("data") String[] data) {
+
+        try {
+            return adminService.addPermissions(roleId, data);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @RequestMapping(value = "/role_edit", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object eoleedit(@RequestParam("edit_id") Integer roleId, @RequestParam("edit_name") String name, @RequestParam("is_active") String is_active) {
+
+        try {
+            return adminService.role_edit(roleId, name, is_active);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
 
 
 }

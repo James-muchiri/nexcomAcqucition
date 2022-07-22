@@ -97,4 +97,10 @@ public interface AdminService {
     Object portalUsers(HttpSession request, ModelAndView v);
 
     Object getuser(HttpSession request, ModelAndView v, Integer id);
+
+    Object getPortalroleByid(Integer id);
+
+    Object addPermissions(Integer roleId, String[] data);
+
+    Object role_edit(Integer roleId, String name, String is_active);
 }

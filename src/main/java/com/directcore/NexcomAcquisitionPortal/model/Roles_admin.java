@@ -21,10 +21,13 @@ public class Roles_admin {
     private String name;
     @Column(name = "created_by", nullable = false)
     private String created_by;
-    @Column(name = "role", nullable = false)
+    @Column(name = "role", nullable = true)
     private String [] role;
     @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "is_active", nullable = false)
+    private String is_active;
     @ManyToMany(mappedBy = "roles")
     private Set<Admi> admin;
     @CreationTimestamp
@@ -89,4 +92,11 @@ public class Roles_admin {
         return updateDateTime;
     }
 
+    public String getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(String is_active) {
+        this.is_active = is_active;
+    }
 }
