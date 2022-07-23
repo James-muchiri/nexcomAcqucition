@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 
 public interface AdminService {
 
@@ -105,4 +106,10 @@ public interface AdminService {
     Object role_edit(Integer roleId, String name, String is_active);
 
     Object getuserbyid(Integer id);
+
+    Object viewAll(HttpSession request, ModelAndView v);
+
+    Object view_ba_search(String search);
+
+    Object view_ba(String search, Integer search_type) throws ParseException;
 }

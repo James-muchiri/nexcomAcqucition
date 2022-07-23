@@ -10,6 +10,9 @@ import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,7 +25,11 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -1046,5 +1053,56 @@ return "ddd";
         Admi admi = admiRepository.findById(id);
 
         return  admi;
+    }
+
+
+    @Override
+    public Object viewAll(HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+          List  <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
+
+
+        v.setViewName("viewAll");
+        v.addObject("user", admi);
+        v.addObject("buildings", building_infos);
+        return v;
+    }
+
+
+    @Override
+    public Object view_ba_search(String search) {
+
+        List<Building_info> building_infos = building_infoRepository.findByNameLike(search);
+
+        return building_infos;
+    }
+
+
+    @Override
+    public Object view_ba(String search, Integer search_type) throws ParseException {
+
+        if(search_type == 3){
+
+            LocalDateTime creationDateTime = LocalDateTime.now().minusDays(7);
+//            return this.repository.findAllWithDateAfter(threeDaysAgoDate);
+//            @Query("select m from Message m where date >= :threeDaysAgoDate")
+//            List<Message> findAllWithDateAfter(@Param("threeDaysAgoDate") LocalDate threeDaysAgoDate);
+
+            List<Building_info> building_infos = building_infoRepository.findAllWithCreateDateTimeAfter(creationDateTime);
+
+            return building_infos;
+        }
+else
+        {
+            List<Building_info> building_infos = building_infoRepository.findByNameLike(search);
+
+            return building_infos;
+        }
+
+
+
     }
 }

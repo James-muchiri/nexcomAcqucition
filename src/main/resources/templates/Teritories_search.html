@@ -35,6 +35,8 @@ body{
             font-weight: 600;
 
         }
+
+
 </style>
 
 <div class="content">
@@ -43,18 +45,525 @@ body{
 
     <!-- /Widgets -->
     <div class="container-fluid">
-        <div class="row" id="tab">
-            <p style="float: left;"> Dashboard</p>
+
+
+
+            <div class="row" id="tab">
+                <p> Dashboard /<a href="/Teritories"> Teritories Search </a></p>
+            </div>
+            <div class="row" style="padding:2px;">
+
+                <hr>
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+
+                                <div class="col-md-2 ">
+                                    <p>Search By</p>
+                                    <select id="filter_by" name="filter_by" class=" form-control">
+                                        <option value="1">Custom Search</option>
+                                        <option value="2">By area level</option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-md-5" id="search_query_view">
+                                    <p class="mt-1">Search</p>
+                                    <input type="text" class="form-control" required="" name="searchQuery" id="searchQuery" placeholder="type name" >
+                                    <br>
+                                </div>
+
+                                <br>
+
+                                <div class="col-md-3 ml-3 mr-4 mt-1 " id="select_search_user_view" style="display: none;">
+                                    <p class="mt-7">Select User </p>
+                                    <select id="search_selects" name="search_selects" class="form-control " >
+
+
+                                        <option value="regions" >Regions</option>
+                                        <option value="zones" >Zones</option>
+
+                                        <option value="areas" >Areas</option>
+
+                                        <option value="clusters" >clusters</option>
+
+
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-2  ml-2 mr-3" id="select_search_recent_view" style="display: none;">
+                                    <p class="">Select Time </p>
+                                    <select id="search_selects" name="search_selects" class="form-control">
+                                        <option value="1"> Last 1 Week</option>
+                                        <option value="2"> Last 1 Month</option>
+                                    </select>
+                                    <br>
+                                </div>
+
+
+
+
+                                <div class="col-md-3 mt-1 " id="btn_search_business_view" style="display: none;">
+                                    <button type="button" onclick="view_ba();" class="btn btn-primary mt-3" id="view_subscribers_btn">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <p>Regions</p>
+                                    <hr>
+                                    <div id="search-regions">
+
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <p>Zones</p>
+                                    <hr>
+                                    <div id="search-zones">
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <p>Areas</p>
+                                    <hr>
+                                    <div id="search-areas">
+
+
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <p>Clusters</p>
+                                    <hr>
+                                    <div id="search-clusters">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+
+
+
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="table-responsive" >
+                                        <table class="table table-striped mt32 customers-list table-hover" id="modal_table">
+                                            <thead>
+                                            <tr>
+
+                                                <th class="t_head">No</th>
+                                                <th class="t_head">Name</th>
+                                                <th class="t_head">Description</th>
+
+                                                <th class="t_head">Action</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody id="myTable">
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
         </div>
-        <div class="row" >
-            <hr>
-        </div>
-
-    </div>
-    <div class="container-fluid" >
 
 
-    </div>
+
+        <script>
+
+
+$('#filter_by').change(function() {
+    var vall = $(this).val();
+console.log(vall);
+
+
+  if (vall == 1) {
+
+    document.getElementById('search_query_view').style.display = "block";
+document.getElementById('select_search_user_view').style.display = "none";
+document.getElementById('select_search_recent_view').style.display = "none";
+document.getElementById('btn_search_business_view').style.display = "none";
+
+
+  } else if(vall == 2){
+    document.getElementById('search_query_view').style.display = "none";
+document.getElementById('select_search_user_view').style.display = "block";
+document.getElementById('select_search_recent_view').style.display = "none";
+document.getElementById('btn_search_business_view').style.display = "block";
+
+  }
+  else if(vall == 3){
+    document.getElementById('search_query_view').style.display = "none";
+document.getElementById('select_search_user_view').style.display = "none";
+document.getElementById('select_search_recent_view').style.display = "block";
+document.getElementById('btn_search_business_view').style.display = "block";
+    }
+
+
+
+});
+
+
+function view_ba(){
+
+
+
+var search = document.getElementById('search_selects').value;
+var _token = '{{csrf_token()}}';
+
+var formdata = '&_token=' + _token + '&search=' + search;
+      // validate the form input
+      console.log(formdata);
+
+
+  // AJAX code to submit form.
+  $.ajax({
+           type: "POST",
+           url: "/admin/view_teri", //call  to store form data
+           data: formdata,
+           cache: false,
+           success: function(data) {
+           //  console.log(data);
+if(data.level == "regions"){
+
+              var t_data="";
+            var no = 0;
+
+           $.each(data.data, function(index, element) {
+
+              no = no + 1;
+
+t_data=t_data+
+'<tr id="t_data" onclick="window.location=\'/region/'+element.id+'\';">'+
+  '<td>'+ no +'</td>'+
+
+
+
+
+                '<td>'+element.name+'</td>'+
+                '<td>'+element.description+'</td>'+
+
+
+
+                '<td>'+'<a type="button" style="color:white" onclick="window.location=\'/region/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+
+            '</tr>';
+
+
+
+
+          });
+
+
+};
+
+if(data.level == "zones"){
+
+               var t_data="";
+             var no = 0;
+
+            $.each(data.data, function(index, element) {
+
+               no = no + 1;
+
+ t_data=t_data+
+ '<tr id="t_data" onclick="window.location=\'/zone/'+element.id+'\';">'+
+   '<td>'+ no +'</td>'+
+
+
+
+
+                 '<td>'+element.name+'</td>'+
+                 '<td>'+element.description+'</td>'+
+
+
+
+                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/zone/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+
+             '</tr>';
+
+
+
+
+           });
+
+
+ };
+ if(data.level == "areas"){
+
+               var t_data="";
+             var no = 0;
+
+            $.each(data.data, function(index, element) {
+
+               no = no + 1;
+
+ t_data=t_data+
+ '<tr id="t_data" onclick="window.location=\'/area/'+element.id+'\';">'+
+   '<td>'+ no +'</td>'+
+
+
+
+
+                 '<td>'+element.name+'</td>'+
+                 '<td>'+element.description+'</td>'+
+
+
+
+                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/area/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+
+             '</tr>';
+
+
+
+
+           });
+
+
+ };
+
+ if(data.level == "clusters"){
+
+               var t_data="";
+             var no = 0;
+
+            $.each(data.data, function(index, element) {
+
+               no = no + 1;
+
+ t_data=t_data+
+ '<tr id="t_data" >'+
+   '<td>'+ no +'</td>'+
+
+
+
+
+                 '<td>'+element.name+'</td>'+
+                 '<td>'+element.description+'</td>'+
+
+
+
+                 '<td>'+'<a type="button"  style="color:white"  class="btn btn-success">view more</a>'+'</td>'+
+
+             '</tr>';
+
+
+
+
+           });
+
+
+ };
+
+
+          $("#myTable").html("");
+          $("#myTable").append(t_data);
+
+
+
+
+        },
+           error: function(xhr)
+           {
+             console.log(xhr.responseText)
+           },
+
+      });
+}
+
+
+$(document).ready(function() {
+
+
+
+
+
+
+              $('#searchQuery').bind('keyup', function(e){
+
+                      var search = $(this).val()
+
+                      if(search.length >= 2 ){
+                      var _token = '{{csrf_token()}}';
+
+          var formdata = '_token=' + _token + '&search=' + search;
+                // validate the form input
+                console.log(formdata);
+
+
+            // AJAX code to submit form.
+            $.ajax({
+                     type: "POST",
+                     url: "/admin/view_region_search", //call  to store form data
+                     data: formdata,
+                     cache: false,
+                     success: function(data) {
+                        //  console.log(data);
+                        console.log(data);
+
+                        var r_data="";
+                        var z_data="";
+                        var a_data="";
+                        var c_data="";
+                      var no = 0;
+
+                     $.each(data.regions, function(index, element) {
+
+                        no = no + 1;
+
+          r_data=r_data+
+
+
+
+
+
+                          '<a href="#" onclick="window.location=\'/region/'+element.id+'\';">'+element.name+'</a><br>';
+
+
+
+
+
+
+
+                    });
+
+
+                    $("#search-regions").html("");
+                    $("#search-regions").append(r_data);
+
+                    $.each(data.zones, function(index, element) {
+
+          no = no + 1;
+
+z_data=z_data+
+
+
+
+
+
+            '<a href="#" onclick="window.location=\'/zone/'+element.id+'\';">'+element.name+'</a><br>';
+
+
+
+
+
+
+
+      });
+
+
+      $("#search-zones").html("");
+      $("#search-zones").append(z_data);
+
+      $.each(data.areas, function(index, element) {
+
+          no = no + 1;
+
+a_data=a_data+
+
+
+
+
+
+            '<a href="#" onclick="window.location=\'/area/'+element.id+'\';">'+element.name+'</a><br>';
+
+
+
+
+
+
+
+      });
+
+
+      $("#search-areas").html("");
+      $("#search-areas").append(a_data);
+
+
+       $.each(data.clusters, function(index, element) {
+
+                        no = no + 1;
+
+          c_data=c_data+
+
+
+
+
+
+                          '<a >'+element.name+'</a><br>';
+
+
+
+
+
+
+
+                    });
+
+
+                    $("#search-clusters").html("");
+                    $("#search-clusters").append(c_data);
+
+
+
+                  },
+                     error: function(xhr)
+                     {
+                       console.log(xhr.responseText)
+                     },
+
+                });
+
+                      }
+
+          });
+
+
+
+                      } );
+
+  </script>
 </div>
 
 <section th:replace="footer :: footer"></section>

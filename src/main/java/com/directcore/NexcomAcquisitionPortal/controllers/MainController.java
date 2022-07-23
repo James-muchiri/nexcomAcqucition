@@ -468,5 +468,37 @@ public class MainController {
         // return  request;
     }
 
+    //   // get portal user by id
+    @GetMapping(path = "/viewAll")
+    public ModelAndView viewAll(HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.viewAll(request, v);
+
+    }
+
+
+    @RequestMapping(value = "/view_ba_search", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object view_ba_search(@RequestParam("search") String search) {
+
+        try {
+            return adminService.view_ba_search(search);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+
+    @RequestMapping(value = "/view_ba", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object view_ba(@RequestParam("search_type") Integer search_type, @RequestParam("search") String search) {
+
+        try {
+            return adminService.view_ba(search, search_type);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
 
 }
