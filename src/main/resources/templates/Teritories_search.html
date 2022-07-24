@@ -101,14 +101,7 @@ body{
 
                                 </div>
 
-                                <div class="col-md-2  ml-2 mr-3" id="select_search_recent_view" style="display: none;">
-                                    <p class="">Select Time </p>
-                                    <select id="search_selects" name="search_selects" class="form-control">
-                                        <option value="1"> Last 1 Week</option>
-                                        <option value="2"> Last 1 Month</option>
-                                    </select>
-                                    <br>
-                                </div>
+
 
 
 
@@ -222,23 +215,18 @@ console.log(vall);
 
     document.getElementById('search_query_view').style.display = "block";
 document.getElementById('select_search_user_view').style.display = "none";
-document.getElementById('select_search_recent_view').style.display = "none";
+
 document.getElementById('btn_search_business_view').style.display = "none";
 
 
   } else if(vall == 2){
     document.getElementById('search_query_view').style.display = "none";
 document.getElementById('select_search_user_view').style.display = "block";
-document.getElementById('select_search_recent_view').style.display = "none";
+
 document.getElementById('btn_search_business_view').style.display = "block";
 
   }
-  else if(vall == 3){
-    document.getElementById('search_query_view').style.display = "none";
-document.getElementById('select_search_user_view').style.display = "none";
-document.getElementById('select_search_recent_view').style.display = "block";
-document.getElementById('btn_search_business_view').style.display = "block";
-    }
+
 
 
 
@@ -252,7 +240,7 @@ function view_ba(){
 var search = document.getElementById('search_selects').value;
 var _token = '{{csrf_token()}}';
 
-var formdata = '&_token=' + _token + '&search=' + search;
+var formdata = 'search=' + search + '&_token' + _token;
       // validate the form input
       console.log(formdata);
 
@@ -264,18 +252,18 @@ var formdata = '&_token=' + _token + '&search=' + search;
            data: formdata,
            cache: false,
            success: function(data) {
-           //  console.log(data);
+             console.log(data);
 if(data.level == "regions"){
 
               var t_data="";
             var no = 0;
 
-           $.each(data.data, function(index, element) {
+           $.each(data.regions, function(index, element) {
 
               no = no + 1;
 
 t_data=t_data+
-'<tr id="t_data" onclick="window.location=\'/region/'+element.id+'\';">'+
+'<tr id="t_data" onclick="window.location=\'/admin/region/'+element.id+'\';">'+
   '<td>'+ no +'</td>'+
 
 
@@ -286,7 +274,7 @@ t_data=t_data+
 
 
 
-                '<td>'+'<a type="button" style="color:white" onclick="window.location=\'/region/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+                '<td>'+'<a type="button" style="color:white" onclick="window.location=\'/admin/region/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
 
             '</tr>';
 
@@ -303,12 +291,12 @@ if(data.level == "zones"){
                var t_data="";
              var no = 0;
 
-            $.each(data.data, function(index, element) {
+            $.each(data.zones, function(index, element) {
 
                no = no + 1;
 
  t_data=t_data+
- '<tr id="t_data" onclick="window.location=\'/zone/'+element.id+'\';">'+
+ '<tr id="t_data" onclick="window.location=\'/admin/zone/'+element.id+'\';">'+
    '<td>'+ no +'</td>'+
 
 
@@ -319,7 +307,7 @@ if(data.level == "zones"){
 
 
 
-                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/zone/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/admin/zone/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
 
              '</tr>';
 
@@ -335,12 +323,12 @@ if(data.level == "zones"){
                var t_data="";
              var no = 0;
 
-            $.each(data.data, function(index, element) {
+            $.each(data.areas, function(index, element) {
 
                no = no + 1;
 
  t_data=t_data+
- '<tr id="t_data" onclick="window.location=\'/area/'+element.id+'\';">'+
+ '<tr id="t_data" onclick="window.location=\'/admin/area/'+element.id+'\';">'+
    '<td>'+ no +'</td>'+
 
 
@@ -351,7 +339,7 @@ if(data.level == "zones"){
 
 
 
-                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/area/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
+                 '<td>'+'<a style="color:white"  type="button" onclick="window.location=\'/admin/area/'+element.id+'\';" class="btn btn-success">view more</a>'+'</td>'+
 
              '</tr>';
 
@@ -368,7 +356,7 @@ if(data.level == "zones"){
                var t_data="";
              var no = 0;
 
-            $.each(data.data, function(index, element) {
+            $.each(data.clusters, function(index, element) {
 
                no = no + 1;
 
@@ -458,7 +446,7 @@ $(document).ready(function() {
 
 
 
-                          '<a href="#" onclick="window.location=\'/region/'+element.id+'\';">'+element.name+'</a><br>';
+                          '<a href="#" onclick="window.location=\'/admin/region/'+element.id+'\';">'+element.name+'</a><br>';
 
 
 
@@ -482,7 +470,7 @@ z_data=z_data+
 
 
 
-            '<a href="#" onclick="window.location=\'/zone/'+element.id+'\';">'+element.name+'</a><br>';
+            '<a href="#" onclick="window.location=\'/admin/zone/'+element.id+'\';">'+element.name+'</a><br>';
 
 
 
@@ -506,7 +494,7 @@ a_data=a_data+
 
 
 
-            '<a href="#" onclick="window.location=\'/area/'+element.id+'\';">'+element.name+'</a><br>';
+            '<a href="#" onclick="window.location=\'/admin/area/'+element.id+'\';">'+element.name+'</a><br>';
 
 
 

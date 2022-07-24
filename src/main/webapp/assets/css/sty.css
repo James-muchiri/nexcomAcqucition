@@ -2855,13 +2855,8 @@ select.list-dt:focus {
 }
 
 
-.basic{
-  padding: 20px;
-}
-.basic input {
-  float: right;
-  margin-right: 50px;
-}
+
+
 
 .custom-file{
   padding: 20px;

@@ -13,7 +13,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -501,4 +501,34 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/view_teri", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object view_teri(@RequestParam("search") String search) {
+
+        try {
+            return adminService.view_teri(search);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
+
+    @RequestMapping(value = "/view_region_search", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object view_region_searchrch(@RequestParam("search") String search) {
+
+        try {
+            return adminService.view_region_search(search);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
+    //   // get portal user by id
+    @GetMapping(path = "/Teritories_search")
+    public ModelAndView Teritories_search(HttpSession request, ModelAndView v) {
+
+        return (ModelAndView) adminService.Teritories_search(request, v);
+
+    }
 }

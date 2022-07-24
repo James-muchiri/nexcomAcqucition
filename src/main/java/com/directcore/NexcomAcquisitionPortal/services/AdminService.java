@@ -112,4 +112,10 @@ public interface AdminService {
     Object view_ba_search(String search);
 
     Object view_ba(String search, Integer search_type) throws ParseException;
+
+    Object view_teri(String search);
+
+    Object view_region_search(String search);
+
+    Object Teritories_search(HttpSession request, ModelAndView v);
 }

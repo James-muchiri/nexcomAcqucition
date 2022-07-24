@@ -28,10 +28,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -1104,5 +1101,124 @@ else
 
 
 
+    }
+
+
+    @Override
+    public Object view_teri(String search) {
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+
+            if (Objects.equals(search, "regions")) {
+                List<Region> regions = (List<Region>) regionRepository.findAll();
+                rdata.put("success", 1);
+                rdata.put("level", "regions");
+                rdata.put("regions", regions);
+                return rdata;
+
+            } else if (Objects.equals(search, "zones")) {
+                List<Zone> zones = (List<Zone>) zoneRepository.findAll();
+                rdata.put("success", 1);
+                rdata.put("level", "zones");
+
+                rdata.put("zones", zones);
+                return rdata;
+
+            } else if (Objects.equals(search, "areas")) {
+                List<Area> areas = (List<Area>) areaRepository.findAll();
+                rdata.put("success", 1);
+                rdata.put("level", "areas");
+
+                rdata.put("areas", areas);
+                return rdata;
+
+            } else if (Objects.equals(search, "clusters")){
+                List<Cluster> clusters = (List<Cluster>) clusterRepository.findAll();
+            rdata.put("success", 1);
+            rdata.put("level", "clusters");
+            rdata.put("clusters", clusters);
+            rdata.put("sef", search);
+            return rdata;
+        }else{
+            rdata.put("sef", search);
+            return rdata;
+        }
+
+
+
+
+
+
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+
+    }
+
+    @Override
+    public Object view_region_search(String search) {
+
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+
+        try {
+
+
+            List <Region> regions = regionRepository.findByNameLike(search);
+
+            List <Zone> zones= zoneRepository.findByNameLike(search);
+
+            List <Area> areas = areaRepository.findByNameLike(search);
+
+            List <Cluster> clusters = clusterRepository.findByNameLike(search);
+
+
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+            rdata.put("regions", regions);
+            rdata.put("zones", zones);
+            rdata.put("areas", areas);
+            rdata.put("clusters", clusters);
+
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+    }
+
+    @Override
+    public Object Teritories_search(HttpSession request, ModelAndView v) {
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+
+
+        v.setViewName("Teritories_search");
+        v.addObject("user", admi);
+
+        return v;
     }
 }
