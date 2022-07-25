@@ -119,9 +119,9 @@ body{
 
                                       <tr  th:each="role : ${roles}" >
 
-                                    <td>  <input type="checkbox" onclick="delete_role_2_user(',$user_role['id'],')" th:checked="${#lists.contains(alist, __${role.getName}__)}" th:value="${role.getName}">
+                                    <td>  <input type="checkbox" th:attr="onclick=|addrole(${role.getId()}, ${admin_user.getId()})|" th:checked="${#arrays.contains(aList, '__${role.getName}__')}" th:value="${role.getName}">
                                       </td>
-
+<!--                                          ${#lists.contains(alist, __${role.getName}__)}-->
 
 
 
@@ -166,22 +166,21 @@ body{
 </div>
 
 <script>
-function addrole(){
-    var e = document.getElementById("rolediv1");
-	var strUser = e.value;
+function addrole(roleid, userid){
 
 
+   var formdata = 'roleid=' + roleid + '&userid=' + userid;
+                // validate the form input
+                console.log(formdata);
 	    $.ajax({
             type: 'POST',
-            url: "/admin/useraddrole/"+strUser , //call  to store form data
+            url: "/admin/useraddrole" , //call  to store form data
+        data: formdata,
 
-            contentType: false,
+
             cache: false,
             processData:false,
-            beforeSend: function(){
-                $('.submitBtn').attr("disabled","disabled");
-                $('#fupForm').css("opacity",".5");
-            },
+
             success: function(response){ //console.log(response);
                        console.log(response);
                     console.log(response.msg);

@@ -1000,25 +1000,24 @@ private RolesRepository roleRepository;
     public Object getuser(HttpSession request, ModelAndView v, Integer id) {
 
 
-
-
-
-
-
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
         List <Roles_admin>  rolesAdmin = roleRepository.findAll();
         Admi user = admiRepository.findById(id);
 
         List<String> aList = new ArrayList<>();
-        for (Roles_admin element : rolesAdmin) {
+        for (Roles_admin element : user.getRoles()) {
             aList.add(element.getName());
         }
-
-
-
+        String[] continents = {
+                "Africa", "Antarctica", "Asia", "Australia",
+                "Europe", "North America", "Sourth America"
+        };
+//String arr[] = new String[0];
+//        arr = aList.toArray(arr);
                 v.setViewName("edit_portalUsers");
         v.addObject("user", admi);
+        v.addObject("continents", continents);
         v.addObject("roles", rolesAdmin);
         v.addObject("admin_user", user);
         v.addObject("aList", aList);
@@ -1054,8 +1053,14 @@ return "ddd";
     @Override
     public Object getuserbyid(Integer id) {
         Admi admi = admiRepository.findById(id);
+        List <Roles_admin>  rolesAdmin = roleRepository.findAll();
+        Admi user = admiRepository.findById(id);
 
-        return  admi;
+        List<String> aList = new ArrayList<>();
+        for (Roles_admin element : admi.getRoles()) {
+            aList.add(element.getName());
+        }
+        return  aList;
     }
 
 
@@ -1226,5 +1231,29 @@ else
         v.addObject("user", admi);
 
         return v;
+    }
+
+    @Override
+    public Object useraddrole(Integer roleid, Integer userid) {
+        Admi admi = admiRepository.findById(userid);
+        Roles_admin rolesAdmin = roleRepository.findById(roleid);
+
+        Set<Roles_admin> roles = admi.getRoles();
+
+        boolean ans = roles.contains(rolesAdmin);
+
+        if (ans) {
+            roles.remove(rolesAdmin);
+            admi.setRoles(roles);
+            admiRepository.save(admi);
+            return "removed";
+        }
+        else{
+            roles.add(rolesAdmin);
+            admi.setRoles(roles);
+            admiRepository.save(admi);
+            return "added";
+    }
+
     }
 }

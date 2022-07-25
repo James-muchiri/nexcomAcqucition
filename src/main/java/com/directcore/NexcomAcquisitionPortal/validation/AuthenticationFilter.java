@@ -1,5 +1,8 @@
 package com.directcore.NexcomAcquisitionPortal.validation;
 
+import com.directcore.NexcomAcquisitionPortal.services.HelperService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +15,8 @@ import java.io.IOException;
 public class AuthenticationFilter implements Filter {
 
     private ServletContext context;
+    @Autowired
+    private HelperService helperService;
 
     public void init(FilterConfig fConfig) throws ServletException {
         this.context = fConfig.getServletContext();
@@ -32,6 +37,18 @@ public class AuthenticationFilter implements Filter {
             this.context.log("Unauthorized access request");
             res.sendRedirect(req.getContextPath() + "/login");
         } else {
+            String path = req.getRequestURI();
+            path = path.replace("/admin", "");
+            String queryParams = req.getQueryString();
+            boolean allowed;
+
+                allowed =
+                        helperService.isPriviledgeAllowed(path, session);
+//if(!allowed){
+//    this.context.log("Unauthorized access request");
+//    res.sendRedirect(req.getContextPath() + "/login");
+//}
+
             // pass the request along the filter chain
             chain.doFilter(request, response);
         }

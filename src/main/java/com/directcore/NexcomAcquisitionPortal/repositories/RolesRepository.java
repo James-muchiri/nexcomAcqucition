@@ -13,6 +13,8 @@ public interface RolesRepository extends JpaRepository<Roles_admin, Long> {
 
     Roles_admin findAllById(Integer id);
 
+    Roles_admin  findById(Integer id);
+
 
 }
 

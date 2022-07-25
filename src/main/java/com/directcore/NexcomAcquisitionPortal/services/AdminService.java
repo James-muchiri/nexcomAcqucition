@@ -118,4 +118,6 @@ public interface AdminService {
     Object view_region_search(String search);
 
     Object Teritories_search(HttpSession request, ModelAndView v);
+
+    Object useraddrole(Integer roleid, Integer userid);
 }

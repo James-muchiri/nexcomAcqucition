@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
@@ -437,7 +438,7 @@ public class MainController {
     }
 
     //   // get portal user by id
-    @GetMapping(path = "/getPortalUserByid/{id}")
+    @GetMapping(path = "/getPortalUsed/{id}")
     @ResponseBody
     public Object getuserbyid(@PathVariable final Integer id) {
 
@@ -530,5 +531,17 @@ public class MainController {
 
         return (ModelAndView) adminService.Teritories_search(request, v);
 
+    }
+
+    @RequestMapping(value = "/useraddrole", method = RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object useraddrole(@RequestParam("roleid") Integer roleid, @RequestParam("userid") Integer userid) {
+
+        try {
+            return adminService.useraddrole(roleid, userid);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
     }
 }

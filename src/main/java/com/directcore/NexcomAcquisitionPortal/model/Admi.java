@@ -23,7 +23,7 @@ public class Admi{
     private String email;
     @Column(name = "phone", nullable = false)
     private String phone;
-    @OneToMany
+    @ManyToMany
     @JsonManagedReference
     private Set<Roles_admin> roles;
 
