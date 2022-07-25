@@ -1010,12 +1010,18 @@ private RolesRepository roleRepository;
         List <Roles_admin>  rolesAdmin = roleRepository.findAll();
         Admi user = admiRepository.findById(id);
 
+        List<String> aList = new ArrayList<>();
+        for (Roles_admin element : rolesAdmin) {
+            aList.add(element.getName());
+        }
 
 
-        v.setViewName("edit_portalUsers");
+
+                v.setViewName("edit_portalUsers");
         v.addObject("user", admi);
         v.addObject("roles", rolesAdmin);
         v.addObject("admin_user", user);
+        v.addObject("aList", aList);
 
 
         return v;

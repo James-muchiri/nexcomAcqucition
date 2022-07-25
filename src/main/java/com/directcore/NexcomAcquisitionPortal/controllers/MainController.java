@@ -441,7 +441,7 @@ public class MainController {
     @ResponseBody
     public Object getuserbyid(@PathVariable final Integer id) {
 
-        return (ModelAndView) adminService.getuserbyid( id);
+        return adminService.getuserbyid( id);
 
     }
     @RequestMapping(value = "/addPermissions", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})

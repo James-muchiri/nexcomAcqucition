@@ -1048,11 +1048,10 @@ header .form-inline {
   .card .nav-tabs {
     margin-bottom: -1px; }
     .card .nav-tabs a {
-      border-radius: 0;
-      color: #b5bcc2;
-      font-size: 12px;
-      font-weight: 700;
-      padding: .25em .5em;
+
+      font-size: 14px;
+      font-weight: 500;
+
       text-transform: uppercase; }
       .card .nav-tabs a:hover {
         border-color: transparent; }
@@ -2665,7 +2664,7 @@ font-weight: 700;
 } */
 
 .tab-content {
-	padding: 70px 20px 20px;
+	padding: 20px 20px 20px;
 	width: 100%;
 	min-height: 300px;
 }
