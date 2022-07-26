@@ -24,6 +24,8 @@ public class AuthenticationFilter implements Filter {
     }
 
 
+
+
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest req = (HttpServletRequest) request;
@@ -48,6 +50,8 @@ public class AuthenticationFilter implements Filter {
 //    this.context.log("Unauthorized access request");
 //    res.sendRedirect(req.getContextPath() + "/login");
 //}
+
+
 
             // pass the request along the filter chain
             chain.doFilter(request, response);

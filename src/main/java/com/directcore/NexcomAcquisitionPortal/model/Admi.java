@@ -102,4 +102,8 @@ public class Admi{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public boolean isEnabled() {
+        return true;
+    }
 }

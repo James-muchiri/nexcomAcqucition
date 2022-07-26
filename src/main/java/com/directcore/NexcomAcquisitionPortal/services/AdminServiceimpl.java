@@ -7,6 +7,8 @@ import com.directcore.NexcomAcquisitionPortal.repositories.Contact_infoRepositor
 import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -17,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,7 +41,7 @@ import java.util.regex.Pattern;
 public class AdminServiceimpl implements com.directcore.NexcomAcquisitionPortal.services.AdminService {
 
     private final Path root = Paths.get("uploads");
-
+    private static final Logger logger = LoggerFactory.getLogger(AdminServiceimpl.class);
 
     @Autowired
     private AdmiRepository admiRepository;
@@ -101,6 +104,7 @@ private RolesRepository roleRepository;
         return "User Registered successful";
     }
 
+
     @Override
     public Object login(String email, String password, Model model, HttpSession request, ModelAndView v) {
 
@@ -148,7 +152,11 @@ Login_logs login_logs =new Login_logs();
        login_logs.setAdminid( admi.getId());
        login_logs.setResponse("login success");
        login_logsRepository.save(login_logs);
-        getAuthorities(admi.getRoles());
+
+
+
+
+
         return "redirect:admin/index";
 
 
@@ -157,34 +165,19 @@ Login_logs login_logs =new Login_logs();
 
 
 
-    private Collection<? extends GrantedAuthority> getAuthorities(final Set<Roles_admin> roles) {
-        return getGrantedAuthorities(getPrivileges(roles));
-    }
-
-    private List<String> getPrivileges(final Set<Roles_admin> roles) {
-        final List<String> privileges = new ArrayList<>();
-
-        for (final Roles_admin role : roles) {
+//    private Collection<? extends GrantedAuthority> getAuthorities(final Set<Roles_admin> roles) {
+//        return getGrantedAuthorities(getPrivileges(roles));
+//    }
 
 
 
-            for (String rolee : role.getRole()) {
-                privileges.add(rolee);
-
-            }
-        }
-
-
-        return privileges;
-    }
-
-    private List<GrantedAuthority> getGrantedAuthorities(final List<String> privileges) {
-        final List<GrantedAuthority> authorities = new ArrayList<>();
-        for (final String privilege : privileges) {
-            authorities.add(new SimpleGrantedAuthority(privilege));
-        }
-        return authorities;
-    }
+//    private List<GrantedAuthority> getGrantedAuthorities(final List<String> privileges) {
+//        final List<GrantedAuthority> authorities = new ArrayList<>();
+//        for (final String privilege : privileges) {
+//            authorities.add(new SimpleGrantedAuthority(privilege));
+//        }
+//        return authorities;
+//    }
 
 
 
@@ -272,21 +265,40 @@ Login_logs login_logs =new Login_logs();
         Admi admi = admiRepository.findById(user_admin);
 
 
-
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("index");
         v.addObject("user", admi);
+
 
         return v;
 
     }
+    private List<String> getPrivileges(Set<Roles_admin> roles) {
+         List<String> privileges = new ArrayList<>();
 
+        for (Roles_admin role : roles) {
+
+
+
+            for (String rolee : role.getRole()) {
+                privileges.add(rolee);
+
+            }
+        }
+
+
+        return privileges;
+    }
     @Override
     public Object acqusition(HttpSession request, ModelAndView v) {
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
         List <Region> regions = (List<Region>) regionRepository.findAll();
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("acqusition");
         v.addObject("user", admi);
         v.addObject("regions", regions);
@@ -428,7 +440,9 @@ Login_logs login_logs =new Login_logs();
 
 
         List<Region> regions = (List<Region>) regionRepository.findAll();
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
 
          v.setViewName("teritories");
         v.addObject("user", admi);
@@ -475,7 +489,9 @@ Login_logs login_logs =new Login_logs();
         List <Zone> zones = (List<Zone>) zoneRepository.findAllByRegionId(region.getId());
 
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
 
    
 
@@ -529,7 +545,9 @@ Login_logs login_logs =new Login_logs();
 
         List <Area> areas =  areaRepository.findAllByZoneId(zone.getId());
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
 
 
 
@@ -590,7 +608,9 @@ Login_logs login_logs =new Login_logs();
 
 
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
 
         v.setViewName("areas");
         v.addObject("user", admi);
@@ -783,6 +803,10 @@ Login_logs login_logs =new Login_logs();
      List <Contact_info> contact_infos = contact_infoRepository.findByBuildingId(building_info.getId());
 
    List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("myacqusition");
         v.addObject("user", admi);
         v.addObject("buildings", building_info);
@@ -964,7 +988,9 @@ Login_logs login_logs =new Login_logs();
 
        List <Roles_admin> roles_admins = roleRepository.findAll();
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("admin_roles");
         v.addObject("user", admi);
         v.addObject("roles", roles_admins);
@@ -986,7 +1012,9 @@ Login_logs login_logs =new Login_logs();
 
         List <Roles_admin> roles_admins = roleRepository.findAll();
         Roles_admin role = roleRepository.findAllById(id);
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("edit_roles");
         v.addObject("user", admi);
         v.addObject("role", role);
@@ -1050,6 +1078,10 @@ Login_logs login_logs =new Login_logs();
 
         List<Admi> admi3 = (List<Admi>) admiRepository.findAll();
 
+
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("admin_user");
         v.addObject("user", admi);
         v.addObject("users", admi3);
@@ -1077,6 +1109,10 @@ Login_logs login_logs =new Login_logs();
         };
 //String arr[] = new String[0];
 //        arr = aList.toArray(arr);
+
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
                 v.setViewName("edit_portalUsers");
         v.addObject("user", admi);
         v.addObject("continents", continents);
@@ -1135,7 +1171,9 @@ return "ddd";
 
           List  <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("viewAll");
         v.addObject("user", admi);
         v.addObject("buildings", building_infos);
@@ -1288,7 +1326,9 @@ else
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
 
         v.setViewName("Teritories_search");
         v.addObject("user", admi);

@@ -18,7 +18,7 @@
 
                         <li> <a href="/admin/acqusitions">New Acqusitions</a></li>
                         <li><a href="/admin/myacqusitions">My Acqusitions</a></li>
-                        <li sec:authorize="hasAuthority('orders')" ></i><a  href="/admin/viewAll">View All</a></li>
+                        <li  th:if="${#lists.contains(authorities, 'orders')}" ></i><a  href="/admin/viewAll">View All</a></li>
 
 
 
