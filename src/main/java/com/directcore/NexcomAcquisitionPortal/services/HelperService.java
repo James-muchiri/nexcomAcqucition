@@ -48,6 +48,23 @@ public class HelperService {
 
     }
 
+    public boolean inAntMatche(String path) {
+
+        String[] values = {"/login", "/get_otp", "/logout", "/",
+                "/test", "/dologin", "/doSignUp", "/setPassword", "/doSetPassword", "/api/GetAllSites",
+                "/getSiteDetails", "/index", "/home", "/signup", "/doSignUp", "/doActivate", "/resetPassword", "/doResetPassword", "/activate_account" };
+
+        ArrayList<String> resources = new ArrayList<String>();
+        Collections.addAll(resources, values);
+
+        if (resources.contains(path)) {
+            return true;
+        }
+
+        return false;
+
+    }
+
 
     public boolean inExemptedUrls(String path) {
 

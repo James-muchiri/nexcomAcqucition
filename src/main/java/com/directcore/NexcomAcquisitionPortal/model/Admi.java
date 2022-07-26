@@ -23,6 +23,10 @@ public class Admi{
     private String email;
     @Column(name = "phone", nullable = false)
     private String phone;
+    @Column(name = "isadmin", nullable = false)
+    private Integer isadmin = 0;
+    @Column(name = "password", nullable = true)
+    private String password;
     @ManyToMany
     @JsonManagedReference
     private Set<Roles_admin> roles;
@@ -83,5 +87,19 @@ public class Admi{
         return updateDateTime;
     }
 
+    public Integer getIsadmin() {
+        return isadmin;
+    }
 
+    public void setIsadmin(Integer isadmin) {
+        this.isadmin = isadmin;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

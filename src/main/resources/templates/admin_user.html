@@ -100,30 +100,20 @@ width: 100px;
 
               <div class="col-sm-12">
             <div class="table-responsive">
-              <table class="table table-striped customers-list table-hover " id="modal_table">
+              <table class="table table-striped customers-list table-hover " id="admin_users">
                 <thead>
                 <tr>
+                  <th>No</th>
                   <th>Name</th>
+                  <th>Phone Number</th>
                   <th>Email</th>
-                  <th>Roles</th>
                   <th>Date Created</th>
-                  <th>Created By</th>
-                  <th>Action</th>
+                   <th>Action</th>
                 </tr>
                 </thead>
 
-                <tbody>
-                <tr  th:each="user : ${users}">
-                  <td th:text="${user.name}">user name</td>
-                  <td th:text="${user.email}">email</td>
-                  <td><div class="label text-success bg-success-light">admin,super admin,user</div></td>
-                  <td th:text="${user.createDateTime}"></tdth:text></td>
-                  <td><div class="label text-success bg-success-light">james muchiri</div></td>
-                  <td>
-                  <a   th:attr="onclick=|portalUserById(${user.getId()})|"  data-toggle="modal" data-target="#editPortalUser" class="btn btn-primary">Edit</a>
+                <tbody id="admin_table">
 
-                  </td>
-                </tr>
 
                 </tbody>
               </table>
@@ -191,37 +181,93 @@ width: 100px;
 
 
 
-  <div class="modal fade" id="editPortalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel1">Edit portal user</h5>
-
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body" id="modal_table1">
-
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="userform">Save Category</button>
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 
 <script>
 
 
+function load_a_user(id) {
+                    window.location = "/admin/getPortalUserById/" + id;
+                };
 
+                    FetchAdmins();
+
+    function FetchAdmins() {
+
+
+// AJAX code to submit form.
+$.ajax({
+         type: "get",
+         url: "/admin/fetchadmins", //call  to store form data
+         cache: false,
+         success: function(data) {
+            // console.log(data);
+
+             var admin = "";
+             var no = 0;
+
+$.each(data, function(index, element) {
+
+<!--  var user_role = "";-->
+
+  no = no + 1;
+<!--  $.each(data.roles, function(index, element1) {-->
+
+
+<!--  $.each(element1.role, function(index, user_roles) {-->
+
+<!--    user_role = user_role + user_roles + ',';-->
+
+<!--});-->
+
+
+
+<!--});-->
+
+
+
+
+ admin = admin +
+ '<tr  onclick="load_a_user('+element.id+' )" >'+
+    '<td>'+ no +'</td>'+
+                                    '<td>'+element.name+' </td>'+
+                                    '<td> '+element.phone+' </td>'+
+
+                                    '<td> '+element.email+'</td>'+
+                                    '<td> '+element.createDateTime+'</td>'+
+                                    '<td> '+'<a type="button" href="/admin/getPortalUserById/'+element.id+'" class="btn btn-secondary">View more</a>'+'</td>'+
+
+
+
+
+                                                    '</tr>';
+
+
+
+});
+
+
+
+
+
+    if ($.fn.DataTable.isDataTable('#admin_users')){
+           // Destroy existing table
+           $('#admin_users').DataTable().destroy();
+        };
+
+        $('#admin_table').html(admin);
+$('#admin_users').DataTable( {} );
+
+
+         },
+         error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+
+    });
+
+};
 
                $(document).ready(function(){
                     $('#userform').click(function(e){
@@ -242,17 +288,12 @@ width: 100px;
                                 $('#success').text(data);
                                 $("#portalform")[0].reset();
 
-                                setTimeout(function() {
-
-
-                                $('#success').hide();
-
-                                }, 3000);
+                              FetchAdmins();
                             },
                             error: function(response) {
 
-                                $('#error').show();
-              $('#error').text(response.responseJSON.message);
+
+
 
            }
                         });
@@ -260,103 +301,6 @@ width: 100px;
                 });
 
 
-                function portalUserById(id){
-    console.log("get portal user id");
-
-    var dataId = id;
-
-    console.log(dataId);
-
-    $.ajax({
-    type: 'get',
-    data:  dataId,
-    url: '/admin/getPortalUserById/'+dataId,
-    success:
-        function( data ){
-           var user = data.admi;
-        console.log(user);
-           var t_data="";
-
-             var t_data_roles="";
-
-                 $.each(data.roles, function(index, element) {
-
-                 t_data_roles=t_data_roles+
-
-                         ' <option value="1"> '+element.name+'</option>';
-
-
-                   });
-
-           t_data=t_data+
-                '<form>'+
-                '<div class="row">'+
-                   ' <div class="col-sm-4">'+
-                       ' <div class="form-group row">'+
-
-                         '   <div class="col-md-12">'+
-                             '   <input id="nam" type="text" class="form-control" name="name"  required value="'+user.name+'" autofocus>'+
-                             '  <label for="emai" class="col-md-12 col-form-label ">Names</label>'+
-                         '   </div>'+
-                      '  </div>'+
-                 '   </div>'+
-                  '  <div class="col-sm-4">'+
-                        '<div class="form-group row">'+
-
-                            '<div class="col-md-12">'+
-                             '   <input id="emai" type="email" class="form-control" name="email" value="'+user.email+'" required autocomplete="email" autofocus>'+
-  '<label for="emai" class="col-md-12 col-form-label ">E-Mail Address</label>'+
-                          '  </div>'+
-                       ' </div>'+
-                   ' </div>'+
-                   ' <div class="col-sm-4">'+
-
-                     '   <div class="form-group row">'+
-
-                          '  <div class="col-md-12">'+
-                            '    <input id="phon" type="text" class="form-control" name="phone_number" value="'+user.phone+'" required autofocus>'+
-                             '   <label for="phon" class="col-md-12 col-form-label ">Phone Number</label>'+
-                           ' </div>'+
-                     '   </div>'+
-                  '  </div>'+
-             '   </div>'+
-
-                   ' <div class="row">'+
-                   ' <div class="col-sm-2" >'+
-                   '   </div>'+
-                     ' <div class="col-sm-3" >'+
-                     '<p> user roles</p>'+
-                       ' <select name="Testing" id="rolediv" multiple="multiple">   '+
-                         ' <option value="1"> One  '+
-                         ' <option value="2"> Two  '+
-                         ' <option value="3"> Three'+
-                        '</select>'+
-
-                     '   </div>'+
-                       '   <div class="col-sm-2 arrows">'+
-
-                     '  <a href="#link"  class="btn btn-info role-btn" role="button">Add</a>'+
-                       '<a href="#link" class="btn btn-info role-btn" role="button">Remove</a>'+
-
-                     '   </div>'+
-          '   <div class="col-sm-3">'+
-                       '<p> available roles</p>'+
- '<select name="rolebyrole"  id="rolediv"  multiple="multiple">  '+
-                       t_data_roles+
-                        '</select>'+
-
-                     '   </div>'+
-
-                   ' </div>';
-
-
-
-  $("#modal_table1").html("");
-             $("#modal_table1").append(t_data);
-
-        }
-    });
-};
 
                             </script>
 

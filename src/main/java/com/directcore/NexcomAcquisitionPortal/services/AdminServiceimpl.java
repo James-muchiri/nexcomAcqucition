@@ -15,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -73,8 +75,14 @@ private RolesRepository roleRepository;
     @Autowired
     private  Sales_profileRepository sales_profileRepository;
 
+    @Autowired
+    private  Login_logsRepository login_logsRepository;
+
+
+
     private Pattern regexPattern;
     private Matcher regMatcher;
+
 
     private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
 
@@ -86,7 +94,8 @@ private RolesRepository roleRepository;
 
 
     //    userForm.setRoles(new HashSet<>(roleRepository.findAll()));
-     //   userForm.setPassword(bcrypt.hash(userForm.getPassword()));
+      //  userForm.setPassword(bcrypt.hash(userForm.getPassword()));
+        userForm.setPassword("fff");
         admiRepository.save(userForm);
 
         return "User Registered successful";
@@ -103,6 +112,7 @@ private RolesRepository roleRepository;
         }
         if (admiRepository.findByEmail(email) == null) {
             model.addAttribute("error", "Email does not exist");
+
             return "admin/AdminLogin";
         }
 
@@ -115,6 +125,10 @@ private RolesRepository roleRepository;
      //   if(!bcrypt.verifyHash(password, admi.getPassword() ))
       //  {
       //      model.addAttribute("error", "Password is incorrect");
+//        Login_logs login_logs =new Login_logs();
+//        login_logs.setAdminid( admi.getId());
+//        login_logs.setResponse("login success");
+//        login_logsRepository.save(login_logs);
       //      return "AdminLogin";
       //  }
       //  Admi user_admin = new Admi();
@@ -130,12 +144,58 @@ private RolesRepository roleRepository;
          request.setAttribute("user_admin", user_admin);
        }
 
-
-
+Login_logs login_logs =new Login_logs();
+       login_logs.setAdminid( admi.getId());
+       login_logs.setResponse("login success");
+       login_logsRepository.save(login_logs);
+        getAuthorities(admi.getRoles());
         return "redirect:admin/index";
 
 
     }
+
+
+
+
+    private Collection<? extends GrantedAuthority> getAuthorities(final Set<Roles_admin> roles) {
+        return getGrantedAuthorities(getPrivileges(roles));
+    }
+
+    private List<String> getPrivileges(final Set<Roles_admin> roles) {
+        final List<String> privileges = new ArrayList<>();
+
+        for (final Roles_admin role : roles) {
+
+
+
+            for (String rolee : role.getRole()) {
+                privileges.add(rolee);
+
+            }
+        }
+
+
+        return privileges;
+    }
+
+    private List<GrantedAuthority> getGrantedAuthorities(final List<String> privileges) {
+        final List<GrantedAuthority> authorities = new ArrayList<>();
+        for (final String privilege : privileges) {
+            authorities.add(new SimpleGrantedAuthority(privilege));
+        }
+        return authorities;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public String logout(Model model, HttpSession request) {
@@ -157,7 +217,8 @@ private RolesRepository roleRepository;
             error.setMessage("email already in use");
             return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
         }
-
+        newportalUser.setPassword(bcrypt.hash("userForm.getPassword()"));
+//        newportalUser.setPassword("fff");
         admiRepository.save(newportalUser);
         String success = "user created";
         return new ResponseEntity<Object>(success, HttpStatus.OK);
@@ -1005,6 +1066,7 @@ private RolesRepository roleRepository;
         List <Roles_admin>  rolesAdmin = roleRepository.findAll();
         Admi user = admiRepository.findById(id);
 
+       List <Login_logs> login_logs = login_logsRepository.findAllByadminid(id);
         List<String> aList = new ArrayList<>();
         for (Roles_admin element : user.getRoles()) {
             aList.add(element.getName());
@@ -1021,6 +1083,7 @@ private RolesRepository roleRepository;
         v.addObject("roles", rolesAdmin);
         v.addObject("admin_user", user);
         v.addObject("aList", aList);
+        v.addObject("login_logs", login_logs);
 
 
         return v;
@@ -1255,5 +1318,12 @@ else
             return "added";
     }
 
+    }
+
+    @Override
+    public Object fetchadmins() {
+
+        List <Admi> admis = (List<Admi>) admiRepository.findAll();
+        return admis;
     }
 }

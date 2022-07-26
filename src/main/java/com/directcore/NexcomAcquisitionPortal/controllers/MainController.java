@@ -544,4 +544,12 @@ public class MainController {
         }
         // return  request;
     }
+
+    @GetMapping(path = "/fetchadmins")
+    @ResponseBody
+    public Object fetchadmins() {
+
+        return adminService.fetchadmins();
+
+    }
 }

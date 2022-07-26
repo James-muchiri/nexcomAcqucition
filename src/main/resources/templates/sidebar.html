@@ -1,6 +1,6 @@
 
 
-<aside  id="left-panel" class="left-panel" th:fragment="sidebar">
+<aside  id="left-panel" class="left-panel" th:fragment="sidebar" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -18,7 +18,8 @@
 
                         <li> <a href="/admin/acqusitions">New Acqusitions</a></li>
                         <li><a href="/admin/myacqusitions">My Acqusitions</a></li>
-                        <li></i><a href="/admin/viewAll">View All</a></li>
+                        <li sec:authorize="hasAuthority('orders')" ></i><a  href="/admin/viewAll">View All</a></li>
+
 
 
                     </ul>

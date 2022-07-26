@@ -120,4 +120,6 @@ public interface AdminService {
     Object Teritories_search(HttpSession request, ModelAndView v);
 
     Object useraddrole(Integer roleid, Integer userid);
+
+    Object fetchadmins();
 }

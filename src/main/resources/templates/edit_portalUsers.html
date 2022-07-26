@@ -127,7 +127,7 @@ body{
 
 
 
-                                          <td><label for="">{{$user_role->name}}</label>  </td>
+                                          <td><label for="" th:text="${role.getName}"></label>  </td>
                                       </tr>
 
 
@@ -140,7 +140,33 @@ body{
                                 <div class="row">
                                     <span class="main">Login Logs </span>
                                     <div class="col-sm-12">
+                                        <table class="table  mt32 customers-list" >
+                                            <thead>
+                                            <tr>
 
+                                                <td class="t_head">Date</td>
+                                                <td class="t_head">Username</td>
+                                                <td class="t_head">Response</td>
+
+                                            </thead>
+                                            <tbody id="myTable">
+
+
+                                            <tr  th:each="login_log : ${login_logs}" >
+
+                                                <td th:text="${login_log.getCreateDateTime}"></td>
+                                                <td th:text="${admin_user.getEmail()}"></td>
+                                                <td th:text="${login_log.getResponse}"></td>
+
+
+
+
+
+                                            </tr>
+
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
