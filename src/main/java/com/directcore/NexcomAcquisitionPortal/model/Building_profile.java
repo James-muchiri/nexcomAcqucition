@@ -1,6 +1,10 @@
 package com.directcore.NexcomAcquisitionPortal.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -15,6 +19,8 @@ public class Building_profile {
     private Integer   building_cluster;
 
     // building profile
+    @Column(name = "building_code")
+    private String building_code;
     @Column(name = "building_name")
     private String building_name;
     @Column(name = "acquisitionPurpose")
@@ -48,8 +54,12 @@ public class Building_profile {
     private String     street_name;
     @Column(name = "building_description")
     private String      building_description;
-    @Column(name = "pp_photo")
-    private String        pp_photo;
+
+    @CreationTimestamp
+    private LocalDateTime createDateTime;
+
+    @UpdateTimestamp
+    private LocalDateTime updateDateTime;
 
 
     public Integer getId() {
@@ -180,11 +190,22 @@ public class Building_profile {
         this.building_description = building_description;
     }
 
-    public String getPp_photo() {
-        return pp_photo;
+
+
+
+    public String getBuilding_code() {
+        return building_code;
     }
 
-    public void setPp_photo(String pp_photo) {
-        this.pp_photo = pp_photo;
+    public void setBuilding_code(String building_code) {
+        this.building_code = building_code;
+    }
+
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
     }
 }

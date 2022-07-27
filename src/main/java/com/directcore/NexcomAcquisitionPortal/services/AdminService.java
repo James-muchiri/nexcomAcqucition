@@ -78,7 +78,7 @@ public interface AdminService {
 
     Object deleteimage(Integer id);
 
-    Object addcontact(Contact_info request);
+    Object addcontact(Contact_profile request);
 
     Object fetchcontact(Integer id);
 
@@ -123,5 +123,7 @@ public interface AdminService {
 
     Object fetchadmins();
 
-    Object addbuildings(Building_information request, MultipartFile photo, MultipartFile file);
+    Object addbuildings(Building_form request, MultipartFile photo, MultipartFile file);
+
+
 }

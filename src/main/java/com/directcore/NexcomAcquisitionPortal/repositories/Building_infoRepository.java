@@ -23,4 +23,6 @@ public interface Building_infoRepository extends CrudRepository<Building_info, L
 
     @Query("SELECT b FROM Building_info b WHERE b.createDateTime >= :creationDateTime")
      List<Building_info> findAllWithCreateDateTimeAfter(LocalDateTime creationDateTime);
+
+    Building_info findTopByOrderByIdDesc();
 }

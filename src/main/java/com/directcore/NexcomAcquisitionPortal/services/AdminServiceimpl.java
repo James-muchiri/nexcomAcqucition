@@ -64,6 +64,8 @@ private RolesRepository roleRepository;
 
     @Autowired
     private  Building_infoRepository building_infoRepository;
+    @Autowired
+    private Building_profileRepository building_profileRepository;
 
     @Autowired
     private  Imags_infoRepository imags_infoRepository;
@@ -314,87 +316,87 @@ Login_logs login_logs =new Login_logs();
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
 
-            Building_info building_info = new Building_info();
-
-
-            Region region = regionRepository.findById(request.getRegion()).orElse(null);
-            building_info.setRegion(region.getName());
-
-            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
-            building_info.setZone(zone.getName());
-
-            Area area = (Area) areaRepository.findById(request.getArea());
-            building_info.setArea(area.getName());
-
-            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
-            building_info.setCluster(cluster.getName());
-
-            building_info.setBuilding_name(request.getBuilding_name());
-            building_info.setBuilding_description(request.getBuilding_description());
-            building_info.setBuilding_photos(file.getOriginalFilename());
-            building_info.setPossible_sales(request.getPossible_sales());
-            building_info.setBuilding_type(request.getBuilding_type());
-            building_info.setUse_type(request.getUse_type());
-            building_info.setStreet_name(request.getStreet_name());
-            building_info.setPower(request.getPower());
-            building_info.setState(request.getState());
-            building_info.setRoA(request.getRoA());
-            building_info.setToA(request.getToA());
-            building_info.setSecurity(request.getSecurity());
-            building_info.setComments(request.getComments());
-
-            building_infoRepository.save(building_info);
-
-            Contact_info contact_info = new Contact_info();
-
-            contact_info.setBuildingId(building_info.getId());
-            contact_info.setManagement_type(request.getManagement_type());
-            contact_info.setFull_names(request.getFull_names());
-            contact_info.setPhone_number(request.getPhone_number());
-            contact_info.setId_number(request.getId_number());
-            contact_info.setEmail(request.getEmail());
-            contact_infoRepository.save(contact_info);
-
-
-            // sales profile
-            Sale_profile sales_profile = new Sale_profile();
-            sales_profile.setBuildingId(building_info.getId());
-            sales_profile.setNumberofUnits(request.getNumberofUnits());
-            sales_profile.setPackagesPosible(request.getPackagesPosible());
-            sales_profile.setRent(request.getRent());
-            sales_profile.setExsistingProviders(request.getExsistingProviders());
-            sales_profile.setInternetUsers(request.getInternetUsers());
-            sales_profile.setBlocks(request.getBlocks());
-            sales_profile.setFloors(request.getFloors());
-            sales_profileRepository.save(sales_profile);
-
-
-
-
-            // String UPLOADED_FOLDER = "C/temp/";
-           // Path p = Paths.get("uploads");
-
-
-//            // Get the file and save it somewhere
-//            byte[] bytes = file.getBytes();
-//            Path path = Paths.get(p + file.getOriginalFilename());
+//            Building_info building_info = new Building_info();
 //
-//            Files.write(path, bytes);
-
-
-
-
-
-
-            if (!Files.exists(root)) {
-                Files.createDirectories(root);
-            }
-            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-
-            Images_info images_info = new Images_info();
-            images_info.setBuildingId(building_info.getId());
-            images_info.setName(file.getOriginalFilename());
-            imags_infoRepository.save(images_info);
+//
+//            Region region = regionRepository.findById(request.getRegion()).orElse(null);
+//            building_info.setRegion(region.getName());
+//
+//            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
+//            building_info.setZone(zone.getName());
+//
+//            Area area = (Area) areaRepository.findById(request.getArea());
+//            building_info.setArea(area.getName());
+//
+//            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
+//            building_info.setCluster(cluster.getName());
+//
+//            building_info.setBuilding_name(request.getBuilding_name());
+//            building_info.setBuilding_description(request.getBuilding_description());
+//            building_info.setBuilding_photos(file.getOriginalFilename());
+//            building_info.setPossible_sales(request.getPossible_sales());
+//            building_info.setBuilding_type(request.getBuilding_type());
+//            building_info.setUse_type(request.getUse_type());
+//            building_info.setStreet_name(request.getStreet_name());
+//            building_info.setPower(request.getPower());
+//            building_info.setState(request.getState());
+//            building_info.setRoA(request.getRoA());
+//            building_info.setToA(request.getToA());
+//            building_info.setSecurity(request.getSecurity());
+//            building_info.setComments(request.getComments());
+//
+//            building_infoRepository.save(building_info);
+//
+//            Contact_info contact_info = new Contact_info();
+//
+//            contact_info.setBuildingId(building_info.getId());
+//            contact_info.setManagement_type(request.getManagement_type());
+//            contact_info.setFull_names(request.getFull_names());
+//            contact_info.setPhone_number(request.getPhone_number());
+//            contact_info.setId_number(request.getId_number());
+//            contact_info.setEmail(request.getEmail());
+//            contact_infoRepository.save(contact_info);
+//
+//
+//            // sales profile
+//            Sale_profile sales_profile = new Sale_profile();
+//            sales_profile.setBuildingId(building_info.getId());
+//            sales_profile.setNumberofUnits(request.getNumberofUnits());
+//            sales_profile.setPackagesPosible(request.getPackagesPosible());
+//            sales_profile.setRent(request.getRent());
+//            sales_profile.setExsistingProviders(request.getExsistingProviders());
+//            sales_profile.setInternetUsers(request.getInternetUsers());
+//            sales_profile.setBlocks(request.getBlocks());
+//            sales_profile.setFloors(request.getFloors());
+//            sales_profileRepository.save(sales_profile);
+//
+//
+//
+//
+//            // String UPLOADED_FOLDER = "C/temp/";
+//           // Path p = Paths.get("uploads");
+//
+//
+////            // Get the file and save it somewhere
+////            byte[] bytes = file.getBytes();
+////            Path path = Paths.get(p + file.getOriginalFilename());
+////
+////            Files.write(path, bytes);
+//
+//
+//
+//
+//
+//
+//            if (!Files.exists(root)) {
+//                Files.createDirectories(root);
+//            }
+//            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+//
+//            Images_info images_info = new Images_info();
+//            images_info.setBuildingId(building_info.getId());
+//            images_info.setName(file.getOriginalFilename());
+//            imags_infoRepository.save(images_info);
 
             rdata.put("success", 1);
             rdata.put("msg", "successful.");
@@ -795,9 +797,9 @@ Login_logs login_logs =new Login_logs();
 
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
-     Building_info building_info = (Building_info) building_infoRepository.findById(id);
+     Building_profile building_info = (Building_profile) building_profileRepository.findById(id);
 
-     List <Contact_info> contact_infos = contact_infoRepository.findByBuildingId(building_info.getId());
+     List <Contact_profile> contact_infos = contact_infoRepository.findByBuildingcode(building_info.getBuilding_code());
 
    List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
 
@@ -885,7 +887,7 @@ Login_logs login_logs =new Login_logs();
     }
 
     @Override
-    public Object addcontact(Contact_info request) {
+    public Object addcontact(Contact_profile request) {
         HashMap<String, Object> rdata = new HashMap<String, Object>();
 
         try {
@@ -909,7 +911,7 @@ Login_logs login_logs =new Login_logs();
     public Object fetchcontact(Integer id) {
 
 
-        Contact_info contact_info = contact_infoRepository.findById(id);
+        Contact_profile contact_info = contact_infoRepository.findById(id);
         return contact_info;
     }
 
@@ -920,7 +922,7 @@ Login_logs login_logs =new Login_logs();
 
         try {
 
-            Contact_info contact_info = contact_infoRepository.findById(contactId);
+            Contact_profile contact_info = contact_infoRepository.findById(contactId);
 
 
             contact_info.setManagement_type(management_type);
@@ -1357,103 +1359,100 @@ else
 
     }
 
-    @Override
+
     public Object fetchadmins() {
 
         List <Admi> admis = (List<Admi>) admiRepository.findAll();
         return admis;
     }
 
+public String generate_code(){
+
+        String code = "BCD";
+        String  bcd123 = "BCD1234";
+        Building_info building_info = building_infoRepository.findTopByOrderByIdDesc();
+//    String person[]  = bcd123.split(":");
+    String person[]  = bcd123.split("(?=\\d)(?<=\\D)");
+    String name = person[0];
+    String number = person[1];
+
+        int foo = Integer.parseInt(number);
+        foo = foo + 1;
+        String s = Integer.toString(foo);
+        code = code + s;
+        return code;
+}
     @Override
-    public Object addbuildings(Building_information request, MultipartFile photo, MultipartFile file) {
+    public Object addbuildings(Building_form request, MultipartFile photo, MultipartFile file) {
 
 
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
 
+            String building_code = generate_code();
+            Building_profile building_profile = new Building_profile();
+            building_profile.setBuilding_code(building_code);
+            building_profile.setBuilding_cluster(request.getBuilding_cluster());
+            building_profile.setBuilding_name(request.getBuilding_name());
+            building_profile.setAcquisitionPurpose(request.getAcquisitionPurpose());
+            building_profile.setUse_type(request.getUse_type());
+            building_profile.setBuilding_type(request.getBuilding_type());
+            building_profile.setBuilding_state(request.getBuilding_state());
+            building_profile.setPower(request.getPower());
+            building_profile.setBackup(request.getBackup());
+            building_profile.setBackup_text(request.getBackup_text());
+            building_profile.setNumberofUnits(request.getNumberofUnits());
+            building_profile.setBlocks(request.getBlocks());
+            building_profile.setFloors(request.getFloors());
+            building_profile.setSecurity(request.getSecurity());
+            building_profile.setStreet_name(request.getStreet_name());
+            building_profile.setBuilding_description(request.getBuilding_description());
+            building_profileRepository.save(building_profile);
 
+            Contact_profile contact_profile = new Contact_profile();
 
-            Building_info building_info = new Building_info();
-
-
-            Region region = regionRepository.findById(request.getRegion()).orElse(null);
-            building_info.setRegion(region.getName());
-
-            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
-            building_info.setZone(zone.getName());
-
-            Area area = (Area) areaRepository.findById(request.getArea());
-            building_info.setArea(area.getName());
-
-            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
-            building_info.setCluster(cluster.getName());
-
-            building_info.setBuilding_name(request.getBuilding_name());
-            building_info.setBuilding_description(request.getBuilding_description());
-            building_info.setBuilding_photos(file.getOriginalFilename());
-            building_info.setPossible_sales(request.getPossible_sales());
-            building_info.setBuilding_type(request.getBuilding_type());
-            building_info.setUse_type(request.getUse_type());
-            building_info.setStreet_name(request.getStreet_name());
-            building_info.setPower(request.getPower());
-            building_info.setState(request.getState());
-            building_info.setRoA(request.getRoA());
-            building_info.setToA(request.getToA());
-            building_info.setSecurity(request.getSecurity());
-            building_info.setComments(request.getComments());
-
-            building_infoRepository.save(building_info);
-
-            Contact_info contact_info = new Contact_info();
-
-            contact_info.setBuildingId(building_info.getId());
-            contact_info.setManagement_type(request.getManagement_type());
-            contact_info.setFull_names(request.getFull_names());
-            contact_info.setPhone_number(request.getPhone_number());
-            contact_info.setId_number(request.getId_number());
-            contact_info.setEmail(request.getEmail());
-            contact_infoRepository.save(contact_info);
+            contact_profile.setBuildingcode(building_code);
+            contact_profile.setManagement_type(request.getManagement_type());
+            contact_profile.setFull_names(request.getFull_names());
+            contact_profile.setPhone_number(request.getPhone_number());
+            contact_profile.setId_number(request.getId_number());
+            contact_profile.setEmail(request.getEmail());
+            contact_profile.setAccessRights(request.getAccessRights());
+            contact_profile.setAccessRights_text(request.getAccessRights_text());
+            contact_profile.setRoa(request.getRoa());
+            contact_profile.setRoa_status(request.getRoa_status());
+            contact_profile.setOther_terms(request.getOther_terms());
+            contact_infoRepository.save(contact_profile);
 
 
             // sales profile
-            Sale_profile sales_profile = new Sale_profile();
-            sales_profile.setBuildingId(building_info.getId());
-            sales_profile.setNumberofUnits(request.getNumberofUnits());
-            sales_profile.setPackagesPosible(request.getPackagesPosible());
-            sales_profile.setRent(request.getRent());
-            sales_profile.setExsistingProviders(request.getExsistingProviders());
-            sales_profile.setInternetUsers(request.getInternetUsers());
-            sales_profile.setBlocks(request.getBlocks());
-            sales_profile.setFloors(request.getFloors());
+            Sales_profile sales_profile = new Sales_profile();
+            sales_profile.setBuilding_code(building_code);
+            sales_profile.setPossible_sales(request.getPossible_sales());
+            sales_profile.setExsistingProvider(request.getExsistingProvider());
+            sales_profile.setWithinternet(request.getWithinternet());
+            sales_profile.setHighestrent(request.getHighestrent());
+            sales_profile.setMediumrent(request.getMediumrent());
+            sales_profile.setLowestrent(request.getLowestrent());
+            sales_profile.setLeadingprovider(request.getLeadingprovider());
+            sales_profile.setIncomeclass(request.getIncomeclass());
+            sales_profile.setTargetplan(request.getTargetplan());
+
             sales_profileRepository.save(sales_profile);
-
-
-
-
-            // String UPLOADED_FOLDER = "C/temp/";
-            // Path p = Paths.get("uploads");
-
-
-//            // Get the file and save it somewhere
-//            byte[] bytes = file.getBytes();
-//            Path path = Paths.get(p + file.getOriginalFilename());
-//
-//            Files.write(path, bytes);
-
-
-
-
-
 
             if (!Files.exists(root)) {
                 Files.createDirectories(root);
             }
-            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+            Files.copy(file.getInputStream(), this.root.resolve(photo.getOriginalFilename()));
 
             Images_info images_info = new Images_info();
-            images_info.setBuildingId(building_info.getId());
-            images_info.setName(file.getOriginalFilename());
+            images_info.setBuildingId(building_profile.getId());
+            images_info.setName(photo.getOriginalFilename());
             imags_infoRepository.save(images_info);
+
+
+
+
 
             rdata.put("success", 1);
             rdata.put("msg", "successful.");

@@ -30,7 +30,17 @@ public class Sales_profile {
     private String     incomeclass;
     @Column(name = "targetplan")
     private String     targetplan;
+    // building profile
+    @Column(name = "building_code")
+    private String building_code;
 
+    public String getBuilding_code() {
+        return building_code;
+    }
+
+    public void setBuilding_code(String building_code) {
+        this.building_code = building_code;
+    }
 
     public Integer getId() {
         return id;

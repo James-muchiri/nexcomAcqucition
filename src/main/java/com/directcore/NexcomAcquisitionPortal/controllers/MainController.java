@@ -61,9 +61,9 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @RequestMapping(value = "/addbuildings", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object doSignUp(@RequestParam("pp_photo") MultipartFile file, @ModelAttribute Building_information request) {
+    public Object doSignUp(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_information request) {
 
         try {
             return adminService.addbuilding(request, file);
@@ -74,9 +74,9 @@ public class MainController {
 
     }
 
-    @RequestMapping(value = "/addbuildings", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object addbuildings(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_information request) {
+    public Object addbuildings(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_form request) {
 
         try {
             return adminService.addbuildings(request, photo, file);
@@ -324,7 +324,7 @@ public class MainController {
 
     @RequestMapping(value = "/addcontact", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object addcontact(@ModelAttribute Contact_info request) {
+    public Object addcontact(@ModelAttribute Contact_profile request) {
 
         try {
             return adminService.addcontact(request);
@@ -565,4 +565,12 @@ public class MainController {
         return adminService.fetchadmins();
 
     }
+
+//    @GetMapping(path = "/test")
+//    @ResponseBody
+//    public Object test() {
+//
+//        return adminService.generate_code();
+//
+//    }
 }

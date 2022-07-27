@@ -33,6 +33,9 @@ public class Contact_profile {
     private String             Access_Status;
     @Column(name = "Other_terms")
     private String          Other_terms;
+    // building profile
+    @Column(name = "buildingcode")
+    private String buildingcode;
 
     public Integer getId() {
         return id;
@@ -128,5 +131,13 @@ public class Contact_profile {
 
     public void setOther_terms(String other_terms) {
         Other_terms = other_terms;
+    }
+
+    public String getBuildingcode() {
+        return buildingcode;
+    }
+
+    public void setBuildingcode(String buildingcode) {
+        this.buildingcode = buildingcode;
     }
 }
