@@ -122,4 +122,6 @@ public interface AdminService {
     Object useraddrole(Integer roleid, Integer userid);
 
     Object fetchadmins();
+
+    Object addbuildings(Building_information request, MultipartFile photo, MultipartFile file);
 }

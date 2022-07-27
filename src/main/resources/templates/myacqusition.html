@@ -35,6 +35,15 @@ body{
             font-weight: 600;
 
         }
+
+        .btn-theme {
+    background: #3e007c;
+    border-bottom: 5px solid #f1bd06;
+}
+
+.ctm-border-radius {
+    border-radius: 10px;
+}
 </style>
 
 <div class="content">
@@ -50,99 +59,150 @@ body{
             <hr>
         </div>
 
-    </div>
-    <div class="container-fluid" >
+
         <div class="row">
-            <div class="col-xl-4 col-lg-12 col-md-12">
-                <div class="card flex-fill ctm-border-radius shadow-sm grow">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Building Profile</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        <p class="card-text mb-3"><span class="text-primary">Building Name :</span><b th:text="${buildings.getBuilding_name()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Building Description :</span> <b th:text="${buildings.getBuilding_description()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Building Type : </span><b th:text="${buildings.getBuilding_type()}"></b></p>
-                        <p class="card-text mb-3"><span class="text-primary">Possible Sales :</span> <b th:text="${buildings.getPossible_sales()}"></b> </p>
-                        <p class="card-text mb-3"><span class="text-primary">Acqusition Date:</span> 05 May 1990</p>
+            <div class="col-sm-12">
 
-                       <a  class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_basicInformation"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-6 col-md-6 d-flex">
-                <div class="card flex-fill  ctm-border-radius shadow-sm grow">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0">Contact Profile</h4>
-                    </div>
-                    <div class="card-body text-center" style="overflow-y:scroll; height:270px;" >
-                        <di th:each="contact, iterStat : ${contacts}" >
-                            <h4 class="card-title mb-0" th:text="${iterStat.count}" ></h4>
-                            <p class="card-text mb-3"><span class="text-primary">Management Type : </span> <b th:text="${contact.getManagement_type()}"></b></p>
-                            <p class="card-text mb-3"><span class="text-primary">Full Names : </span> <b th:text="${contact.getFull_names()}"></b></p>
-                            <p class="card-text mb-3"><span class="text-primary">Phone Number : </span><b th:text="${contact.getPhone_number()}"></b></p>
-                            <p class="card-text mb-3"><span class="text-primary">Id Number : </span><b th:text="${contact.getId_number()}"></b></p>
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item active"><a  class="nav-link" href="#tab1" data-toggle="tab">Building Profile</a></li>
+                            <li class="nav-item "><a class="nav-link" href="#tab2" data-toggle="tab">Contact Profile</a></li>
+                            <li class="nav-item "><a  class="nav-link" href="#tab3" data-toggle="tab">Location Profile</a></li>
+                            <li class="nav-item "><a  class="nav-link" href="#tab4" data-toggle="tab">Building Images</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab1">
 
-                            <a th:attr="onclick=|fetchcontact('${contact.getId()}')|" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                       <hr>
-
-                        </di>
-
-                        <div style="padding:20px;">
-                        <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#add_Contact"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-
+                                <div class="row" id="adminp">
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <span class="main">Building Profile</span>
+                                    <button  style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#edit_basicInformation"><i class="fa fa-pencil" aria-hidden="true"></i> Edit profile</button>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label>Email</label>
+                                                <p class="card-text mb-3"><span class="text-primary">Building Name :</span><b th:text="${buildings.getBuilding_name()}"></b></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label>Email</label>
+                                                <p class="card-text mb-3"><span class="text-primary">Building Description :</span> <b th:text="${buildings.getBuilding_description()}"></b></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label>Email</label>
+                                                <p class="card-text mb-3"><span class="text-primary">Building Type : </span><b th:text="${buildings.getBuilding_type()}"></b></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label>Email</label>
+                                                <p class="card-text mb-3"><span class="text-primary">Possible Sales :</span> <b th:text="${buildings.getPossible_sales()}"></b> </p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label>Email</label>
+                                                <p class="card-text mb-3"><span class="text-primary">Acqusition Date:</span> 05 May 1990</p>
 
 
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-12 col-md-12">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-6 col-md-6 d-flex">
-                        <div class="card ctm-border-radius shadow-sm grow flex-fill">
-                            <div class="card-header">
-                                <h4 class="card-title mb-0">Building Location</h4>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="card-body text-center">
-                                <p class="card-text mb-3"><span class="text-primary">Region  : </span><b th:text="${buildings.getRegion()}"></b></p>
-                                <p class="card-text mb-3"><span class="text-primary">Zone : </span><b th:text="${buildings.getZone()}"></b></p>
-                                <p class="card-text mb-3"><span class="text-primary">Area : </span><b th:text="${buildings.getArea()}"></b></p>
-                                <p class="card-text mb-3"><span class="text-primary">Cluster : </span><b th:text="${buildings.getCluster()}"></b></p>
+                            <div class="tab-pane" id="tab2">
 
-<!--                            <a href="javascript:void(0)"  class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i></a>-->
-                                         </div>
-                        </div>
-                    </div>
-
-                </div>
-
-    </div>
-            <div class="col-xl-12 col-lg-12 col-md-12">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-6 col-md-6 d-flex">
-                        <div class="card ctm-border-radius shadow-sm grow flex-fill">
-                            <div class="card-header">
-                                <h4 class="card-title mb-0">Building Images</h4>
-                            </div>
-                            <div class="card-body">
-                     <div class="row">
-                                <div class="col-xl-3  text-center" th:each="image : ${images}">
-                                    <a th:attr="onclick=|deleteimage('${image.getId()}')|"  class="btn btn-theme ctm-border-radius text-white btn-sm" ><i class="fa fa-times" aria-hidden="true"></i></a>
-
-                                    <img th:src="@{/upload/{i}(i=${image.getName()})}" alt="Building image">
-                                </div>
-                                <div class="col-xl-3 text-center justify-center">
-                                    <a href="javascript:void(0)" class="btn btn-theme ctm-border-radius text-white btn-sm" data-toggle="modal" data-target="#add_images"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                </div>
-                                </div>
-                           </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <span class="main">Contact Profile</span>
+                                        <button href="javascript:void(0)" style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#add_Contact"><i class="fa fa-plus" aria-hidden="true"></i> New Contact</button>
 </div>
+
+
+                                                <div class="col-sm-4 text-center" th:each="contact, iterStat : ${contacts}" >
+                                                    <h4 class="card-title mb-0" th:text="${iterStat.count}" ></h4>
+                                                    <p class="card-text mb-3"><span class="text-primary">Management Type : </span> <b th:text="${contact.getManagement_type()}"></b></p>
+                                                    <p class="card-text mb-3"><span class="text-primary">Full Names : </span> <b th:text="${contact.getFull_names()}"></b></p>
+                                                    <p class="card-text mb-3"><span class="text-primary">Phone Number : </span><b th:text="${contact.getPhone_number()}"></b></p>
+                                                    <p class="card-text mb-3"><span class="text-primary">Id Number : </span><b th:text="${contact.getId_number()}"></b></p>
+
+                                                    <button th:attr="onclick=|fetchcontact('${contact.getId()}')|" href="javascript:void(0)"  class="btn btn-primary"  data-toggle="modal" data-target="#edit_Contact"><i class="fa fa-pencil" aria-hidden="true"></i> edit contact</button>
+
+
+                                                </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab3">
+                                <div class="row">
+
+
+                                        <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                                <span class="main">Building Location </span>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
+
+                                                        <p class="card-text mb-3"><span class="text-primary">Region  : </span><b th:text="${buildings.getRegion()}"></b></p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
+                                                <p class="card-text mb-3"><span class="text-primary">Zone : </span><b th:text="${buildings.getZone()}"></b></p>
+                                                </div>
+
+                                                <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
+                                                        <p class="card-text mb-3"><span class="text-primary">Area : </span><b th:text="${buildings.getArea()}"></b></p>
+                                                    </div>
+
+                                                    <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
+                                                        <p class="card-text mb-3"><span class="text-primary">Cluster : </span><b th:text="${buildings.getCluster()}"></b></p>
+
+                                                  </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab4">
+                                <div class="row">
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="row">
+
+                                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                                <span class="main">BuildingImages </span>
+                                              <button  style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#add_images"><i class="fa fa-pencil" aria-hidden="true"></i> New Image</button>
+
+                                            </div>
+                                            <div class="col-xl-12 col-lg-6 col-md-6 d-flex">
+
+                                                        <div class="row">
+                                                            <div class="col-sm-4  text-center" th:each="image : ${images}">
+                                                                <button th:attr="onclick=|deleteimage('${image.getId()}')|"  class="btn btn-primary"><i class="fa fa-times" aria-hidden="true"></i> delete</button>
+
+                                                                <img style="height: 250px;width: 320px;" th:src="@{/upload/{i}(i=${image.getName()})}" alt="Building image">
+                                                            </div>
+
+                                                        </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
     </div>
 
 
@@ -192,7 +252,7 @@ body{
                         <input type="text" class="form-control"  name="buildingId" th:value="${buildings.getId()}" hidden/>
 
                     <button type="button" class="btn btn-danger float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    <button type="submit"   class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
@@ -224,7 +284,7 @@ body{
                     </div>
 
                         <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                        <button type="submit"  class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
@@ -255,7 +315,7 @@ body{
                 </div>
 
                     <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>
@@ -308,7 +368,7 @@ body{
                  <input type="text" name="buildingId" th:value="${buildings.getId()}" hidden>
 
                     <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-theme text-white ctm-border-radius float-right button-1">Save</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
             </div>

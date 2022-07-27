@@ -50,15 +50,14 @@ body{
       <hr>
     </div>
 
-  </div>
-  <div class="container-fluid" >
+
 
     <div class="row justify-content-center mt-0">
       <div class="col-sm-12">
         <div class="card">
           <div class="card-header">
 
-            <h2 class="fs-title"> Edit Name</h2>
+            <h5 class="fs-title"> Edit Name</h5>
 
           </div>
           <div class="card-body">
@@ -84,16 +83,14 @@ body{
       </div>
     </div>
 
-    <div class="row justify-content-center mt-0">
-      <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
-        <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
 
           <div class="row">
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-header">
 
-                  <h2 class="fs-title"> <u th:text="${areas.getName()}"></u>   Clusters</h2>
+                  <span class="main"> <u th:text="${areas.getName()}"></u>   Clusters</span>
                   <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
                     Add new Cluster
                   </button>
@@ -103,7 +100,7 @@ body{
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="table-responsive" >
-                      <table class="table table-striped mt32 customers-list " id="modal_table">
+                      <table class="table table-striped mt32 customers-list table-hover " id="modal_table">
                         <thead>
                         <tr>
 
@@ -131,9 +128,7 @@ body{
                       </table>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

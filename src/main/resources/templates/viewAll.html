@@ -469,7 +469,7 @@ visibility:hidden
                     <tbody id="bas_table">
 
 
-                    <tr  th:each="building : ${buildings}" >
+                    <tr  th:each="building : ${buildings}" th:onclick="'window.location.href=\'/admin/myacqusition/' + ${building.getId()} + '\''">
 
                       <td th:text="${building.getBuilding_name}"> </td>
                       <td th:text="${building.getBuilding_type}"> </td>
@@ -479,8 +479,7 @@ visibility:hidden
                       <td th:text="${building.getState}"> </td>
 
 
-                      <td>   <a type="button" href="/recruit/{!! $recruits['id'] !!}" class="btn btn-success">view more</a>
-                      </td>
+                      <td>   <a type="button"  th:href="@{/admin/myacqusition/__${building.getId()}__}"  class="btn btn-success">View more</a></td>
 
                     </tr>
 

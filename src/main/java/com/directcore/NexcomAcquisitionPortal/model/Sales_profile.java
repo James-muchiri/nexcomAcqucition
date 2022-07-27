@@ -2,71 +2,35 @@ package com.directcore.NexcomAcquisitionPortal.model;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Sales_profile {
+
+
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
-
     // sales profile
+    @Column(name = "possible_sales")
+    private String       possible_sales;
+    @Column(name = "exsistingProvider")
+    private String        exsistingProvider;
+    @Column(name = "withinternet")
+    private String           withinternet;
+    @Column(name = "leadingprovider")
+    private String        leadingprovider;
+    @Column(name = "lowestrent")
+    private String       lowestrent;
+    @Column(name = "mediumrent")
+    private String         mediumrent;
+    @Column(name = "highestrent")
+    private String        highestrent;
+    @Column(name = "incomeclass")
+    private String     incomeclass;
+    @Column(name = "targetplan")
+    private String     targetplan;
 
-    @Column(name = "numberofUnits")
-    private String NumberofUnits;
-    @Column(name = "packagesPosible")
-    private String packagesPosible;
-    @Column(name = "rent")
-    private String rent;
-    @Column(name = "exsistingProviders")
-    private String exsistingProviders;
-    @Column(name = "internetUsers")
-    private String internetUsers;
-    @Column(name = "buildingId")
-    private Integer buildingId;
-    @Column(name = "blocks")
-    private String blocks;
-    @Column(name = "floors")
-    private String floors;
-
-    public String getBlocks() {
-        return blocks;
-    }
-
-    public void setBlocks(String blocks) {
-        this.blocks = blocks;
-    }
-
-    public String getFloors() {
-        return floors;
-    }
-
-    public void setFloors(String floors) {
-        this.floors = floors;
-    }
-
-    public Integer getBuildingId() {
-        return buildingId;
-    }
-
-    public void setBuildingId(Integer buildingId) {
-        this.buildingId = buildingId;
-    }
-
-    public String getInternetUsers() {
-        return internetUsers;
-    }
-
-    public void setInternetUsers(String internetUsers) {
-        this.internetUsers = internetUsers;
-    }
-
-    public String getRent() {
-        return rent;
-    }
-
-    public void setRent(String rent) {
-        this.rent = rent;
-    }
 
     public Integer getId() {
         return id;
@@ -76,28 +40,75 @@ public class Sales_profile {
         this.id = id;
     }
 
-    public String getNumberofUnits() {
-        return NumberofUnits;
+    public String getPossible_sales() {
+        return possible_sales;
     }
 
-    public void setNumberofUnits(String numberofUnits) {
-        NumberofUnits = numberofUnits;
+    public void setPossible_sales(String possible_sales) {
+        this.possible_sales = possible_sales;
     }
 
-    public String getPackagesPosible() {
-        return packagesPosible;
+    public String getExsistingProvider() {
+        return exsistingProvider;
     }
 
-    public void setPackagesPosible(String packagesPosible) {
-        this.packagesPosible = packagesPosible;
+    public void setExsistingProvider(String exsistingProvider) {
+        this.exsistingProvider = exsistingProvider;
     }
 
-
-    public String getExsistingProviders() {
-        return exsistingProviders;
+    public String getWithinternet() {
+        return withinternet;
     }
 
-    public void setExsistingProviders(String exsistingProviders) {
-        this.exsistingProviders = exsistingProviders;
+    public void setWithinternet(String withinternet) {
+        this.withinternet = withinternet;
+    }
+
+    public String getLeadingprovider() {
+        return leadingprovider;
+    }
+
+    public void setLeadingprovider(String leadingprovider) {
+        this.leadingprovider = leadingprovider;
+    }
+
+    public String getLowestrent() {
+        return lowestrent;
+    }
+
+    public void setLowestrent(String lowestrent) {
+        this.lowestrent = lowestrent;
+    }
+
+    public String getMediumrent() {
+        return mediumrent;
+    }
+
+    public void setMediumrent(String mediumrent) {
+        this.mediumrent = mediumrent;
+    }
+
+    public String getHighestrent() {
+        return highestrent;
+    }
+
+    public void setHighestrent(String highestrent) {
+        this.highestrent = highestrent;
+    }
+
+    public String getIncomeclass() {
+        return incomeclass;
+    }
+
+    public void setIncomeclass(String incomeclass) {
+        this.incomeclass = incomeclass;
+    }
+
+    public String getTargetplan() {
+        return targetplan;
+    }
+
+    public void setTargetplan(String targetplan) {
+        this.targetplan = targetplan;
     }
 }

@@ -12,14 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +25,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -296,12 +289,14 @@ Login_logs login_logs =new Login_logs();
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
         List <Region> regions = (List<Region>) regionRepository.findAll();
+        List <Cluster> clusters = (List<Cluster>) clusterRepository.findAll();
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
         v.setViewName("acqusition");
         v.addObject("user", admi);
         v.addObject("regions", regions);
+        v.addObject("clusters", clusters);
         return v;
 
     }
@@ -362,7 +357,7 @@ Login_logs login_logs =new Login_logs();
 
 
             // sales profile
-            Sales_profile sales_profile = new Sales_profile();
+            Sale_profile sales_profile = new Sale_profile();
             sales_profile.setBuildingId(building_info.getId());
             sales_profile.setNumberofUnits(request.getNumberofUnits());
             sales_profile.setPackagesPosible(request.getPackagesPosible());
@@ -426,7 +421,9 @@ Login_logs login_logs =new Login_logs();
 
 
         List <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
-
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
         v.setViewName("myacqusitions");
         v.addObject("user", admi);
         v.addObject("buildings", building_infos);
@@ -1365,5 +1362,113 @@ else
 
         List <Admi> admis = (List<Admi>) admiRepository.findAll();
         return admis;
+    }
+
+    @Override
+    public Object addbuildings(Building_information request, MultipartFile photo, MultipartFile file) {
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+
+            Building_info building_info = new Building_info();
+
+
+            Region region = regionRepository.findById(request.getRegion()).orElse(null);
+            building_info.setRegion(region.getName());
+
+            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
+            building_info.setZone(zone.getName());
+
+            Area area = (Area) areaRepository.findById(request.getArea());
+            building_info.setArea(area.getName());
+
+            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
+            building_info.setCluster(cluster.getName());
+
+            building_info.setBuilding_name(request.getBuilding_name());
+            building_info.setBuilding_description(request.getBuilding_description());
+            building_info.setBuilding_photos(file.getOriginalFilename());
+            building_info.setPossible_sales(request.getPossible_sales());
+            building_info.setBuilding_type(request.getBuilding_type());
+            building_info.setUse_type(request.getUse_type());
+            building_info.setStreet_name(request.getStreet_name());
+            building_info.setPower(request.getPower());
+            building_info.setState(request.getState());
+            building_info.setRoA(request.getRoA());
+            building_info.setToA(request.getToA());
+            building_info.setSecurity(request.getSecurity());
+            building_info.setComments(request.getComments());
+
+            building_infoRepository.save(building_info);
+
+            Contact_info contact_info = new Contact_info();
+
+            contact_info.setBuildingId(building_info.getId());
+            contact_info.setManagement_type(request.getManagement_type());
+            contact_info.setFull_names(request.getFull_names());
+            contact_info.setPhone_number(request.getPhone_number());
+            contact_info.setId_number(request.getId_number());
+            contact_info.setEmail(request.getEmail());
+            contact_infoRepository.save(contact_info);
+
+
+            // sales profile
+            Sale_profile sales_profile = new Sale_profile();
+            sales_profile.setBuildingId(building_info.getId());
+            sales_profile.setNumberofUnits(request.getNumberofUnits());
+            sales_profile.setPackagesPosible(request.getPackagesPosible());
+            sales_profile.setRent(request.getRent());
+            sales_profile.setExsistingProviders(request.getExsistingProviders());
+            sales_profile.setInternetUsers(request.getInternetUsers());
+            sales_profile.setBlocks(request.getBlocks());
+            sales_profile.setFloors(request.getFloors());
+            sales_profileRepository.save(sales_profile);
+
+
+
+
+            // String UPLOADED_FOLDER = "C/temp/";
+            // Path p = Paths.get("uploads");
+
+
+//            // Get the file and save it somewhere
+//            byte[] bytes = file.getBytes();
+//            Path path = Paths.get(p + file.getOriginalFilename());
+//
+//            Files.write(path, bytes);
+
+
+
+
+
+
+            if (!Files.exists(root)) {
+                Files.createDirectories(root);
+            }
+            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+
+            Images_info images_info = new Images_info();
+            images_info.setBuildingId(building_info.getId());
+            images_info.setName(file.getOriginalFilename());
+            imags_infoRepository.save(images_info);
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+
+
     }
 }

@@ -50,11 +50,7 @@ body{
             <hr>
         </div>
 
-    </div>
-    <div class="container-fluid" >
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+
 
                     <div class="row">
                         <div class="col-md-12">
@@ -63,17 +59,21 @@ body{
                             <div class="card">
                                 <div class="card-header">
 
-                                    <h2 class="fs-title">Nexcom Teritories</h2>
-                                    <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
-                                        new Region
-                                    </button>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span class="main">Nexcom Teritories</span>
+                                            <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule">
+                                                new Region
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body">
 
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="table-responsive" >
-                                                <table class="table table-striped mt32 customers-list " id="modal_table">
+                                                <table class="table table-striped mt32 customers-list table-hover" id="modal_table">
                                                     <thead>
                                                     <tr>
 
@@ -85,8 +85,8 @@ body{
                                                     </tr>
                                                     </thead>
                                                     <tbody id="myTable">
-<!--                                                    th:onclick="'window.location.href=\'/admin/region/' + ${region.getId()} + '\''"-->
-                                                    <tr id="t_dat" th:each="region : ${regions}"  >
+
+                                                    <tr id="t_dat" th:each="region : ${regions}"  th:onclick="'window.location.href=\'/admin/region/' + ${region.getId()} + '\''">
 
                                                         <td th:text="${region.getName()}"> </td>
 
@@ -109,16 +109,14 @@ body{
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 
 
 <!-- Modal -->
 <div class="modal fade" id="new_shedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalCenterTitle">New Region</h5>

@@ -74,6 +74,19 @@ public class MainController {
 
     }
 
+    @RequestMapping(value = "/addbuildings", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object addbuildings(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_information request) {
+
+        try {
+            return adminService.addbuildings(request, photo, file);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+
+    }
+
     @GetMapping({"/myacqusitions"})
     public ModelAndView myacqusitions(HttpSession request, ModelAndView v) {
 
