@@ -21,4 +21,6 @@ public interface ZoneRepository extends CrudRepository<Zone, Integer> {
 
     @Query("SELECT z FROM Zone z WHERE z.name LIKE %?1%")
     List<Zone> findByNameLike(String search);
+
+
 }

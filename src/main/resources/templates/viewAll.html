@@ -426,9 +426,9 @@ visibility:hidden
                 <p class="mt-7">Select User </p>
                 <select id="search_selects" name="search_selects" class="form-control " >
 
-<!--                  @foreach ($users as $user)-->
-<!--                  <option value="{!! $user['id'] !!}" data-select2-id="2">{!! $user['name'] !!}</option>-->
-<!--                  @endforeach-->
+
+                  <option th:each="admin : ${users}" th:text="${admin.getName()}" th:value="${admin.getId()}"></option>
+
 
                 </select>
 
@@ -456,13 +456,14 @@ visibility:hidden
                   <table class="table table-striped table-hover mt32 customers-list " id="modal_table">
                     <thead>
                     <tr>
-                      <th class="t_head">No</th>
-                      <th class="t_head">First Name</th>
-                      <th class="t_head">Last Name</th>
-                      <th class="t_head">PhoneNumber</th>
-                      <th class="t_head">Email Address</th>
-                      <th class="t_head">Id Number</th>
-                      <th class="t_head">Action</th>
+                      <td class="t_head">Building Code</td>
+                      <td class="t_head">Building Name</td>
+                      <td class="t_head">Building Description</td>
+                      <td class="t_head">Building Use Type</td>
+                      <td class="t_head">Building Type</td>
+                      <td class="t_head">Building State</td>
+                      <td class="t_head">Acquisition Purpose</td>
+                      <td class="t_head">Action</td>
 
                     </tr>
                     </thead>
@@ -471,12 +472,13 @@ visibility:hidden
 
                     <tr  th:each="building : ${buildings}" th:onclick="'window.location.href=\'/admin/myacqusition/' + ${building.getId()} + '\''">
 
-                      <td th:text="${building.getBuilding_name}"> </td>
-                      <td th:text="${building.getBuilding_type}"> </td>
-                      <td th:text="${building.getUse_type}"> </td>
-                      <td th:text="${building.getStreet_name}"> </td>
-                      <td th:text="${building.getPossible_sales}"> </td>
-                      <td th:text="${building.getState}"> </td>
+                      <td th:text="${building.getBuilding_code()}"> </td>
+                      <td th:text="${building.getBuilding_name()}"> </td>
+                      <td th:text="${building.getBuilding_description()}"> </td>
+                      <td th:text="${building.getUse_type()}"> </td>
+                      <td th:text="${building.getBuilding_type()}"> </td>
+                      <td th:text="${building.getBuilding_state()}"> </td>
+                      <td th:text="${building.getAcquisitionPurpose()}"> </td>
 
 
                       <td>   <a type="button"  th:href="@{/admin/myacqusition/__${building.getId()}__}"  class="btn btn-success">View more</a></td>
@@ -526,7 +528,7 @@ var formdata = 'search=' + search;
            data: formdata,
            cache: false,
            success: function(data) {
-              //  console.log(data);
+               console.log(data);
 
 
               var t_data="";
@@ -538,19 +540,24 @@ var formdata = 'search=' + search;
 
 t_data=t_data+
 '<tr id="t_data" onclick="load_a_ba('+element.id+')">'+
-  '<td>'+ no +'</td>'+
 
 
 
 
-                '<td>'+element.fname+'</td>'+
-                '<td>'+element.lname+'</td>'+
-                '<td>'+element.phono+'</td>'+
-                '<td>'+element.email+'</td>'+
-                '<td>'+element.id_no+'</td>'+
+
+                 '<td>'+element.building_code+'</td>'+
+                '<td>'+element.building_name+'</td>'+
+                '<td>'+element.building_description+'</td>'+
+                '<td>'+element.use_type+'</td>'+
+                '<td>'+element.building_type+'</td>'+
+                '<td>'+element.building_state+'</td>'+
+                 '<td>'+element.acquisition_purpose+'</td>'+
 
 
-                '<td>'+'<a type="button" href="/recruit/'+element.id+'" class="btn btn-success">view more</a>'+'</td>'+
+
+
+
+                '<td>'+'<a type="button" href="/admin/myacqusition/'+element.id+'" class="btn btn-success">view more</a>'+'</td>'+
 
             '</tr>';
 
@@ -583,7 +590,7 @@ t_data=t_data+
             } );
 
             function load_a_ba(id) {
-                    window.location = "/recruit/" + id;
+                    window.location = "/admin/myacqusition/" + id;
                 };
 
                 $('#filter_by').change(function() {
@@ -658,14 +665,16 @@ t_data=t_data+
 
 
 
-                  '<td>'+element.fname+'</td>'+
-                  '<td>'+element.lname+'</td>'+
-                  '<td>'+element.phono+'</td>'+
-                  '<td>'+element.email+'</td>'+
-                  '<td>'+element.id_ni+'</td>'+
+                  '<td>'+element.building_code+'</td>'+
+                '<td>'+element.building_name+'</td>'+
+                '<td>'+element.building_description+'</td>'+
+                '<td>'+element.use_type+'</td>'+
+                '<td>'+element.building_type+'</td>'+
+                '<td>'+element.building_state+'</td>'+
+                 '<td>'+element.acquisition_purpose+'</td>'+
 
 
-                  '<td>'+'<a type="button" href="/recruit/'+element.id+'" class="btn btn-success">view more</a>'+'</td>'+
+                  '<td>'+'<a type="button" href="/admin/myacqusition/'+element.id+'" class="btn btn-success">view more</a>'+'</td>'+
 
               '</tr>';
 

@@ -15,4 +15,6 @@ public interface RegionRepository extends CrudRepository<Region, Integer> {
 
     @Query("SELECT r FROM Region r WHERE r.name LIKE %?1%")
     List<Region> findByNameLike(String search);
+
+
 }

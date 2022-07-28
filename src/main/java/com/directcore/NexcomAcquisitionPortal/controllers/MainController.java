@@ -61,25 +61,14 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/addbuildings", method = RequestMethod.POST, consumes = {"multipart/form-data"})
-    @ResponseBody
-    public Object doSignUp(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_information request) {
 
-        try {
-            return adminService.addbuilding(request, file);
-        } catch (Exception e) {
-            return "Failed!";
-        }
-
-
-    }
 
     @RequestMapping(value = "/addbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object addbuildings(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa") MultipartFile file, @ModelAttribute Building_form request) {
+    public Object addbuildings(@RequestParam("pp_photo") MultipartFile photo, @RequestParam("roa_document") MultipartFile file, @ModelAttribute Building_form request, HttpSession req) {
 
         try {
-            return adminService.addbuildings(request, photo, file);
+            return adminService.addbuildings(req,request, photo, file);
         } catch (Exception e) {
             return "Failed!";
         }
@@ -505,7 +494,7 @@ public class MainController {
 
     @RequestMapping(value = "/view_ba", method = RequestMethod.POST,  consumes = {"application/x-www-form-urlencoded"})
     @ResponseBody
-    public Object view_ba(@RequestParam("search_type") Integer search_type, @RequestParam("search") String search) {
+    public Object view_ba(@RequestParam("search_type") Integer search_type, @RequestParam("search") Integer search) {
 
         try {
             return adminService.view_ba(search, search_type);

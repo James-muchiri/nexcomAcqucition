@@ -535,7 +535,7 @@ visibility:hidden
 
                                                     <label for="" class="form-label">Building Use Type</label>
                                                     <select name="use_type" id="use_type" class="form-control">
-                                                        <option> Select Building Use Type</option>
+
                                                         <option value="Residential">Residential</option>
                                                         <option value="Commercial">Commercial</option>
                                                         <option value="mixeduse">Mixed Use</option>
@@ -581,20 +581,18 @@ visibility:hidden
                                                 <div class="basic form-group">
                                                     <div class="mb-3">
                                                         <label for="" class="form-label">Backup Power Availability</label>
-                                                        <input type="radio" name="backup" value="true"> True
-                                                        <input type="radio" name="backup" value="false"> False
+                                                        <input style="height:20px;" type="radio" name="backup" value="true"class="form-control"> True
+                                                        <input style="height:20px;" type="radio" name="backup" value="false" class="form-control"> False
 
 
                                                     </div>
                                                 </div>
 
                                                 <div class="basic form-group hidden" id="textboxes" style="display: none">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+
                                                             <label for="backup_text">Backup description<span class="required">*</span></label><br>
-                                                            <textarea class="form-control backup_text" id="backup_text" name="backup_text" rows="2" required> </textarea>
-                                                        </div>
-                                                    </div>
+                                                            <textarea class="form-control backup_text" id="backup_text" name="backup_text" required> </textarea>
+
                                                 </div>
                                                 <script>
                                                     $(function() {
@@ -642,12 +640,10 @@ visibility:hidden
 
 
                                                 <div class="basic form-group">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+
                                                             <label for="building_description">More Building Description<span class="required">*</span></label><br>
-                                                            <textarea class="form-control building_description" id="building_description" name="building_description" rows="2" required> </textarea>
-                                                        </div>
-                                                    </div>
+                                                            <textarea class="form-control building_description" id="building_description" name="building_description" required> </textarea>
+
 
                                                 </div>
                                                 <div class="basic form-group">
@@ -689,7 +685,7 @@ visibility:hidden
                                             </div>
                                                 <div class="form-group">
 
-                                                    <a style="color: white; float:left;" onclick="back1()" type="button"  class="btn btn-primary float-right" >Back
+                                                    <a style="color: white; float:left;" onclick="back1()" type="button"  class="btn btn-primary" >Back
                                                     </a>
                                                     <a style="color: white;" onclick="continu2()" type="button" align="right" class="btn btn-primary float-right" >Continue
                                                     </a>
@@ -775,7 +771,7 @@ visibility:hidden
 
 
                                             <div class="basic form-group">
-                                          <a style="color: white;float:le;" onclick="back2()" type="button" align="right" class="btn btn-primary float-right" >Back
+                                          <a style="color: white;float:left;" onclick="back2()" type="button" align="right" class="btn btn-primary" >Back
                                                 </a>
                                                 <a style="color: white;" onclick="continu3()" type="button" align="right" class="btn btn-primary float-right" >Continue
                                                 </a>
@@ -823,20 +819,18 @@ visibility:hidden
                                                 <div class="basic form-group">
                                                     <div class="mb-3">
                                                         <label for="" class="form-label">AccessRights Required</label>
-                                                        <input type="radio" name="AccessRights" value="true"> True
-                                                        <input type="radio" name="AccessRights" value="false"> False
+                                                        <input type="radio" name="AccessRights" value="true" class="form-control"> True
+                                                        <input type="radio" name="AccessRights" value="false" class="form-control"> False
 
 
                                                     </div>
                                                 </div>
 
                                                 <div class="basic form-group hidden" id="textbox" style="display: none">
-                                                    <div class="row">
-                                                        <div class="col-sm-12">
+
                                                             <label for="backup_text">Backup description<span class="required">*</span></label><br>
                                                             <textarea class="form-control backup_text" id="AccessRights_text" name="AccessRights_text" rows="2" required> </textarea>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
                                                 <script>
                                                     $(function() {
@@ -854,7 +848,7 @@ visibility:hidden
 
                                                     <label for="name">Right of Access Terms<span class="required"></span></label>
                                                     <div class="custom-file">
-                                                        <input type="file"  class="custom-file-input" name="roa" id="roa" accept="application/pdf">
+                                                        <input type="file"  class="custom-file-input" name="roa_document" id="roa_document" accept="application/pdf">
                                                         <label class="custom-file-label" id="edu-cert" for="roa">Right of Access Terms</label>
 
                                                         <script>
@@ -871,7 +865,7 @@ visibility:hidden
                                             </div>
 
 
-                                            <div class="basic form-group">
+                                            <div class="form-group">
                                                 <div class="mb-3">
                                                     <input type="text" name="user_id" value="{{$user->id}}" hidden>
                                                     <label for="" class="form-label">Right of Access Status </label>
@@ -885,7 +879,7 @@ visibility:hidden
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="basic form-group">
+                                            <div class="form-group">
                                                 <div class="mb-3">
                                                     <input type="text" name="user_id" value="{{$user->id}}" hidden>
                                                     <label for="" class="form-label">Access Status</label>
@@ -897,7 +891,7 @@ visibility:hidden
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="basic form-group">
+                                            <div class="form-group">
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <label for="name">Other terms<span class="required">*</span></label><br>
@@ -908,7 +902,7 @@ visibility:hidden
                                             </div>
 
 
-                                          <a style="color: white;float:right;" onclick="back3()" type="button" align="right" class="btn btn-primary float-right" >Back
+                                          <a style="color: white;float:left;" onclick="back3()" type="button" class="btn btn-primary" >Back
                                             </a>
                                             <button style="color: white;" id="submit"  type="button" align="right" class="btn btn-primary float-right" >Continue
                                             </button>
@@ -978,11 +972,28 @@ function continu(){
 function continu2(){
 
 
-
     var opacity;
 
     current_fs = $('#personalreq');
         next_fs =$('#sales_profile');
+
+            curInputs =  current_fs.find("input[type='text'],input[type='url'],input[type='email'], input[type='number'], input[type='file']");
+            isValid = true;
+console.log(curInputs);
+            for(var i=0; i<curInputs.length; i++){
+              //  console.log(curInputs[i].value);
+            if (!curInputs[i].value){
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            //   console.log(curInputs[i].value);
+            }
+        }
+        var text = $('textarea#building_description').val();
+        if(!text){
+          $('textarea#building_description').closest(".form-group").addClass("has-error");
+           isValid = false;
+        }
+        if (isValid){
 
 
         next_fs.show();
@@ -1001,7 +1012,7 @@ function continu2(){
             duration: 600
         });
 
-
+}
 
 }
 
@@ -1016,6 +1027,21 @@ function continu3(){
         next_fs =$('#attachmentreq');
 
 
+          curInputs =  current_fs.find("input[type='text'],input[type='url'],input[type='email'], input[type='number'], input[type='file']");
+            isValid = true;
+console.log(curInputs);
+            for(var i=0; i<curInputs.length; i++){
+              //  console.log(curInputs[i].value);
+            if (!curInputs[i].value){
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            //   console.log(curInputs[i].value);
+            }
+        }
+        if (isValid){
+
+
+
         next_fs.show();
 
         current_fs.animate({opacity: 0}, {
@@ -1032,7 +1058,7 @@ function continu3(){
             duration: 600
         });
 
-
+}
 
 }
 function back1(){
@@ -1284,16 +1310,23 @@ $(document).ready(function(e){
 
         e.preventDefault();
 
+        current_fs =$('#attachmentreq');
+           curInputs =  current_fs.find("input[type='text'],input[type='url'],input[type='email'], input[type='number'], input[type='file']");
+            isValid = true;
+console.log(curInputs);
+            for(var i=0; i<curInputs.length; i++){
+              //  console.log(curInputs[i].value);
+            if (!curInputs[i].value){
+                isValid = false;
+                $(curInputs[i]).closest(".form-group").addClass("has-error");
+            //   console.log(curInputs[i].value);
+            }
+        }
+        if (isValid){
+
+
+
   var $form = $(this);
-
-  // check if the input is valid using a 'valid' property
-  if (!$form.valid){ return false;}
-
-
-
-
-
-
 
 
 
@@ -1306,10 +1339,49 @@ $.ajax({
             contentType: false,
             cache: false,
             processData:false,
-         success: function(data) {
-             console.log(data);
+         success: function(response) {
+             console.log(response);
 
 
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+
+
+    $("#user_basic_per_form")[0].reset();
+
+
+    var opacity;
+
+
+        next_fs = $('#basicreq');
+              current_fs =$('#attachmentreq');
+
+
+        next_fs.show();
+
+        current_fs.animate({opacity: 0}, {
+            step: function(now) {
+                // for making fielset appear animation
+                opacity = 1 - now;
+
+                current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                });
+                next_fs.css({'opacity': opacity});
+            },
+            duration: 600
+        });
+
+}
+else{
+toastr.error(response.msg);
+
+<!--  $('#newPortalroles').modal('hide');-->
+<!--    $("#rolesform")[0].reset();-->
+}
 
 
 
@@ -1321,7 +1393,7 @@ $.ajax({
 
     });
 
-
+}
 
   });
 

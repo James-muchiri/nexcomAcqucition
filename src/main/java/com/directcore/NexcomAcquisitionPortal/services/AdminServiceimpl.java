@@ -20,11 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -62,8 +64,7 @@ private RolesRepository roleRepository;
     @Autowired
     private Contact_infoRepository contact_infoRepository;
 
-    @Autowired
-    private  Building_infoRepository building_infoRepository;
+
     @Autowired
     private Building_profileRepository building_profileRepository;
 
@@ -75,7 +76,8 @@ private RolesRepository roleRepository;
 
     @Autowired
     private  Login_logsRepository login_logsRepository;
-
+@Autowired
+private Access_right_profileRepository access_right_profileRepository;
 
 
     private Pattern regexPattern;
@@ -87,17 +89,17 @@ private RolesRepository roleRepository;
 
 
 
-    @Override
-    public String newUser(Admi userForm) {
-
-
-    //    userForm.setRoles(new HashSet<>(roleRepository.findAll()));
-      //  userForm.setPassword(bcrypt.hash(userForm.getPassword()));
-        userForm.setPassword("fff");
-        admiRepository.save(userForm);
-
-        return "User Registered successful";
-    }
+//    @Override
+//    public String newUser(Admi userForm) {
+//
+//
+//    //    userForm.setRoles(new HashSet<>(roleRepository.findAll()));
+//      //  userForm.setPassword(bcrypt.hash(userForm.getPassword()));
+//        userForm.setPassword("fff");
+//        admiRepository.save(userForm);
+//
+//        return "User Registered successful";
+//    }
 
 
     @Override
@@ -307,113 +309,6 @@ Login_logs login_logs =new Login_logs();
 
 
 
-    @Override
-    public Object addbuilding(Building_information request, MultipartFile file) {
-
-
-
-
-        HashMap<String, Object> rdata = new HashMap<String, Object>();
-        try {
-
-//            Building_info building_info = new Building_info();
-//
-//
-//            Region region = regionRepository.findById(request.getRegion()).orElse(null);
-//            building_info.setRegion(region.getName());
-//
-//            Zone zone = zoneRepository.findById(request.getZone()).orElse(null);
-//            building_info.setZone(zone.getName());
-//
-//            Area area = (Area) areaRepository.findById(request.getArea());
-//            building_info.setArea(area.getName());
-//
-//            Cluster cluster= (Cluster) clusterRepository.findById(request.getCluster());
-//            building_info.setCluster(cluster.getName());
-//
-//            building_info.setBuilding_name(request.getBuilding_name());
-//            building_info.setBuilding_description(request.getBuilding_description());
-//            building_info.setBuilding_photos(file.getOriginalFilename());
-//            building_info.setPossible_sales(request.getPossible_sales());
-//            building_info.setBuilding_type(request.getBuilding_type());
-//            building_info.setUse_type(request.getUse_type());
-//            building_info.setStreet_name(request.getStreet_name());
-//            building_info.setPower(request.getPower());
-//            building_info.setState(request.getState());
-//            building_info.setRoA(request.getRoA());
-//            building_info.setToA(request.getToA());
-//            building_info.setSecurity(request.getSecurity());
-//            building_info.setComments(request.getComments());
-//
-//            building_infoRepository.save(building_info);
-//
-//            Contact_info contact_info = new Contact_info();
-//
-//            contact_info.setBuildingId(building_info.getId());
-//            contact_info.setManagement_type(request.getManagement_type());
-//            contact_info.setFull_names(request.getFull_names());
-//            contact_info.setPhone_number(request.getPhone_number());
-//            contact_info.setId_number(request.getId_number());
-//            contact_info.setEmail(request.getEmail());
-//            contact_infoRepository.save(contact_info);
-//
-//
-//            // sales profile
-//            Sale_profile sales_profile = new Sale_profile();
-//            sales_profile.setBuildingId(building_info.getId());
-//            sales_profile.setNumberofUnits(request.getNumberofUnits());
-//            sales_profile.setPackagesPosible(request.getPackagesPosible());
-//            sales_profile.setRent(request.getRent());
-//            sales_profile.setExsistingProviders(request.getExsistingProviders());
-//            sales_profile.setInternetUsers(request.getInternetUsers());
-//            sales_profile.setBlocks(request.getBlocks());
-//            sales_profile.setFloors(request.getFloors());
-//            sales_profileRepository.save(sales_profile);
-//
-//
-//
-//
-//            // String UPLOADED_FOLDER = "C/temp/";
-//           // Path p = Paths.get("uploads");
-//
-//
-////            // Get the file and save it somewhere
-////            byte[] bytes = file.getBytes();
-////            Path path = Paths.get(p + file.getOriginalFilename());
-////
-////            Files.write(path, bytes);
-//
-//
-//
-//
-//
-//
-//            if (!Files.exists(root)) {
-//                Files.createDirectories(root);
-//            }
-//            Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-//
-//            Images_info images_info = new Images_info();
-//            images_info.setBuildingId(building_info.getId());
-//            images_info.setName(file.getOriginalFilename());
-//            imags_infoRepository.save(images_info);
-
-            rdata.put("success", 1);
-            rdata.put("msg", "successful.");
-
-
-            return rdata;
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            rdata.put("success", 0);
-            rdata.put("msg", "An error occured! ");
-            return rdata;
-        }
-
-
-
-    }
 
     @Override
     public Object myacqusition(HttpSession request, ModelAndView v) {
@@ -422,13 +317,14 @@ Login_logs login_logs =new Login_logs();
 
 
 
-        List <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
+
+        List <Building_profile> building_profiles = (List<Building_profile>) building_profileRepository.findAll();
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
         v.setViewName("myacqusitions");
         v.addObject("user", admi);
-        v.addObject("buildings", building_infos);
+        v.addObject("buildings", building_profiles);
         return v;
     }
 
@@ -800,8 +696,13 @@ Login_logs login_logs =new Login_logs();
      Building_profile building_info = (Building_profile) building_profileRepository.findById(id);
 
      List <Contact_profile> contact_infos = contact_infoRepository.findByBuildingcode(building_info.getBuilding_code());
-
+  Sales_profile  sales_profile = (Sales_profile) sales_profileRepository.findByBuildingcode(building_info.getBuilding_code());
    List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+
+   Cluster cluster = (Cluster) clusterRepository.findById(building_info.getBuilding_cluster());
+    Area area = (Area) areaRepository.findById(cluster.getAreaId());
+    Zone zone = zoneRepository.findById(cluster.getZoneId()).orElse(null);
+        Region region = regionRepository.findById(cluster.getRegion_id()).orElse(null);
 
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
@@ -810,7 +711,12 @@ Login_logs login_logs =new Login_logs();
         v.addObject("user", admi);
         v.addObject("buildings", building_info);
         v.addObject("contacts", contact_infos);
+        v.addObject("sales_profiles", sales_profile);
         v.addObject("images", images_info);
+        v.addObject("cluster", cluster);
+        v.addObject("zone", zone);
+        v.addObject("area", area);
+        v.addObject("region", region);
         return v;
 
     }
@@ -828,7 +734,16 @@ Login_logs login_logs =new Login_logs();
       
     }
             }
-
+//   public String generateUniqueFileName() {
+//        String filename = "";
+//        long millis = System.currentTimeMillis();
+//        String datetime = new Date().toGMTString();
+//        datetime = datetime.replace(" ", "");
+//        datetime = datetime.replace(":", "");
+//        String rndchars = RandomStringUtils.randomAlphanumeric(16);
+//        filename = rndchars + "_" + datetime + "_" + millis;
+//        return filename;
+//    }
     @Override
     public Object addimage(Integer buildingId, MultipartFile file) {
 
@@ -838,11 +753,17 @@ Login_logs login_logs =new Login_logs();
         if (!Files.exists(root)) {
             Files.createDirectories(root);
         }
-        Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+            String[] fileFrags = file.getOriginalFilename().split("\\.");
+            String extension = fileFrags[fileFrags.length-1];
+           String picName     = timeStamp + "." + extension;
+
+        //    String picName     = "timeStamp" + ".png";
+        Files.copy(file.getInputStream(), this.root.resolve(picName));
 
         Images_info images_info = new Images_info();
         images_info.setBuildingId(buildingId);
-        images_info.setName(file.getOriginalFilename());
+        images_info.setName(picName);
         imags_infoRepository.save(images_info);
 
         rdata.put("success", 1);
@@ -956,12 +877,12 @@ Login_logs login_logs =new Login_logs();
 
 
 
-            Building_info building_info = building_infoRepository.findById(buildingId);
-            building_info.setBuilding_name(building_name);
-            building_info.setBuilding_description(building_description);
-            building_info.setPossible_sales(possible_sales);
-            building_info.setBuilding_type(building_type);
-            building_infoRepository.save(building_info);
+//            Building_info building_info = building_infoRepository.findById(buildingId);
+//            building_info.setBuilding_name(building_name);
+//            building_info.setBuilding_description(building_description);
+//            building_info.setPossible_sales(possible_sales);
+//            building_info.setBuilding_type(building_type);
+//            building_infoRepository.save(building_info);
 
 
 
@@ -997,28 +918,28 @@ Login_logs login_logs =new Login_logs();
         return v;
     }
 
-    @Override
-    public Object fetchRole(Integer id) {
-        Roles_admin rolesAdmin = roleRepository.findAllById(id);
-        return rolesAdmin;
-    }
+//    @Override
+//    public Object fetchRole(Integer id) {
+//        Roles_admin rolesAdmin = roleRepository.findAllById(id);
+//        return rolesAdmin;
+//    }
 
-    @Override
-    public Object getPortalroleById(Integer id, HttpSession request, ModelAndView v) {
-        Integer user_admin = (Integer) request.getAttribute("user_admin");
-        Admi admi = admiRepository.findById(user_admin);
-
-
-        List <Roles_admin> roles_admins = roleRepository.findAll();
-        Roles_admin role = roleRepository.findAllById(id);
-        List<String> privileges = getPrivileges(admi.getRoles());
-        logger.info(String.valueOf(privileges));
-        v.addObject("authorities", privileges);
-        v.setViewName("edit_roles");
-        v.addObject("user", admi);
-        v.addObject("role", role);
-         return v;
-    }
+//    @Override
+//    public Object getPortalroleById(Integer id, HttpSession request, ModelAndView v) {
+//        Integer user_admin = (Integer) request.getAttribute("user_admin");
+//        Admi admi = admiRepository.findById(user_admin);
+//
+//
+//        List <Roles_admin> roles_admins = roleRepository.findAll();
+//        Roles_admin role = roleRepository.findAllById(id);
+//        List<String> privileges = getPrivileges(admi.getRoles());
+//        logger.info(String.valueOf(privileges));
+//        v.addObject("authorities", privileges);
+//        v.setViewName("edit_roles");
+//        v.addObject("user", admi);
+//        v.addObject("role", role);
+//         return v;
+//    }
 
 
 
@@ -1167,14 +1088,15 @@ return "ddd";
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-
-          List  <Building_info> building_infos = (List<Building_info>) building_infoRepository.findAll();
+List <Admi> admis = (List<Admi>) admiRepository.findAll();
+          List  <Building_profile> building_infos = (List<Building_profile>) building_profileRepository.findAll();
 
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
         v.setViewName("viewAll");
         v.addObject("user", admi);
+        v.addObject("users", admis);
         v.addObject("buildings", building_infos);
         return v;
     }
@@ -1183,29 +1105,37 @@ return "ddd";
     @Override
     public Object view_ba_search(String search) {
 
-        List<Building_info> building_infos = building_infoRepository.findByNameLike(search);
+        List<Building_profile> building_infos = building_profileRepository.findByNameLike(search);
 
         return building_infos;
     }
 
 
     @Override
-    public Object view_ba(String search, Integer search_type) throws ParseException {
+    public Object view_ba(Integer search, Integer search_type) throws ParseException {
 
         if(search_type == 3){
-
-            LocalDateTime creationDateTime = LocalDateTime.now().minusDays(7);
+if(search == 1) {
+    LocalDateTime creationDateTime = LocalDateTime.now().minusDays(7);
 //            return this.repository.findAllWithDateAfter(threeDaysAgoDate);
 //            @Query("select m from Message m where date >= :threeDaysAgoDate")
 //            List<Message> findAllWithDateAfter(@Param("threeDaysAgoDate") LocalDate threeDaysAgoDate);
 
-            List<Building_info> building_infos = building_infoRepository.findAllWithCreateDateTimeAfter(creationDateTime);
+    List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
 
-            return building_infos;
+    return building_infos;
+}else {
+    LocalDateTime creationDateTime = LocalDateTime.now().minusDays(30);
+
+    List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
+
+    return building_infos;
+}
         }
 else
         {
-            List<Building_info> building_infos = building_infoRepository.findByNameLike(search);
+
+            List<Building_profile> building_infos = building_profileRepository.findByAdminid(search);
 
             return building_infos;
         }
@@ -1369,8 +1299,15 @@ else
 public String generate_code(){
 
         String code = "BCD";
-        String  bcd123 = "BCD1234";
-        Building_info building_info = building_infoRepository.findTopByOrderByIdDesc();
+
+    String  bcd123 = "";
+        Building_profile building_profile = building_profileRepository.findTopByOrderByIdDesc();
+        if(building_profile == null){
+            bcd123 = "BCD001";
+        }else {
+             bcd123 = building_profile.getBuilding_code();
+        }
+
 //    String person[]  = bcd123.split(":");
     String person[]  = bcd123.split("(?=\\d)(?<=\\D)");
     String name = person[0];
@@ -1383,15 +1320,21 @@ public String generate_code(){
         return code;
 }
     @Override
-    public Object addbuildings(Building_form request, MultipartFile photo, MultipartFile file) {
+    public Object addbuildings(HttpSession req, Building_form request, MultipartFile photo, MultipartFile file) {
 
 
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
 
+
+
+                Integer user_admin = (Integer) req.getAttribute("user_admin");
+                Admi admi = admiRepository.findById(user_admin);
+
             String building_code = generate_code();
             Building_profile building_profile = new Building_profile();
             building_profile.setBuilding_code(building_code);
+            building_profile.setAdminid(admi.getId());
             building_profile.setBuilding_cluster(request.getBuilding_cluster());
             building_profile.setBuilding_name(request.getBuilding_name());
             building_profile.setAcquisitionPurpose(request.getAcquisitionPurpose());
@@ -1417,17 +1360,14 @@ public String generate_code(){
             contact_profile.setPhone_number(request.getPhone_number());
             contact_profile.setId_number(request.getId_number());
             contact_profile.setEmail(request.getEmail());
-            contact_profile.setAccessRights(request.getAccessRights());
-            contact_profile.setAccessRights_text(request.getAccessRights_text());
-            contact_profile.setRoa(request.getRoa());
-            contact_profile.setRoa_status(request.getRoa_status());
-            contact_profile.setOther_terms(request.getOther_terms());
             contact_infoRepository.save(contact_profile);
+
+
 
 
             // sales profile
             Sales_profile sales_profile = new Sales_profile();
-            sales_profile.setBuilding_code(building_code);
+            sales_profile.setBuildingcode(building_code);
             sales_profile.setPossible_sales(request.getPossible_sales());
             sales_profile.setExsistingProvider(request.getExsistingProvider());
             sales_profile.setWithinternet(request.getWithinternet());
@@ -1443,14 +1383,37 @@ public String generate_code(){
             if (!Files.exists(root)) {
                 Files.createDirectories(root);
             }
-            Files.copy(file.getInputStream(), this.root.resolve(photo.getOriginalFilename()));
+
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+            String[] fileFrags = photo.getOriginalFilename().split("\\.");
+            String extension = fileFrags[fileFrags.length-1];
+            String picName     = timeStamp + "." + extension;
+
+
+            Files.copy(photo.getInputStream(), this.root.resolve(picName));
+
 
             Images_info images_info = new Images_info();
             images_info.setBuildingId(building_profile.getId());
             images_info.setName(photo.getOriginalFilename());
             imags_infoRepository.save(images_info);
 
+            String timeStamp1 = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+            String[] fileFrags1 = photo.getOriginalFilename().split("\\.");
+            String extension1 = fileFrags1[fileFrags1.length-1];
+            String docName     = timeStamp1 + "." + extension1;
 
+
+            Files.copy(photo.getInputStream(), this.root.resolve(docName));
+
+            Access_right_profile access_right_profile =new Access_right_profile();
+            access_right_profile.setAccessRights(request.getAccessRights());
+            access_right_profile.setAccess_Status(request.getAccess_Status());
+            access_right_profile.setAccessRights_text(request.getAccessRights_text());
+            access_right_profile.setRoa(docName);
+            access_right_profile.setRoa_status(request.getRoa_status());
+            access_right_profile.setOther_terms(request.getOther_terms());
+            access_right_profileRepository.save(access_right_profile);
 
 
 

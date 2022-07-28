@@ -19,6 +19,8 @@ public class Building_profile {
     private Integer   building_cluster;
 
     // building profile
+    @Column(name = "adminid")
+    private Integer   adminid;
     @Column(name = "building_code")
     private String building_code;
     @Column(name = "building_name")
@@ -191,7 +193,13 @@ public class Building_profile {
     }
 
 
+    public Integer getAdminid() {
+        return adminid;
+    }
 
+    public void setAdminid(Integer adminid) {
+        this.adminid = adminid;
+    }
 
     public String getBuilding_code() {
         return building_code;

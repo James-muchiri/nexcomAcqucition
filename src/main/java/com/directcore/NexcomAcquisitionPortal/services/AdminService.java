@@ -16,7 +16,6 @@ public interface AdminService {
 
 
 
-    String newUser(Admi userForm);
 
 
 
@@ -34,7 +33,7 @@ public interface AdminService {
 
     Object acqusition(HttpSession request, ModelAndView v);
 
-     Object addbuilding(Building_information request, MultipartFile file);
+
 
     Object myacqusition(HttpSession request, ModelAndView v);
 
@@ -89,9 +88,7 @@ public interface AdminService {
 
     Object admin_roles(HttpSession request, ModelAndView v);
 
-    Object fetchRole(Integer id);
 
-    Object getPortalroleById(Integer id, HttpSession request, ModelAndView v);
 
     Object editportalRoles(Roles_admin rolesAdmin);
 
@@ -111,7 +108,7 @@ public interface AdminService {
 
     Object view_ba_search(String search);
 
-    Object view_ba(String search, Integer search_type) throws ParseException;
+    Object view_ba(Integer search, Integer search_type) throws ParseException;
 
     Object view_teri(String search);
 
@@ -123,7 +120,7 @@ public interface AdminService {
 
     Object fetchadmins();
 
-    Object addbuildings(Building_form request, MultipartFile photo, MultipartFile file);
+    Object addbuildings(HttpSession req, Building_form request, MultipartFile photo, MultipartFile file);
 
 
 }

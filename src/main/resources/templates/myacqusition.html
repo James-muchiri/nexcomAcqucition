@@ -70,6 +70,7 @@ body{
                             <li class="nav-item "><a class="nav-link" href="#tab2" data-toggle="tab">Contact Profile</a></li>
                             <li class="nav-item "><a  class="nav-link" href="#tab3" data-toggle="tab">Location Profile</a></li>
                             <li class="nav-item "><a  class="nav-link" href="#tab4" data-toggle="tab">Building Images</a></li>
+                            <li class="nav-item "><a  class="nav-link" href="#tab5" data-toggle="tab">Sales Profile</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
@@ -80,27 +81,73 @@ body{
                                     <button  style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#edit_basicInformation"><i class="fa fa-pencil" aria-hidden="true"></i> Edit profile</button>
                                     </div>
                                     <div class="col-xl-4 col-lg-12 col-md-4">
-                                        <label>Email</label>
-                                                <p class="card-text mb-3"><span class="text-primary">Building Name :</span><b th:text="${buildings.getBuilding_name()}"></b></p>
+                                        <label class="font-weight-bold">Building Name</label>
+                                                <p class="card-text mb-3"><span th:text="${buildings.getBuilding_name()}"></span></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-12 col-md-4">
-                                        <label>Email</label>
-                                                <p class="card-text mb-3"><span class="text-primary">Building Description :</span> <b th:text="${buildings.getBuilding_description()}"></b></p>
+                                        <label class="font-weight-bold">Building Description</label>
+                                                <p class="card-text mb-3"> <span th:text="${buildings.getBuilding_description()}"></span></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-12 col-md-4">
-                                        <label>Email</label>
-                                                <p class="card-text mb-3"><span class="text-primary">Building Type : </span><b th:text="${buildings.getBuilding_type()}"></b></p>
+                                        <label class="font-weight-bold">Building Type</label>
+                                                <p class="card-text mb-3"><span th:text="${buildings.getBuilding_type()}"></span></p>
                                     </div>
                                     <div class="col-xl-4 col-lg-12 col-md-4">
-                                        <label>Email</label>
-                                                <p class="card-text mb-3"><span class="text-primary">Possible Sales :</span> <b th:text="${buildings.getPossible_sales()}"></b> </p>
+                                        <label class="font-weight-bold">Building Code</label>
+                                                <p class="card-text mb-3"> <span th:text="${buildings.getBuilding_code()}"></span> </p>
                                     </div>
-                                    <div class="col-xl-4 col-lg-12 col-md-4">
-                                        <label>Email</label>
-                                                <p class="card-text mb-3"><span class="text-primary">Acqusition Date:</span> 05 May 1990</p>
 
-
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Acquisition Purpose</label>
+                                        <p class="card-text mb-3">     <span th:text="${buildings.getAcquisitionPurpose()}"></span></p>
                                     </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Building Use Type</label>
+                                        <p class="card-text mb-3">   <span th:text="${buildings.getUse_type()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Building State</label>
+                                        <p class="card-text mb-3">      <span th:text="${buildings.getBuilding_state()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Building Power Source</label>
+                                        <p class="card-text mb-3">   <span th:text="${buildings.getPower()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Building Power Backup</label>
+                                        <p class="card-text mb-3">     <span th:text="${buildings.getBackup()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Building Power Backup Type</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getBackup_text()}"></span></p>
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Number of Units</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getNumberofUnits()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Number of Blocks</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getBlocks()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Number of Floors</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getFloors()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Security Availability</label>
+                                        <p class="card-text mb-3">   <span th:text="${buildings.getSecurity()}"></span></p>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Street_name</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getStreet_name()}"></span></p>
+                                    </div>
+
+                                    <div class="col-xl-4 col-lg-12 col-md-4">
+                                        <label class="font-weight-bold">Acquisition Date</label>
+                                        <p class="card-text mb-3">    <span th:text="${buildings.getCreateDateTime()}"></span></p>
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -114,7 +161,7 @@ body{
 
 
                                                 <div class="col-sm-4 text-center" th:each="contact, iterStat : ${contacts}" >
-                                                    <h4 class="card-title mb-0" th:text="${iterStat.count}" ></h4>
+                                                    <h5 class="card-title mb-0" th:text="${iterStat.count}" ></h5>
                                                     <p class="card-text mb-3"><span class="text-primary">Management Type : </span> <b th:text="${contact.getManagement_type()}"></b></p>
                                                     <p class="card-text mb-3"><span class="text-primary">Full Names : </span> <b th:text="${contact.getFull_names()}"></b></p>
                                                     <p class="card-text mb-3"><span class="text-primary">Phone Number : </span><b th:text="${contact.getPhone_number()}"></b></p>
@@ -139,21 +186,24 @@ body{
                                             <div class="col-xl-12 col-lg-12 col-md-12">
                                                 <span class="main">Building Location </span>
                                             </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
-
-                                                        <p class="card-text mb-3"><span class="text-primary">Region  : </span><b th:text="${buildings.getRegion()}"></b></p>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Region</label>
+                                                <p class="card-text mb-3">      <span th:text="${region.getName()}"></span></p>
                                             </div>
 
-                                            <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
-                                                <p class="card-text mb-3"><span class="text-primary">Zone : </span><b th:text="${buildings.getZone()}"></b></p>
+                                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                                <label class="font-weight-bold">Zone</label>
+                                                <p class="card-text mb-3">    <span th:text="${zone.getName()}"></span></p>
                                                 </div>
 
-                                                <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
-                                                        <p class="card-text mb-3"><span class="text-primary">Area : </span><b th:text="${buildings.getArea()}"></b></p>
+                                                <div class="col-xl-4 col-lg-4 col-md-4">
+                                                    <label class="font-weight-bold">Area</label>
+                                                    <p class="card-text mb-3">     <span th:text="${area.getName()}"></span></p>
                                                     </div>
 
-                                                    <div class="col-xl-4 col-lg-4 col-md-4 d-flex">
-                                                        <p class="card-text mb-3"><span class="text-primary">Cluster : </span><b th:text="${buildings.getCluster()}"></b></p>
+                                                    <div class="col-xl-4 col-lg-4 col-md-4">
+                                                        <label class="font-weight-bold">Cluster</label>
+                                                        <p class="card-text mb-3">   <span th:text="${cluster.getName()}"></span></p>
 
                                                   </div>
 
@@ -193,6 +243,60 @@ body{
                                     </div>
                         </div>
                     </div>
+
+                            <div class="tab-pane" id="tab5">
+                                <div class="row">
+
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                                <span class="main">Sales Profile </span>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Possible Sales</label>
+                                                <p class="card-text mb-3">     <span th:text="${sales_profiles.getPossible_sales()}"></span></p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Exsisting Provider</label>
+                                                <p class="card-text mb-3">  <span th:text="${sales_profiles.getExsistingProvider()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold" >Customers With Internet</label>
+                                                <p class="card-text mb-3">  <span th:text="${sales_profiles.getWithinternet()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Leading Iternet Provider</label>
+                                                <p class="card-text mb-3">  <span th:text="${sales_profiles.getLeadingprovider()}"></span></p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Lowest Rent </label>
+                                                <p class="card-text mb-3">   <span th:text="${sales_profiles.getLowestrent()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Highest Rent </label>
+                                                <p class="card-text mb-3">  <span th:text="${sales_profiles.getHighestrent()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Clients Income Class </label>
+                                                <p class="card-text mb-3"> <span th:text="${sales_profiles.getIncomeclass()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                                <label class="font-weight-bold">Target Plan </label>
+                                               <p class="card-text mb-3"> <span th:text="${sales_profiles.getTargetplan()}"></span></p>
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -244,10 +348,7 @@ body{
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="name">Possible sales <span class="required">*</span></label>
-                        <input type="text" class="form-control"  name="possible_sales" th:value="${buildings.getPossible_sales()}"/>
-                    </div>
+
 
                         <input type="text" class="form-control"  name="buildingId" th:value="${buildings.getId()}" hidden/>
 
@@ -416,14 +517,16 @@ body{
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
 
 
   $('#add_images').modal('hide');
      $("#add_image")[0].reset();
 }
-
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
 
             },
@@ -473,14 +576,16 @@ toastr.success(response.msg);
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
 
  $('#add_Contact').modal('hide');
      $("#add_new_contact")[0].reset();
 }
 
-
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
             },
             error: function(xhr)
@@ -519,7 +624,7 @@ function deleteimage(data){
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
 
 
@@ -527,7 +632,9 @@ toastr.success(response.msg);
      $("#add_image")[0].reset();
 }
 
-
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
 
 
@@ -611,14 +718,16 @@ function fetchcontact(data){
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
 
   $('#edit_basicInformation').modal('hide');
      $("#edit_building")[0].reset();
 }
 
-
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
             },
             error: function(xhr)
@@ -665,14 +774,21 @@ toastr.success(response.msg);
   $('#edit_Contact').modal('hide');
      $("#edit_1_contact")[0].reset();
 
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
 }
 else{
-toastr.success(response.msg);
+toastr.error(response.msg);
 
 
  $('#edit_Contact').modal('hide');
      $("#edit_1_contact")[0].reset();
+
+         setTimeout(function() {
+        window.location.reload();
+}, 2000);
 }
 
 

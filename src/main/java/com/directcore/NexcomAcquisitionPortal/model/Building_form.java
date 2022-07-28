@@ -43,8 +43,7 @@ public class Building_form {
             private String     street_name;
             @Column(name = "building_description")
             private String      building_description;
-            @Column(name = "pp_photo")
-            private String        pp_photo;
+
 
 
             // sales profile
@@ -211,13 +210,7 @@ public class Building_form {
         this.building_description = building_description;
     }
 
-    public String getPp_photo() {
-        return pp_photo;
-    }
 
-    public void setPp_photo(String pp_photo) {
-        this.pp_photo = pp_photo;
-    }
 
     public String getPossible_sales() {
         return possible_sales;

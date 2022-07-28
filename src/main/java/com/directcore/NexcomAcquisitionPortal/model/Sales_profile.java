@@ -31,15 +31,15 @@ public class Sales_profile {
     @Column(name = "targetplan")
     private String     targetplan;
     // building profile
-    @Column(name = "building_code")
-    private String building_code;
+    @Column(name = "buildingcode")
+    private String buildingcode;
 
-    public String getBuilding_code() {
-        return building_code;
+    public String getBuildingcode() {
+        return buildingcode;
     }
 
-    public void setBuilding_code(String building_code) {
-        this.building_code = building_code;
+    public void setBuildingcode(String buildingcode) {
+        this.buildingcode = buildingcode;
     }
 
     public Integer getId() {
