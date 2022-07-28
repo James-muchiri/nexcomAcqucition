@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface Access_right_profileRepository  extends CrudRepository<Access_right_profile, Long> {
 
 
+    Access_right_profile findByBuildingcode(String building_code);
 }

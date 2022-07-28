@@ -71,6 +71,7 @@ body{
                             <li class="nav-item "><a  class="nav-link" href="#tab3" data-toggle="tab">Location Profile</a></li>
                             <li class="nav-item "><a  class="nav-link" href="#tab4" data-toggle="tab">Building Images</a></li>
                             <li class="nav-item "><a  class="nav-link" href="#tab5" data-toggle="tab">Sales Profile</a></li>
+                            <li class="nav-item "><a  class="nav-link" href="#tab6" data-toggle="tab">Access Rights</a></li>
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab1">
@@ -221,7 +222,7 @@ body{
                                         <div class="row">
 
                                             <div class="col-xl-12 col-lg-12 col-md-12">
-                                                <span class="main">BuildingImages </span>
+                                                <span class="main">Building Images </span>
                                               <button  style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#add_images"><i class="fa fa-pencil" aria-hidden="true"></i> New Image</button>
 
                                             </div>
@@ -286,6 +287,51 @@ body{
                                             <div class="col-xl-4 col-lg-12 col-md-4">
                                                 <label class="font-weight-bold">Target Plan </label>
                                                <p class="card-text mb-3"> <span th:text="${sales_profiles.getTargetplan()}"></span></p>
+                                            </div>
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab6">
+                                <div class="row">
+
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12">
+                                                <span class="main">Access Rights </span>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Access Rights</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getAccessRights()}"></span></p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Access Rights   Terms</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getAccessRights_text()}"></span></p>
+                                            </div>
+
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Rights of access</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getRoa()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Rights of access</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getRoa()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Access Status</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getAccess_Status()}"></span></p>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                                <label class="font-weight-bold">Other Terms</label>
+                                                <p class="card-text mb-3">      <span th:text="${access_right_profile.getOther_terms()}"></span></p>
                                             </div>
 
 
@@ -412,7 +458,7 @@ body{
                 </div>  <div class="form-group">
                     <label> Id Number</label>
                     <input required="" type="number" class="form-control"  name="id_number" placeholder="Id Number" value="">
-                        <input type="text" name="buildingId" th:value="${buildings.getId()}" hidden>
+                        <input type="text" name="buildingcode" th:value="${buildings.getBuilding_code()}" hidden>
                 </div>
 
                     <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>

@@ -698,6 +698,7 @@ Login_logs login_logs =new Login_logs();
      List <Contact_profile> contact_infos = contact_infoRepository.findByBuildingcode(building_info.getBuilding_code());
   Sales_profile  sales_profile = (Sales_profile) sales_profileRepository.findByBuildingcode(building_info.getBuilding_code());
    List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+   Access_right_profile access_right_profile = access_right_profileRepository.findByBuildingcode(building_info.getBuilding_code());
 
    Cluster cluster = (Cluster) clusterRepository.findById(building_info.getBuilding_cluster());
     Area area = (Area) areaRepository.findById(cluster.getAreaId());
@@ -717,6 +718,7 @@ Login_logs login_logs =new Login_logs();
         v.addObject("zone", zone);
         v.addObject("area", area);
         v.addObject("region", region);
+        v.addObject("access_right_profile", access_right_profile);
         return v;
 
     }
@@ -1399,14 +1401,15 @@ public String generate_code(){
             imags_infoRepository.save(images_info);
 
             String timeStamp1 = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
-            String[] fileFrags1 = photo.getOriginalFilename().split("\\.");
+            String[] fileFrags1 = file.getOriginalFilename().split("\\.");
             String extension1 = fileFrags1[fileFrags1.length-1];
             String docName     = timeStamp1 + "." + extension1;
 
 
-            Files.copy(photo.getInputStream(), this.root.resolve(docName));
+            Files.copy(file.getInputStream(), this.root.resolve(docName));
 
             Access_right_profile access_right_profile =new Access_right_profile();
+            access_right_profile.setBuildingcode(building_code);
             access_right_profile.setAccessRights(request.getAccessRights());
             access_right_profile.setAccess_Status(request.getAccess_Status());
             access_right_profile.setAccessRights_text(request.getAccessRights_text());
