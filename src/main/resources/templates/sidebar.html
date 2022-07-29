@@ -5,7 +5,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/admin/index"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    <a th:href="@{/admin/index}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
 
 
@@ -16,9 +16,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file-pdf-o"></i>Managment </a>
                     <ul class="sub-menu children dropdown-menu">
 
-                        <li> <a href="/admin/acqusitions">New Acqusitions</a></li>
-                        <li><a href="/admin/myacqusitions">My Acqusitions</a></li>
-                        <li  th:if="${#lists.contains(authorities, 'orders')}" ></i><a  href="/admin/viewAll">View All</a></li>
+                        <li> <a th:href="@{/admin/acqusitions}">New Acqusitions</a></li>
+                        <li><a th:href="@{/admin/myacqusitions}">My Acqusitions</a></li>
+                        <li  th:if="${#lists.contains(authorities, 'orders')}" ></i><a  th:href="@{/admin/viewAll}">View All</a></li>
 
 
 
@@ -29,8 +29,8 @@
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-gears"></i>Setting </a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li></i><a href="/admin/Teritories">Teritories</a></li>
-                       <li></i><a href="/admin/Teritories_search">Teritories Search</a></li>
+                        <li></i><a th:href="@{/admin/Teritories}">Teritories</a></li>
+                       <li></i><a th:href="@{/admin/Teritories_search}">Teritories Search</a></li>
 
 
 
@@ -44,8 +44,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-eye"></i>Admin</a>
                     <ul class="sub-menu children dropdown-menu">
 
-                       <li><a href="/admin/admin_users">Users</a></li>
-                        <li><a href="/admin/admin_roles">Roles</a></li>
+                       <li><a th:href="@{/admin/admin_users}">Users</a></li>
+                        <li><a th:href="@{/admin/admin_roles}">Roles</a></li>
 
 
                     </ul>

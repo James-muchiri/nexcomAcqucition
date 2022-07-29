@@ -353,18 +353,26 @@ public class MainController {
 
     @RequestMapping(value = "/editbuilding", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object editbuillding(@RequestParam("buildingId") Integer buildingId, @RequestParam("building_name") String building_name,
-                              @RequestParam("building_description") String building_description, @RequestParam("building_type") String building_type,
-                              @RequestParam("possible_sales") String possible_sales) {
+    public Object editbuillding(@RequestParam("buildingId") Integer buildingId, @ModelAttribute Building_form request, HttpSession req ) {
 
         try {
-            return adminService.editbuilding(buildingId, building_description, building_name,building_type, possible_sales);
+            return adminService.editbuildings(buildingId, request);
         } catch (Exception e) {
             return "Failed!";
         }
 
     }
+    @RequestMapping(value = "/edit_1_edit_accessright", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @ResponseBody
+    public Object edit_1_edit_accessright(@RequestParam("buildingcode") String buildingcode, @ModelAttribute Building_form request, HttpSession req ) {
 
+        try {
+            return adminService.edit_1_edit_accessright(buildingcode, request);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+
+    }
     @GetMapping({"/admin_roles"})
     public ModelAndView admin_roles(HttpSession request, ModelAndView v) {
 

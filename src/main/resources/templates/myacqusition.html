@@ -306,6 +306,8 @@ body{
                                         <div class="row">
                                             <div class="col-xl-12 col-lg-12 col-md-12">
                                                 <span class="main">Access Rights </span>
+                                                <button  style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#edit_accessright"><i class="fa fa-pencil" aria-hidden="true"></i> Edit profile</button>
+
                                             </div>
                                             <div class="col-xl-4 col-lg-4 col-md-4 ">
                                                 <label class="font-weight-bold">Access Rights</label>
@@ -361,17 +363,286 @@ body{
 
 
     <div class="modal fade" id="edit_basicInformation">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title mb-3">Edit Basic Information</h4>
                     <form id="edit_building">
+
+
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
                     <div class="form-group">
                         <label for="name">Building name <span class="required">*</span></label>
                         <input type="text" class="form-control"  name="building_name" th:value="${buildings.getBuilding_name()}" />
                     </div>
+
+
+                        </div>
+
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 ">
+                            <div class="basic form-group">
+                                <div class="mb-3">
+
+                                    <label for="" class="form-label">Acquisition Purpose</label>
+                                    <select name="acquisitionPurpose" id="acquisitionPurpose" class="form-control">
+                                        <option value="Infrastructure" th:selected="(${buildings.getAcquisitionPurpose()} == 'Infrastructure')"  >Infrastructure Only</option>
+                                        <option value="Infrastructure&Customers" th:selected="(${buildings.getAcquisitionPurpose()} == 'Infrastructure&Customers')" >Infrastructure & Customers</option>
+                                        <option value="Customers"  th:selected="(${buildings.getAcquisitionPurpose()} == 'Customers')"  >Customers Only</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Building Use Type</label>
+                                        <select name="use_type" id="use_type" class="form-control">
+
+                                            <option value="Residential" th:selected="(${buildings.getUse_type()} == 'Residential')">Residential</option>
+                                            <option value="Commercial" th:selected="(${buildings.getUse_type()} == 'Commerciale')">Commercial</option>
+                                            <option value="mixeduse" th:selected="(${buildings.getUse_type()} == 'mixeduse')">Mixed Use</option>
+                                            <option value="publicsector" th:selected="(${buildings.getUse_type()} == 'publicsectorother')">Public Sector</option>
+                                            <option value="other" th:selected="(${buildings.getUse_type()} == 'other')">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Building Type</label>
+                                        <select name="building_type" id="building_type" class="form-control">
+                                            <option> Select Building Type</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+<script>
+
+
+
+
+$('#use_type').change(function() {
+    var vall = $(this).val();
+ var option = "<option> Select Building Type</option>";
+if(vall == "Residential"){
+
+
+            option = option +
+            '<option value="appartment">Appartment</option>'+
+            '<option value="standalone">Stand Alone</option>'+
+            '<option value="townhouse">Townhouse</option>';
+
+}else if(vall == "Commercial"){
+
+  option = option +
+            '<option value="businesspack">Business Pack</option>'+
+            '<option value="shopingmall">Shoping Mall</option>'+
+            '<option value="officeblock">Offfice Blocks</option>';
+
+}else if(vall == "mixeduse"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}else if(vall == "publicsector"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}
+else if(vall == "other"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}
+
+
+   $("#building_type").html("");
+      $("#building_type").append(option);
+
+});
+
+use_type();
+function use_type(){
+
+
+  var element = document.getElementById(use_type).value;
+ var option = "<option> Select Building Type</option>";
+if(vall == "Residential"){
+
+
+            option = option +
+            '<option value="appartment">Appartment</option>'+
+            '<option value="standalone">Stand Alone</option>'+
+            '<option value="townhouse">Townhouse</option>';
+
+}else if(vall == "Commercial"){
+
+  option = option +
+            '<option value="businesspack">Business Pack</option>'+
+            '<option value="shopingmall">Shoping Mall</option>'+
+            '<option value="officeblock">Offfice Blocks</option>';
+
+}else if(vall == "mixeduse"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}else if(vall == "publicsector"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}
+else if(vall == "other"){
+
+  option = option +
+            '<option value="appartment">Appartment</option>'+
+
+            '<option value="townhouse">Townhouse</option>';
+
+}
+
+
+   $("#building_type").html("");
+      $("#building_type").append(option);
+
+}
+</script>
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Building State</label>
+                                        <select name="building_state" id="building_state" class="form-control">
+                                            <option value="Occupied" th:selected="(${buildings.getBuilding_state()} == 'Occupied')"> Occupied</option>
+                                            <option value="Under Construction" th:selected="(${buildings.getBuilding_state()} == 'Under Constructionother')">Under Construction</option>
+                                            <option value="Unoccupied" th:selected="(${buildings.getBuilding_state()} == 'Unoccupied')">Unoccupied</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Backup Power Availability</label>
+                                        <input style="height:20px;" type="radio" name="backup" value="true"class="form-control" th:checked="(${buildings.getBackup()} == 'true')"> True
+                                        <input style="height:20px;" type="radio" name="backup" value="false" class="form-control" th:checked="(${buildings.getBackup()} == 'false')"> False
+
+
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 hidden" id="textboxes" style="display: none">
+                                <div class="basic form-group">
+
+                                    <label for="backup_text">Backup description<span class="required">*</span></label><br>
+                                    <textarea th:value="(${buildings.getBackup_text()})" class="form-control backup_text" id="backup_text" name="backup_text" required> </textarea>
+
+                                </div>
+                                <script>
+                                                    $(function() {
+    $('input[name="backup"]').on('click', function() {
+        if ($(this).val() == 'true') {
+            $('#textboxes').show();
+        }
+        else {
+            $('#textboxes').hide();
+        }
+    });
+});
+                                                </script>
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+
+                                <div class="basic form-group">
+                                    <label > Number of units</label>
+                                    <input required="" th:value="(${buildings.getNumberofUnits()})" type="text" class="form-control" id="numberofUnits" name="numberofUnits" placeholder="Number of units" value="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+
+                                <div class="basic form-group">
+                                    <label > Number of Blocks</label>
+                                    <input required="" th:value="(${buildings.getBlocks()})" type="text" class="form-control" id="blocks" name="blocks" placeholder="Number of Blocks" value="">
+                                </div>
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <label > Number of Floors</label>
+                                    <input required="" th:value="(${buildings.getFloors()})" type="text" class="form-control" id="floors" name="floors" placeholder="Number of Floors" value="">
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Building Security</label>
+                                        <select name="security" id="security" class="form-control">
+
+                                            <option value="Secure" th:selected="(${buildings.getSecurity()} == 'Secure')">Secure</option>
+                                            <option value="Insecure" th:selected="(${buildings.getSecurity()} == 'Insecure')">Insecure</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-xl-4 col-lg-4 col-md-4 ">
+                                <div class="basic form-group">
+                                    <label for="name">Street Name<span class="required">*</span></label>
+                                    <input type="text" th:value="(${buildings.getStreet_name()})" class="form-control" name="street_name" id="street_name"/>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                                    <div class="col-xl-4 col-lg-4 col-md-4 ">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-10">
@@ -381,18 +652,11 @@ body{
                         </div>
 
                     </div>
-                    <div class="form-group">
-                        <div class="mb-3">
+                                    </div>
 
-                            <label for="" class="form-label">Building Type</label>
-                            <select name="building_type" id="" class="form-control">
 
-                                <option value="Residential">Residential</option>
-                                <option value="Commercial">Commercial</option>
-                                <option value="Residential&Commercial">Residential and Commercial</option>
-                            </select>
-                        </div>
-                    </div>
+
+                                        </div>
 
 
 
@@ -407,8 +671,110 @@ body{
     </div>
 
 
+    <div class="modal fade" id="edit_accessright">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title mb-3">Edit Access Right</h4>
+                    <form id="edit_1_edit_accessright">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 ">
+
+                                <div class="basic form-group">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">AccessRights Required</label>
+                                        <input type="radio" style="height:20px;" name="AccessRights" value="true" class="form-control" th:checked="(${access_right_profile.getAccessRights()} == 'true')"> True
+                                        <input type="radio" style="height:20px;" name="AccessRights" value="false" class="form-control" th:checked="(${access_right_profile.getAccessRights()} == 'true')"> False
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 hidden" id="textbox" style="display: none">
+                                <div class="basic form-group">
+
+                                    <label for="backup_text">Access_Right<span class="required">*</span></label><br>
+                                    <textarea th:text="${access_right_profile.getAccessRights_text()}"  class="form-control backup_text" id="AccessRights_text" name="AccessRights_text" rows="2" required> </textarea>
+
+                                </div>
+                                <script>
+                                                    $(function() {
+    $('input[name="AccessRights"]').on('click', function() {
+        if ($(this).val() == 'true') {
+            $('#textbox').show();
+        }
+        else {
+            $('#textbox').hide();
+        }
+    });
+});
+                                                </script>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 ">
+                                <div class="form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Right of Access Status </label>
+                                        <select name="roa_status" class="form-control">
+
+
+                                            <option value="Signed" th:selected="(${access_right_profile.getRoa_status()} == 'Signed')">Signed</option>
+                                            <option value="Delivered" th:selected="(${access_right_profile.getRoa_status()} == 'Delivered')">Delivered</option>
+                                            <option value="Pending" th:selected="(${access_right_profile.getRoa_status()} == 'Pending')">Pending</option>
+                                            <option value="Declined" th:selected="(${access_right_profile.getRoa_status()} == 'Declined')">Declined</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 ">
+                                <div class="form-group">
+                                    <div class="mb-3">
+
+                                        <label for="" class="form-label">Access Status</label>
+                                        <select name="Access_Status" class="form-control">
+                                            <option value="Under consideration" th:selected="(${access_right_profile.getAccess_Status()} == 'Under consideration')"> Under consideration</option>
+                                            <option value="Denied" th:selected="(${access_right_profile.getAccess_Status()} == 'Denied')">Denied</option>
+                                            <option value="Accepted" th:selected="(${access_right_profile.getAccess_Status()} == 'Accepted')">Accepted</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 ">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <label for="Other_terms">Other terms<span class="required">*</span></label><br>
+                                            <textarea class="form-control " th:text="${access_right_profile.getOther_terms()}"  id="Other_terms" name="Other_terms" rows="2" required> </textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <input type="text" name="buildingcode" th:value="${access_right_profile.getBuildingcode()}" hidden>
+                        <button type="button" class="btn btn-danger text-white ctm-border-radius float-right ml-3" data-dismiss="modal">Cancel</button>
+                        <button type="submit"  class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="edit_Contact">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog ">
             <div class="modal-content">
 
                 <div class="modal-body">
@@ -838,6 +1204,64 @@ toastr.error(response.msg);
 }
 
 
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+
+    });
+});
+
+
+      $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#edit_1_edit_accessright").on('submit', function(e){
+        e.preventDefault();
+
+
+
+
+
+
+        $.ajax({
+            type: 'POST',
+            url: "/admin/edit_1_edit_accessright", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                       console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+
+  $('#add_Contact').modal('hide');
+     $("#add_new_contact")[0].reset();
+
+
+}
+else{
+toastr.error(response.msg);
+
+
+ $('#add_Contact').modal('hide');
+     $("#add_new_contact")[0].reset();
+}
+
+    setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
             },
             error: function(xhr)

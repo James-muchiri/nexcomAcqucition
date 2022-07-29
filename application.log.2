@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-07-29T13:33:26.197189Z</date>
+  <millis>1659101606197</millis>
+  <nanos>189000</nanos>
+  <sequence>0</sequence>
+  <logger>org.apache.catalina.core.StandardService</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.StandardService</class>
+  <method>startInternal</method>
+  <thread>1</thread>
+  <message>Starting service [Tomcat]</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:26.204774Z</date>
+  <millis>1659101606204</millis>
+  <nanos>774000</nanos>
+  <sequence>1</sequence>
+  <logger>org.apache.catalina.core.StandardEngine</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.StandardEngine</class>
+  <method>startInternal</method>
+  <thread>1</thread>
+  <message>Starting Servlet engine: [Apache Tomcat/9.0.64]</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:27.307518Z</date>
+  <millis>1659101607307</millis>
+  <nanos>518000</nanos>
+  <sequence>2</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>Initializing Spring embedded WebApplicationContext</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:27.513477Z</date>
+  <millis>1659101607513</millis>
+  <nanos>477000</nanos>
+  <sequence>3</sequence>
+  <logger>org.hibernate.jpa.internal.util.LogHelper</logger>
+  <level>INFO</level>
+  <class>org.hibernate.jpa.internal.util.LogHelper</class>
+  <method>logPersistenceUnitInformation</method>
+  <thread>1</thread>
+  <message>HHH000204: Processing PersistenceUnitInfo [name: default]</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:27.623231Z</date>
+  <millis>1659101607623</millis>
+  <nanos>231000</nanos>
+  <sequence>4</sequence>
+  <logger>org.hibernate.Version</logger>
+  <level>INFO</level>
+  <class>org.hibernate.Version</class>
+  <method>logVersion</method>
+  <thread>1</thread>
+  <message>HHH000412: Hibernate ORM core version 5.6.9.Final</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:27.870766Z</date>
+  <millis>1659101607870</millis>
+  <nanos>766000</nanos>
+  <sequence>5</sequence>
+  <logger>org.hibernate.annotations.common.Version</logger>
+  <level>INFO</level>
+  <class>org.hibernate.annotations.common.reflection.java.JavaReflectionManager</class>
+  <method>&lt;clinit&gt;</method>
+  <thread>1</thread>
+  <message>HCANN000001: Hibernate Commons Annotations {5.1.2.Final}</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:28.494436Z</date>
+  <millis>1659101608494</millis>
+  <nanos>436000</nanos>
+  <sequence>6</sequence>
+  <logger>org.hibernate.dialect.Dialect</logger>
+  <level>INFO</level>
+  <class>org.hibernate.dialect.Dialect</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:29.809661Z</date>
+  <millis>1659101609809</millis>
+  <nanos>661000</nanos>
+  <sequence>7</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:30.203549Z</date>
+  <millis>1659101610203</millis>
+  <nanos>549000</nanos>
+  <sequence>8</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:30.479286Z</date>
+  <millis>1659101610479</millis>
+  <nanos>286000</nanos>
+  <sequence>9</sequence>
+  <logger>org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator</logger>
+  <level>INFO</level>
+  <class>org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator</class>
+  <method>initiateService</method>
+  <thread>1</thread>
+  <message>HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:30.622252Z</date>
+  <millis>1659101610622</millis>
+  <nanos>252000</nanos>
+  <sequence>10</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>AuthenticationFilter initialized</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:32.383082Z</date>
+  <millis>1659101612383</millis>
+  <nanos>82000</nanos>
+  <sequence>11</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:33:32.389218Z</date>
+  <millis>1659101612389</millis>
+  <nanos>218000</nanos>
+  <sequence>12</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>1</thread>
+  <message>binding parameter [1] as [VARCHAR] - [system@admin.com]</message>
+</record>
+</log>

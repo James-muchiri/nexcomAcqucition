@@ -1,0 +1,37 @@
+[2022-07-29 15:40:22.340] - 979428 INFO [Test worker] --- org.hibernate.jpa.internal.util.LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-07-29 15:40:22.395] - 979428 INFO [Test worker] --- org.hibernate.Version: HHH000412: Hibernate ORM core version 5.6.9.Final
+[2022-07-29 15:40:22.563] - 979428 INFO [Test worker] --- org.hibernate.annotations.common.Version: HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-07-29 15:40:23.091] - 979428 INFO [Test worker] --- org.hibernate.dialect.Dialect: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[2022-07-29 15:40:24.127] - 979428 DEBUG [Test worker] --- org.hibernate.SQL: 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+[2022-07-29 15:40:24.501] - 979428 DEBUG [Test worker] --- org.hibernate.SQL: 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+[2022-07-29 15:40:25.609] - 979428 INFO [Test worker] --- org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-07-29 15:40:28.176] - 979428 DEBUG [Test worker] --- org.hibernate.SQL: 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+[2022-07-29 15:40:28.184] - 979428 TRACE [Test worker] --- org.hibernate.type.descriptor.sql.BasicBinder: binding parameter [1] as [VARCHAR] - [system@admin.com]

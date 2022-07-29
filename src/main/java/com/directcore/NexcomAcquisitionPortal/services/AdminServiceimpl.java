@@ -1397,7 +1397,7 @@ public String generate_code(){
 
             Images_info images_info = new Images_info();
             images_info.setBuildingId(building_profile.getId());
-            images_info.setName(photo.getOriginalFilename());
+            images_info.setName(picName);
             imags_infoRepository.save(images_info);
 
             String timeStamp1 = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
@@ -1435,5 +1435,132 @@ public String generate_code(){
 
 
 
+    }
+
+    @Override
+    public Object editbuildings(Integer buildingId, Building_form request) {
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+
+        Building_profile building_profile =building_profileRepository.findById(buildingId);
+
+
+if(request.getBuilding_name() != null){
+    building_profile.setBuilding_name(request.getBuilding_name());
+}
+
+            if(request.getAcquisitionPurpose() != null){
+        building_profile.setAcquisitionPurpose(request.getAcquisitionPurpose());
+            }
+            if(request.getUse_type() != null){
+        building_profile.setUse_type(request.getUse_type());
+            }
+            if(request.getBuilding_type() != null){
+        building_profile.setBuilding_type(request.getBuilding_type());
+            }
+            if(request.getBuilding_state() != null){
+        building_profile.setBuilding_state(request.getBuilding_state());
+            }
+            if(request.getPower() != null){
+        building_profile.setPower(request.getPower());
+            }
+            if(request.getBackup() != null){
+        building_profile.setBackup(request.getBackup());
+            }
+            if(request.getBackup_text() != null){
+        building_profile.setBackup_text(request.getBackup_text());
+            }
+            if(request.getNumberofUnits() != null){
+        building_profile.setNumberofUnits(request.getNumberofUnits());
+            }
+            if(request.getBlocks() != null){
+        building_profile.setBlocks(request.getBlocks());
+            }
+            if(request.getFloors() != null){
+        building_profile.setFloors(request.getFloors());
+            }
+            if(request.getSecurity() != null){
+        building_profile.setSecurity(request.getSecurity());
+            }
+            if(request.getStreet_name() != null){
+        building_profile.setStreet_name(request.getStreet_name());
+            }
+            if(request.getBuilding_description() != null){
+        building_profile.setBuilding_description(request.getBuilding_description());
+            }
+
+        building_profileRepository.save(building_profile);
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+    }
+
+    @Override
+    public Object edit_1_edit_accessright(String buildingcode, Building_form request) {
+
+
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+
+            Access_right_profile access_right_profile = access_right_profileRepository.findByBuildingcode(buildingcode);
+
+
+//            String timeStamp1 = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+//            String[] fileFrags1 = file.getOriginalFilename().split("\\.");
+//            String extension1 = fileFrags1[fileFrags1.length-1];
+//            String docName     = timeStamp1 + "." + extension1;
+//
+//
+//            Files.copy(file.getInputStream(), this.root.resolve(docName));
+
+
+        if(request.getAccessRights() != null){
+            access_right_profile.setAccessRights(request.getAccessRights());
+        }
+            if(request.getAccess_Status() != null){
+            access_right_profile.setAccess_Status(request.getAccess_Status());
+            }
+            if(request.getAccessRights_text() != null){
+            access_right_profile.setAccessRights_text(request.getAccessRights_text());
+            }
+            if(request.getRoa_status() != null){
+            access_right_profile.setRoa_status(request.getRoa_status());
+            }
+            if(request.getOther_terms() != null) {
+                access_right_profile.setOther_terms(request.getOther_terms());
+            }
+            access_right_profileRepository.save(access_right_profile);
+
+
+
+            rdata.put("success", 1);
+        rdata.put("msg", "successful.");
+
+
+        return rdata;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        rdata.put("success", 0);
+        rdata.put("msg", "An error occured! ");
+        return rdata;
+    }
     }
 }

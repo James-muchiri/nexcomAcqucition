@@ -32,7 +32,7 @@ text-decoration: none;
                             <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Acqusition  Portal</h4>
                             <p class="text-muted mb-1">Admin Login </p>
                         </div>
-                        <form method="POST" action="/admin_login"  >
+                        <form method="POST" action="admin_login"  >
 
 
                             <div class="form-group row">
@@ -94,19 +94,19 @@ text-decoration: none;
 
     function log_in() {
 
-        if ($('#login_form').valid()) {
+        if ($('#admin_login').valid()) {
 
             $('#loading').show();
             $('#btn_login').hide();
 
             var pdata = {
-                username: $('#username').val(),
+                email: $('#email').val(),
                 password: $('#password').val(),
             }
 
             $.ajax({
                 type: 'POST',
-                url: basePath + 'dologin',
+                url: basePath + 'admin_login',
                 data: pdata,
                 success: function(data) {
                     $('#loading').hide();

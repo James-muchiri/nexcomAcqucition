@@ -12,7 +12,10 @@ sourceCompatibility = '11'
 repositories {
 	mavenCentral()
 }
-
+configurations {
+	all*.exclude module : 'spring-boot-starter-logging'
+	all*.exclude module : 'logback-classic'
+}
 dependencies {
 	implementation "mysql:mysql-connector-java:8.0.25"
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'

@@ -123,4 +123,7 @@ public interface AdminService {
     Object addbuildings(HttpSession req, Building_form request, MultipartFile photo, MultipartFile file);
 
 
+    Object editbuildings(Integer buildingId, Building_form request);
+
+    Object edit_1_edit_accessright(String buildingcode, Building_form request);
 }

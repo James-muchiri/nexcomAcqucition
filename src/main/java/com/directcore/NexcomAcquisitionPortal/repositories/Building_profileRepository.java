@@ -17,7 +17,7 @@ public interface Building_profileRepository extends CrudRepository<Building_prof
 
 
 
-    @Query("SELECT b FROM Building_profile b WHERE b.building_name LIKE %?1% OR b.building_type LIKE %?1%")
+    @Query("SELECT b FROM Building_profile b WHERE b.building_name LIKE %?1% OR b.building_type LIKE %?1% OR b.building_code LIKE %?1%")
     List<Building_profile> findByNameLike(String search);
 
     @Query("SELECT b FROM Building_profile b WHERE b.createDateTime >= :creationDateTime")

@@ -1,0 +1,2157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2022-07-29T13:42:19.952840Z</date>
+  <millis>1659102139952</millis>
+  <nanos>840000</nanos>
+  <sequence>0</sequence>
+  <logger>org.apache.catalina.core.StandardService</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.StandardService</class>
+  <method>startInternal</method>
+  <thread>1</thread>
+  <message>Starting service [Tomcat]</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:19.960367Z</date>
+  <millis>1659102139960</millis>
+  <nanos>367000</nanos>
+  <sequence>1</sequence>
+  <logger>org.apache.catalina.core.StandardEngine</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.StandardEngine</class>
+  <method>startInternal</method>
+  <thread>1</thread>
+  <message>Starting Servlet engine: [Apache Tomcat/9.0.64]</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:21.076052Z</date>
+  <millis>1659102141076</millis>
+  <nanos>52000</nanos>
+  <sequence>2</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>Initializing Spring embedded WebApplicationContext</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:21.280989Z</date>
+  <millis>1659102141280</millis>
+  <nanos>989000</nanos>
+  <sequence>3</sequence>
+  <logger>org.hibernate.jpa.internal.util.LogHelper</logger>
+  <level>INFO</level>
+  <class>org.hibernate.jpa.internal.util.LogHelper</class>
+  <method>logPersistenceUnitInformation</method>
+  <thread>1</thread>
+  <message>HHH000204: Processing PersistenceUnitInfo [name: default]</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:21.395192Z</date>
+  <millis>1659102141395</millis>
+  <nanos>192000</nanos>
+  <sequence>4</sequence>
+  <logger>org.hibernate.Version</logger>
+  <level>INFO</level>
+  <class>org.hibernate.Version</class>
+  <method>logVersion</method>
+  <thread>1</thread>
+  <message>HHH000412: Hibernate ORM core version 5.6.9.Final</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:21.626638Z</date>
+  <millis>1659102141626</millis>
+  <nanos>638000</nanos>
+  <sequence>5</sequence>
+  <logger>org.hibernate.annotations.common.Version</logger>
+  <level>INFO</level>
+  <class>org.hibernate.annotations.common.reflection.java.JavaReflectionManager</class>
+  <method>&lt;clinit&gt;</method>
+  <thread>1</thread>
+  <message>HCANN000001: Hibernate Commons Annotations {5.1.2.Final}</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:22.155352Z</date>
+  <millis>1659102142155</millis>
+  <nanos>352000</nanos>
+  <sequence>6</sequence>
+  <logger>org.hibernate.dialect.Dialect</logger>
+  <level>INFO</level>
+  <class>org.hibernate.dialect.Dialect</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:23.284120Z</date>
+  <millis>1659102143284</millis>
+  <nanos>120000</nanos>
+  <sequence>7</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:23.679817Z</date>
+  <millis>1659102143679</millis>
+  <nanos>817000</nanos>
+  <sequence>8</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:24.063461Z</date>
+  <millis>1659102144063</millis>
+  <nanos>461000</nanos>
+  <sequence>9</sequence>
+  <logger>org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator</logger>
+  <level>INFO</level>
+  <class>org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator</class>
+  <method>initiateService</method>
+  <thread>1</thread>
+  <message>HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:24.197096Z</date>
+  <millis>1659102144197</millis>
+  <nanos>96000</nanos>
+  <sequence>10</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>1</thread>
+  <message>AuthenticationFilter initialized</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:25.838172Z</date>
+  <millis>1659102145838</millis>
+  <nanos>172000</nanos>
+  <sequence>11</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>1</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:42:25.846091Z</date>
+  <millis>1659102145846</millis>
+  <nanos>91000</nanos>
+  <sequence>12</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>1</thread>
+  <message>binding parameter [1] as [VARCHAR] - [system@admin.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:13.118649Z</date>
+  <millis>1659102193118</millis>
+  <nanos>649000</nanos>
+  <sequence>13</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>21</thread>
+  <message>Initializing Spring DispatcherServlet 'dispatcherServlet'</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:13.147357Z</date>
+  <millis>1659102193147</millis>
+  <nanos>357000</nanos>
+  <sequence>14</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]</logger>
+  <level>INFO</level>
+  <class>org.apache.catalina.core.ApplicationContext</class>
+  <method>log</method>
+  <thread>21</thread>
+  <message>Unauthorized access request</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.446443Z</date>
+  <millis>1659102201446</millis>
+  <nanos>443000</nanos>
+  <sequence>15</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.448090Z</date>
+  <millis>1659102201448</millis>
+  <nanos>90000</nanos>
+  <sequence>16</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.452124Z</date>
+  <millis>1659102201452</millis>
+  <nanos>124000</nanos>
+  <sequence>17</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.453104Z</date>
+  <millis>1659102201453</millis>
+  <nanos>104000</nanos>
+  <sequence>18</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.481970Z</date>
+  <millis>1659102201481</millis>
+  <nanos>970000</nanos>
+  <sequence>19</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            </message>
+</record>
+<record>
+  <date>2022-07-29T13:43:21.483797Z</date>
+  <millis>1659102201483</millis>
+  <nanos>797000</nanos>
+  <sequence>20</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.152757Z</date>
+  <millis>1659102202152</millis>
+  <nanos>757000</nanos>
+  <sequence>21</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>24</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.160006Z</date>
+  <millis>1659102202160</millis>
+  <nanos>6000</nanos>
+  <sequence>22</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.163416Z</date>
+  <millis>1659102202163</millis>
+  <nanos>416000</nanos>
+  <sequence>23</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>24</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.164331Z</date>
+  <millis>1659102202164</millis>
+  <nanos>331000</nanos>
+  <sequence>24</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.175213Z</date>
+  <millis>1659102202175</millis>
+  <nanos>213000</nanos>
+  <sequence>25</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>24</thread>
+  <message>
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            </message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.303560Z</date>
+  <millis>1659102202303</millis>
+  <nanos>560000</nanos>
+  <sequence>26</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>24</thread>
+  <message>
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.356684Z</date>
+  <millis>1659102202356</millis>
+  <nanos>684000</nanos>
+  <sequence>27</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Login_logs
+        */ insert 
+        into
+            login_logs
+            (adminid, create_date_time, reponse, id) 
+        values
+            (?, ?, ?, ?)</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.359019Z</date>
+  <millis>1659102202359</millis>
+  <nanos>19000</nanos>
+  <sequence>28</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.360323Z</date>
+  <millis>1659102202360</millis>
+  <nanos>323000</nanos>
+  <sequence>29</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [2] as [TIMESTAMP] - [2022-07-29T16:43:22.335122]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.365716Z</date>
+  <millis>1659102202365</millis>
+  <nanos>716000</nanos>
+  <sequence>30</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [3] as [VARCHAR] - [login success]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.366250Z</date>
+  <millis>1659102202366</millis>
+  <nanos>250000</nanos>
+  <sequence>31</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [4] as [INTEGER] - [140]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.642297Z</date>
+  <millis>1659102202642</millis>
+  <nanos>297000</nanos>
+  <sequence>32</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>24</thread>
+  <message>
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Login_logs
+        */ insert 
+        into
+            login_logs
+            (adminid, create_date_time, reponse, id) 
+        values
+            (?, ?, ?, ?)</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.643119Z</date>
+  <millis>1659102202643</millis>
+  <nanos>119000</nanos>
+  <sequence>33</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.643448Z</date>
+  <millis>1659102202643</millis>
+  <nanos>448000</nanos>
+  <sequence>34</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [2] as [TIMESTAMP] - [2022-07-29T16:43:22.642148]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.643947Z</date>
+  <millis>1659102202643</millis>
+  <nanos>947000</nanos>
+  <sequence>35</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [3] as [VARCHAR] - [login success]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:22.644603Z</date>
+  <millis>1659102202644</millis>
+  <nanos>603000</nanos>
+  <sequence>36</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>24</thread>
+  <message>binding parameter [4] as [INTEGER] - [141]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:24.739451Z</date>
+  <millis>1659102204739</millis>
+  <nanos>451000</nanos>
+  <sequence>37</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]</logger>
+  <level>SEVERE</level>
+  <class>org.apache.catalina.core.StandardWrapperValve</class>
+  <method>invoke</method>
+  <thread>24</thread>
+  <message>Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception</message>
+  <exception>
+    <message>org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [INSERT INTO SPRING_SESSION_ATTRIBUTES (SESSION_PRIMARY_ID, ATTRIBUTE_NAME, ATTRIBUTE_BYTES) VALUES (?, ?, ?)]; Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'</message>
+    <frame>
+      <class>org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator</class>
+      <method>doTranslate</method>
+      <line>247</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator</class>
+      <method>translate</method>
+      <line>70</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>translateException</method>
+      <line>1541</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>execute</method>
+      <line>667</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>960</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>1015</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>insertSessionAttributes</method>
+      <line>507</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>access$1200</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>lambda$save$10</method>
+      <line>854</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>lambda$executeWithoutResult$0</method>
+      <line>68</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionTemplate</class>
+      <method>execute</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>executeWithoutResult</method>
+      <line>67</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>save</method>
+      <line>836</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>access$200</method>
+      <line>665</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>422</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>commitSession</method>
+      <line>226</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>access$100</method>
+      <line>193</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter</class>
+      <method>doFilterInternal</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>82</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.springframework.web.filter.CharacterEncodingFilter</class>
+      <method>doFilterInternal</method>
+      <line>201</line>
+    </frame>
+    <frame>
+      <class>org.springframework.web.filter.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>117</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardWrapperValve</class>
+      <method>invoke</method>
+      <line>197</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardContextValve</class>
+      <method>invoke</method>
+      <line>97</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.authenticator.AuthenticatorBase</class>
+      <method>invoke</method>
+      <line>541</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>invoke</method>
+      <line>135</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.valves.ErrorReportValve</class>
+      <method>invoke</method>
+      <line>92</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardEngineValve</class>
+      <method>invoke</method>
+      <line>78</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.connector.CoyoteAdapter</class>
+      <method>service</method>
+      <line>360</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.http11.Http11Processor</class>
+      <method>service</method>
+      <line>399</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProcessorLight</class>
+      <method>process</method>
+      <line>65</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProtocol$ConnectionHandler</class>
+      <method>process</method>
+      <line>890</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.NioEndpoint$SocketProcessor</class>
+      <method>doRun</method>
+      <line>1787</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.SocketProcessorBase</class>
+      <method>run</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1191</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>659</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.TaskThread$WrappingRunnable</class>
+      <method>run</method>
+      <line>61</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>829</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2022-07-29T13:43:25.906509Z</date>
+  <millis>1659102205906</millis>
+  <nanos>509000</nanos>
+  <sequence>38</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/].[dispatcherServlet]</logger>
+  <level>SEVERE</level>
+  <class>org.apache.catalina.core.ApplicationDispatcher</class>
+  <method>invoke</method>
+  <thread>24</thread>
+  <message>Servlet.service() for servlet [dispatcherServlet] threw exception</message>
+  <exception>
+    <message>org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [INSERT INTO SPRING_SESSION_ATTRIBUTES (SESSION_PRIMARY_ID, ATTRIBUTE_NAME, ATTRIBUTE_BYTES) VALUES (?, ?, ?)]; Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'</message>
+    <frame>
+      <class>org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator</class>
+      <method>doTranslate</method>
+      <line>247</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator</class>
+      <method>translate</method>
+      <line>70</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>translateException</method>
+      <line>1541</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>execute</method>
+      <line>667</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>960</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>1015</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>insertSessionAttributes</method>
+      <line>507</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>access$1200</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>lambda$save$10</method>
+      <line>854</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>lambda$executeWithoutResult$0</method>
+      <line>68</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionTemplate</class>
+      <method>execute</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>executeWithoutResult</method>
+      <line>67</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>save</method>
+      <line>836</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>access$200</method>
+      <line>665</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>422</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>commitSession</method>
+      <line>226</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>access$100</method>
+      <line>193</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter</class>
+      <method>doFilterInternal</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>82</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.springframework.web.filter.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>102</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>invoke</method>
+      <line>711</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>processRequest</method>
+      <line>461</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>doForward</method>
+      <line>385</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>forward</method>
+      <line>313</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>custom</method>
+      <line>403</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>status</method>
+      <line>249</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>throwable</method>
+      <line>344</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>invoke</method>
+      <line>169</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.valves.ErrorReportValve</class>
+      <method>invoke</method>
+      <line>92</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardEngineValve</class>
+      <method>invoke</method>
+      <line>78</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.connector.CoyoteAdapter</class>
+      <method>service</method>
+      <line>360</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.http11.Http11Processor</class>
+      <method>service</method>
+      <line>399</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProcessorLight</class>
+      <method>process</method>
+      <line>65</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProtocol$ConnectionHandler</class>
+      <method>process</method>
+      <line>890</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.NioEndpoint$SocketProcessor</class>
+      <method>doRun</method>
+      <line>1787</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.SocketProcessorBase</class>
+      <method>run</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1191</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>659</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.TaskThread$WrappingRunnable</class>
+      <method>run</method>
+      <line>61</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>829</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2022-07-29T13:43:25.911916Z</date>
+  <millis>1659102205911</millis>
+  <nanos>916000</nanos>
+  <sequence>39</sequence>
+  <logger>org.apache.catalina.core.ContainerBase.[Tomcat].[localhost]</logger>
+  <level>SEVERE</level>
+  <class>org.apache.catalina.core.StandardHostValve</class>
+  <method>custom</method>
+  <thread>24</thread>
+  <message>Exception Processing ErrorPage[errorCode=0, location=/error]</message>
+  <exception>
+    <message>org.springframework.dao.DuplicateKeyException: PreparedStatementCallback; SQL [INSERT INTO SPRING_SESSION_ATTRIBUTES (SESSION_PRIMARY_ID, ATTRIBUTE_NAME, ATTRIBUTE_BYTES) VALUES (?, ?, ?)]; Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'; nested exception is java.sql.SQLIntegrityConstraintViolationException: Duplicate entry 'd5994297-15a3-444e-a500-526fb08ec6be-user_admin' for key 'SPRING_SESSION_ATTRIBUTES.PRIMARY'</message>
+    <frame>
+      <class>org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator</class>
+      <method>doTranslate</method>
+      <line>247</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator</class>
+      <method>translate</method>
+      <line>70</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>translateException</method>
+      <line>1541</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>execute</method>
+      <line>667</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>960</line>
+    </frame>
+    <frame>
+      <class>org.springframework.jdbc.core.JdbcTemplate</class>
+      <method>update</method>
+      <line>1015</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>insertSessionAttributes</method>
+      <line>507</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>access$1200</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>lambda$save$10</method>
+      <line>854</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>lambda$executeWithoutResult$0</method>
+      <line>68</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionTemplate</class>
+      <method>execute</method>
+      <line>140</line>
+    </frame>
+    <frame>
+      <class>org.springframework.transaction.support.TransactionOperations</class>
+      <method>executeWithoutResult</method>
+      <line>67</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>save</method>
+      <line>836</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository$JdbcSession</class>
+      <method>access$200</method>
+      <line>665</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>422</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.jdbc.JdbcIndexedSessionRepository</class>
+      <method>save</method>
+      <line>133</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>commitSession</method>
+      <line>226</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter$SessionRepositoryRequestWrapper</class>
+      <method>access$100</method>
+      <line>193</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.SessionRepositoryFilter</class>
+      <method>doFilterInternal</method>
+      <line>145</line>
+    </frame>
+    <frame>
+      <class>org.springframework.session.web.http.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>82</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.springframework.web.filter.OncePerRequestFilter</class>
+      <method>doFilter</method>
+      <line>102</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>internalDoFilter</method>
+      <line>189</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationFilterChain</class>
+      <method>doFilter</method>
+      <line>162</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>invoke</method>
+      <line>711</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>processRequest</method>
+      <line>461</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>doForward</method>
+      <line>385</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.ApplicationDispatcher</class>
+      <method>forward</method>
+      <line>313</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>custom</method>
+      <line>403</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>status</method>
+      <line>249</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>throwable</method>
+      <line>344</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardHostValve</class>
+      <method>invoke</method>
+      <line>169</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.valves.ErrorReportValve</class>
+      <method>invoke</method>
+      <line>92</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.core.StandardEngineValve</class>
+      <method>invoke</method>
+      <line>78</line>
+    </frame>
+    <frame>
+      <class>org.apache.catalina.connector.CoyoteAdapter</class>
+      <method>service</method>
+      <line>360</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.http11.Http11Processor</class>
+      <method>service</method>
+      <line>399</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProcessorLight</class>
+      <method>process</method>
+      <line>65</line>
+    </frame>
+    <frame>
+      <class>org.apache.coyote.AbstractProtocol$ConnectionHandler</class>
+      <method>process</method>
+      <line>890</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.NioEndpoint$SocketProcessor</class>
+      <method>doRun</method>
+      <line>1787</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.net.SocketProcessorBase</class>
+      <method>run</method>
+      <line>49</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor</class>
+      <method>runWorker</method>
+      <line>1191</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker</class>
+      <method>run</method>
+      <line>659</line>
+    </frame>
+    <frame>
+      <class>org.apache.tomcat.util.threads.TaskThread$WrappingRunnable</class>
+      <method>run</method>
+      <line>61</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <method>run</method>
+      <line>829</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.483865Z</date>
+  <millis>1659102227483</millis>
+  <nanos>865000</nanos>
+  <sequence>40</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.484643Z</date>
+  <millis>1659102227484</millis>
+  <nanos>643000</nanos>
+  <sequence>41</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.487474Z</date>
+  <millis>1659102227487</millis>
+  <nanos>474000</nanos>
+  <sequence>42</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.488291Z</date>
+  <millis>1659102227488</millis>
+  <nanos>291000</nanos>
+  <sequence>43</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.494182Z</date>
+  <millis>1659102227494</millis>
+  <nanos>182000</nanos>
+  <sequence>44</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            </message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.499394Z</date>
+  <millis>1659102227499</millis>
+  <nanos>394000</nanos>
+  <sequence>45</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.559987Z</date>
+  <millis>1659102227559</millis>
+  <nanos>987000</nanos>
+  <sequence>46</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* insert com.directcore.NexcomAcquisitionPortal.model.Login_logs
+        */ insert 
+        into
+            login_logs
+            (adminid, create_date_time, reponse, id) 
+        values
+            (?, ?, ?, ?)</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.561518Z</date>
+  <millis>1659102227561</millis>
+  <nanos>518000</nanos>
+  <sequence>47</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.562062Z</date>
+  <millis>1659102227562</millis>
+  <nanos>62000</nanos>
+  <sequence>48</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [2] as [TIMESTAMP] - [2022-07-29T16:43:47.559817]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.562658Z</date>
+  <millis>1659102227562</millis>
+  <nanos>658000</nanos>
+  <sequence>49</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [3] as [VARCHAR] - [login success]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.563007Z</date>
+  <millis>1659102227563</millis>
+  <nanos>7000</nanos>
+  <sequence>50</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [4] as [INTEGER] - [142]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.749576Z</date>
+  <millis>1659102227749</millis>
+  <nanos>576000</nanos>
+  <sequence>51</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>29</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.751260Z</date>
+  <millis>1659102227751</millis>
+  <nanos>260000</nanos>
+  <sequence>52</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>29</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.756Z</date>
+  <millis>1659102227756</millis>
+  <sequence>53</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>29</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:47.757895Z</date>
+  <millis>1659102227757</millis>
+  <nanos>895000</nanos>
+  <sequence>54</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>29</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:56.523165Z</date>
+  <millis>1659102236523</millis>
+  <nanos>165000</nanos>
+  <sequence>55</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>30</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:56.524151Z</date>
+  <millis>1659102236524</millis>
+  <nanos>151000</nanos>
+  <sequence>56</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>30</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:56.530463Z</date>
+  <millis>1659102236530</millis>
+  <nanos>463000</nanos>
+  <sequence>57</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>30</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:56.532303Z</date>
+  <millis>1659102236532</millis>
+  <nanos>303000</nanos>
+  <sequence>58</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>30</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.909723Z</date>
+  <millis>1659102238909</millis>
+  <nanos>723000</nanos>
+  <sequence>59</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>27</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.912560Z</date>
+  <millis>1659102238912</millis>
+  <nanos>560000</nanos>
+  <sequence>60</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>27</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.922237Z</date>
+  <millis>1659102238922</millis>
+  <nanos>237000</nanos>
+  <sequence>61</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>27</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_10_,
+            region0_.description as descript2_10_,
+            region0_.name as name3_10_ 
+        from
+            region region0_</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.932730Z</date>
+  <millis>1659102238932</millis>
+  <nanos>730000</nanos>
+  <sequence>62</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>27</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 */ select
+            cluster0_.id as id1_6_,
+            cluster0_.area_id as area_id2_6_,
+            cluster0_.description as descript3_6_,
+            cluster0_.name as name4_6_,
+            cluster0_.region_id as region_i5_6_,
+            cluster0_.zone_id as zone_id6_6_ 
+        from
+            cluster cluster0_</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.946065Z</date>
+  <millis>1659102238946</millis>
+  <nanos>65000</nanos>
+  <sequence>63</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>27</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:43:58.946785Z</date>
+  <millis>1659102238946</millis>
+  <nanos>785000</nanos>
+  <sequence>64</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>27</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.416983Z</date>
+  <millis>1659102240416</millis>
+  <nanos>983000</nanos>
+  <sequence>65</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.417717Z</date>
+  <millis>1659102240417</millis>
+  <nanos>717000</nanos>
+  <sequence>66</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.420452Z</date>
+  <millis>1659102240420</millis>
+  <nanos>452000</nanos>
+  <sequence>67</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_10_,
+            region0_.description as descript2_10_,
+            region0_.name as name3_10_ 
+        from
+            region region0_</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.424473Z</date>
+  <millis>1659102240424</millis>
+  <nanos>473000</nanos>
+  <sequence>68</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 */ select
+            cluster0_.id as id1_6_,
+            cluster0_.area_id as area_id2_6_,
+            cluster0_.description as descript3_6_,
+            cluster0_.name as name4_6_,
+            cluster0_.region_id as region_i5_6_,
+            cluster0_.zone_id as zone_id6_6_ 
+        from
+            cluster cluster0_</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.431278Z</date>
+  <millis>1659102240431</millis>
+  <nanos>278000</nanos>
+  <sequence>69</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>26</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T13:44:00.432088Z</date>
+  <millis>1659102240432</millis>
+  <nanos>88000</nanos>
+  <sequence>70</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>26</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.488036Z</date>
+  <millis>1659103243488</millis>
+  <nanos>36000</nanos>
+  <sequence>71</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.488908Z</date>
+  <millis>1659103243488</millis>
+  <nanos>908000</nanos>
+  <sequence>72</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.491760Z</date>
+  <millis>1659103243491</millis>
+  <nanos>760000</nanos>
+  <sequence>73</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_10_,
+            region0_.description as descript2_10_,
+            region0_.name as name3_10_ 
+        from
+            region region0_</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.507663Z</date>
+  <millis>1659103243507</millis>
+  <nanos>663000</nanos>
+  <sequence>74</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 */ select
+            cluster0_.id as id1_6_,
+            cluster0_.area_id as area_id2_6_,
+            cluster0_.description as descript3_6_,
+            cluster0_.name as name4_6_,
+            cluster0_.region_id as region_i5_6_,
+            cluster0_.zone_id as zone_id6_6_ 
+        from
+            cluster cluster0_</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.512395Z</date>
+  <millis>1659103243512</millis>
+  <nanos>395000</nanos>
+  <sequence>75</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>28</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:43.514216Z</date>
+  <millis>1659103243514</millis>
+  <nanos>216000</nanos>
+  <sequence>76</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>28</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.197348Z</date>
+  <millis>1659103245197</millis>
+  <nanos>348000</nanos>
+  <sequence>77</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>23</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.id=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.id=?</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.198071Z</date>
+  <millis>1659103245198</millis>
+  <nanos>71000</nanos>
+  <sequence>78</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>23</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.200734Z</date>
+  <millis>1659103245200</millis>
+  <nanos>734000</nanos>
+  <sequence>79</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>23</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Region as generatedAlias0 */ select
+            region0_.id as id1_10_,
+            region0_.description as descript2_10_,
+            region0_.name as name3_10_ 
+        from
+            region region0_</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.207412Z</date>
+  <millis>1659103245207</millis>
+  <nanos>412000</nanos>
+  <sequence>80</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>23</thread>
+  <message>
+    /* select
+        generatedAlias0 
+    from
+        Cluster as generatedAlias0 */ select
+            cluster0_.id as id1_6_,
+            cluster0_.area_id as area_id2_6_,
+            cluster0_.description as descript3_6_,
+            cluster0_.name as name4_6_,
+            cluster0_.region_id as region_i5_6_,
+            cluster0_.zone_id as zone_id6_6_ 
+        from
+            cluster cluster0_</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.212131Z</date>
+  <millis>1659103245212</millis>
+  <nanos>131000</nanos>
+  <sequence>81</sequence>
+  <logger>org.hibernate.SQL</logger>
+  <level>DEBUG</level>
+  <class>org.hibernate.engine.jdbc.spi.SqlStatementLogger</class>
+  <method>logStatement</method>
+  <thread>23</thread>
+  <message>
+    select
+        roles0_.admin_id as admin_id1_3_0_,
+        roles0_.roles_id as roles_id2_3_0_,
+        roles_admi1_.id as id1_0_1_,
+        roles_admi1_.create_date_time as create_d2_0_1_,
+        roles_admi1_.created_by as created_3_0_1_,
+        roles_admi1_.description as descript4_0_1_,
+        roles_admi1_.is_active as is_activ5_0_1_,
+        roles_admi1_.name as name6_0_1_,
+        roles_admi1_.role as role7_0_1_,
+        roles_admi1_.update_date_time as update_d8_0_1_ 
+    from
+        admi_roles roles0_ 
+    inner join
+        roles_admin roles_admi1_ 
+            on roles0_.roles_id=roles_admi1_.id 
+    where
+        roles0_.admin_id=?</message>
+</record>
+<record>
+  <date>2022-07-29T14:00:45.212894Z</date>
+  <millis>1659103245212</millis>
+  <nanos>894000</nanos>
+  <sequence>82</sequence>
+  <logger>org.hibernate.type.descriptor.sql.BasicBinder</logger>
+  <level>TRACE</level>
+  <class>org.hibernate.type.descriptor.sql.BasicBinder</class>
+  <method>bind</method>
+  <thread>23</thread>
+  <message>binding parameter [1] as [INTEGER] - [38]</message>
+</record>
