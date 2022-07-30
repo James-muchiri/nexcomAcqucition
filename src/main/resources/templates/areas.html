@@ -218,7 +218,9 @@ body{
       </div>
     </div>
   </div>
-
+  <script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 
   <script>
 
@@ -255,7 +257,7 @@ if(isValid)
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addcluster", //call  to store form data
+            url: basePath + "admin/addcluster", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -312,7 +314,7 @@ $("#cluster_form")[0].reset();
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editarea", //call  to store form data
+            url:  basePath + "admin/editarea", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -360,7 +362,7 @@ function updatecluster(data){
 
     $.ajax({
             type: 'GET',
-            url: "/admin/updatecluster/"+ data, //call  to store form data
+            url: basePath + "admin/updatecluster/"+ data, //call  to store form data
 
 
             cache: false,
@@ -401,7 +403,7 @@ function updatecluster(data){
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editcluster", //call  to store form data
+            url: basePath + "admin/editcluster", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,

@@ -182,7 +182,9 @@ body{
 </div>
 
 
-
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 <script>
 
 
@@ -218,7 +220,7 @@ if(isValid)
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addarea", //call  to store form data
+            url: basePath  + "admin/addarea", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -272,7 +274,7 @@ $('#new_shedule').modal('hide');
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editzone", //call  to store form data
+            url:basePath  + "admin/editzone", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,

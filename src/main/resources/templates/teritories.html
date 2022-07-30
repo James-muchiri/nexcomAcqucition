@@ -154,7 +154,9 @@ body{
 <!-- Modal -->
 
 
-
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 
 <script>
 
@@ -191,7 +193,7 @@ if(isValid)
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addregion", //call  to store form data
+            url: basePath + "admin/addregion", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -263,7 +265,7 @@ if(isValid)
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addarea", //call  to store form data
+            url: basePath + "admin/addarea", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -313,7 +315,7 @@ function fetch_region(data){
     let _token   = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
             type: 'POST',
-            url: "/admin/getregion", //call  to store form data
+            url: basePath + "admin/getregion", //call  to store form data
 
             data:  {
                 "_token": _token,
@@ -376,7 +378,7 @@ function myFunction(name,job) {
     let _token   = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
             type: 'POST',
-            url: "/admin/removearea", //call  to store form data
+            url: basePath + "admin/removearea", //call  to store form data
 
             data:  {
                 "_token": _token,

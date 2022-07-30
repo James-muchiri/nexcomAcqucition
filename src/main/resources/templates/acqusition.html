@@ -929,7 +929,9 @@ visibility:hidden
 
     </div>
 </div>
-
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 <script>
 
 
@@ -1160,7 +1162,7 @@ $('#region_select').change(function() {
 // AJAX code to submit form.
 $.ajax({
          type: "GET",
-         url: "/admin/getzonesbyid/"+vall, //call  to store form data
+         url:  basePath + "admin/getzonesbyid/"+vall, //call  to store form data
 
          cache: false,
          success: function(data) {
@@ -1194,7 +1196,7 @@ $('#zone_select').change(function() {
 // AJAX code to submit form.
 $.ajax({
          type: "GET",
-         url: "/admin/getareasbyid/"+vall, //call  to store form data
+         url: basePath + "admin/getareasbyid/"+vall, //call  to store form data
 
          cache: false,
          success: function(data) {
@@ -1228,7 +1230,7 @@ $('#area_select').change(function() {
 // AJAX code to submit form.
 $.ajax({
          type: "GET",
-         url: "/admin/getclusterbyid/"+vall, //call  to store form data
+         url: basePath + "admin/getclusterbyid/"+vall, //call  to store form data
 
          cache: false,
          success: function(data) {
@@ -1333,7 +1335,7 @@ console.log(curInputs);
 // AJAX code to submit form.
 $.ajax({
          type: "POST",
-         url: "/admin/addbuilding", //call  to store form data.
+         url: basePath + "admin/addbuilding", //call  to store form data.
            data: new FormData($('form[id=user_basic_per_form]')[0]),
          dataType: 'json',
             contentType: false,

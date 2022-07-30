@@ -249,7 +249,7 @@ var formdata = 'search=' + search + '&_token' + _token;
   // AJAX code to submit form.
   $.ajax({
            type: "POST",
-           url: "/admin/view_teri", //call  to store form data
+           url: basePath + "admin/view_teri", //call  to store form data
            data: formdata,
            cache: false,
            success: function(data) {
@@ -424,7 +424,7 @@ $(document).ready(function() {
             // AJAX code to submit form.
             $.ajax({
                      type: "POST",
-                     url: "/admin/view_region_search", //call  to store form data
+                     url: basePath + "/admin/view_region_search", //call  to store form data
                      data: formdata,
                      cache: false,
                      success: function(data) {

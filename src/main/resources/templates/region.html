@@ -175,7 +175,12 @@ body{
             </div>
         </div>
     </div>
-    <script>
+
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
+
+<script>
 
 
 
@@ -210,7 +215,7 @@ if(isValid)
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addzone", //call  to store form data
+            url: basePath + "admin/addzone", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -265,7 +270,7 @@ $("#zone_form")[0].reset();
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editregion", //call  to store form data
+            url: basePath + "admin/editregion", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,

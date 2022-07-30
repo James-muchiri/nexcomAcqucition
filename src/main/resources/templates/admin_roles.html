@@ -342,6 +342,9 @@ width: 100px;
 
 </div>
 
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 
 <script>
 
@@ -357,7 +360,7 @@ width: 100px;
    console.log(roles);
 
                         $.ajax({
-                            url: "/admin/portalRoles",
+                            url: basePath +  "admin/portalRoles",
                             method: 'post',
                             data: {
 
@@ -408,7 +411,7 @@ toastr.error(response.msg);
     $.ajax({
     type: 'get',
     data:  dataId,
-    url: '/admin/getPortalroleByid/'+dataId,
+    url: basePath +  'admin/getPortalroleByid/'+dataId,
     success:
         function( data ){
            var t_data="";
@@ -466,7 +469,7 @@ function Permissions(id) {
 
     $.ajax({
              type: "GET",
-                url: '/admin/getPortalroleByid/'+dataId,
+                url: basePath +  'admin/getPortalroleByid/'+dataId,
              cache: false,
              success: function(data) {
 
@@ -531,7 +534,7 @@ function save_edit() {
     // AJAX code to submit form.
     $.ajax({
              type: "POST",
-             url: "/admin/role_edit", //call  to store form data
+             url: basePath +  "admin/role_edit", //call  to store form data
              data: formdata,
              cache: false,
              success: function(data) {
@@ -578,7 +581,7 @@ function save_edit() {
     // AJAX code to submit form.
     $.ajax({
              type: "POST",
-             url: "/admin/addPermissions", //call  to store form data
+             url: basePath +  "admin/addPermissions", //call  to store form data
              data: formdata,
              cache: false,
              success: function(data) {

@@ -148,7 +148,9 @@
     </div>
   </div>
 
-
+  <script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
   <script>
     $(document).ready(function(){
         $('#formSubmit').click(function(e){

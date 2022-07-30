@@ -889,7 +889,9 @@ else if(vall == "other"){
     </div>
 
 
-
+    <script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 
 <script>
 
@@ -905,7 +907,7 @@ else if(vall == "other"){
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addimage", //call  to store form data
+            url: basePath + "admin/addimage", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -964,7 +966,7 @@ toastr.error(response.msg);
 
         $.ajax({
             type: 'POST',
-            url: "/admin/addcontact", //call  to store form data
+            url: basePath + "admin/addcontact", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -1017,7 +1019,7 @@ function deleteimage(data){
 
     $.ajax({
             type: 'GET',
-            url: "/admin/deleteimage/"+ data, //call  to store form data
+            url: basePath + "admin/deleteimage/"+ data, //call  to store form data
 
 
             cache: false,
@@ -1066,7 +1068,7 @@ function fetchcontact(data){
 
     $.ajax({
             type: 'GET',
-            url: "/admin/fetchcontact/"+ data, //call  to store form data
+            url: basePath + "admin/fetchcontact/"+ data, //call  to store form data
 
 
             cache: false,
@@ -1106,7 +1108,7 @@ function fetchcontact(data){
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editbuilding", //call  to store form data
+            url: basePath + "admin/editbuilding", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -1165,7 +1167,7 @@ toastr.error(response.msg);
 
         $.ajax({
             type: 'POST',
-            url: "/admin/editcontact", //call  to store form data
+            url: basePath + "admin/editcontact", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,
@@ -1228,7 +1230,7 @@ toastr.error(response.msg);
 
         $.ajax({
             type: 'POST',
-            url: "/admin/edit_1_edit_accessright", //call  to store form data
+            url: basePath + "admin/edit_1_edit_accessright", //call  to store form data
             data: new FormData($(this)[0]),
             dataType: 'json',
             contentType: false,

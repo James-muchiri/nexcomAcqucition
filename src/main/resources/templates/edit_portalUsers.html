@@ -190,7 +190,9 @@ body{
 
     </div>
 </div>
-
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 <script>
 function addrole(roleid, userid){
 
@@ -200,7 +202,7 @@ function addrole(roleid, userid){
                 console.log(formdata);
 	    $.ajax({
             type: 'POST',
-            url: "/admin/useraddrole" , //call  to store form data
+            url: basePath  + "admin/useraddrole" , //call  to store form data
         data: formdata,
 
 

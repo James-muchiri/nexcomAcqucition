@@ -84,7 +84,7 @@ body{
                                                 </thead>
                                                 <tbody id="myTable">
 
-                                                <tr id="t_data" th:each="building : ${buildings}"  th:onclick="'window.location.href=\'/admin/myacqusition/' + ${building.getId()} + '\''">
+                                                <tr id="t_data" th:each="building : ${buildings}"  th:onclick="'window.location.href = \'' + @{/admin/myacqusition/{id}(id=${building.getId()})} + '\''">
 
                                                     <td th:text="${building.getBuilding_code()}"> </td>
                                                     <td th:text="${building.getBuilding_name()}"> </td>

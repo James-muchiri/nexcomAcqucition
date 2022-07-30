@@ -159,7 +159,9 @@ width: 100px;
         </div>
     </div>
 </div>
-
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 <script>
 
      $(document).ready(function(){
@@ -173,7 +175,7 @@ width: 100px;
    console.log(roles);
 
                         $.ajax({
-                            url: "/admin/portalRolesedit",
+                            url:  basePath  + "admin/portalRolesedit",
                             method: 'post',
                             data: {
 

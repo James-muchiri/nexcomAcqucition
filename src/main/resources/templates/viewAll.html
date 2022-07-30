@@ -499,7 +499,9 @@ visibility:hidden
     </div>
 
 
-
+    <script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
     <script>
 
 $(document).ready(function() {
@@ -524,7 +526,7 @@ var formdata = 'search=' + search;
   // AJAX code to submit form.
   $.ajax({
            type: "POST",
-           url: "/admin/view_ba_search", //call  to store form data
+           url:  basePath  + "admin/view_ba_search", //call  to store form data
            data: formdata,
            cache: false,
            success: function(data) {
@@ -644,7 +646,7 @@ function view_ba(){
     // AJAX code to submit form.
     $.ajax({
              type: "POST",
-             url: "/admin/view_ba", //call  to store form data
+             url: basePath  + "admin/view_ba", //call  to store form data
              data: formdata,
              cache: false,
              success: function(data) {

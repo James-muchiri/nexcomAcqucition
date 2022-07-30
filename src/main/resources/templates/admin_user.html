@@ -182,12 +182,16 @@ width: 100px;
 
 
 
+  <script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
 
 <script>
 
 
+
 function load_a_user(id) {
-                    window.location = "/admin/getPortalUserById/" + id;
+                    window.location = basePath  +"admin/getPortalUserById/" + id;
                 };
 
                     FetchAdmins();
@@ -198,7 +202,7 @@ function load_a_user(id) {
 // AJAX code to submit form.
 $.ajax({
          type: "get",
-         url: "/admin/fetchadmins", //call  to store form data
+         url: basePath +  "admin/fetchadmins", //call  to store form data
          cache: false,
          success: function(data) {
             // console.log(data);
@@ -275,7 +279,7 @@ $('#admin_users').DataTable( {} );
                         let _token   = $('meta[name="csrf-token"]').attr('content');
 
                         $.ajax({
-                            url: "/admin/portalUsers",
+                            url: basePath +  "admin/portalUsers",
                             method: 'post',
                             data: {
                                 _token: _token,
