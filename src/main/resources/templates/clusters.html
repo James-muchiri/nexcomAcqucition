@@ -77,8 +77,9 @@ body{
                         </div>
                         <div class="row">
 
-                            <div class="col-xl-4 col-lg-12 col-md-4">
+                            <div class="col-sm-4  text-center" th:each="image : ${cluster.getFilenames}">
 
+                                <img style="height: 250px;width: 320px;" th:src="@{/upload/{i}(i=${image()})}" alt="Building image">
                             </div>
 
                         </div>

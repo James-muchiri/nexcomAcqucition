@@ -539,7 +539,7 @@ Login_logs login_logs =new Login_logs();
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
 
-        v.setViewName("cluster");
+        v.setViewName("clusters");
         v.addObject("user", admi);
         v.addObject("regions", regions);
         v.addObject("zones", zones);
@@ -561,7 +561,7 @@ Login_logs login_logs =new Login_logs();
             if (!Files.exists(root)) {
                 Files.createDirectories(root);
             }
-            List<String> fileNames = new ArrayList<>();
+           List<String> fileNames = new ArrayList<>();
             Arrays.asList(files).stream().forEach(file -> {
 
                 try {
@@ -589,9 +589,9 @@ Login_logs login_logs =new Login_logs();
             }else {
                 cluster.setClustertype(clustertype);
             }
-
+            String[] fileName = fileNames.toArray(new String[0]);
             cluster.setName(name);
-            cluster.setFileNames(fileNames);
+            cluster.setFilenames(fileName);
             cluster.setDescription(description);
             cluster.setRegionId(area.getRegionId());
             cluster.setZoneId(area.getZoneId());

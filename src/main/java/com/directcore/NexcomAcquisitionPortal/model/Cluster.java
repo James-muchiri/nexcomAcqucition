@@ -27,8 +27,8 @@ public class Cluster {
     @Column(name = "zoneId")
     private Integer zoneId;
 
-    @Column(name = "fileNames")
-    private List<String> fileNames;
+    @Column(name = "filenames")
+    private String[] filenames;
 
 
     @Column(name = "areaId")
@@ -98,11 +98,11 @@ public class Cluster {
         return regionId;
     }
 
-    public List<String>getFileNames() {
-        return fileNames;
+    public String[] getFilenames() {
+        return filenames;
     }
 
-    public void setFileNames(List<String> fileNames) {
-        this.fileNames = fileNames;
+    public void setFilenames(String[] filenames) {
+        this.filenames = filenames;
     }
 }
