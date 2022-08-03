@@ -13,8 +13,8 @@ repositories {
 	mavenCentral()
 }
 configurations {
-	all*.exclude module : 'spring-boot-starter-logging'
-	all*.exclude module : 'logback-classic'
+//	all*.exclude module : 'spring-boot-starter-logging'
+//	all*.exclude module : 'logback-classic'
 }
 dependencies {
 	implementation "mysql:mysql-connector-java:8.0.25"

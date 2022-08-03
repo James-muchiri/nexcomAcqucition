@@ -413,7 +413,7 @@ visibility:hidden
     <!-- /Widgets -->
     <div class="container-fluid">
         <div class="row" id="tab">
-            <p style="float: left;"> Dashboard</p>
+            <p style="float: left;"> <a th:href="@{/admin/index}">>Dashboard</a> / New Aqusitions</p>
         </div>
         <div class="row" >
             <hr>
@@ -535,7 +535,7 @@ visibility:hidden
 
                                                     <label for="" class="form-label">Building Use Type</label>
                                                     <select name="use_type" id="use_type" class="form-control">
-
+                                                        <option> Select Building Use Type</option>
                                                         <option value="Residential">Residential</option>
                                                         <option value="Commercial">Commercial</option>
                                                         <option value="mixeduse">Mixed Use</option>
@@ -817,14 +817,13 @@ visibility:hidden
                                             </div>
 
                                                 <div class="basic form-group">
-                                                    <div class="mb-3">
+
                                                         <label for="" class="form-label">AccessRights Required</label>
                                                         <input type="radio" style="height:20px;" name="AccessRights" value="true" class="form-control"> True
                                                         <input type="radio" style="height:20px;" name="AccessRights" value="false" class="form-control"> False
 
 
-                                                    </div>
-                                                </div>
+
 
                                                 <div class="basic form-group hidden" id="textbox" style="display: none">
 
@@ -866,8 +865,7 @@ visibility:hidden
 
 
                                             <div class="form-group">
-                                                <div class="mb-3">
-                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden>
+
                                                     <label for="" class="form-label">Right of Access Status </label>
                                                     <select name="roa_status" class="form-control">
 
@@ -877,11 +875,10 @@ visibility:hidden
                                                         <option value="Pending">Pending</option>
                                                         <option value="Declined">Declined</option>
                                                     </select>
-                                                </div>
+
                                             </div>
                                             <div class="form-group">
-                                                <div class="mb-3">
-                                                    <input type="text" name="user_id" value="{{$user->id}}" hidden>
+
                                                     <label for="" class="form-label">Access Status</label>
                                                     <select name="Access_Status" class="form-control">
                                                         <option value="Under consideration"> Under consideration</option>
@@ -889,15 +886,13 @@ visibility:hidden
                                                         <option value="Accepted">Accepted</option>
 
                                                     </select>
-                                                </div>
+
                                             </div>
                                             <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
+
                                                         <label for="name">Other terms<span class="required">*</span></label><br>
-                                                        <textarea class="form-control " id="Other_terms" name="Other_terms" rows="2" required> </textarea>
-                                                    </div>
-                                                </div>
+                                                        <textarea class="form-control " id="Other_terms" name="Other_terms" rows="" required> </textarea>
+
 
                                             </div>
 

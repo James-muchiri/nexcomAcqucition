@@ -76,7 +76,7 @@ width: 100px;
   <!-- /Widgets -->
   <div class="container-fluid">
     <div class="row" id="tab">
-      <p style="float: left;"> Dashboard</p>
+      <p> Dashboard / Admin User</p>
     </div>
     <div class="row" >
       <hr>
@@ -288,9 +288,24 @@ $('#admin_users').DataTable( {} );
                                 phone: $('#phone').val(),
                             },
                             success: function(data){
-                                $('#success').show();
-                                $('#success').text(data);
-                                $("#portalform")[0].reset();
+                                  console.log(response);
+
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+         $("#portalform")[0].reset();
+
+
+
+}
+else{
+toastr.error(response.msg);
+
+<!--  $('#newPortalroles').modal('hide');-->
+<!--    $("#rolesform")[0].reset();-->
+}
+
 
                               FetchAdmins();
                             },

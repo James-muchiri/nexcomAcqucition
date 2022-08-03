@@ -44,15 +44,65 @@ body{
     <!-- /Widgets -->
     <div class="container-fluid">
         <div class="row" id="tab">
-            <p style="float: left;"> Dashboard</p>
+            <p style="float: left;"> <a th:href="@{/admin/index}">Dashboard</a>/ <a  th:href="@{/admin/Teritories}" >Regions</a> / <a th:text="${regions.getName()}"  th:href="@{/admin/region/__${regions.getId()}__}" ></a> /  <a th:href="@{/admin/zone/__${zones.getId()}__}" th:text="${zones.getName()}"></a> /  <a th:href="@{/admin/area/__${areas.getId()}__}" th:text="${areas.getName()}"></a> /  <a th:text="${cluster.getName()}"></a></p>
+
         </div>
         <div class="row" >
             <hr>
         </div>
 
-    </div>
-    <div class="container-fluid" >
+        <div class="row justify-content-center mt-0">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
 
+                        <h5 class="fs-title"> Edit Name</h5>
+
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                <label class="font-weight-bold">Cluster Name</label>
+                                <p class="card-text mb-3"><span th:text="${cluster.getName()}"></span></p>
+                            </div>
+                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                <label class="font-weight-bold">Cluster Type</label>
+                                <p class="card-text mb-3"><span th:text="${cluster.getClustertype()}"></span></p>
+                            </div>
+                            <div class="col-xl-4 col-lg-12 col-md-4">
+                                <label class="font-weight-bold">Cluster Description</label>
+                                <p class="card-text mb-3"><span th:text="${cluster.getDescription()}"></span></p>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-xl-4 col-lg-12 col-md-4">
+
+                            </div>
+
+                        </div>
+
+                        <div style="padding: 20px;">
+                            <form id="edit_name">
+                                <div id="area_input" >
+
+
+                                    <div class="form-group" >
+                                        <label for="editname">Edit Name</label>
+                                        <input type="text" class="form-control" id="editname" name="name" th:value="${areas.getName()}">
+                                    </div>
+
+                                    <input type="text" name="areaIdd" id="areaIdd"  hidden th:value="${areas.getId()}">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Edit Name</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

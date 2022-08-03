@@ -155,12 +155,20 @@ public class MainController {
 
     }
 
+    @GetMapping("/cluster/{id}")
+
+    public ModelAndView getareaclute(@PathVariable Integer id, ModelAndView v, HttpSession request) {
+
+
+        return (ModelAndView) adminService.cluster(id, v, request);
+
+    }
     @RequestMapping(value = "/addcluster", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description) {
+    public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("clustertype") String clustertype,@RequestParam("clusterother") String clusterother, @RequestParam("pp_photo") MultipartFile[] files) {
 
         try {
-            return adminService.addcluster(areaId, name, description);
+            return adminService.addcluster(areaId, name, description, clustertype, clusterother, files);
         } catch (Exception e) {
             return "Failed!";
         }

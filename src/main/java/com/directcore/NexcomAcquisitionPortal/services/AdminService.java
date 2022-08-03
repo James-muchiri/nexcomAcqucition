@@ -51,7 +51,7 @@ public interface AdminService {
 
     Object area(Integer id, ModelAndView v, HttpSession request);
 
-    Object addcluster(Integer areaId, String name, String description);
+
 
     Object getzonesbyid(Integer id);
 
@@ -126,4 +126,8 @@ public interface AdminService {
     Object editbuildings(Integer buildingId, Building_form request);
 
     Object edit_1_edit_accessright(String buildingcode, Building_form request);
+
+    Object addcluster(Integer areaId, String name, String description, String clustertype, String clusterother, MultipartFile[] files);
+
+    Object cluster(Integer id, ModelAndView v, HttpSession request);
 }

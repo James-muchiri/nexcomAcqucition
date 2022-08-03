@@ -44,7 +44,7 @@ body{
     <!-- /Widgets -->
     <div class="container-fluid">
         <div class="row" id="tab">
-            <p style="float: left;"> Dashboard</p>
+            <p style="float: left;"> <a th:href="@{/admin/index}">Dashboard</a> / <a  th:href="@{/admin/Teritories}" >Regions</a> / <a th:text="${regions.getName()}"  th:href="@{/admin/region/__${regions.getId()}__}" ></a> /  <a th:text="${zones.getName()}"></a></p>
         </div>
         <div class="row" >
             <hr>

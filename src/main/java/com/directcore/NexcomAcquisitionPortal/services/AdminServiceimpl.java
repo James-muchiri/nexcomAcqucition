@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -437,7 +437,7 @@ Login_logs login_logs =new Login_logs();
 
         Zone zone =  zoneRepository.findById(id).orElse(null);
 
-
+        Region regions = regionRepository.findById(zone.getRegionId()).orElse(null);
         List <Area> areas =  areaRepository.findAllByZoneId(zone.getId());
 
         List<String> privileges = getPrivileges(admi.getRoles());
@@ -448,7 +448,7 @@ Login_logs login_logs =new Login_logs();
 
         v.setViewName("Zones");
         v.addObject("user", admi);
-
+        v.addObject("regions", regions);
         v.addObject("zones", zone);
         v.addObject("areas", areas);
 
@@ -498,7 +498,8 @@ Login_logs login_logs =new Login_logs();
 
        Area area = (Area) areaRepository.findById(id);
 
-
+        Region regions = regionRepository.findById(area.getRegionId()).orElse(null);
+        Zone zones =  zoneRepository.findById(area.getZoneId()).orElse(null);
         List <Cluster> clusters = (List<Cluster>) clusterRepository.findAllByAreaId(area.getId());
 
 
@@ -509,6 +510,8 @@ Login_logs login_logs =new Login_logs();
 
         v.setViewName("areas");
         v.addObject("user", admi);
+        v.addObject("regions", regions);
+        v.addObject("zones", zones);
         v.addObject("areas", area);
         v.addObject("clusters", clusters);
 
@@ -517,21 +520,78 @@ Login_logs login_logs =new Login_logs();
     }
 
     @Override
-    public Object addcluster(Integer areaId, String name, String description) {
+    public Object cluster(Integer id, ModelAndView v, HttpSession request) {
+
+
+        Integer user_admin = (Integer) request.getAttribute("user_admin");
+        Admi admi = admiRepository.findById(user_admin);
+
+        Cluster cluster = (Cluster) clusterRepository.findById(id);
+
+        Region regions = regionRepository.findById(cluster.getRegionId()).orElse(null);
+        Zone zones =  zoneRepository.findById(cluster.getZoneId()).orElse(null);
+        Area areas = (Area) areaRepository.findById(cluster.getAreaId());
 
 
 
+
+        List<String> privileges = getPrivileges(admi.getRoles());
+        logger.info(String.valueOf(privileges));
+        v.addObject("authorities", privileges);
+
+        v.setViewName("cluster");
+        v.addObject("user", admi);
+        v.addObject("regions", regions);
+        v.addObject("zones", zones);
+        v.addObject("areas", areas);
+        v.addObject("cluster", cluster);
+
+
+        return v;
+    }
+
+    @Override
+    public Object addcluster(Integer areaId, String name, String description, String clustertype, String clusterother, MultipartFile[] files) {
 
 
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
             Area area = (Area) areaRepository.findById(areaId);
 
+            if (!Files.exists(root)) {
+                Files.createDirectories(root);
+            }
+            List<String> fileNames = new ArrayList<>();
+            Arrays.asList(files).stream().forEach(file -> {
+
+                try {
+                String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
+                String[] fileFrags = file.getOriginalFilename().split("\\.");
+                String extension = fileFrags[fileFrags.length-1];
+                String picName     = timeStamp + "." + extension;
+
+                //    String picName     = "timeStamp" + ".png";
+
+                    Files.copy(file.getInputStream(), this.root.resolve(picName));
+                    fileNames.add(picName);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+
 
 
             Cluster cluster = new Cluster();
 
+            if(clustertype == "Other"){
+                cluster.setClustertype(clusterother);
+            }else {
+                cluster.setClustertype(clustertype);
+            }
+
             cluster.setName(name);
+            cluster.setFileNames(fileNames);
             cluster.setDescription(description);
             cluster.setRegionId(area.getRegionId());
             cluster.setZoneId(area.getZoneId());
@@ -1269,7 +1329,10 @@ else
 
     @Override
     public Object useraddrole(Integer roleid, Integer userid) {
-        Admi admi = admiRepository.findById(userid);
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
+            Admi admi = admiRepository.findById(userid);
         Roles_admin rolesAdmin = roleRepository.findById(roleid);
 
         Set<Roles_admin> roles = admi.getRoles();
@@ -1280,14 +1343,30 @@ else
             roles.remove(rolesAdmin);
             admi.setRoles(roles);
             admiRepository.save(admi);
-            return "removed";
+
+            rdata.put("msg", "role removed.");
         }
         else{
             roles.add(rolesAdmin);
             admi.setRoles(roles);
             admiRepository.save(admi);
-            return "added";
+            rdata.put("msg", "role added.");
     }
+
+
+            rdata.put("success", 1);
+
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
 
     }
 
