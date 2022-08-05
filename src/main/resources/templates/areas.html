@@ -42,7 +42,7 @@ body{
        position: relative;
        z-index: 2;
        margin-bottom: 10px;
-       display:none;
+    margin-right: 10px;
         }
 </style>
 
@@ -123,13 +123,13 @@ body{
                         <tbody id="myTable">
 
 
-                        <tr id="t_dat" th:each="cluster : ${clusters}" >
+                        <tr id="t_dat" th:each="cluster : ${clusters}"   th:onclick="'window.location.href=\'/admin/cluster/' + ${cluster.getId()} + '\''">
 
                           <td th:text="${cluster.getName()}"> </td>
 
                           <td th:text="${cluster.getDescription()}"> </td>
                           <td th:text="${cluster.getClustertype()}"> </td>
-                          <td>   <a type="button" th:attr="onclick=|updatecluster('${cluster.getId()}')|" data-toggle="modal" data-target="#update_region" class="btn btn-success">Update</a></td>
+                          <td>   <a type="button"   th:href="@{/admin/cluster/__${cluster.getId()}__}"  class="btn btn-success">Update</a></td>
                       </tr>
 
 
@@ -157,7 +157,7 @@ body{
           </button>
         </div>
         <div class="modal-body">
-          <form id="cluster_form">
+          <form id="cluster_form" enctype="multipart/form-data">
 
             <div class="basic form-group">
               <div class="mb-3">
@@ -178,11 +178,7 @@ body{
               <input type="text" class="form-control"  name="clusterother" aria-describedby="emailHelp">
 
             </div>
-            <div class="form-group" id="">
-              <label >Number of Blocks or Houses</label>
-              <input type="text" class="form-control"  name="blocks" aria-describedby="emailHelp">
 
-            </div>
             <div class="form-group" id="region_input">
               <input type="text" class="form-control" id="areaId" name="areaId" th:value="${areas.getId()}"hidden>
               <label for="exampleInputEmail1">Cluster name</label>
@@ -199,7 +195,7 @@ body{
               <label for="pp_photo">Building photo<span class="required">*</span></label>
               <div class="custom-file">
 
-                <input type="file"  class="custom-file-input" id="pp_photo" name="pp_photo" accept="image/png, image/jpg, image/jpeg" multiple="multiple">
+                <input type="file"  class="custom-file-input" id="pp_photo" name="pp_photo[]" accept="image/png, image/jpg, image/jpeg" multiple max-uploads = 2>
                 <label class="custom-file-label" id="pp-photo-name" for="pp-photo">Building photo</label>
                 <div class="img-preview">
 
@@ -239,16 +235,22 @@ body{
 <!--            }-->
 <!--            }-->
 
-            $("#pp_photo").change(function(){
-            readURL(this, 'div.img-preview');
-        });
+<!--            $("#pp_photo").change(function(){-->
+<!--            readURL(this, 'div.img-preview');-->
+<!--        });-->
 
             $(function(){
-    $("input[name='pp-photo']").click(function(){
-        var $fileUpload = $("input[name='pp-photo]");
-        if (parseInt($fileUpload.get(0).files.length)>2){
-         alert("You can only upload a maximum of 2 files");
+      $("#pp_photo").change(function(){
+         var filesAmount = this.files.length;
+
+        if (filesAmount>2){
+                document.getElementById("pp_photo").value = "";
+                    alert("You can only upload a maximum of 2 images");
+           return;
+        }else{
+        readURL(this, 'div.img-preview');
         }
+
     });
 });
             </script>

@@ -130,4 +130,6 @@ public interface AdminService {
     Object addcluster(Integer areaId, String name, String description, String clustertype, String clusterother, MultipartFile[] files);
 
     Object cluster(Integer id, ModelAndView v, HttpSession request);
+
+    Object editcluster(Cluster request);
 }

@@ -30,13 +30,13 @@ public class DatabaseSeeder {
     private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
     private void seedUsersTable() {
 
-        Admi u = admiRepository.findByEmail("system@admin.com");
+        Admi u = admiRepository.findByEmail("system@directcore.com");
         if(u == null) {
             Admi user = new Admi();
-            user.setName("System Admin");
+            user.setName("System");
             user.setPhone("0712345678");
-            user.setEmail("system@admin.com");
-            user.setPassword(bcrypt.hash("userForm.getPassword()"));
+            user.setEmail("system@directcore.com");
+            user.setPassword(bcrypt.hash("system1234"));
 			user.setIsadmin(1);
             admiRepository.save(user);
             logger.info("Users Seeded");

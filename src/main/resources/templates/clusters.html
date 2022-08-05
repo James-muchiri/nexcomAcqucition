@@ -56,7 +56,9 @@ body{
                 <div class="card">
                     <div class="card-header">
 
-                        <h5 class="fs-title"> Edit Name</h5>
+                        <span class="main">Cluster </span>
+                        <button style="float: right;" class="btn btn-primary" data-toggle="modal" data-target="#new_shedule" >Edit Cluster</button>
+
 
                     </div>
                     <div class="card-body">
@@ -68,7 +70,10 @@ body{
                             </div>
                             <div class="col-xl-4 col-lg-12 col-md-4">
                                 <label class="font-weight-bold">Cluster Type</label>
-                                <p class="card-text mb-3"><span th:text="${cluster.getClustertype()}"></span></p>
+
+                                <p class="card-text mb-3"  th:if="(${cluster.getClustertype()} == 'Other')" ><span th:text="${cluster.getOtherClustertype()}"></span></p>
+                                <p class="card-text mb-3"  th:if="(${cluster.getClustertype()} !=  'Other')" ><span th:text="${cluster.getClustertype()}"></span></p>
+
                             </div>
                             <div class="col-xl-4 col-lg-12 col-md-4">
                                 <label class="font-weight-bold">Cluster Description</label>
@@ -76,30 +81,17 @@ body{
                             </div>
                         </div>
                         <div class="row">
+                            <span class="main">Cluster Images </span>
+                        </div>
+                            <div class="row">
 
                             <div class="col-sm-4  text-center" th:each="image : ${cluster.getFilenames}">
 
-                                <img style="height: 250px;width: 320px;" th:src="@{/upload/{i}(i=${image()})}" alt="Building image">
+                                <img style="height: 250px;width: 320px;" th:src="@{/upload/{i}(i=${image})}" alt="Building image">
                             </div>
 
                         </div>
 
-                        <div style="padding: 20px;">
-                            <form id="edit_name">
-                                <div id="area_input" >
-
-
-                                    <div class="form-group" >
-                                        <label for="editname">Edit Name</label>
-                                        <input type="text" class="form-control" id="editname" name="name" th:value="${areas.getName()}">
-                                    </div>
-
-                                    <input type="text" name="areaIdd" id="areaIdd"  hidden th:value="${areas.getId()}">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Edit Name</button>
-
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -108,6 +100,159 @@ body{
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="new_shedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">New Cluster</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="cluster_form" enctype="multipart/form-data">
+
+                    <div class="basic form-group">
+                        <div class="mb-3">
+
+                            <label for="" class="form-label">Cluster Type</label>
+                            <select name="clustertype" id="clustertype" class="form-control">
+
+
+
+                                <option value="Estate"  th:selected="(${cluster.getClustertype()} == 'Estate')"  >Estate</option>
+                                <option value="Court"  th:selected="(${cluster.getClustertype()} == 'Court')"  >Court</option>
+                                <option value="Street"  th:selected="(${cluster.getClustertype()} == 'Street')"  >Street</option>
+                                <option value="Other"  th:selected="(${cluster.getClustertype()} == 'Other')"  >Other</option>
+
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="clusterother"  th:if="(${cluster.getClustertype()} == 'Other')" >
+                        <label >Cluster Type</label>
+                        <input type="text" class="form-control"  name="clusterother" aria-describedby="emailHelp" th:value="${cluster.getOtherClustertype()}" >
+
+                    </div>
+
+                    <div class="form-group" id="region_input">
+                        <input type="text" class="form-control" id="id" name="id" th:value="${cluster.getId()}"hidden>
+                        <label for="exampleInputEmail1">Cluster name</label>
+                        <input type="text" class="form-control" id="name" th:value="${cluster.getName()}" name="name" aria-describedby="emailHelp">
+
+                    </div>
+
+                    <div class="form-group" id="region_input">
+                        <label for="exampleInputEmail1">Description</label>
+                        <input type="text" th:value="${cluster.getDescription()}" class="form-control" id="description" name="description" aria-describedby="emailHelp">
+
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <input type="text" name="_token" id="_token" value="{{csrf_token()}}" hidden>
+
+                <button type="submit" class="btn btn-primary">Create Area</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+$('#clustertype').change(function() {
+    var vall = $(this).val();
+if(vall == "Other"){
+  document.getElementById('clusterother').style.display= "block";
+}
+else{
+  document.getElementById('clusterother').style.display= "none";
+}
+
+
+
+});
+
+
+            $(document).ready(function(e){
+    // Submit form data via Ajax
+    $("#cluster_form").on('submit', function(e){
+        e.preventDefault();
+
+
+
+        next_fs =$('#region_input');
+
+
+curInputs =  next_fs.find("input[type='text']");
+        isValid = true;
+console.log(curInputs);
+        for(var i=0; i<curInputs.length; i++){
+          //  console.log(curInputs[i].value);
+        if (!curInputs[i].value){
+
+            isValid = false;
+            $(curInputs[i]).closest(".form-group").addClass("has-error");
+        //   console.log(curInputs[i].value);
+        }
+    }
+
+
+if(isValid)
+{
+
+
+        $.ajax({
+            type: 'POST',
+            url: basePath + "admin/editcluster", //call  to store form data
+            data: new FormData($(this)[0]),
+            dataType: 'json',
+            contentType: false,
+            cache: false,
+            processData:false,
+            beforeSend: function(){
+                $('.submitBtn').attr("disabled","disabled");
+                $('#fupForm').css("opacity",".5");
+            },
+            success: function(response){ //console.log(response);
+                    console.log(response);
+                    console.log(response.msg);
+
+ if (response.success) {
+
+    toastr.success(response.msg);
+    $('#new_shedule').modal('hide');
+     $("#cluster_form")[0].reset();
+
+
+}
+else{
+toastr.success(response.msg);
+$('#new_shedule').modal('hide');
+$("#cluster_form")[0].reset();
+}
+
+
+
+
+            },
+            error: function(xhr)
+         {
+           console.log(xhr.responseText)
+         },
+        });
+}
+    });
+});
+
+
+
+</script>
 <section th:replace="footer :: footer"></section>
 
 

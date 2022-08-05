@@ -165,7 +165,7 @@ public class MainController {
     }
     @RequestMapping(value = "/addcluster", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("clustertype") String clustertype,@RequestParam("clusterother") String clusterother, @RequestParam("pp_photo") MultipartFile[] files) {
+    public Object addcluster(@RequestParam("areaId") Integer areaId, @RequestParam("name") String name, @RequestParam("description") String description, @RequestParam("clustertype") String clustertype,@RequestParam("clusterother") String clusterother, @RequestParam("pp_photo[]") MultipartFile[] files) {
 
         try {
             return adminService.addcluster(areaId, name, description, clustertype, clusterother, files);
@@ -267,10 +267,10 @@ public class MainController {
 
     @RequestMapping(value = "/editcluster", method = RequestMethod.POST, consumes = {"multipart/form-data"})
     @ResponseBody
-    public Object editcluster(@RequestParam("clusterId") Integer clusterId, @RequestParam("name") String name) {
+    public Object editcluster(@ModelAttribute Cluster request) {
 
         try {
-            return adminService.editcluster(clusterId, name);
+            return adminService.editcluster(request);
         } catch (Exception e) {
             return "Failed!";
         }
@@ -438,9 +438,9 @@ public class MainController {
 
     @PostMapping(value="/portalUsers")
     public @ResponseBody
-    ResponseEntity<Object> newportalUsers(@ModelAttribute Admi newportalUser) {
+    Object newportalUsers(@ModelAttribute Admi newportalUser) {
 
-        return (ResponseEntity<Object>) adminService.newportalUsers(newportalUser);
+        return adminService.newportalUsers(newportalUser);
     }
 
 

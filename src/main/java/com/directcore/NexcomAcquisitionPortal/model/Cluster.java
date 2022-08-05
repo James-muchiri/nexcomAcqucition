@@ -31,6 +31,11 @@ public class Cluster {
     private String[] filenames;
 
 
+    @Column(name = "otherClustertype")
+    private String otherClustertype;
+
+
+
     @Column(name = "areaId")
     private Integer areaId;
 
@@ -104,5 +109,14 @@ public class Cluster {
 
     public void setFilenames(String[] filenames) {
         this.filenames = filenames;
+    }
+
+
+    public String getOtherClustertype() {
+        return otherClustertype;
+    }
+
+    public void setOtherClustertype(String otherClustertype) {
+        this.otherClustertype = otherClustertype;
     }
 }

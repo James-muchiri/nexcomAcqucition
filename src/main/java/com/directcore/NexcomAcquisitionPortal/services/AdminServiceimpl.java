@@ -109,12 +109,12 @@ private Access_right_profileRepository access_right_profileRepository;
         regMatcher   = regexPattern.matcher(email);
         if (!regMatcher.matches()) {
             model.addAttribute("error", "Enter a valid email");
-            return "admin/AdminLogin";
+            return "login";
         }
         if (admiRepository.findByEmail(email) == null) {
             model.addAttribute("error", "Email does not exist");
 
-            return "admin/AdminLogin";
+            return "login";
         }
 
 
@@ -123,16 +123,16 @@ private Access_right_profileRepository access_right_profileRepository;
 
 
         Admi admi = admiRepository.findByEmail(email);
-     //   if(!bcrypt.verifyHash(password, admi.getPassword() ))
-      //  {
-      //      model.addAttribute("error", "Password is incorrect");
-//        Login_logs login_logs =new Login_logs();
-//        login_logs.setAdminid( admi.getId());
-//        login_logs.setResponse("login success");
-//        login_logsRepository.save(login_logs);
-      //      return "AdminLogin";
-      //  }
-      //  Admi user_admin = new Admi();
+        if(!bcrypt.verifyHash(password, admi.getPassword() ))
+        {
+            model.addAttribute("error", "Password is incorrect");
+        Login_logs login_logs =new Login_logs();
+        login_logs.setAdminid( admi.getId());
+        login_logs.setResponse("Incorrect Password");
+        login_logsRepository.save(login_logs);
+            return "login";
+        }
+
         Integer user_admin = (Integer) request.getAttribute("user_admin");
        if(user_admin == null)
        {
@@ -162,21 +162,6 @@ Login_logs login_logs =new Login_logs();
 
 
 
-//    private Collection<? extends GrantedAuthority> getAuthorities(final Set<Roles_admin> roles) {
-//        return getGrantedAuthorities(getPrivileges(roles));
-//    }
-
-
-
-//    private List<GrantedAuthority> getGrantedAuthorities(final List<String> privileges) {
-//        final List<GrantedAuthority> authorities = new ArrayList<>();
-//        for (final String privilege : privileges) {
-//            authorities.add(new SimpleGrantedAuthority(privilege));
-//        }
-//        return authorities;
-//    }
-
-
 
 
 
@@ -198,6 +183,9 @@ Login_logs login_logs =new Login_logs();
     @Override
     public Object newportalUsers(Admi newportalUser) {
 
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+
 
         Admi admi = admiRepository.findByEmail(newportalUser.getEmail());
         if (admi != null){
@@ -207,11 +195,25 @@ Login_logs login_logs =new Login_logs();
             error.setMessage("email already in use");
             return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
         }
-        newportalUser.setPassword(bcrypt.hash("userForm.getPassword()"));
-//        newportalUser.setPassword("fff");
+        newportalUser.setPassword(bcrypt.hash(newportalUser.getPassword()));
+
         admiRepository.save(newportalUser);
-        String success = "user created";
-        return new ResponseEntity<Object>(success, HttpStatus.OK);
+
+
+
+
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
     }
 
     @Override
@@ -562,33 +564,30 @@ Login_logs login_logs =new Login_logs();
                 Files.createDirectories(root);
             }
            List<String> fileNames = new ArrayList<>();
-            Arrays.asList(files).stream().forEach(file -> {
+            for (MultipartFile file : files) {
 
                 try {
-                String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
-                String[] fileFrags = file.getOriginalFilename().split("\\.");
-                String extension = fileFrags[fileFrags.length-1];
-                String picName     = timeStamp + "." + extension;
+                    String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS").format(new Date());
+                    String[] fileFrags = file.getOriginalFilename().split("\\.");
+                    String extension = fileFrags[fileFrags.length - 1];
+                    String picName = timeStamp + "." + extension;
 
-                //    String picName     = "timeStamp" + ".png";
 
                     Files.copy(file.getInputStream(), this.root.resolve(picName));
                     fileNames.add(picName);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            });
+            }
 
 
 
 
             Cluster cluster = new Cluster();
 
-            if(clustertype == "Other"){
-                cluster.setClustertype(clusterother);
-            }else {
-                cluster.setClustertype(clustertype);
-            }
+
+
+
             String[] fileName = fileNames.toArray(new String[0]);
             cluster.setName(name);
             cluster.setFilenames(fileName);
@@ -596,6 +595,9 @@ Login_logs login_logs =new Login_logs();
             cluster.setRegionId(area.getRegionId());
             cluster.setZoneId(area.getZoneId());
             cluster.setAreaId(area.getId());
+            cluster.setClustertype(clustertype);
+            cluster.setOtherClustertype(clusterother);
+
             clusterRepository.save(cluster);
 
             rdata.put("success", 1);
@@ -746,6 +748,35 @@ Login_logs login_logs =new Login_logs();
 
 
 
+    }
+
+    @Override
+    public Object editcluster(Cluster request) {
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+            Cluster cluster = (Cluster) clusterRepository.findById(request.getId());
+            cluster.setName(request.getName());
+            cluster.setClustertype(request.getClustertype());
+            cluster.setDescription(request.getDescription());
+            if(request.getClustertype() == "Other"){
+                cluster.setOtherClustertype(request.getOtherClustertype());
+            }
+            else{
+                cluster.setOtherClustertype("");
+            }
+            clusterRepository.save(cluster);
+
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+            return rdata;
+
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
     }
 
     @Override

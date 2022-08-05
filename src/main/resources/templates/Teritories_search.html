@@ -360,9 +360,9 @@ if(data.level == "zones"){
             $.each(data.clusters, function(index, element) {
 
                no = no + 1;
-
  t_data=t_data+
- '<tr id="t_data" >'+
+'<tr id="t_data" onclick="window.location=\'/admin/cluster/'+element.id+'\';">'+
+
    '<td>'+ no +'</td>'+
 
 
@@ -373,7 +373,7 @@ if(data.level == "zones"){
 
 
 
-                 '<td>'+'<a type="button"  style="color:white"  class="btn btn-success">view more</a>'+'</td>'+
+                 '<td>'+'<a type="button" onclick="window.location=\'/admin/cluster/'+element.id+'\';"  style="color:white"  class="btn btn-success">view more</a>'+'</td>'+
 
              '</tr>';
 
@@ -424,7 +424,7 @@ $(document).ready(function() {
             // AJAX code to submit form.
             $.ajax({
                      type: "POST",
-                     url: basePath + "/admin/view_region_search", //call  to store form data
+                     url: basePath + "admin/view_region_search", //call  to store form data
                      data: formdata,
                      cache: false,
                      success: function(data) {
@@ -520,7 +520,7 @@ a_data=a_data+
 
 
 
-                          '<a >'+element.name+'</a><br>';
+                          '<a  onclick="window.location=\'/admin/cluster/'+element.id+'\';">'+element.name+'</a><br>';
 
 
 
