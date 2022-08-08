@@ -30,19 +30,33 @@ public class DatabaseSeeder {
     private static final UpdatableBCrypt bcrypt = new UpdatableBCrypt(11);
     private void seedUsersTable() {
 
-        Admi u = admiRepository.findByEmail("system@directcore.com");
+        Admi u = admiRepository.findByEmail("jmwangi@directcore.com");
         if(u == null) {
             Admi user = new Admi();
-            user.setName("System");
-            user.setPhone("0712345678");
-            user.setEmail("system@directcore.com");
-            user.setPassword(bcrypt.hash("system1234"));
+            user.setName("James Muchiri");
+            user.setPhone("0718360109");
+            user.setEmail("jmwangi@directcore.com");
+            user.setPassword(bcrypt.hash("MOjo@dct20!"));
 			user.setIsadmin(1);
             admiRepository.save(user);
             logger.info("Users Seeded");
         } else {
             logger.info("Users Seeding Not Required");
         }
+        Admi s = admiRepository.findByEmail("francis@directcore.com");
+        if(s == null) {
+            Admi user = new Admi();
+            user.setName("Francis Adunga");
+            user.setPhone("0706030657");
+            user.setEmail("francis@directcore.com");
+            user.setPassword(bcrypt.hash("MOjo@dct20!"));
+            user.setIsadmin(1);
+            admiRepository.save(user);
+            logger.info("Users Seeded");
+        } else {
+            logger.info("Users Seeding Not Required");
+        }
+
     }
 
 }

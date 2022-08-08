@@ -228,7 +228,9 @@ if(isValid)
     toastr.success(response.msg);
     $('#new_shedule').modal('hide');
      $("#cluster_form")[0].reset();
-
+      setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
 }
 else{

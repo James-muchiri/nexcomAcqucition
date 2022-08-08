@@ -46,4 +46,10 @@ public class LoginController {
     public String logout(Model model, HttpSession request) {
         return adminService.logout(model, request);
     }
+
+
+    @GetMapping({"/forgotpassword"})
+    public String forgotpassword(Model model, HttpSession request) {
+        return adminService.forgotpassword(model, request);
+    }
 }

@@ -132,4 +132,6 @@ public interface AdminService {
     Object cluster(Integer id, ModelAndView v, HttpSession request);
 
     Object editcluster(Cluster request);
+
+    String forgotpassword(Model model, HttpSession request);
 }

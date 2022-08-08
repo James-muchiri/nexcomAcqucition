@@ -16,6 +16,12 @@ configurations {
 //	all*.exclude module : 'spring-boot-starter-logging'
 //	all*.exclude module : 'logback-classic'
 }
+dependencyManagement {
+	imports {
+		mavenBom 'org.springframework.session:spring-session-bom:2020.0.3'
+	}
+}
+
 dependencies {
 	implementation "mysql:mysql-connector-java:8.0.25"
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -48,6 +54,7 @@ dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.7.1'
 
 	compileOnly("org.springframework.boot:spring-boot-devtools")
+	implementation 'org.springframework.session:spring-session-data-redis'
 }
 tasks.named('test') {
 	useJUnitPlatform()

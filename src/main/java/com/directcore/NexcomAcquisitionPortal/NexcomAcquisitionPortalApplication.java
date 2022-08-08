@@ -28,9 +28,10 @@ import java.util.List;
 				SecurityAutoConfiguration.class, //
 				DataSourceTransactionManagerAutoConfiguration.class//
 		})
-@EnableJdbcHttpSession
+
 @EnableAutoConfiguration
 @ServletComponentScan
+@EnableJdbcHttpSession
 public class NexcomAcquisitionPortalApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

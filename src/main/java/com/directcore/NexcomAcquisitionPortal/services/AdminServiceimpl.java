@@ -243,6 +243,7 @@ Login_logs login_logs =new Login_logs();
             Integer user_admin = (Integer) request.getAttribute("user_admin");
             Admi admin = admiRepository.findById(user_admin);
             roles.setCreated_by(admin.getName());
+            roles.setIs_active("yes");
             roleRepository.save(roles);
 
             rdata.put("success", 1);
@@ -320,7 +321,7 @@ Login_logs login_logs =new Login_logs();
 
 
 
-        List <Building_profile> building_profiles = (List<Building_profile>) building_profileRepository.findAll();
+        List <Building_profile> building_profiles = (List<Building_profile>) building_profileRepository.findByAdminid(admi.getId());
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
@@ -1146,7 +1147,7 @@ Login_logs login_logs =new Login_logs();
       String[] permissions  = rolesAdmin.getRole();
 
             rolesAdmin.setRole(data);
-return "ddd";
+return "permissions Saved";
 
 
     }
@@ -1159,7 +1160,7 @@ return "ddd";
         rolesAdmin.setIs_active(is_active);
         roleRepository.save(rolesAdmin);
 
-        return "ddd";
+        return "Edit role successful";
       }
 
     @Override
@@ -1672,5 +1673,10 @@ if(request.getBuilding_name() != null){
         rdata.put("msg", "An error occured! ");
         return rdata;
     }
+    }
+
+    @Override
+    public String forgotpassword(Model model, HttpSession request) {
+        return null;
     }
 }

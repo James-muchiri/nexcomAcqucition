@@ -71,7 +71,7 @@ text-decoration: none;
                                     <button type="submit" class="btn btn-primary">
                                         Sign In
                                     </button>
-                                    <a class="btn btn-link" href="{{ route('admin_forgot_password') }}">
+                                    <a class="btn btn-link" onclick="forgot()">
                                         Forgot Password
                                     </a>
                                 </div>
@@ -93,6 +93,10 @@ text-decoration: none;
 
 
 <script>
+
+  function forgot() {
+               window.location = basePath  +"forgotpassword";
+    }
     function to_cash(amt) {
         var x = parseFloat(amt);
         var k = x.toFixed(2);

@@ -113,7 +113,7 @@ width: 100px;
 
 <!--                                    <td>-->
 <!--&lt;!&ndash;                                        <div th:each="role_name : ${role.role}" th:text="${role_name}"  ></div></td>&ndash;&gt;-->
-                                    <td><div class="label text-success bg-success-light" th:text="${role.getName}" ></div></td>
+                                    <td><div class="label text-success bg-success-light" th:text="${role.getIs_active}" ></div></td>
 
                                     <td>
 <!--                                        <button   th:href="@{|/admin/getPortalroleById/${role.id}|}" class="btn btn-primary">Edit Role</button>-->
@@ -171,19 +171,19 @@ width: 100px;
                             <div class="col-sm-4">
                                 <div class="form-group row">
 
-                                    <div class="col-md-12">
-                                        <label  class="col-md-12 col-form-label ">Roles</label>
+<!--                                    <div class="col-md-12">-->
+<!--                                        <label  class="col-md-12 col-form-label ">Roles</label>-->
 
 
-                                        <input type="checkbox" name="roles" value="orders"> Create new Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="products">View Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="deliveries">Edit Acqusitions<br>
-                                        <input type="checkbox" name="roles" value="sms"> Manage Teritories<br>
-                                        <input type="checkbox" name="roles" value="finance">Manage Users<br>
-                                        <input type="checkbox" name="roles" value="customer_care">Manage Roles<br>
+<!--                                        <input type="checkbox" name="roles" value="orders"> Create new Acqusitions<br>-->
+<!--                                        <input type="checkbox" name="roles" value="products">View Acqusitions<br>-->
+<!--                                        <input type="checkbox" name="roles" value="deliveries">Edit Acqusitions<br>-->
+<!--                                        <input type="checkbox" name="roles" value="sms"> Manage Teritories<br>-->
+<!--                                        <input type="checkbox" name="roles" value="finance">Manage Users<br>-->
+<!--                                        <input type="checkbox" name="roles" value="customer_care">Manage Roles<br>-->
 
 
-                                    </div>
+<!--                                    </div>-->
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -378,6 +378,9 @@ width: 100px;
 
   $('#newPortalroles').modal('hide');
     $("#rolesform")[0].reset();
+      setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
 }
 else{
@@ -542,7 +545,10 @@ function save_edit() {
 
 
 		    	toastr.success(data);
-
+  $('#admin_role_edit_modal').modal('hide');
+      setTimeout(function() {
+        window.location.reload();
+}, 2000);
 
           },
              error: function(xhr)
@@ -589,7 +595,7 @@ function save_edit() {
 
 
 		    	toastr.success(data);
-
+  $('#admin_priveleges_modal').modal('hide');
 
           },
              error: function(xhr)

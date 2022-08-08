@@ -213,12 +213,14 @@ if(isValid)
     $('#new_shedule').modal('hide');
     $("#region_form")[0].reset();
 
-
+      setTimeout(function() {
+        window.location.reload();
+}, 2000);
 }
 else{
 toastr.success(response.msg);
-$('#new_shedule').modal('hide');
-$("#region_form")[0].reset();
+<!--$('#new_shedule').modal('hide');-->
+<!--$("#region_form")[0].reset();-->
 }
 
 
