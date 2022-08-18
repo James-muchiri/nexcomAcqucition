@@ -15,6 +15,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
@@ -82,6 +83,10 @@ private Access_right_profileRepository access_right_profileRepository;
 
 @Autowired
 private  PasswordResetTokenRepository passwordResetTokenRepository;
+
+
+    @Autowired
+    private JavaMailSender emailSender;
 
     private Pattern regexPattern;
     private Matcher regMatcher;
@@ -1709,15 +1714,15 @@ if(request.getBuilding_name() != null){
         passwordResetToken.setToken(token);
         passwordResetToken.setUser(admi);
         passwordResetTokenRepository.save(passwordResetToken);
-
-    /*    mailSender.send(constructResetTokenEmail(getAppUrl(request);*/
+        String contextPat = null;
+        constructResetTokenEmail(contextPat, token, admi);
 
 
         return "login";
     }
 
     private SimpleMailMessage constructResetTokenEmail(
-            String contextPath, Locale locale, String token, Admi user) {
+            String contextPath, String token, Admi user) {
         String url = contextPath + "/user/changePassword?token=" + token;
         String message = "message.resetPassword";
         return constructEmail("Reset Password", message + " \r\n" + url, user);
@@ -1730,6 +1735,7 @@ if(request.getBuilding_name() != null){
         email.setText(body);
         email.setTo(user.getEmail());
 //        email.setFrom(env.getProperty("support.email"));
+        emailSender.send(email);
         return email;
     }
 }
