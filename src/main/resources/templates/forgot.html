@@ -1,0 +1,267 @@
+<section th:replace="topbar-signup :: topbar-signup"></section>
+
+<style>
+       #login_pg {
+    background-image: url(./assets/image/8.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.btn-link{
+color: #F7941E!important;
+font-weight: 700!important;
+text-decoration: none;
+    background-color: transparent;
+    float: right!important;
+}
+.erorr{
+    color: red;
+    font-size: 14px;
+    font-weight: 700;
+    }
+    </style>
+
+<main class="py-4">
+
+    <br><br><br><br>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header  text-center bg-primary">
+                        <img src="./assets/image/logo.jpg"  alt="" class="rounded-circle" style="max-height:75px; background-color:#fff;">
+                    </div>
+
+                    <div class="card-body">
+                        <div class="text-center w-75 m-auto">
+                            <h4 class="text-dark-50 text-center mt-0 font-weight-bold">Acqusition  Portal</h4>
+                            <p class="text-muted mb-1">Admin Forgot Password </p>
+
+                            <p class="erorr" th:if="${error}" th:text="${error}" >Admin Forgot Password </p>
+                        </div>
+                        <form method="POST" action="admin_forgot" >
+
+
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control " name="email" placeholder="Enter Your E-mail" value="" required autocomplete="email" autofocus>
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Reset Password
+                                    </button>
+                                    <a class="btn btn-link" onclick="forgot()">
+                                       Back to login
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!--<section th:replace="footer :: footer"></section>-->
+
+
+<script th:inline="javascript">
+    var basePath = /*[[${@environment.getProperty('url.portal.public')}]]*/
+</script>
+
+
+<script>
+
+  function forgot() {
+               window.location = basePath  +"login";
+    }
+    function to_cash(amt) {
+        var x = parseFloat(amt);
+        var k = x.toFixed(2);
+        return k;
+    }
+
+    function log_in() {
+
+        if ($('#admin_login').valid()) {
+
+            $('#loading').show();
+            $('#btn_login').hide();
+
+            var pdata = {
+                email: $('#email').val(),
+                password: $('#password').val(),
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: basePath + 'admin_login',
+                data: pdata,
+                success: function(data) {
+                    $('#loading').hide();
+
+                    if (data.success) {
+                        show_message(" Redirecting ...");
+
+                        if (data.hasRedirect == 1) {
+                            delayed_redirect(data.rl);
+                        } else {
+                            var url_string = window.location.href;
+                            var url = new URL(url_string);
+                            var rl = url.searchParams.get("rl");
+
+                            // if(ac){
+                            if (rl) {
+                                delayed_redirect(rl);
+                            } else {
+                                delayed_redirect();
+                            }
+
+                        }
+
+
+                    } else {
+                        show_message(data.msg, 3);
+                    }
+
+                },
+                error: function(data) {
+                    show_message("An error occurred! Try again later", 3);
+                    $('#loading').hide();
+                     $('#btn_login').show();
+                },
+
+            });
+
+
+        }
+    }
+
+
+    function delayed_redirect(rl) {
+        if (!rl) {
+            setTimeout(to_login_page, 1500);
+        } else {
+            setInterval(function() {
+                to_custom_page(rl);
+            }, 1500);
+        }
+    }
+
+    function to_login_page() {
+
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var rl = url.searchParams.get("rl");
+        var rlink = "dashboard";
+
+        if (rl) {
+            rlink = rl;
+        }
+
+        window.location.replace(basePath + rlink);
+    }
+
+    function to_custom_page(rlink = "dashboard") {
+        window.location.replace(basePath + rlink);
+    }
+
+
+
+
+
+    function show_message(msg = "", type = "1", l = "topRight") {
+
+        $('#loader').hide();
+
+        if (!msg.length > 0) {
+            msg = "An error occurred. Please check your connection";
+        }
+
+        var title = "";
+        var titleColor = "";
+
+        if (type == 1) {
+            //success
+            title = "Success";
+            titleColor = "green";
+
+        } else if (type == 2) { // warning
+
+            title = "Info";
+            titleColor = "#F9B031";
+
+        } else if (type == 3) {
+            title = "Error";
+            titleColor = "red";
+        } else {
+
+        }
+
+        iziToast.show({
+            id: null,
+            class: '',
+            title: title,
+            titleColor: titleColor,
+            titleSize: '20',
+            titleLineHeight: '',
+            message: msg,
+            messageColor: 'grey',
+            messageSize: '15',
+            messageLineHeight: '',
+            backgroundColor: 'white',
+            theme: 'light', // dark
+            color: '', // blue, red, green, yellow
+            icon: '',
+            iconText: '',
+            iconColor: '',
+            image: '',
+            imageWidth: 50,
+            maxWidth: null,
+            zindex: 9999,
+            layout: 1,
+            balloon: false,
+            close: true,
+            closeOnEscape: true,
+            rtl: false,
+            position: l, // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter, center
+            target: '',
+            targetFirst: true,
+            toastOnce: false,
+            timeout: 5000,
+            animateInside: true,
+            drag: true,
+            pauseOnHover: true,
+            resetOnHover: false,
+            progressBar: true,
+            progressBarColor: titleColor,
+            progressBarEasing: 'linear',
+            overlay: false,
+            overlayClose: true,
+            overlayColor: 'white',
+            transitionIn: 'bounceInLeft',
+            transitionOut: 'flipOutX',
+            transitionInMobile: 'fadeInUp',
+            transitionOutMobile: 'fadeOutDown',
+            buttons: {},
+            inputs: {},
+            onOpening: function() {},
+            onOpened: function() {},
+            onClosing: function() {},
+            onClosed: function() {}
+        });
+
+    }
+</script>

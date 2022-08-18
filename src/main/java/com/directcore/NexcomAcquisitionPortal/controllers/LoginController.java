@@ -49,7 +49,18 @@ public class LoginController {
 
 
     @GetMapping({"/forgotpassword"})
-    public String forgotpassword(Model model, HttpSession request) {
-        return adminService.forgotpassword(model, request);
+    public Object forgotpassword(ModelAndView v, HttpSession request) {
+        return adminService.forgotpassword(v, request);
+    }
+
+    @PostMapping(path = "/admin_forgot", consumes = {
+            MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+            MediaType.MULTIPART_FORM_DATA_VALUE,
+            MediaType.APPLICATION_JSON_VALUE})
+    public String admin_forgot(@RequestParam String email, Model model, HttpSession request, ModelAndView v) {
+
+
+        return (String) adminService.admin_forgot(email, model, request, v);
+
     }
 }
