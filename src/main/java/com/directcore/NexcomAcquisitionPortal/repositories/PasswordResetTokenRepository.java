@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PasswordResetTokenRepository extends CrudRepository<PasswordResetToken, Integer> {
 
+    PasswordResetToken findByToken(String token);
 }

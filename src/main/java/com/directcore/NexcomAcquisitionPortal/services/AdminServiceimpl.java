@@ -7,6 +7,7 @@ import com.directcore.NexcomAcquisitionPortal.repositories.Contact_infoRepositor
 import com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt;
 import com.directcore.NexcomAcquisitionPortal.validation.UserValidator;
 
+import org.hibernate.cfg.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1710,13 +1711,13 @@ if(request.getBuilding_name() != null){
         Admi admi = admiRepository.findByEmail(email);
         String token = UUID.randomUUID().toString();
 
-        PasswordResetToken passwordResetToken = new PasswordResetToken();
-        passwordResetToken.setToken(token);
-        passwordResetToken.setUser(admi);
-        passwordResetTokenRepository.save(passwordResetToken);
-        String contextPat = null;
-        constructResetTokenEmail(contextPat, token, admi);
 
+
+        PasswordResetToken myToken = new PasswordResetToken(token, admi);
+        passwordResetTokenRepository.save(myToken);
+        String contextPat = "http://localhost:8872/";
+
+        emailSender.send(constructResetTokenEmail(contextPat, token, admi));
 
         return "login";
     }
@@ -1724,7 +1725,7 @@ if(request.getBuilding_name() != null){
     private SimpleMailMessage constructResetTokenEmail(
             String contextPath, String token, Admi user) {
         String url = contextPath + "/user/changePassword?token=" + token;
-        String message = "message.resetPassword";
+        String message = "Hello" + user.getName() + "here is the link to reset your password.";
         return constructEmail("Reset Password", message + " \r\n" + url, user);
     }
 
@@ -1734,8 +1735,41 @@ if(request.getBuilding_name() != null){
         email.setSubject(subject);
         email.setText(body);
         email.setTo(user.getEmail());
-//        email.setFrom(env.getProperty("support.email"));
-        emailSender.send(email);
+        email.setFrom("Nexcom Acqusition Portal");
+
+
         return email;
+    }
+
+    @Override
+    public Object changePassword(HttpSession request, String token, ModelAndView v, Model model) {
+        String result = validatePasswordResetToken(token);
+        if(result != null) {
+
+            model.addAttribute("token", token);
+            return "invalidtoken";
+        } else {
+            model.addAttribute("token", token);
+            return "updatePassword";
+        }
+
+    }
+
+    public String validatePasswordResetToken(String token) {
+        final PasswordResetToken passToken = passwordResetTokenRepository.findByToken(token);
+
+//        return !isTokenFound(passToken) ? "invalidToken"
+//                : isTokenExpired(passToken) ? "expired"
+//                : null;
+        return null;
+    }
+
+    private boolean isTokenFound(PasswordResetToken passToken) {
+        return passToken != null;
+    }
+
+    private boolean isTokenExpired(PasswordResetToken passToken) {
+        final Calendar cal = Calendar.getInstance();
+        return passToken.getExpiryDate().before(cal.getTime());
     }
 }

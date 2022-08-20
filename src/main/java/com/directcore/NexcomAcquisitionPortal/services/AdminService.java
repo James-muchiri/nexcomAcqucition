@@ -136,4 +136,6 @@ public interface AdminService {
     Object forgotpassword(ModelAndView v, HttpSession request);
 
     Object admin_forgot(String email, Model model, HttpSession request, ModelAndView v);
+
+    Object changePassword(HttpSession request, String token, ModelAndView v, Model model);
 }

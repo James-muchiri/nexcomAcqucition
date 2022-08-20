@@ -63,4 +63,17 @@ public class LoginController {
         return (String) adminService.admin_forgot(email, model, request, v);
 
     }
+
+
+    //  reset password
+    @GetMapping("/user/changePassword")
+    public String changePassword(@RequestParam("token") String token, HttpSession request, ModelAndView v, Model model) {
+
+        return (String) adminService.changePassword(request, token, v, model);
+
+    }
+
+
+
+
 }
