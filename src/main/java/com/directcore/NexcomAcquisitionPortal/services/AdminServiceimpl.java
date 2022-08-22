@@ -1717,7 +1717,7 @@ if(request.getBuilding_name() != null){
         passwordResetTokenRepository.save(myToken);
         String contextPat = "http://localhost:8872/";
 
-        emailSender.send(constructResetTokenEmail(contextPat, token, admi));
+      //  emailSender.send(constructResetTokenEmail(contextPat, token, admi));
 
         return "login";
     }
