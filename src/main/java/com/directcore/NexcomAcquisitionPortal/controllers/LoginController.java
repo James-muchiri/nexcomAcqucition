@@ -73,7 +73,16 @@ public class LoginController {
 
     }
 
+    @PostMapping(path = "/admin_reset_password", consumes = {
+            MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+            MediaType.MULTIPART_FORM_DATA_VALUE,
+            MediaType.APPLICATION_JSON_VALUE})
+    public String admin_reset_password(@RequestParam String token, @RequestParam String confpassword, @RequestParam String password, Model model, HttpSession request, ModelAndView v) {
 
+
+        return (String) adminService.admin_reset_password(token, confpassword, password, model, request, v);
+
+    }
 
 
 }

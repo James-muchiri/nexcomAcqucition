@@ -1717,7 +1717,7 @@ if(request.getBuilding_name() != null){
         passwordResetTokenRepository.save(myToken);
         String contextPat = "http://localhost:8872/";
 
-      //  emailSender.send(constructResetTokenEmail(contextPat, token, admi));
+        emailSender.send(constructResetTokenEmail(contextPat, token, admi));
 
         return "login";
     }
@@ -1750,7 +1750,7 @@ if(request.getBuilding_name() != null){
             return "invalidtoken";
         } else {
             model.addAttribute("token", token);
-            return "updatePassword";
+            return "updatepassword";
         }
 
     }
@@ -1771,5 +1771,17 @@ if(request.getBuilding_name() != null){
     private boolean isTokenExpired(PasswordResetToken passToken) {
         final Calendar cal = Calendar.getInstance();
         return passToken.getExpiryDate().before(cal.getTime());
+    }
+
+    @Override
+    public Object admin_reset_password(String token, String confpassword, String password, Model model, HttpSession request, ModelAndView v) {
+
+      PasswordResetToken passToken = passwordResetTokenRepository.findByToken(token);
+        Admi admi = passToken.getUser();
+
+        admi.setPassword(bcrypt.hash(password));
+
+        admiRepository.save(admi);
+        return "redirect:login";
     }
 }
