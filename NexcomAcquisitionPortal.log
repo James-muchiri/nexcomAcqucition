@@ -1935,4 +1935,1785 @@ Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1011E:
 ""2022-08-22 17:07:36 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 ""2022-08-22 17:07:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 ""2022-08-22 17:07:37 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 19:56:43 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 11218 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 19:56:43 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 19:56:44 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 19:56:44 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 19:56:44 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 13 JPA repository interfaces.
+""2022-08-22 19:56:45 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 19:56:45 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 19:56:45 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 19:56:46 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 19:56:46 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 19:56:46 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 19:56:47 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 19:56:48 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 19:56:49 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 19:56:49 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 19:56:49 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 19:56:49 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 19:56:50 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e92b19a6-e3e7-4029-8ce6-e4bc42a8b238
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 19:56:51 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 19:56:51 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 19:56:51 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2b370ca9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3203a4ae, org.springframework.security.web.context.SecurityContextPersistenceFilter@923bf67, org.springframework.security.web.header.HeaderWriterFilter@1516f497, org.springframework.security.web.authentication.logout.LogoutFilter@762d2e4c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a165c11, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ff87203, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@59301546, org.springframework.security.web.session.SessionManagementFilter@36a25457, org.springframework.security.web.access.ExceptionTranslationFilter@37ad818e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1a1c308b]
+""2022-08-22 19:56:51 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 19:56:52 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 19:56:52 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 19:56:52 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:56:52 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 19:56:52 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 19:56:52 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:56:52 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 19:56:52 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 19:56:52 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 9.097 seconds (JVM running for 11.384)
+""2022-08-22 19:56:56 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 19:56:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 19:56:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 19:57:03 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 11274 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 19:57:03 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 19:57:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 19:57:08 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 19:57:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 372 ms. Found 13 JPA repository interfaces.
+""2022-08-22 19:57:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 19:57:11 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 19:57:11 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 19:57:15 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 19:57:15 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 10906 ms
+""2022-08-22 19:57:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 19:57:15 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 19:57:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 19:57:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 19:57:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 19:57:17 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 19:57:18 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 19:57:19 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 19:57:19 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 19:57:20 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 19:57:20 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 19:57:20 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 19:57:21 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 19:57:21 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 24ca18d2-db85-41dd-945b-0e87a0045646
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 19:57:22 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 19:57:22 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 19:57:22 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e8279e5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b53840a, org.springframework.security.web.context.SecurityContextPersistenceFilter@3ece79fe, org.springframework.security.web.header.HeaderWriterFilter@4293e066, org.springframework.security.web.authentication.logout.LogoutFilter@68ef01a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e01b133, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b4125ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3caafa67, org.springframework.security.web.session.SessionManagementFilter@2ac519dc, org.springframework.security.web.access.ExceptionTranslationFilter@5a0e0886, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@23468512]
+""2022-08-22 19:57:22 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 19:57:22 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 19:57:22 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 19:57:22 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 19:57:23 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:57:23 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 19:57:23 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 19:57:23 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:57:23 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 19:57:23 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 19:57:23 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 23.316 seconds (JVM running for 25.125)
+""2022-08-22 19:57:41 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 19:57:41 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 19:57:41 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+""2022-08-22 19:57:41 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Unauthorized access request
+""2022-08-22 19:58:44 [http-nio-8872-exec-1] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:58:44 [http-nio-8872-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+""2022-08-22 19:58:44 [http-nio-8872-exec-1] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:58:44 [http-nio-8872-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+""2022-08-22 19:58:44 [http-nio-8872-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+"java.lang.NullPointerException: null
+	at org.mindrot.jbcrypt.BCrypt.hashpw(BCrypt.java:658)
+	at org.mindrot.jbcrypt.BCrypt.checkpw(BCrypt.java:764)
+	at com.directcore.NexcomAcquisitionPortal.validation.UpdatableBCrypt.verifyHash(UpdatableBCrypt.java:26)
+	at com.directcore.NexcomAcquisitionPortal.services.AdminServiceimpl.login(AdminServiceimpl.java:135)
+	at com.directcore.NexcomAcquisitionPortal.controllers.LoginController.login(LoginController.java:41)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+"2022-08-22 19:59:10 [http-nio-8872-exec-8] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:59:10 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+""2022-08-22 19:59:10 [http-nio-8872-exec-8] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 19:59:10 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [mwangimuchiri@gmail.com]
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        next_val as id_val 
+    from
+        hibernate_sequence for update
+            
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        hibernate_sequence 
+    set
+        next_val= ? 
+    where
+        next_val=?
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] DEBUG org.hibernate.SQL - 
+    /* insert com.directcore.NexcomAcquisitionPortal.model.PasswordResetToken
+        */ insert 
+        into
+            password_reset_token
+            (expiry_date, token, user_id, id) 
+        values
+            (?, ?, ?, ?)
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [Tue Aug 23 19:59:10 EAT 2022]
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [6a560e01-8c25-4af8-90d9-56ae685a1008]
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [INTEGER] - [38]
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [4] as [BIGINT] - [109]
+""2022-08-22 19:59:13 [http-nio-8872-exec-8] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailParseException: Could not parse mail; nested exception is javax.mail.internet.AddressException: Local address contains control or whitespace in string ``Nexcom Acqusition Portal''] with root cause
+"javax.mail.internet.AddressException: Local address contains control or whitespace
+	at javax.mail.internet.InternetAddress.checkAddress(InternetAddress.java:1343)
+	at javax.mail.internet.InternetAddress.parse(InternetAddress.java:1191)
+	at javax.mail.internet.InternetAddress.parse(InternetAddress.java:728)
+	at javax.mail.internet.InternetAddress.parse(InternetAddress.java:705)
+	at org.springframework.mail.javamail.MimeMessageHelper.parseAddress(MimeMessageHelper.java:735)
+	at org.springframework.mail.javamail.MimeMessageHelper.setFrom(MimeMessageHelper.java:572)
+	at org.springframework.mail.javamail.MimeMailMessage.setFrom(MimeMailMessage.java:79)
+	at org.springframework.mail.SimpleMailMessage.copyTo(SimpleMailMessage.java:198)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:320)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:312)
+	at com.directcore.NexcomAcquisitionPortal.services.AdminServiceimpl.admin_forgot(AdminServiceimpl.java:1720)
+	at com.directcore.NexcomAcquisitionPortal.controllers.LoginController.admin_forgot(LoginController.java:63)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+"2022-08-22 20:00:59 [http-nio-8872-exec-3] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 20:00:59 [http-nio-8872-exec-3] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 20:00:59 [http-nio-8872-exec-3] ERROR org.thymeleaf.TemplateEngine - [THYMELEAF][http-nio-8872-exec-3] Exception processing template "updatePassword": Error resolving template [updatePassword], template might not exist or might not be accessible by any of the configured Template Resolvers
+"org.thymeleaf.exceptions.TemplateInputException: Error resolving template [updatePassword], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:366)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:190)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1401)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1145)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1084)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+"2022-08-22 20:01:00 [http-nio-8872-exec-3] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template [updatePassword], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+"org.thymeleaf.exceptions.TemplateInputException: Error resolving template [updatePassword], template might not exist or might not be accessible by any of the configured Template Resolvers
+	at org.thymeleaf.engine.TemplateManager.resolveTemplate(TemplateManager.java:869)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:607)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:366)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:190)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1401)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1145)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1084)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+"2022-08-22 20:02:12 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:02:12 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 20:02:12 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 20:02:45 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 12014 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 20:02:45 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 20:02:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 20:02:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 20:02:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 13 JPA repository interfaces.
+""2022-08-22 20:02:47 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 20:02:47 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 20:02:48 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 20:02:48 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 20:02:48 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 20:02:48 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 20:02:50 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 20:02:50 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 20:02:51 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 20:02:51 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 20:02:51 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:02:51 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 20:02:53 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 785605ba-06c1-4a90-9c6c-68e6a3babe9b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 20:02:53 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 20:02:53 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 20:02:53 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5bbb0a25, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@244c0fbe, org.springframework.security.web.context.SecurityContextPersistenceFilter@1c000c2f, org.springframework.security.web.header.HeaderWriterFilter@938e54a, org.springframework.security.web.authentication.logout.LogoutFilter@673fdc28, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@56bf6f1e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7212b28e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@68aa1164, org.springframework.security.web.session.SessionManagementFilter@62f3ad90, org.springframework.security.web.access.ExceptionTranslationFilter@44103266, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@207f7baa]
+""2022-08-22 20:02:53 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 20:02:54 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 20:02:54 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 20:02:54 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:02:54 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 20:02:54 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:02:54 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:02:54 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 20:02:54 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:02:54 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 9.543 seconds (JVM running for 10.989)
+""2022-08-22 20:02:58 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:02:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 20:02:58 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 20:03:00 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 12062 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 20:03:00 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 20:03:03 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 20:03:03 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 20:03:04 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 558 ms. Found 13 JPA repository interfaces.
+""2022-08-22 20:03:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 20:03:09 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 20:03:09 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 20:03:13 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 20:03:13 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 13440 ms
+""2022-08-22 20:03:14 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 20:03:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 20:03:15 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 20:03:16 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 20:03:17 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 20:03:17 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 20:03:22 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 20:03:23 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 20:03:23 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 20:03:24 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 20:03:24 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:03:25 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 20:03:27 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 20:03:30 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: bd1f28c9-c5e9-4b95-ab3d-4f89b8053874
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 20:03:30 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 20:03:30 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 20:03:31 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e8279e5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b53840a, org.springframework.security.web.context.SecurityContextPersistenceFilter@3ece79fe, org.springframework.security.web.header.HeaderWriterFilter@4293e066, org.springframework.security.web.authentication.logout.LogoutFilter@68ef01a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e01b133, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b4125ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3caafa67, org.springframework.security.web.session.SessionManagementFilter@2ac519dc, org.springframework.security.web.access.ExceptionTranslationFilter@5a0e0886, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@23468512]
+""2022-08-22 20:03:32 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 20:03:32 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 20:03:33 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 20:03:33 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 20:03:33 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:03:33 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 20:03:33 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:03:33 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:03:33 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 20:03:33 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:03:33 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 34.126 seconds (JVM running for 34.868)
+""2022-08-22 20:03:38 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 20:03:38 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 20:03:38 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+""2022-08-22 20:03:43 [http-nio-8872-exec-1] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 20:03:43 [http-nio-8872-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 20:11:18 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:11:18 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 20:11:19 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 20:11:32 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 12796 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 20:11:32 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 20:11:33 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 20:11:33 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 20:11:33 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 104 ms. Found 13 JPA repository interfaces.
+""2022-08-22 20:11:34 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 20:11:34 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 20:11:34 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 20:11:34 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 20:11:35 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 20:11:35 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 20:11:36 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 20:11:39 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 20:11:39 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 20:11:39 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 20:11:39 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:11:39 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 20:11:41 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 77002172-b26f-4420-b765-8da1857d71c9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 20:11:41 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 20:11:41 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 20:11:41 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2284058a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b11d0d8, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c928399, org.springframework.security.web.header.HeaderWriterFilter@62f3ad90, org.springframework.security.web.authentication.logout.LogoutFilter@df5f657, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@762d2e4c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4bb644dc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5cf39df6, org.springframework.security.web.session.SessionManagementFilter@7212b28e, org.springframework.security.web.access.ExceptionTranslationFilter@489c15e2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5bbf3869]
+""2022-08-22 20:11:41 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 20:11:42 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 20:11:42 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 20:11:42 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:11:42 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 20:11:42 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:11:42 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:11:42 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 20:11:42 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:11:42 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 10.586 seconds (JVM running for 11.92)
+""2022-08-22 20:11:46 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:11:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 20:11:46 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 20:11:48 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 12844 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 20:11:48 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 20:11:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 20:11:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 20:11:49 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 110 ms. Found 13 JPA repository interfaces.
+""2022-08-22 20:11:50 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 20:11:50 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 20:11:50 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 20:11:52 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 20:11:52 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4301 ms
+""2022-08-22 20:11:52 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 20:11:52 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 20:11:53 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 20:11:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 20:11:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 20:11:53 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 20:11:55 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 20:11:55 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 20:11:55 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 20:11:56 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 20:11:56 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 20:11:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 20:11:56 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 20:11:57 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e5e2bec5-fcf4-42c9-86b7-b6fd625318c4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 20:11:57 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 20:11:57 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 20:11:57 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@69cd7630, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e8279e5, org.springframework.security.web.context.SecurityContextPersistenceFilter@1de4bee0, org.springframework.security.web.header.HeaderWriterFilter@6dce59e, org.springframework.security.web.authentication.logout.LogoutFilter@33f2cfda, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3cc79c02, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6be6931f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b53840a, org.springframework.security.web.session.SessionManagementFilter@5403799b, org.springframework.security.web.access.ExceptionTranslationFilter@3fde8f7c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@64763e49]
+""2022-08-22 20:11:57 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 20:11:57 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 20:11:58 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 20:11:58 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 20:11:58 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:11:58 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 20:11:58 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:11:58 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 20:11:58 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 20:11:58 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 20:11:58 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 11.019 seconds (JVM running for 11.741)
+""2022-08-22 22:15:09 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 22:15:09 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 22:15:09 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+""2022-08-22 22:15:13 [http-nio-8872-exec-1] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:15:13 [http-nio-8872-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 22:16:38 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:16:38 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:16:38 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:16:52 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 15812 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:16:52 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:16:53 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:16:53 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:16:53 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 99 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:16:54 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:16:54 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:16:54 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:16:54 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:16:55 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:16:55 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:16:56 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:16:56 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:16:57 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:16:58 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:16:58 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:16:58 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:16:59 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: eff52227-4424-4a6a-bb6a-b14935272a84
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:16:59 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:16:59 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:16:59 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@25d87313, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c130cb2, org.springframework.security.web.context.SecurityContextPersistenceFilter@6fe33512, org.springframework.security.web.header.HeaderWriterFilter@22c0c0bc, org.springframework.security.web.authentication.logout.LogoutFilter@790ea58f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18d63996, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2c7ac998, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73502d5e, org.springframework.security.web.session.SessionManagementFilter@21f9a305, org.springframework.security.web.access.ExceptionTranslationFilter@604e8a6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7b9f7087]
+""2022-08-22 22:17:00 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:17:00 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:17:00 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:17:00 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:17:00 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:17:00 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:17:00 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:17:00 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:17:00 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:17:00 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 8.887 seconds (JVM running for 10.276)
+""2022-08-22 22:17:04 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:17:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:17:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:17:07 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 15866 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:17:07 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:17:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:17:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:17:09 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 127 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:17:10 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 22:17:10 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 22:17:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 22:17:12 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 22:17:12 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4208 ms
+""2022-08-22 22:17:12 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:17:12 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:17:12 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:17:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:17:13 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:17:13 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:17:16 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:17:16 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:17:17 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:17:18 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:17:18 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:17:18 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 22:17:19 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:17:19 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e21b5649-3c93-4aba-8ef5-49b9a9840ebf
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:17:20 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:17:20 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:17:20 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d705112, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@590765c4, org.springframework.security.web.context.SecurityContextPersistenceFilter@6dce59e, org.springframework.security.web.header.HeaderWriterFilter@637791d, org.springframework.security.web.authentication.logout.LogoutFilter@2ac519dc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ad6cc21, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@38d80d65, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19489b27, org.springframework.security.web.session.SessionManagementFilter@3fe512d2, org.springframework.security.web.access.ExceptionTranslationFilter@348137e8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@151ab2b9]
+""2022-08-22 22:17:20 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:17:20 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:17:20 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 22:17:20 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:17:20 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:17:20 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:17:20 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:17:20 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:17:20 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:17:20 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:17:21 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 14.675 seconds (JVM running for 16.085)
+""2022-08-22 22:18:02 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 22:18:02 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 22:18:02 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+""2022-08-22 22:18:03 [http-nio-8872-exec-1] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:18:03 [http-nio-8872-exec-1] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 22:18:10 [http-nio-8872-exec-4] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'token' for method parameter type String is not present]
+""2022-08-22 22:19:32 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:19:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:19:32 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:19:45 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 16260 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:19:45 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:19:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:19:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:19:46 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 105 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:19:47 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:19:47 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:19:48 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:19:48 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:19:48 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:19:48 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:19:50 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:19:50 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:19:50 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:19:51 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:19:51 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:19:51 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:19:52 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e5056c4b-913c-4d98-af0c-c2dc40babc62
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:19:52 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:19:52 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:19:52 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4138af7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5bbf3869, org.springframework.security.web.context.SecurityContextPersistenceFilter@21f9a305, org.springframework.security.web.header.HeaderWriterFilter@6c4e11d0, org.springframework.security.web.authentication.logout.LogoutFilter@2162598, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f2a5064, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18d63996, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@64dfa1a3, org.springframework.security.web.session.SessionManagementFilter@220d7eb7, org.springframework.security.web.access.ExceptionTranslationFilter@5d00e30e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7136ad9a]
+""2022-08-22 22:19:53 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:19:53 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:19:53 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:19:53 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:19:53 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:19:53 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:19:53 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:19:53 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:19:53 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:19:53 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 8.405 seconds (JVM running for 9.739)
+""2022-08-22 22:19:57 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:19:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:19:57 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:19:59 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 16310 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:19:59 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:20:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:20:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:20:01 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 124 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:20:02 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 22:20:02 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 22:20:02 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 22:20:03 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 22:20:03 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4073 ms
+""2022-08-22 22:20:03 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:20:04 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:20:04 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:20:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:20:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:20:04 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:20:06 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:20:06 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:20:07 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:20:07 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:20:07 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:20:08 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 22:20:08 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:20:09 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e268ac1f-9f4f-4e89-89b3-654d3175aa6e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:20:09 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:20:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:20:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e8279e5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b53840a, org.springframework.security.web.context.SecurityContextPersistenceFilter@3ece79fe, org.springframework.security.web.header.HeaderWriterFilter@4293e066, org.springframework.security.web.authentication.logout.LogoutFilter@68ef01a5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e01b133, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6b4125ed, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3caafa67, org.springframework.security.web.session.SessionManagementFilter@2ac519dc, org.springframework.security.web.access.ExceptionTranslationFilter@5a0e0886, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@23468512]
+""2022-08-22 22:20:09 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:20:09 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:20:09 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 22:20:09 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:20:09 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:20:09 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:20:09 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:20:09 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:20:09 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:20:09 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:20:09 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 11.207 seconds (JVM running for 11.958)
+""2022-08-22 22:21:29 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 22:21:29 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 22:21:29 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+""2022-08-22 22:21:29 [http-nio-8872-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'token' for method parameter type String is not present]
+""2022-08-22 22:21:39 [http-nio-8872-exec-4] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:21:39 [http-nio-8872-exec-4] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 22:21:47 [http-nio-8872-exec-7] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:21:47 [http-nio-8872-exec-7] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [e73fdeae-599c-44e2-91e2-362ae249bb28]
+""2022-08-22 22:21:48 [http-nio-8872-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+"java.lang.NullPointerException: null
+	at com.directcore.NexcomAcquisitionPortal.services.AdminServiceimpl.admin_reset_password(AdminServiceimpl.java:1780)
+	at com.directcore.NexcomAcquisitionPortal.controllers.LoginController.admin_reset_password(LoginController.java:83)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:204)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:141)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+"2022-08-22 22:29:35 [http-nio-8872-exec-10] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:29:35 [http-nio-8872-exec-10] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [6a560e01-8c25-4af8-90d9-56ae685a1008]
+""2022-08-22 22:29:35 [http-nio-8872-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        admi0_.id as id1_2_0_,
+        admi0_.create_date_time as create_d2_2_0_,
+        admi0_.email as email3_2_0_,
+        admi0_.isadmin as isadmin4_2_0_,
+        admi0_.name as name5_2_0_,
+        admi0_.password as password6_2_0_,
+        admi0_.phone as phone7_2_0_,
+        admi0_.update_date_time as update_d8_2_0_ 
+    from
+        admi admi0_ 
+    where
+        admi0_.id=?
+""2022-08-22 22:29:35 [http-nio-8872-exec-10] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [INTEGER] - [38]
+""2022-08-22 22:29:43 [http-nio-8872-exec-9] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:29:43 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [6a560e01-8c25-4af8-90d9-56ae685a1008]
+""2022-08-22 22:29:43 [http-nio-8872-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        admi0_.id as id1_2_0_,
+        admi0_.create_date_time as create_d2_2_0_,
+        admi0_.email as email3_2_0_,
+        admi0_.isadmin as isadmin4_2_0_,
+        admi0_.name as name5_2_0_,
+        admi0_.password as password6_2_0_,
+        admi0_.phone as phone7_2_0_,
+        admi0_.update_date_time as update_d8_2_0_ 
+    from
+        admi admi0_ 
+    where
+        admi0_.id=?
+""2022-08-22 22:29:43 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [INTEGER] - [38]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] DEBUG org.hibernate.SQL - 
+    /* update
+        com.directcore.NexcomAcquisitionPortal.model.Admi */ update
+            admi 
+        set
+            create_date_time=?,
+            email=?,
+            isadmin=?,
+            name=?,
+            password=?,
+            phone=?,
+            update_date_time=? 
+        where
+            id=?
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [TIMESTAMP] - [2021-11-23T16:59:16]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [2] as [VARCHAR] - [mwangimuchiri@gmail.com]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [3] as [INTEGER] - [0]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [4] as [VARCHAR] - [james mwangi muchir]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [5] as [VARCHAR] - [MOjo@dct20!]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [6] as [VARCHAR] - [0718360109]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [7] as [TIMESTAMP] - [2022-08-22T22:29:45.431046]
+""2022-08-22 22:29:45 [http-nio-8872-exec-9] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [8] as [INTEGER] - [38]
+""2022-08-22 22:31:22 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:31:22 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:31:22 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:31:40 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Starting NexcomAcquisitionPortalApplicationTests using Java 16.0.1 on engineer with PID 17265 (started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:31:40 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:31:41 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:31:41 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:31:41 [Test worker] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:31:42 [Test worker] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:31:42 [Test worker] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:31:42 [Test worker] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:31:42 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:31:43 [Test worker] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:31:43 [Test worker] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:31:44 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:31:46 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:31:46 [Test worker] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:31:46 [Test worker] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:31:46 [Test worker] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:31:46 [Test worker] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:31:47 [Test worker] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 91f987ca-849d-4441-a749-ac6edf6be076
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:31:47 [Test worker] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:31:47 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:31:48 [Test worker] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@237824b0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@52a8f789, org.springframework.security.web.context.SecurityContextPersistenceFilter@7212b28e, org.springframework.security.web.header.HeaderWriterFilter@aaf4375, org.springframework.security.web.authentication.logout.LogoutFilter@4a5c6b30, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f3b11e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@762d2e4c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5345552f, org.springframework.security.web.session.SessionManagementFilter@56bf6f1e, org.springframework.security.web.access.ExceptionTranslationFilter@22c0c0bc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@25fc2b8f]
+""2022-08-22 22:31:48 [Test worker] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:31:49 [Test worker] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][Test worker] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:31:49 [Test worker] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:31:49 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:31:49 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:31:49 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:31:49 [Test worker] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:31:49 [Test worker] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:31:49 [Test worker] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:31:49 [Test worker] INFO  c.d.N.NexcomAcquisitionPortalApplicationTests - Started NexcomAcquisitionPortalApplicationTests in 9.592 seconds (JVM running for 11.198)
+""2022-08-22 22:31:53 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:31:53 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+""2022-08-22 22:31:53 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+""2022-08-22 22:31:56 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Starting NexcomAcquisitionPortalApplication using Java 11.0.16 on engineer with PID 17317 (/home/engineer/IdeaProjects/NexcomAcquisitionPortal/build/libs/NexcomAcquisitionPortal-0.0.1-SNAPSHOT.war started by engineer in /home/engineer/IdeaProjects/NexcomAcquisitionPortal)
+""2022-08-22 22:31:56 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - No active profile set, falling back to 1 default profile: "default"
+""2022-08-22 22:31:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+""2022-08-22 22:31:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+""2022-08-22 22:31:58 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 118 ms. Found 13 JPA repository interfaces.
+""2022-08-22 22:31:59 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8872 (http)
+""2022-08-22 22:31:59 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+""2022-08-22 22:31:59 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+""2022-08-22 22:32:01 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+""2022-08-22 22:32:01 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4535 ms
+""2022-08-22 22:32:01 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+""2022-08-22 22:32:01 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+""2022-08-22 22:32:02 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+""2022-08-22 22:32:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+""2022-08-22 22:32:03 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+""2022-08-22 22:32:03 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2022-08-22 22:32:04 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKg4g960gmmeal0vvqe5syutulm 
+       foreign key (roles_id) 
+       references roles_admin (id)
+""2022-08-22 22:32:04 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table admi_roles 
+       add constraint FKry6n6e9eee4j4ft905o1kbp97 
+       foreign key (admin_id) 
+       references admi (id)
+""2022-08-22 22:32:05 [main] DEBUG org.hibernate.SQL - 
+    
+    alter table password_reset_token 
+       add constraint FKipximbo3kvjgd7o9gd9cid4ab 
+       foreign key (user_id) 
+       references admi (id)
+""2022-08-22 22:32:06 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+""2022-08-22 22:32:06 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2022-08-22 22:32:06 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - AuthenticationFilter initialized
+""2022-08-22 22:32:07 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+""2022-08-22 22:32:07 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1b9f6371-203d-4a15-a169-106b4a7e11af
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+""2022-08-22 22:32:07 [main] WARN  o.s.s.c.a.web.builders.WebSecurity - You are asking Spring Security to ignore Ant [pattern='/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+""2022-08-22 22:32:07 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will not secure Ant [pattern='/**']
+""2022-08-22 22:32:07 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@590765c4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@19489b27, org.springframework.security.web.context.SecurityContextPersistenceFilter@11d86b9d, org.springframework.security.web.header.HeaderWriterFilter@412c5e8b, org.springframework.security.web.authentication.logout.LogoutFilter@122635ef, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@11381415, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@691124ee, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@626d2016, org.springframework.security.web.session.SessionManagementFilter@422ab737, org.springframework.security.web.access.ExceptionTranslationFilter@1c34365c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@13ed066e]
+""2022-08-22 22:32:08 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+""2022-08-22 22:32:08 [main] WARN  o.t.templatemode.TemplateMode - [THYMELEAF][main] Template Mode 'LEGACYHTML5' is deprecated. Using Template Mode 'HTML' instead.
+""2022-08-22 22:32:08 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8872 (http) with context path ''
+""2022-08-22 22:32:08 [main] INFO  o.s.s.a.ScheduledAnnotationBeanPostProcessor - No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+""2022-08-22 22:32:08 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:32:08 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [jmwangi@directcore.com]
+""2022-08-22 22:32:08 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:32:08 [main] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        Admi as generatedAlias0 
+    where
+        generatedAlias0.email=:param0 */ select
+            admi0_.id as id1_2_,
+            admi0_.create_date_time as create_d2_2_,
+            admi0_.email as email3_2_,
+            admi0_.isadmin as isadmin4_2_,
+            admi0_.name as name5_2_,
+            admi0_.password as password6_2_,
+            admi0_.phone as phone7_2_,
+            admi0_.update_date_time as update_d8_2_ 
+        from
+            admi admi0_ 
+        where
+            admi0_.email=?
+""2022-08-22 22:32:08 [main] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [francis@directcore.com]
+""2022-08-22 22:32:08 [main] INFO  c.d.N.seeders.DatabaseSeeder - Users Seeding Not Required
+""2022-08-22 22:32:08 [main] INFO  c.d.N.NexcomAcquisitionPortalApplication - Started NexcomAcquisitionPortalApplication in 13.059 seconds (JVM running for 14.453)
+""2022-08-22 22:33:16 [http-nio-8872-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+""2022-08-22 22:33:16 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+""2022-08-22 22:33:16 [http-nio-8872-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+""2022-08-22 22:33:25 [http-nio-8872-exec-2] DEBUG org.hibernate.SQL - 
+    /* select
+        generatedAlias0 
+    from
+        PasswordResetToken as generatedAlias0 
+    where
+        generatedAlias0.token=:param0 */ select
+            passwordre0_.id as id1_10_,
+            passwordre0_.expiry_date as expiry_d2_10_,
+            passwordre0_.token as token3_10_,
+            passwordre0_.user_id as user_id4_10_ 
+        from
+            password_reset_token passwordre0_ 
+        where
+            passwordre0_.token=?
+""2022-08-22 22:33:25 [http-nio-8872-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [VARCHAR] - [6a560e01-8c25-4af8-90d9-56ae685a1008]
+""2022-08-22 22:33:25 [http-nio-8872-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        admi0_.id as id1_2_0_,
+        admi0_.create_date_time as create_d2_2_0_,
+        admi0_.email as email3_2_0_,
+        admi0_.isadmin as isadmin4_2_0_,
+        admi0_.name as name5_2_0_,
+        admi0_.password as password6_2_0_,
+        admi0_.phone as phone7_2_0_,
+        admi0_.update_date_time as update_d8_2_0_ 
+    from
+        admi admi0_ 
+    where
+        admi0_.id=?
+""2022-08-22 22:33:25 [http-nio-8872-exec-2] TRACE o.h.type.descriptor.sql.BasicBinder - binding parameter [1] as [INTEGER] - [38]
 "
