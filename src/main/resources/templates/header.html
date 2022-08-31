@@ -159,7 +159,8 @@
             let _token   = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
-                url: "{{ url('/admin/change_password') }}",
+
+                     url: basePath + 'admin/change_password',
                 method: 'post',
                 data: {
                     _token: _token,

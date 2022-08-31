@@ -578,4 +578,17 @@ public class MainController {
 //        return adminService.generate_code();
 //
 //    }
+
+
+    @RequestMapping(value = "/change_password", method = RequestMethod.POST, consumes = {"application/x-www-form-urlencoded"})
+    @ResponseBody
+    public Object change_password(@RequestParam("oldpassword") String oldpassword, @RequestParam("newpassword") String newpassword, @RequestParam("newpassword_confirmation") String newpassword_confirmation) {
+
+        try {
+            return adminService.change_password(oldpassword, newpassword, newpassword_confirmation);
+        } catch (Exception e) {
+            return "Failed!";
+        }
+        // return  request;
+    }
 }
