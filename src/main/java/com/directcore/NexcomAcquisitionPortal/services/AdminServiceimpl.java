@@ -1784,4 +1784,27 @@ if(request.getBuilding_name() != null){
         admiRepository.save(admi);
         return "redirect:login";
     }
+
+    @Override
+    public Object change_password(String oldpassword, String newpassword, String newpassword_confirmation) {
+        HashMap<String, Object> rdata = new HashMap<String, Object>();
+        try {
+        if(!(newpassword.equals(newpassword_confirmation))){
+
+        }
+
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
+
+
+            return rdata;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
+
+    }
 }

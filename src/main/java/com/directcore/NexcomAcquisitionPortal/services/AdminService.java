@@ -140,4 +140,6 @@ public interface AdminService {
     Object changePassword(HttpSession request, String token, ModelAndView v, Model model);
 
     Object admin_reset_password(String token, String confpassword, String password, Model model, HttpSession request, ModelAndView v);
+
+    Object change_password(String oldpassword, String newpassword, String newpassword_confirmation);
 }
