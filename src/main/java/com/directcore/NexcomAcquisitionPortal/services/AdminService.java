@@ -141,5 +141,5 @@ public interface AdminService {
 
     Object admin_reset_password(String token, String confpassword, String password, Model model, HttpSession request, ModelAndView v);
 
-    Object change_password(String oldpassword, String newpassword, String newpassword_confirmation);
+    Object change_password(HttpSession request, String oldpassword, String newpassword, String newpassword_confirmation);
 }

@@ -11,18 +11,25 @@ import org.hibernate.cfg.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.naming.Context;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Email;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -43,13 +50,13 @@ public class AdminServiceimpl implements com.directcore.NexcomAcquisitionPortal.
 
     @Autowired
     private AdmiRepository admiRepository;
-@Autowired
-private RolesRepository roleRepository;
+    @Autowired
+    private RolesRepository roleRepository;
 
 
 
     @Autowired
-      private UserValidator userValidator;
+    private UserValidator userValidator;
 
 
     @Autowired
@@ -79,11 +86,14 @@ private RolesRepository roleRepository;
 
     @Autowired
     private  Login_logsRepository login_logsRepository;
-@Autowired
-private Access_right_profileRepository access_right_profileRepository;
+    @Autowired
+    private Access_right_profileRepository access_right_profileRepository;
 
-@Autowired
-private  PasswordResetTokenRepository passwordResetTokenRepository;
+    @Autowired
+    private  PasswordResetTokenRepository passwordResetTokenRepository;
+
+    @Value("${url.portal.public}")
+    private String contextPat;
 
 
     @Autowired
@@ -135,29 +145,29 @@ private  PasswordResetTokenRepository passwordResetTokenRepository;
         if(!bcrypt.verifyHash(password, admi.getPassword() ))
         {
             model.addAttribute("error", "Password is incorrect");
-        Login_logs login_logs =new Login_logs();
-        login_logs.setAdminid( admi.getId());
-        login_logs.setResponse("Incorrect Password");
-        login_logsRepository.save(login_logs);
+            Login_logs login_logs =new Login_logs();
+            login_logs.setAdminid( admi.getId());
+            login_logs.setResponse("Incorrect Password");
+            login_logsRepository.save(login_logs);
             return "login";
         }
 
         Integer user_admin = (Integer) request.getAttribute("user_admin");
-       if(user_admin == null)
-       {
-       user_admin =   admi.getId();
-           request.setAttribute("user_admin", user_admin);
+        if(user_admin == null)
+        {
+            user_admin =   admi.getId();
+            request.setAttribute("user_admin", user_admin);
 
-       }else {
-           request.removeAttribute("user_admin");
-           user_admin =    admi.getId();
-         request.setAttribute("user_admin", user_admin);
-       }
+        }else {
+            request.removeAttribute("user_admin");
+            user_admin =    admi.getId();
+            request.setAttribute("user_admin", user_admin);
+        }
 
-Login_logs login_logs =new Login_logs();
-       login_logs.setAdminid( admi.getId());
-       login_logs.setResponse("login success");
-       login_logsRepository.save(login_logs);
+        Login_logs login_logs =new Login_logs();
+        login_logs.setAdminid( admi.getId());
+        login_logs.setResponse("login success");
+        login_logsRepository.save(login_logs);
 
 
 
@@ -196,17 +206,17 @@ Login_logs login_logs =new Login_logs();
         try {
 
 
-        Admi admi = admiRepository.findByEmail(newportalUser.getEmail());
-        if (admi != null){
+            Admi admi = admiRepository.findByEmail(newportalUser.getEmail());
+            if (admi != null){
 
-            Error1 error = new Error1();
-            error.setCode("error");
-            error.setMessage("email already in use");
-            return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-        }
-        newportalUser.setPassword(bcrypt.hash(newportalUser.getPassword()));
+                Error1 error = new Error1();
+                error.setCode("error");
+                error.setMessage("email already in use");
+                return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+            }
+            newportalUser.setPassword(bcrypt.hash(newportalUser.getPassword()));
 
-        admiRepository.save(newportalUser);
+            admiRepository.save(newportalUser);
 
 
 
@@ -227,9 +237,9 @@ Login_logs login_logs =new Login_logs();
 
     @Override
     public String portalRoles(Model model) {
-       List<Roles_admin> roles =  roleRepository.findAll();
+        List<Roles_admin> roles =  roleRepository.findAll();
 
-      model.addAttribute("roles", roles);
+        model.addAttribute("roles", roles);
 
         return "admin/roles";
     }
@@ -245,7 +255,7 @@ Login_logs login_logs =new Login_logs();
             Roles_admin role = roleRepository.findByName(roles.getName());
             if (role != null){
 
-                 rdata.put("success", 0);
+                rdata.put("success", 0);
                 rdata.put("msg", "Role already created.");
                 return rdata;
             }
@@ -285,7 +295,7 @@ Login_logs login_logs =new Login_logs();
 
     }
     private List<String> getPrivileges(Set<Roles_admin> roles) {
-         List<String> privileges = new ArrayList<>();
+        List<String> privileges = new ArrayList<>();
 
         for (Roles_admin role : roles) {
 
@@ -351,7 +361,7 @@ Login_logs login_logs =new Login_logs();
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
 
-         v.setViewName("teritories");
+        v.setViewName("teritories");
         v.addObject("user", admi);
         v.addObject("regions", regions);
 
@@ -400,7 +410,7 @@ Login_logs login_logs =new Login_logs();
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
 
-   
+
 
 
         v.setViewName("region");
@@ -508,7 +518,7 @@ Login_logs login_logs =new Login_logs();
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-       Area area = (Area) areaRepository.findById(id);
+        Area area = (Area) areaRepository.findById(id);
 
         Region regions = regionRepository.findById(area.getRegionId()).orElse(null);
         Zone zones =  zoneRepository.findById(area.getZoneId()).orElse(null);
@@ -573,7 +583,7 @@ Login_logs login_logs =new Login_logs();
             if (!Files.exists(root)) {
                 Files.createDirectories(root);
             }
-           List<String> fileNames = new ArrayList<>();
+            List<String> fileNames = new ArrayList<>();
             for (MultipartFile file : files) {
 
                 try {
@@ -715,17 +725,17 @@ Login_logs login_logs =new Login_logs();
             area.setName(name);
             areaRepository.save(area);
 
-        rdata.put("success", 1);
-        rdata.put("msg", "successful.");
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
             rdata.put("area", area.getName());
 
-        return rdata;
+            return rdata;
 
-    } catch (Exception e) {
-        rdata.put("success", 0);
-        rdata.put("msg", "An error occured! ");
-        return rdata;
-    }
+        } catch (Exception e) {
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
     }
 
     @Override
@@ -739,13 +749,13 @@ Login_logs login_logs =new Login_logs();
     public Object editcluster(Integer clusterId, String name) {
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
-       Cluster cluster = (Cluster) clusterRepository.findById(clusterId);
-       cluster.setName(name);
-       clusterRepository.save(cluster);
+            Cluster cluster = (Cluster) clusterRepository.findById(clusterId);
+            cluster.setName(name);
+            clusterRepository.save(cluster);
 
 
-                rdata.put("success", 1);
-                rdata.put("msg", "successful.");
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
 
             return rdata;
 
@@ -794,16 +804,16 @@ Login_logs login_logs =new Login_logs();
 
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
-     Building_profile building_info = (Building_profile) building_profileRepository.findById(id);
+        Building_profile building_info = (Building_profile) building_profileRepository.findById(id);
 
-     List <Contact_profile> contact_infos = contact_infoRepository.findByBuildingcode(building_info.getBuilding_code());
-  Sales_profile  sales_profile = (Sales_profile) sales_profileRepository.findByBuildingcode(building_info.getBuilding_code());
-   List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
-   Access_right_profile access_right_profile = access_right_profileRepository.findByBuildingcode(building_info.getBuilding_code());
+        List <Contact_profile> contact_infos = contact_infoRepository.findByBuildingcode(building_info.getBuilding_code());
+        Sales_profile  sales_profile = (Sales_profile) sales_profileRepository.findByBuildingcode(building_info.getBuilding_code());
+        List  <Images_info> images_info = imags_infoRepository.findByBuildingId(building_info.getId());
+        Access_right_profile access_right_profile = access_right_profileRepository.findByBuildingcode(building_info.getBuilding_code());
 
-   Cluster cluster = (Cluster) clusterRepository.findById(building_info.getBuilding_cluster());
-    Area area = (Area) areaRepository.findById(cluster.getAreaId());
-    Zone zone = zoneRepository.findById(cluster.getZoneId()).orElse(null);
+        Cluster cluster = (Cluster) clusterRepository.findById(building_info.getBuilding_cluster());
+        Area area = (Area) areaRepository.findById(cluster.getAreaId());
+        Zone zone = zoneRepository.findById(cluster.getZoneId()).orElse(null);
         Region region = regionRepository.findById(cluster.getRegion_id()).orElse(null);
 
         List<String> privileges = getPrivileges(admi.getRoles());
@@ -826,18 +836,18 @@ Login_logs login_logs =new Login_logs();
 
     @Override
     public Resource load(String filename) throws MalformedURLException {
- 
-            Path file = root.resolve(filename);
-            Resource resource = new UrlResource(file.toUri());
-            if (resource.exists() || resource.isReadable()) {
-                return resource;
-            } else {
-                throw new RuntimeException("Could not read the file!");
-         
-      
+
+        Path file = root.resolve(filename);
+        Resource resource = new UrlResource(file.toUri());
+        if (resource.exists() || resource.isReadable()) {
+            return resource;
+        } else {
+            throw new RuntimeException("Could not read the file!");
+
+
+        }
     }
-            }
-//   public String generateUniqueFileName() {
+    //   public String generateUniqueFileName() {
 //        String filename = "";
 //        long millis = System.currentTimeMillis();
 //        String datetime = new Date().toGMTString();
@@ -853,34 +863,34 @@ Login_logs login_logs =new Login_logs();
         HashMap<String, Object> rdata = new HashMap<String, Object>();
 
         try {
-        if (!Files.exists(root)) {
-            Files.createDirectories(root);
-        }
+            if (!Files.exists(root)) {
+                Files.createDirectories(root);
+            }
             String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(new Date());
             String[] fileFrags = file.getOriginalFilename().split("\\.");
             String extension = fileFrags[fileFrags.length-1];
-           String picName     = timeStamp + "." + extension;
+            String picName     = timeStamp + "." + extension;
 
-        //    String picName     = "timeStamp" + ".png";
-        Files.copy(file.getInputStream(), this.root.resolve(picName));
+            //    String picName     = "timeStamp" + ".png";
+            Files.copy(file.getInputStream(), this.root.resolve(picName));
 
-        Images_info images_info = new Images_info();
-        images_info.setBuildingId(buildingId);
-        images_info.setName(picName);
-        imags_infoRepository.save(images_info);
+            Images_info images_info = new Images_info();
+            images_info.setBuildingId(buildingId);
+            images_info.setName(picName);
+            imags_infoRepository.save(images_info);
 
-        rdata.put("success", 1);
-        rdata.put("msg", "successful.");
+            rdata.put("success", 1);
+            rdata.put("msg", "successful.");
 
 
-        return rdata;
+            return rdata;
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        rdata.put("success", 0);
-        rdata.put("msg", "An error occured! ");
-        return rdata;
-    }
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
 
 
     }
@@ -1009,7 +1019,7 @@ Login_logs login_logs =new Login_logs();
         Admi admi = admiRepository.findById(user_admin);
 
 
-       List <Roles_admin> roles_admins = roleRepository.findAll();
+        List <Roles_admin> roles_admins = roleRepository.findAll();
 
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
@@ -1121,7 +1131,7 @@ Login_logs login_logs =new Login_logs();
         List <Roles_admin>  rolesAdmin = roleRepository.findAll();
         Admi user = admiRepository.findById(id);
 
-       List <Login_logs> login_logs = login_logsRepository.findAllByadminid(id);
+        List <Login_logs> login_logs = login_logsRepository.findAllByadminid(id);
         List<String> aList = new ArrayList<>();
         for (Roles_admin element : user.getRoles()) {
             aList.add(element.getName());
@@ -1136,7 +1146,7 @@ Login_logs login_logs =new Login_logs();
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
         v.addObject("authorities", privileges);
-                v.setViewName("edit_portalUsers");
+        v.setViewName("edit_portalUsers");
         v.addObject("user", admi);
         v.addObject("continents", continents);
         v.addObject("roles", rolesAdmin);
@@ -1153,10 +1163,10 @@ Login_logs login_logs =new Login_logs();
 
         Roles_admin rolesAdmin = roleRepository.findAllById(roleId);
 
-      String[] permissions  = rolesAdmin.getRole();
+        String[] permissions  = rolesAdmin.getRole();
 
-            rolesAdmin.setRole(data);
-return "permissions Saved";
+        rolesAdmin.setRole(data);
+        return "permissions Saved";
 
 
     }
@@ -1170,7 +1180,7 @@ return "permissions Saved";
         roleRepository.save(rolesAdmin);
 
         return "Edit role successful";
-      }
+    }
 
     @Override
     public Object getuserbyid(Integer id) {
@@ -1191,8 +1201,8 @@ return "permissions Saved";
         Integer user_admin = (Integer) request.getAttribute("user_admin");
         Admi admi = admiRepository.findById(user_admin);
 
-List <Admi> admis = (List<Admi>) admiRepository.findAll();
-          List  <Building_profile> building_infos = (List<Building_profile>) building_profileRepository.findAll();
+        List <Admi> admis = (List<Admi>) admiRepository.findAll();
+        List  <Building_profile> building_infos = (List<Building_profile>) building_profileRepository.findAll();
 
         List<String> privileges = getPrivileges(admi.getRoles());
         logger.info(String.valueOf(privileges));
@@ -1218,24 +1228,24 @@ List <Admi> admis = (List<Admi>) admiRepository.findAll();
     public Object view_ba(Integer search, Integer search_type) throws ParseException {
 
         if(search_type == 3){
-if(search == 1) {
-    LocalDateTime creationDateTime = LocalDateTime.now().minusDays(7);
+            if(search == 1) {
+                LocalDateTime creationDateTime = LocalDateTime.now().minusDays(7);
 //            return this.repository.findAllWithDateAfter(threeDaysAgoDate);
 //            @Query("select m from Message m where date >= :threeDaysAgoDate")
 //            List<Message> findAllWithDateAfter(@Param("threeDaysAgoDate") LocalDate threeDaysAgoDate);
 
-    List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
+                List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
 
-    return building_infos;
-}else {
-    LocalDateTime creationDateTime = LocalDateTime.now().minusDays(30);
+                return building_infos;
+            }else {
+                LocalDateTime creationDateTime = LocalDateTime.now().minusDays(30);
 
-    List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
+                List<Building_profile> building_infos = building_profileRepository.findAllWithCreateDateTimeAfter(creationDateTime);
 
-    return building_infos;
-}
+                return building_infos;
+            }
         }
-else
+        else
         {
 
             List<Building_profile> building_infos = building_profileRepository.findByAdminid(search);
@@ -1283,15 +1293,15 @@ else
 
             } else if (Objects.equals(search, "clusters")){
                 List<Cluster> clusters = (List<Cluster>) clusterRepository.findAll();
-            rdata.put("success", 1);
-            rdata.put("level", "clusters");
-            rdata.put("clusters", clusters);
-            rdata.put("sef", search);
-            return rdata;
-        }else{
-            rdata.put("sef", search);
-            return rdata;
-        }
+                rdata.put("success", 1);
+                rdata.put("level", "clusters");
+                rdata.put("clusters", clusters);
+                rdata.put("sef", search);
+                return rdata;
+            }else{
+                rdata.put("sef", search);
+                return rdata;
+            }
 
 
 
@@ -1374,25 +1384,25 @@ else
         try {
 
             Admi admi = admiRepository.findById(userid);
-        Roles_admin rolesAdmin = roleRepository.findById(roleid);
+            Roles_admin rolesAdmin = roleRepository.findById(roleid);
 
-        Set<Roles_admin> roles = admi.getRoles();
+            Set<Roles_admin> roles = admi.getRoles();
 
-        boolean ans = roles.contains(rolesAdmin);
+            boolean ans = roles.contains(rolesAdmin);
 
-        if (ans) {
-            roles.remove(rolesAdmin);
-            admi.setRoles(roles);
-            admiRepository.save(admi);
+            if (ans) {
+                roles.remove(rolesAdmin);
+                admi.setRoles(roles);
+                admiRepository.save(admi);
 
-            rdata.put("msg", "role removed.");
-        }
-        else{
-            roles.add(rolesAdmin);
-            admi.setRoles(roles);
-            admiRepository.save(admi);
-            rdata.put("msg", "role added.");
-    }
+                rdata.put("msg", "role removed.");
+            }
+            else{
+                roles.add(rolesAdmin);
+                admi.setRoles(roles);
+                admiRepository.save(admi);
+                rdata.put("msg", "role added.");
+            }
 
 
             rdata.put("success", 1);
@@ -1418,29 +1428,29 @@ else
         return admis;
     }
 
-public String generate_code(){
+    public String generate_code(){
 
         String code = "BCD";
 
-    String  bcd123 = "";
+        String  bcd123 = "";
         Building_profile building_profile = building_profileRepository.findTopByOrderByIdDesc();
         if(building_profile == null){
             bcd123 = "BCD001";
         }else {
-             bcd123 = building_profile.getBuilding_code();
+            bcd123 = building_profile.getBuilding_code();
         }
 
 //    String person[]  = bcd123.split(":");
-    String person[]  = bcd123.split("(?=\\d)(?<=\\D)");
-    String name = person[0];
-    String number = person[1];
+        String person[]  = bcd123.split("(?=\\d)(?<=\\D)");
+        String name = person[0];
+        String number = person[1];
 
         int foo = Integer.parseInt(number);
         foo = foo + 1;
         String s = Integer.toString(foo);
         code = code + s;
         return code;
-}
+    }
     @Override
     public Object addbuildings(HttpSession req, Building_form request, MultipartFile photo, MultipartFile file) {
 
@@ -1450,8 +1460,8 @@ public String generate_code(){
 
 
 
-                Integer user_admin = (Integer) req.getAttribute("user_admin");
-                Admi admi = admiRepository.findById(user_admin);
+            Integer user_admin = (Integer) req.getAttribute("user_admin");
+            Admi admi = admiRepository.findById(user_admin);
 
             String building_code = generate_code();
             Building_profile building_profile = new Building_profile();
@@ -1566,54 +1576,54 @@ public String generate_code(){
 
 
 
-        Building_profile building_profile =building_profileRepository.findById(buildingId);
+            Building_profile building_profile =building_profileRepository.findById(buildingId);
 
 
-if(request.getBuilding_name() != null){
-    building_profile.setBuilding_name(request.getBuilding_name());
-}
+            if(request.getBuilding_name() != null){
+                building_profile.setBuilding_name(request.getBuilding_name());
+            }
 
             if(request.getAcquisitionPurpose() != null){
-        building_profile.setAcquisitionPurpose(request.getAcquisitionPurpose());
+                building_profile.setAcquisitionPurpose(request.getAcquisitionPurpose());
             }
             if(request.getUse_type() != null){
-        building_profile.setUse_type(request.getUse_type());
+                building_profile.setUse_type(request.getUse_type());
             }
             if(request.getBuilding_type() != null){
-        building_profile.setBuilding_type(request.getBuilding_type());
+                building_profile.setBuilding_type(request.getBuilding_type());
             }
             if(request.getBuilding_state() != null){
-        building_profile.setBuilding_state(request.getBuilding_state());
+                building_profile.setBuilding_state(request.getBuilding_state());
             }
             if(request.getPower() != null){
-        building_profile.setPower(request.getPower());
+                building_profile.setPower(request.getPower());
             }
             if(request.getBackup() != null){
-        building_profile.setBackup(request.getBackup());
+                building_profile.setBackup(request.getBackup());
             }
             if(request.getBackup_text() != null){
-        building_profile.setBackup_text(request.getBackup_text());
+                building_profile.setBackup_text(request.getBackup_text());
             }
             if(request.getNumberofUnits() != null){
-        building_profile.setNumberofUnits(request.getNumberofUnits());
+                building_profile.setNumberofUnits(request.getNumberofUnits());
             }
             if(request.getBlocks() != null){
-        building_profile.setBlocks(request.getBlocks());
+                building_profile.setBlocks(request.getBlocks());
             }
             if(request.getFloors() != null){
-        building_profile.setFloors(request.getFloors());
+                building_profile.setFloors(request.getFloors());
             }
             if(request.getSecurity() != null){
-        building_profile.setSecurity(request.getSecurity());
+                building_profile.setSecurity(request.getSecurity());
             }
             if(request.getStreet_name() != null){
-        building_profile.setStreet_name(request.getStreet_name());
+                building_profile.setStreet_name(request.getStreet_name());
             }
             if(request.getBuilding_description() != null){
-        building_profile.setBuilding_description(request.getBuilding_description());
+                building_profile.setBuilding_description(request.getBuilding_description());
             }
 
-        building_profileRepository.save(building_profile);
+            building_profileRepository.save(building_profile);
 
 
             rdata.put("success", 1);
@@ -1651,17 +1661,17 @@ if(request.getBuilding_name() != null){
 //            Files.copy(file.getInputStream(), this.root.resolve(docName));
 
 
-        if(request.getAccessRights() != null){
-            access_right_profile.setAccessRights(request.getAccessRights());
-        }
+            if(request.getAccessRights() != null){
+                access_right_profile.setAccessRights(request.getAccessRights());
+            }
             if(request.getAccess_Status() != null){
-            access_right_profile.setAccess_Status(request.getAccess_Status());
+                access_right_profile.setAccess_Status(request.getAccess_Status());
             }
             if(request.getAccessRights_text() != null){
-            access_right_profile.setAccessRights_text(request.getAccessRights_text());
+                access_right_profile.setAccessRights_text(request.getAccessRights_text());
             }
             if(request.getRoa_status() != null){
-            access_right_profile.setRoa_status(request.getRoa_status());
+                access_right_profile.setRoa_status(request.getRoa_status());
             }
             if(request.getOther_terms() != null) {
                 access_right_profile.setOther_terms(request.getOther_terms());
@@ -1671,17 +1681,17 @@ if(request.getBuilding_name() != null){
 
 
             rdata.put("success", 1);
-        rdata.put("msg", "successful.");
+            rdata.put("msg", "successful.");
 
 
-        return rdata;
+            return rdata;
 
-    } catch (Exception e) {
-        e.printStackTrace();
-        rdata.put("success", 0);
-        rdata.put("msg", "An error occured! ");
-        return rdata;
-    }
+        } catch (Exception e) {
+            e.printStackTrace();
+            rdata.put("success", 0);
+            rdata.put("msg", "An error occured! ");
+            return rdata;
+        }
     }
 
     @Override
@@ -1693,7 +1703,10 @@ if(request.getBuilding_name() != null){
 
         return v;
     }
-
+    @Bean
+    public String getUserBucketPath() {
+        return contextPat;
+    }
     @Override
     public Object admin_forgot(String email, Model model, HttpSession request, ModelAndView v) {
         regexPattern = Pattern.compile("^[(a-zA-Z-0-9-\\_\\+\\.)]+@[(a-z-A-z)]+\\.[(a-zA-z)]{2,3}$");
@@ -1715,32 +1728,58 @@ if(request.getBuilding_name() != null){
 
         PasswordResetToken myToken = new PasswordResetToken(token, admi);
         passwordResetTokenRepository.save(myToken);
-        String contextPat = "http://localhost:8872/";
+        String contextPat =getUserBucketPath();
 
-        emailSender.send(constructResetTokenEmail(contextPat, token, admi));
-
+        //  emailSender.send(constructResetTokenEmail(contextPat, token, admi));
+        constructResetTokenEmail(contextPat, token, admi);
         return "login";
     }
 
-    private SimpleMailMessage constructResetTokenEmail(
-            String contextPath, String token, Admi user) {
-        String url = contextPath + "/user/changePassword?token=" + token;
+//    private SimpleMailMessage constructResetTokenEmail(
+//            String contextPath, String token, Admi user) throws MessagingException {
+//        String url = contextPath + "/user/changePassword?token=" + token;
+//        String message = "Hello" + user.getName() + "here is the link to reset your password.";
+//        return constructEmail("Reset Password", message + " \r\n" + url, user);
+//    }
+
+//    private SimpleMailMessage constructEmail(String subject, String body,
+//                                             Admi user) throws MessagingException {
+//        SimpleMailMessage email = new SimpleMailMessage();
+//        email.setSubject(subject);
+//        email.setText(body);
+//        email.setTo(user.getEmail());
+//        email.setFrom("Nexcom Acqusition Portal");
+//
+//        return email;
+//    }
+
+    private void constructResetTokenEmail(
+            String contextPath, String token, Admi user)  {
+        String url = contextPath + "user/changePassword?token=" + token;
         String message = "Hello" + user.getName() + "here is the link to reset your password.";
-        return constructEmail("Reset Password", message + " \r\n" + url, user);
+        try {
+            sendHtmlMessage("Reset Password", "\r\n" + url, user);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
-    private SimpleMailMessage constructEmail(String subject, String body,
-                                             Admi user) {
-        SimpleMailMessage email = new SimpleMailMessage();
-        email.setSubject(subject);
-        email.setText(body);
-        email.setTo(user.getEmail());
-        email.setFrom("Nexcom Acqusition Portal");
+    public void sendHtmlMessage(String subject, String body, Admi user) throws MessagingException {
+        MimeMessage message = emailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
+        helper.setSubject(subject);
+        helper.setFrom("system@directcore.com");
+        helper.setTo(user.getEmail());
 
-        return email;
+        boolean html = true;
+        helper.setText("<b>Hello " + user.getName() +"</b>,<br>Here in the link to reset your Nexcom Acqusition Portal " +
+                "password " + "<a href='"  + body + "'>Reset Password</a>", html);
+        // return message;
+        emailSender.send(message);
+
+        logger.info("Sending email: {} with html body: {}", html);
     }
-
     @Override
     public Object changePassword(HttpSession request, String token, ModelAndView v, Model model) {
         String result = validatePasswordResetToken(token);
@@ -1776,7 +1815,7 @@ if(request.getBuilding_name() != null){
     @Override
     public Object admin_reset_password(String token, String confpassword, String password, Model model, HttpSession request, ModelAndView v) {
 
-      PasswordResetToken passToken = passwordResetTokenRepository.findByToken(token);
+        PasswordResetToken passToken = passwordResetTokenRepository.findByToken(token);
         Admi admi = passToken.getUser();
 
         admi.setPassword(bcrypt.hash(password));
@@ -1786,12 +1825,30 @@ if(request.getBuilding_name() != null){
     }
 
     @Override
-    public Object change_password(String oldpassword, String newpassword, String newpassword_confirmation) {
+    public Object change_password(HttpSession request, String oldpassword, String newpassword, String newpassword_confirmation) {
         HashMap<String, Object> rdata = new HashMap<String, Object>();
         try {
-        if(!(newpassword.equals(newpassword_confirmation))){
 
-        }
+
+            Integer user_admin = (Integer) request.getAttribute("user_admin");
+            Admi admi = admiRepository.findById(user_admin);
+            if(!bcrypt.verifyHash(oldpassword, admi.getPassword() ))
+            {
+                rdata.put("success", 0);
+                rdata.put("msg", "An error occured! ");
+                return rdata;
+
+            }
+            if(!(newpassword.equals(newpassword_confirmation))){
+                rdata.put("success", 0);
+                rdata.put("msg", "An error occured! ");
+                return rdata;
+            }
+
+            admi.setPassword(bcrypt.hash(newpassword));
+
+            admiRepository.save(admi);
+
 
             rdata.put("success", 1);
             rdata.put("msg", "successful.");
